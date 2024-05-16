@@ -7,7 +7,7 @@ class Movie(models.Model):
     movie_id = models.CharField(primary_key=True, max_length=50)
     title = models.CharField(max_length=150)
     overview = models.TextField(max_length=300)
-    poster = models.TextField(blank=True)
+    poster = models.TextField(null=True)
     opening_date = models.DateField(null=True)
     running_time = models.IntegerField(null=True)
     popularity = models.FloatField()
@@ -39,6 +39,7 @@ class Movie(models.Model):
 class Producer(models.Model):
     producer_id = models.CharField(primary_key=True, max_length=50)
     producer = models.CharField(max_length=150)
+    profile_image = models.TextField(null=True)
     
     def __str__(self):
         return self.producer
@@ -46,7 +47,7 @@ class Producer(models.Model):
 class Actor(models.Model):
     actor_code = models.CharField(primary_key=True, max_length=50)
     actor = models.CharField(max_length=50)
-    profile_image = models.TextField(blank=True)
+    profile_image = models.TextField(null=True)
 
     def __str__(self):
         return self.actor
