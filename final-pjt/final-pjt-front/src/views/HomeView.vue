@@ -6,7 +6,6 @@
       <h5>어떤 영화를 찾으시나요?</h5>
       <h1>당신을 위한 영화 추천 사이트</h1>
       <h5>당신의 선택을 통하여 다양한 각도에서 영화를 추천해드립니다</h5>
-      <p class="recommend">추천받기</p>
     </div>
 
     <div class="movie_info_cnt">
@@ -48,10 +47,13 @@
         </div>
     </div>
   </div>
-
+  <Login />
+  <Signup />
 </template>
 
 <script setup>
+import Login from '@/components/Login.vue'
+import Signup from '@/components/Signup.vue'
 </script>
 
 <style scoped>
@@ -73,18 +75,8 @@
   height: 30%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   font-size: 200%;
-  color: white;
-}
-.recommend {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 10%;
-  height: 10%;
-  border: 1px solid white;
   color: white;
 }
 .recommend:hover {
