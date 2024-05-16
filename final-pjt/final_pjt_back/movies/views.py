@@ -33,7 +33,7 @@ def download_movie(request):
     MV_URL = f'	http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?'
     TMDB_URL = f'https://api.themoviedb.org/3/search/movie?'
     
-    for i in range(101, 102):
+    for i in range(1, 3):
         print(i)
         MV_params = {
             'key': MV_API_KEY,
@@ -223,12 +223,17 @@ def download_producers(producers, movie_name):
             'peopleNm': producer.get('peopleNm'),
             'filmoNames': movie_name,
         }
-        producer_data = req.get(URL, params=params).json().get('peopleListResult').get('peopleList')[0]
+        try:
+            producer_data = req.get(URL, params=params).json().get('peopleListResult').get('peopleList')[0]
+        except:
+            continue
+        
         producer_name = producer_data.get('peopleNm')
         producer_code = producer_data.get('peopleCd')
         
         TMDB_URL = 'https://api.themoviedb.org/3/search/person?'
         TMDB_params = {
+            'api_key': TMDB_API_KEY,
             'query': producer_name,
             'language': 'ko-KR',
         }
@@ -240,7 +245,10 @@ def download_producers(producers, movie_name):
         if TMDB_data == [] or TMDB_data is None:
             continue
         
-        producer_image_url = 'https://image.tmdb.org/t/p/original' + TMDB_data.get('profile_path')
+        try:
+            producer_image_url = 'https://image.tmdb.org/t/p/original' + TMDB_data[0].get('profile_path')
+        except:
+            continue
         
         new_producer = Producer(producer_id=producer_code, producer=producer_name, profile_image=producer_image_url)
         new_producer.save()

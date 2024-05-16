@@ -104,6 +104,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 ROOT_URLCONF = 'final_pjt_back.urls'
 
 TEMPLATES = [
