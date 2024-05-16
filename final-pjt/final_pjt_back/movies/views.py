@@ -33,7 +33,7 @@ def download_movie(request):
     MV_URL = f'	http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?'
     TMDB_URL = f'https://api.themoviedb.org/3/search/movie?'
     
-    for i in range(1, 11):
+    for i in range(101, 102):
         print(i)
         MV_params = {
             'key': MV_API_KEY,
