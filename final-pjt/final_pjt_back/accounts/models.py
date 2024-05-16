@@ -35,7 +35,8 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         if nickname:
             user_field(user, "nickname", nickname)
         if profile_image:
-            user_field(user, "profile_image", profile_image)
+            user.profile_image.save(profile_image.name, profile_image, save=False)
+            # user_field(user, "profile_image", profile_image)
         if "password1" in data:
             user.set_password(data["password1"])
         else:

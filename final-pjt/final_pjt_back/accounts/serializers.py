@@ -27,7 +27,7 @@ class CustomRegisterSerializer(RegisterSerializer):
             'username': self.validated_data.get('username', ''),
             'password1': self.validated_data.get('password1', ''),
             'nickname': self.validated_data.get('nickname', ''),
-            'profile_image': self.validated_data.get('profile_image', ''),
+            'profile_image': self.validated_data.get('profile_image', None),
             'email': self.validated_data.get('email', '')
         }
         

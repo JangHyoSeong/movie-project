@@ -1,4 +1,5 @@
 from django.shortcuts import get_list_or_404, get_object_or_404
+from django.db.models import Q
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -21,6 +22,15 @@ def movies(request):
 @api_view(['GET'])
 def main_view(request):
     if request.method == 'GET':
-        serializer = ObjectCountSerializer()
+        data = {}
+        serializer = ObjectCountSerializer(data)
         print(serializer.data)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    
+@api_view(['GET'])
+def movie_sort_popularity(request):
+    movies = Movie.objects.filter(Q(show_status=0) | Q(show_status=2)).order_by('-popularity')
+    serializer = MovieListSummarySerializer(movies, many=True)
+    
+    return Response(serializer.data, status=status.HTTP_200_OK)

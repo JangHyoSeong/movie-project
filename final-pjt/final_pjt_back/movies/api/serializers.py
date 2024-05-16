@@ -33,3 +33,9 @@ class ObjectCountSerializer(serializers.Serializer):
     def get_actor_count(self, obj):
         return Actor.objects.count()
     
+
+class MovieListSummarySerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Movie
+        fields = ('title', 'poster', 'popularity', )
