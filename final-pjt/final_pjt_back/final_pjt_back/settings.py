@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # APP
     'accounts',
+    'movies',
     
     # DEF
     'rest_framework',
