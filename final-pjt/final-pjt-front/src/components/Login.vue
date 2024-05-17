@@ -9,9 +9,11 @@
 
       <div class="login-popup-content">
         <h3>로그인</h3>
-        <p><input type="text" class="input-txt" placeholder="이메일"></p>
-        <p><input type="text" class="input-txt" placeholder="비밀번호"></p>
-        <button class="login-btn">로그인</button>
+        <form @submit.prevent="login">
+          <p><input type="text" class="input-txt" placeholder="아이디" v-model.trim="username"></p>
+          <p><input type="text" class="input-txt" placeholder="비밀번호" v-model.trim="password"></p>
+          <input class="login-btn" type="submit" value="로그인">
+        </form>
         <div class="sign-login">
           <p>계정이 없으신가요?</p>
           <p style="color: #166AE8; text-decoration:underline;">회원가입</p>
@@ -24,7 +26,21 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
+import { useLoginStore } from '@/stores/login'
+
+const store = useLoginStore()
+
+const username = ref('')
+const password = ref('')
+
+const login = function () {
+  const payload = {
+    username: username.value,
+    password: password.value,
+  }
+  store.login(payload)
+}
 
 const isLogin = ref(null)
 
