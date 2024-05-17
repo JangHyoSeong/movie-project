@@ -7,12 +7,15 @@
         <h3>회원가입</h3>
       </div>
       <div class="input-txt-list">
-        <p><input type="text" class="input-txt" placeholder="이름"></p>
-        <p><input type="text" class="input-txt" placeholder="이메일"></p>
-        <p><input type="text" class="input-txt" placeholder="비밀번호"></p>
-        <p><input type="text" class="input-txt" placeholder="비밀번호 확인"></p>
+        <form @submit.prevent="signUpRequest">
+          <p><input type="text" class="input-txt" placeholder="이름" v-model="username"></p>
+          <p><input type="text" class="input-txt" placeholder="이메일" v-model="email"></p>
+          <p><input type="text" class="input-txt" placeholder="비밀번호" v-model="password1"></p>
+          <p><input type="text" class="input-txt" placeholder="비밀번호 확인" v-model="password2"></p>
+          <p><input type="text" class="input-txt" placeholder="닉네임" v-model="nickname"></p>
+          <button class="sign-btn">회원가입</button>
+        </form>
       </div>
-      <button class="sign-btn">회원가입</button>
       <div class="sign-txt">
         <p style="color: #166AE8;">이미 가입하셨나요? 로그인</p>
       </div>
@@ -22,7 +25,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
+import axios from 'axios'
+
+const username = ref(null)
+const email = ref(null)
+const password1 = ref(null)
+const password2 = ref(null)
+const nickname = ref(null)
 
 const isSign = ref(null)
 
@@ -32,6 +42,27 @@ const SignVue = function () {
 const SignVueOff = function () {
   isSign.value = ''
 }
+const signUpRequest = function () {
+  axios({
+    method: 'post',
+    url: 'http://127.0.0.1:8000/dj-rest-auth/registration/',
+    data: {
+      username: username.value,
+      email: email.value,
+      password1: password1.value,
+      password2: password2.value,
+      nickname: nickname.value
+    }
+  })
+    .then((res) => {
+      console.log('회원가입 성공');
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+}
+
+
 </script>
 
 <style scoped>

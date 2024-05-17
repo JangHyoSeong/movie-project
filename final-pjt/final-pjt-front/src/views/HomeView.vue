@@ -121,7 +121,6 @@ onMounted(() => {
 .movie_cnt, .movie_info {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
   color: white;
 }
 .scroll {
