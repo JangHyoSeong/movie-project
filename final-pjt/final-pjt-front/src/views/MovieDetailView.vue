@@ -15,7 +15,11 @@
         <p v-if="openingDate">개봉 일자 : {{ openingDate }}</p>
       </article>
       <div class="youtube-container">
-        <iframe width="560" height="315" :src="videoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe
+         width="560" height="315"
+         :src="videoUrl" 
+         frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
       </div>
     </div>
 
@@ -32,7 +36,6 @@ import { ref, onMounted } from 'vue'
 import { useRoute, useRouter, RouterView } from 'vue-router'
 import axios from 'axios'
 import MovieDetailNav from '@/components/MovieDetailNav.vue'
-import router from '@/router'
 
 // 변수
 const backgroundImageSrc = ref(null);
@@ -47,7 +50,7 @@ const movie = ref('')
 
 
 const route = useRoute();
-
+const videoUrl = ref(null)
 onMounted(() => {
   axios({
     method: 'get',
@@ -73,29 +76,25 @@ onMounted(() => {
       }
     })
     .catch(err => console.log(err))
-})
-
-// youtube 관련
-const videoUrl = ref(null)
-onMounted(() => {
-  const API_KEY = import.meta.env.VITE_YT_API_KEY
-
-  axios({
-    method: 'get',
-    url: `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}`,
-    params: {
-      part: 'snippet',
-      q: `${title.value} 트레일러`,
-      maxResults: 1,
-      type: 'video',
-    }
-  })
     .then((res) => {
-      console.log(res.data)
-      videoUrl.value = `https://www.youtube.com/embed/${res.data.items[0].id.videoId}`
-      console.log(videoUrl.value)
+      
+      const API_KEY = import.meta.env.VITE_YT_API_KEY
+
+      axios({
+        method: 'get',
+        url: `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}`,
+        params: {
+          part: 'snippet',
+          q: `${title.value} 트레일러`,
+          maxResults: 1,
+          type: 'video',
+        }
+      })
+        .then((res) => {
+          videoUrl.value = `https://www.youtube.com/embed/${res.data.items[0].id.videoId}?autoplay=1&mute=1`
+        })
+        .catch(err => console.log(err))
     })
-    .catch(err => console.log(err))
 })
 
 </script>
@@ -139,7 +138,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid white;
+  /* border: 2px solid white; */
   
 }
 .detail-container{
@@ -157,13 +156,11 @@ onMounted(() => {
   font-size: 40px;
 }
 .youtube-container{
-  width: 500px;
-  height: 500px;
-  border: 2px solid white;
+  /* border: 2px solid white; */
 }
 
 .view-container{
-  border: 2px solid white;
+  /* border: 2px solid white; */
   top: 10%;
   color: white;
   position: relative;
