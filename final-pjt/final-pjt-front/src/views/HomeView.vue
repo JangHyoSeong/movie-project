@@ -1,6 +1,6 @@
 <template>
   <img src="../../public/background_img.png" alt="background_img" class="background_img">
-  
+
   <div class="background">
     <div class="main_txt">
       <h5>어떤 영화를 찾으시나요?</h5>
@@ -28,8 +28,9 @@
       <h3 class="scroll">Scroll ▽</h3>
     </div>
 
-    <div class="new_movie">
-      <h1>[ 현재 개봉작 ]</h1>
+    <div class="under-background-movie">
+      <div class="new-movie">
+        <h1>[ 현재 개봉작 ]</h1>
         <div class="poster">
           <p class="post"></p>
           <p class="post"></p>
@@ -38,8 +39,8 @@
           <p class="post"></p>
           <p class="post"></p>
         </div>
-      <h1>[ 개봉 예정작 ]</h1>
-      <div class="poster">
+        <h1>[ 개봉 예정작 ]</h1>
+        <div class="poster">
           <p class="post"></p>
           <p class="post"></p>
           <p class="post"></p>
@@ -47,6 +48,16 @@
           <p class="post"></p>
           <p class="post"></p>
         </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="sns-logo">
+        <a href="https://blog.naver.com/ehdgus3726"><img src="../../public/blog.png" alt="blog"></a>
+        <a href="https://www.instagram.com/"><img src="../../public/instagram.png" alt="instagram"></a>
+        <a href="https://www.youtube.com/"><img src="../../public/youtube.png" alt="youtube"></a>
+      </div>
+      <div class="copy">Copyright ⓒ 2024. SSAFY All Right Reserved</div>
     </div>
   </div>
   <Login />
@@ -54,25 +65,27 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import Login from '@/components/Login.vue'
 import Signup from '@/components/Signup.vue'
 
 const router = useRouter()
 
+// 추천 받기 클릭 시 Choice로 이동
 const recommend = function () {
-  router.push({name: 'choice'})
-  console.log('fdsfds')
+  router.push({ name: 'choice' })
 }
 
+// 영화 정보 개수
 const movieCount = ref(0)
 const genreCount = ref(0)
 const producerCount = ref(0)
 const actorCount = ref(0)
 const countryCount = ref(0)
 
+// 영화 정보 개수 받아오기
 onMounted(() => {
   axios({
     method: 'get',
@@ -94,6 +107,7 @@ onMounted(() => {
 .background {
   height: 2000px;
 }
+
 .background_img {
   position: absolute;
   width: 100%;
@@ -116,49 +130,93 @@ onMounted(() => {
 /* 영화 정보 개수 */
 .movie_info_cnt {
   width: 100%;
-  height: 13.5%;
+  height: 10.5%;
 }
-.movie_cnt, .movie_info {
+
+.movie_cnt,
+.movie_info {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   color: white;
 }
-.scroll {
-  display: flex;
-  justify-content: center;
-  color: white;
-}
+
 
 /* 추천 받기 버튼 */
 .recommend-btn {
   position: absolute;
   top: 50%;
-  left: 46%;
+  left: 45.3%;
   color: white;
   font-size: 200%;
   border: 1px solid white;
   padding: 1%;
 }
+
 .recommend-btn:hover {
   background-color: #166AE8;
   border-style: none;
 }
 
-/* 상영 영화 목록 */
-.new_movie {
-  width: 100%;
-  height: 55%;
-  background-color: rgb(255, 132, 132);
-  text-align: center;
+.scroll {
+  display: flex;
+  justify-content: center;
+  color: white;
+  margin-top: 1.5%;
 }
+
+/* 상영 영화 목록 */
+.under-background-movie {
+  width: 100%;
+  height: 55.5%;
+  background-color: black;
+}
+
+.new-movie {
+  position: relative;
+  top: 25%;
+  text-align: center;
+  color: white;
+}
+
 .poster {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
+
 .post {
   width: 200px;
   height: 250px;
-  background-color: gray;
+  background-color: rgb(200, 200, 200);
+}
+
+/* footer */
+.footer {
+  display: flex;
+  width: 100%;
+  height: 3%;
+  background-color: black;
+}
+
+.sns-logo {
+  display: flex;
+  width: 15%;
+}
+
+.sns-logo a {
+  padding-left: 10%;
+}
+
+.sns-logo img {
+  height: 50%;
+}
+
+.copy {
+  position: absolute;
+  bottom: -124%;
+  left: 7%;
+  width: 85%;
+  text-align: center;
+  color: white;
 }
 </style>
