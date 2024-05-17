@@ -16,7 +16,7 @@ from ..models  import *
 def movies(request):
     if request.method == 'GET':
         movies = get_list_or_404(Movie)
-        serializer = MovieListSerializer(movies, many=True)
+        serializer = MovieListSerializer(movies, many=True)[:6]
         return Response(serializer.data, status=status.HTTP_200_OK)
     
 @api_view(['GET'])
