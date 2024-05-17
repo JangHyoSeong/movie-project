@@ -15,17 +15,23 @@
         <p v-if="openingDate">개봉 일자 : {{ openingDate }}</p>
       </article>
       <div class="youtube-container">
-        <div class="sample-box"></div>
+        <MovieDetailNav/>
       </div>
     </div>
+
+    <div class="view-container">
+
+    </div>
+
 
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import axios from 'axios';
+import { ref, onMounted } from 'vue'
+import { useRoute, useRouter, RouterView } from 'vue-router'
+import axios from 'axios'
+import MovieDetailNav from '@/components/MovieDetailNav.vue';
 
 // 변수
 const backgroundImageSrc = ref(null);
@@ -36,6 +42,7 @@ const country = ref('');
 const runningTime = ref('');
 const status = ref('')
 const openingDate = ref('')
+
 
 const route = useRoute();
 
@@ -106,7 +113,8 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* border: 2px solid white; */
+  border: 2px solid white;
+  
 }
 .detail-container{
   color: white;
@@ -122,9 +130,16 @@ onMounted(() => {
 .detail-container > h1{
   font-size: 40px;
 }
-.sample-box{
+.youtube-container{
   width: 500px;
   height: 500px;
   border: 2px solid white;
+}
+
+.view-container{
+  border: 2px solid white;
+  top: 10%;
+  color: white;
+  position: relative;
 }
 </style>
