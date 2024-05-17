@@ -28,7 +28,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #000000;
+  background-color: #111111;
 }
 
 .navbar-content {
@@ -46,4 +46,9 @@ body {
 .logo {
   width: 50px;
   height: 50px;
-}</style>
+}
+
+body {
+  background-color: black;
+}
+</style>

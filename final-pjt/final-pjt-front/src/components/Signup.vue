@@ -2,11 +2,12 @@
   <p @click="SignVue" class="sign">회원가입</p>
   <div class="sign-popup" :class="isSign">
     <div class="sign-popup-detail">
-      <div class="sign-popup-title">
+      <div class="logo-title">
+        <img src="../../public/Logo_img.png" alt="Logo" class="logo">
         <h1 style="color: #166AE8;">다각화</h1>
-        <h3>회원가입</h3>
       </div>
-      <div class="input-txt-list">
+      <div class="sign-popup-content">
+        <h3 style="text-align: center">회원가입</h3>
         <form @submit.prevent="signUpRequest">
           <p><input type="text" class="input-txt" placeholder="이름" v-model="username"></p>
           <p><input type="text" class="input-txt" placeholder="이메일" v-model="email"></p>
@@ -15,9 +16,10 @@
           <p><input type="text" class="input-txt" placeholder="닉네임" v-model="nickname"></p>
           <button class="sign-btn">회원가입</button>
         </form>
-      </div>
-      <div class="sign-txt">
-        <p style="color: #166AE8;">이미 가입하셨나요? 로그인</p>
+        <div class="sign-txt">
+          <p>이미 가입하셨나요?</p>
+          <p style="color: #166AE8; text-decoration:underline;">로그인</p>
+        </div>
       </div>
       <button class="popup-close-btn" @click="SignVueOff">x</button>
     </div>
@@ -61,8 +63,6 @@ const signUpRequest = function () {
       console.log(err);
     })
 }
-
-
 </script>
 
 <style scoped>
@@ -72,6 +72,7 @@ const signUpRequest = function () {
   right: 5%;
   color: white;
 }
+
 .sign-popup {
   position: absolute;
   left: 50%;
@@ -89,26 +90,39 @@ const signUpRequest = function () {
   margin-top: 10%;
 }
 
-.sign-popup-title, .sign-txt {
+.logo-title {
+  display: flex;
+  justify-content: center;
+  transform: translate(0%, -20%);
+}
+
+.logo {
+  width: 20%;
+  height: 20%;
+}
+
+.sign-txt {
+  display: flex;
+  justify-content: center;
+}
+
+.sign-popup-content {
+  transform: translate(0%, -10%);
   text-align: center;
 }
 
-.input-txt-list {
-  position: relative;
-  left: 21%;
+.sign-txt p {
+  margin: 4% 2% 0% 0%;
 }
 
 .input-txt {
-  padding: 3%;
+  padding: 2%;
   width: 50%;
 }
 
 .sign-btn {
-  position: relative;
-  left: 40%;
-  width: 20%;
   padding: 2%;
-  border-radius: 10%;
+  border-radius: 15%;
   border-style: none;
   background-color: #166AE8;
   color: white;

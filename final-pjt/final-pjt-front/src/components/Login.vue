@@ -2,19 +2,22 @@
   <p @click="LoginVue" class="login">로그인</p>
   <div class="login-popup" :class="isLogin">
     <div class="login-popup-detail">
-      <div class="login-popup-title">
+      <div class="logo-title">
+        <img src="../../public/Logo_img.png" alt="Logo" class="logo">
         <h1 style="color: #166AE8;">다각화</h1>
-        <h3>로그인</h3>
       </div>
-      <div class="input-txt-list">
+
+      <div class="login-popup-content">
+        <h3>로그인</h3>
         <p><input type="text" class="input-txt" placeholder="이메일"></p>
         <p><input type="text" class="input-txt" placeholder="비밀번호"></p>
         <button class="login-btn">로그인</button>
+        <div class="sign-login">
+          <p>계정이 없으신가요?</p>
+          <p style="color: #166AE8; text-decoration:underline;">회원가입</p>
+        </div>
       </div>
-      <div class="login-txt">
-        <p style="color: #166AE8;">비밀번호를 잊어버리셨나요?</p>
-        <p>계정이 없으신가요? 회원가입</p>
-      </div>
+
       <button class="popup-close-btn" @click="LoginVueOff">x</button>
     </div>
   </div>
@@ -40,6 +43,7 @@ const LoginVueOff = function () {
   right: 10%;
   color: white;
 }
+
 .login-popup {
   position: absolute;
   left: 50%;
@@ -57,15 +61,24 @@ const LoginVueOff = function () {
   margin-top: 15%;
 }
 
-.login-popup-title,
-.login-txt {
+.logo-title {
+  display: flex;
+  justify-content: center;
+  transform: translate(0%, 0%);
+}
+
+.logo {
+  width: 20%;
+  height: 20%;
+}
+
+.login-popup-content {
+  transform: translate(0%, 0%);
   text-align: center;
 }
 
-.input-txt-list {
-  margin-top: 10%;
-  position: relative;
-  left: 21%;
+.login-txt {
+  text-align: center;
 }
 
 .input-txt {
@@ -73,11 +86,17 @@ const LoginVueOff = function () {
   width: 50%;
 }
 
+.sign-login {
+  margin: 1%;
+  display: flex;
+  justify-content: center;
+}
+
+.sign-login p {
+  padding: 1%
+}
+
 .login-btn {
-  position: relative;
-  left: 15%;
-  width: 20%;
-  margin: 5%;
   padding: 2%;
   border-radius: 10%;
   border-style: none;
