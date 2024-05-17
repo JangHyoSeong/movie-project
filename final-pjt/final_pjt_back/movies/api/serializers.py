@@ -43,3 +43,29 @@ class MovieListSummarySerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = ('title', 'poster', 'popularity', )
+        
+        
+class MovieDetailSerializer(serializers.ModelSerializer):
+    
+    class MovieSnapshotSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Snapshot
+            fields = ('snapshot',)
+            
+    class MovieActorListSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Actor
+            fields = '__all__'
+            
+    class MovieProducerListSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Producer
+            fields = '__all__'
+            
+    actor = MovieActorListSerializer(many=True, read_only=True)
+    snapshots = MovieSnapshotSerializer(many=True, read_only=True)
+    producer = MovieProducerListSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Movie
+        fields = '__all__'

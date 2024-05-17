@@ -34,3 +34,10 @@ def movie_sort_popularity(request):
     serializer = MovieListSummarySerializer(movies, many=True)
     
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def movie_detail(request, movie_id):
+    movie = get_object_or_404(Movie, movie_id=movie_id)
+    serializer = MovieDetailSerializer(movie)
+    
+    return Response(serializer.data, status=status.HTTP_200_OK)
