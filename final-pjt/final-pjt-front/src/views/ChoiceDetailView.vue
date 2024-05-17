@@ -86,7 +86,7 @@ onMounted(() => {
 
 .go-to-select {
   position: relative;
-  left: 47.8%;
+  left: 47.5%;
   width: 5%;
   color: white;
   padding: 0.5% 0%;
