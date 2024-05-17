@@ -41,3 +41,21 @@ def movie_detail(request, movie_id):
     serializer = MovieDetailSerializer(movie)
     
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def choice(request):
+    movies = get_list_or_404(Movie)
+    genres = get_list_or_404(Genre)
+    countries = get_list_or_404(Country)
+    actors = get_list_or_404(Actor)
+    producers = get_list_or_404(Producer)
+    
+    data = {
+        'movies': movies,
+        'genres': genres,
+        'actors': actors,
+        'countries': countries,
+        'producers': producers,
+    }
+    serializer = ChoiceSerializer(data)
+    return Response(serializer.data, status=status.HTTP_200_OK)
