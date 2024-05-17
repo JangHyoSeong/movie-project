@@ -15,7 +15,7 @@
         <p v-if="openingDate">개봉 일자 : {{ openingDate }}</p>
       </article>
       <div class="youtube-container">
-        
+        <iframe width="560" height="315" :src="videoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
 
@@ -73,7 +73,31 @@ onMounted(() => {
       }
     })
     .catch(err => console.log(err))
-});
+})
+
+// youtube 관련
+const videoUrl = ref(null)
+onMounted(() => {
+  const API_KEY = import.meta.env.VITE_YT_API_KEY
+
+  axios({
+    method: 'get',
+    url: `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}`,
+    params: {
+      part: 'snippet',
+      q: `${title.value} 트레일러`,
+      maxResults: 1,
+      type: 'video',
+    }
+  })
+    .then((res) => {
+      console.log(res.data)
+      videoUrl.value = `https://www.youtube.com/embed/${res.data.items[0].id.videoId}`
+      console.log(videoUrl.value)
+    })
+    .catch(err => console.log(err))
+})
+
 </script>
 
 <style scoped>
