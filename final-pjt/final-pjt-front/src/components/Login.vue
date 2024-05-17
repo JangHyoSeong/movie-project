@@ -1,5 +1,5 @@
 <template>
-  <p @click="LoginVue" class="login">로그인</p>
+  <p @click="LoginVueOn" class="login">로그인</p>
   <div class="login-popup" :class="isLogin">
     <div class="login-popup-detail">
       <div class="logo-title">
@@ -28,7 +28,7 @@ import { ref } from 'vue';
 
 const isLogin = ref(null)
 
-const LoginVue = function () {
+const LoginVueOn = function () {
   isLogin.value = 'display-show'
 }
 const LoginVueOff = function () {
@@ -51,10 +51,10 @@ const LoginVueOff = function () {
   transform: translate(-50%, -50%);
   width: 400px;
   height: 500px;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 3%;
   display: none;
+  border-radius: 3%;
+  border: 1px solid black;
+  background-color: white;
 }
 
 .login-popup-detail {
@@ -73,8 +73,8 @@ const LoginVueOff = function () {
 }
 
 .login-popup-content {
-  transform: translate(0%, 0%);
   text-align: center;
+  transform: translate(0%, 0%);
 }
 
 .login-txt {
@@ -82,8 +82,8 @@ const LoginVueOff = function () {
 }
 
 .input-txt {
-  padding: 3%;
   width: 50%;
+  padding: 3%;
 }
 
 .sign-login {
@@ -98,16 +98,16 @@ const LoginVueOff = function () {
 
 .login-btn {
   padding: 2%;
-  border-radius: 10%;
-  border-style: none;
-  background-color: #166AE8;
   color: white;
+  border-style: none;
+  border-radius: 10%;
+  background-color: #166AE8;
 }
 
 .popup-close-btn {
-  position: absolute;
-  left: 92%;
   top: 2%;
+  left: 92%;
+  position: absolute;
 }
 
 .display-show {

@@ -1,25 +1,22 @@
 <template>
-  <header class="navbar">
+  <div class="navbar">
     <div class="navbar-background"></div>
     <nav class="navbar-content">
+      <!-- 사이트 로고 이미지 -->
       <img src="../public/Logo_img.png" alt="Logo" class="logo">
       <RouterLink :to="{ name: 'home' }" class="nav">다각화</RouterLink>
     </nav>
-  </header>
+  </div>
 
   <RouterView />
 </template>
 
 <style>
-body {
-  margin: 0;
-}
-
 /* 네비게이션 바 */
 .navbar {
-  position: relative;
   width: 100%;
   height: 50px;
+  position: relative;
 }
 
 .navbar-background {
@@ -32,15 +29,15 @@ body {
 }
 
 .navbar-content {
-  position: relative;
-  display: flex;
-  align-items: center;
   height: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
 }
 
 .nav {
-  text-decoration: none;
   color: white;
+  text-decoration: none;
 }
 
 .logo {
@@ -49,6 +46,7 @@ body {
 }
 
 body {
+  margin: 0%;
   background-color: black;
 }
 </style>

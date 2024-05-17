@@ -1,11 +1,11 @@
 <template>
   <img src="../../public/background_img.png" alt="background_img" class="background_img">
 
-  <div class="background">
+  <div class="on-background">
     <div class="main_txt">
       <h5>어떤 영화를 찾으시나요?</h5>
       <h1>당신을 위한 영화 추천 사이트</h1>
-      <h5>당신의 선택을 통하여 다양한 각도에서 영화를 추천해드립니다</h5>
+      <h5>당신의 선택을 통하여 다양한 시각에서 영화를 추천해드립니다</h5>
     </div>
 
     <p class="recommend-btn" @click="recommend">추천 받기</p>
@@ -29,26 +29,22 @@
     </div>
 
     <div class="under-background-movie">
-      <div class="new-movie">
+      <div class="new-entire-movie">
         <h1>[ 현재 개봉작 ]</h1>
-        <div class="poster">
-          <p class="post"></p>
-          <p class="post"></p>
-          <p class="post"></p>
-          <p class="post"></p>
-          <p class="post"></p>
-          <p class="post"></p>
+        <div class="new-movie">
+          <div @click="newMovieDetail(movie)" v-for="movie in moviesList">
+            <img :src="movie.poster" class="post" alt="#">
+          </div>
         </div>
+
         <h1>[ 개봉 예정작 ]</h1>
-        <div class="poster">
-          <p class="post"></p>
-          <p class="post"></p>
-          <p class="post"></p>
-          <p class="post"></p>
-          <p class="post"></p>
-          <p class="post"></p>
+        <div class="new-movie">
+          <div @click="newMovieDetail(movie)" v-for="movie in moviesList">
+            <img :src="movie.poster" class="post" alt="#">
+          </div>
         </div>
       </div>
+
     </div>
 
     <div class="footer">
@@ -73,9 +69,14 @@ import Signup from '@/components/Signup.vue'
 
 const router = useRouter()
 
-// 추천 받기 클릭 시 Choice로 이동
+// 추천 받기 클릭 시, Choice 페이지로 이동
 const recommend = function () {
   router.push({ name: 'choice' })
+}
+
+// 포스터 클리 시, 영화 Detail 페이지로 이동하기
+const newMovieDetail = function (movie) {
+  router.push({ name: 'movieDetail', params: { movie_id: movie.movie_id } })
 }
 
 // 영화 정보 개수
@@ -84,6 +85,7 @@ const genreCount = ref(0)
 const producerCount = ref(0)
 const actorCount = ref(0)
 const countryCount = ref(0)
+const moviesList = ref([])
 
 // 영화 정보 개수 받아오기
 onMounted(() => {
@@ -100,14 +102,27 @@ onMounted(() => {
     })
     .catch(err => console.log(err))
 })
+
+//  영화 리스트 받아오기
+onMounted(() => {
+  axios({
+    method: 'get',
+    url: 'http://127.0.0.1:8000/api/v1/movies/'
+  })
+    .then((res) => {
+      moviesList.value = res.data
+    })
+    .catch(err => console.log(err))
+})
 </script>
 
 <style scoped>
-/* 배경 사이즈 */
-.background {
+/* 사이트 크기 */
+.on-background {
   height: 2000px;
 }
 
+/* 배경 이미지 */
 .background_img {
   position: absolute;
   width: 100%;
@@ -168,25 +183,32 @@ onMounted(() => {
 .under-background-movie {
   width: 100%;
   height: 55.5%;
-  background-color: black;
 }
 
-.new-movie {
+.under-background-movie h1 {
   position: relative;
-  top: 25%;
+  top: 26%;
   text-align: center;
   color: white;
 }
 
-.poster {
+.new-entire-movie {
+  position: relative;
+  top: 27%;
+  left: 8%;
+  width: 85%;
+}
+
+.new-movie {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  color: white;
 }
 
 .post {
-  width: 200px;
-  height: 250px;
+  width: 240px;
+  height: 300px;
   background-color: rgb(200, 200, 200);
 }
 
@@ -214,7 +236,7 @@ onMounted(() => {
 .copy {
   position: absolute;
   bottom: -124%;
-  left: 7%;
+  left: 8%;
   width: 85%;
   text-align: center;
   color: white;

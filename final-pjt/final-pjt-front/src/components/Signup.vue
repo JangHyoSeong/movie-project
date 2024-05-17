@@ -1,5 +1,5 @@
 <template>
-  <p @click="SignVue" class="sign">회원가입</p>
+  <p @click="SignVueOn" class="sign">회원가입</p>
   <div class="sign-popup" :class="isSign">
     <div class="sign-popup-detail">
       <div class="logo-title">
@@ -35,10 +35,9 @@ const email = ref(null)
 const password1 = ref(null)
 const password2 = ref(null)
 const nickname = ref(null)
-
 const isSign = ref(null)
 
-const SignVue = function () {
+const SignVueOn = function () {
   isSign.value = 'display-show'
 }
 const SignVueOff = function () {
@@ -107,8 +106,8 @@ const signUpRequest = function () {
 }
 
 .sign-popup-content {
-  transform: translate(0%, -10%);
   text-align: center;
+  transform: translate(0%, -10%);
 }
 
 .sign-txt p {
@@ -122,10 +121,10 @@ const signUpRequest = function () {
 
 .sign-btn {
   padding: 2%;
-  border-radius: 15%;
-  border-style: none;
-  background-color: #166AE8;
   color: white;
+  border-style: none;
+  border-radius: 10%;
+  background-color: #166AE8;
 }
 
 .popup-close-btn {

@@ -75,13 +75,13 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.background {
+/* .background {
   width: 100%;
   height: 180vh;
   background-color: #000;
   position: absolute;
   overflow: hidden;
-}
+} */
 
 .background-filter {
   position: absolute;

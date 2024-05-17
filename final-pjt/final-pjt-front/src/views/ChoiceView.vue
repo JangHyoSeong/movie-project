@@ -3,53 +3,17 @@
     <h1>[ 장르 선택 ]</h1>
     <div class="poster">
       <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
     </div>
     <h1>[ 국가 선택 ]</h1>
     <div class="poster">
-      <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
-      <p class="post"></p>
       <p class="post"></p>
     </div>
     <h1>[ 배우 선택 ]</h1>
     <div class="poster">
       <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
     </div>
     <h1>[ 감독 선택 ]</h1>
     <div class="poster">
-      <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
-      <p class="post2"></p>
       <p class="post2"></p>
     </div>
 
@@ -58,13 +22,26 @@
 </template>
 
 <script setup>
+import axios from 'axios'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
+// 최종 선택 클릭 시, 선택 결과 페이지로 이동하기
 const goToDetail = function () {
   router.push({ name: 'choice_detail' })
 }
+
+// 영화 상세 정보 받아오기
+onMounted(() => {
+  axios({
+    method: 'get',
+    url: ''
+  })
+    .then((res) => { })
+    .catch((err) => console.log(err))
+})
 </script>
 
 <style scoped>
@@ -88,6 +65,12 @@ const goToDetail = function () {
   background-color: rgb(200, 200, 200);
 }
 
+.post:hover,
+.post2:hover {
+  color: white;
+  opacity: 0.75;
+}
+
 .post2 {
   width: 150px;
   height: 180px;
@@ -108,8 +91,8 @@ const goToDetail = function () {
 }
 
 .select-end-btn:hover {
-  background-color: #166AE8;
   color: white;
   border-style: none;
+  background-color: #166AE8;
 }
 </style>
