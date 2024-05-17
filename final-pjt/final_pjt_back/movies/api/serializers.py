@@ -20,6 +20,7 @@ class ObjectCountSerializer(serializers.Serializer):
     genre_count = serializers.SerializerMethodField()
     producer_count = serializers.SerializerMethodField()
     actor_count = serializers.SerializerMethodField()
+    country_count = serializers.SerializerMethodField()
 
     def get_movie_count(self, obj):
         return Movie.objects.count()
@@ -32,6 +33,9 @@ class ObjectCountSerializer(serializers.Serializer):
     
     def get_actor_count(self, obj):
         return Actor.objects.count()
+    
+    def get_country_count(self, obj):
+        return Country.objects.count()
     
 
 class MovieListSummarySerializer(serializers.ModelSerializer):
