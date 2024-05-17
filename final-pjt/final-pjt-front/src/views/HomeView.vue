@@ -10,11 +10,11 @@
 
     <div class="movie_info_cnt">
       <div class="movie_cnt">
-        <h2>999</h2>
-        <h2>100</h2>
-        <h2>100</h2>
-        <h2>100</h2>
-        <h2>100</h2>
+        <h2>{{ movieCount }}</h2>
+        <h2>{{ genreCount }}</h2>
+        <h2>{{ producerCount }}</h2>
+        <h2>{{ actorCount }}</h2>
+        <h2>{{ countryCount }}</h2>
       </div>
       <div class="movie_info">
         <h2>영화 수</h2>
@@ -52,8 +52,31 @@
 </template>
 
 <script setup>
+import axios from 'axios'
+import { ref, onMounted } from 'vue'
 import Login from '@/components/Login.vue'
 import Signup from '@/components/Signup.vue'
+
+const movieCount = ref(0)
+const genreCount = ref(0)
+const producerCount = ref(0)
+const actorCount = ref(0)
+const countryCount = ref(0)
+
+onMounted(() => {
+  axios({
+    method: 'get',
+    url: 'http://127.0.0.1:8000/api/v1/main/'
+  })
+    .then((res) => {
+      movieCount.value = res.data.movie_count
+      genreCount.value = res.data.genre_count
+      producerCount.value = res.data.producer_count
+      actorCount.value = res.data.actor_count
+      countryCount.value = res.data.country_count
+    })
+    .catch(err => console.log(err))
+})
 </script>
 
 <style scoped>
