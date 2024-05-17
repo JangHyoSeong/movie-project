@@ -8,6 +8,8 @@
       <h5>당신의 선택을 통하여 다양한 각도에서 영화를 추천해드립니다</h5>
     </div>
 
+    <p class="recommend-btn" @click="recommend">추천 받기</p>
+
     <div class="movie_info_cnt">
       <div class="movie_cnt">
         <h2>{{ movieCount }}</h2>
@@ -52,10 +54,18 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
 import Login from '@/components/Login.vue'
 import Signup from '@/components/Signup.vue'
+
+const router = useRouter()
+
+const recommend = function () {
+  router.push({name: 'choice'})
+  console.log('fdsfds')
+}
 
 const movieCount = ref(0)
 const genreCount = ref(0)
@@ -84,7 +94,6 @@ onMounted(() => {
 .background {
   height: 2000px;
 }
-
 .background_img {
   position: absolute;
   width: 100%;
@@ -94,17 +103,14 @@ onMounted(() => {
 
 /* 메인화면 텍스트 */
 .main_txt {
+  position: relative;
+  top: 5%;
+  text-align: center;
   width: 100%;
   height: 30%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   font-size: 200%;
   color: white;
-}
-.recommend:hover {
-  background-color: #166AE8;
-  border-style: none;
+  z-index: -1;
 }
 
 /* 영화 정보 개수 */
@@ -122,6 +128,21 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   color: white;
+}
+
+/* 추천 받기 버튼 */
+.recommend-btn {
+  position: absolute;
+  top: 50%;
+  left: 46%;
+  color: white;
+  font-size: 200%;
+  border: 1px solid white;
+  padding: 1%;
+}
+.recommend-btn:hover {
+  background-color: #166AE8;
+  border-style: none;
 }
 
 /* 상영 영화 목록 */
