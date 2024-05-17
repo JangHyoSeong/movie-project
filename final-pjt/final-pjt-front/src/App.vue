@@ -2,9 +2,8 @@
   <header class="navbar">
     <div class="navbar-background"></div>
     <nav class="navbar-content">
-        <img src="../public/Logo_img.png" alt="Logo" class="logo">
-        <RouterLink :to="{ name: 'home' }" class="nav">다각화</RouterLink>
-        <RouterLink :to="{ name: 'choice' }">추천받기</RouterLink>
+      <img src="../public/Logo_img.png" alt="Logo" class="logo">
+      <RouterLink :to="{ name: 'home' }" class="nav">다각화</RouterLink>
     </nav>
   </header>
 
@@ -22,6 +21,7 @@ body {
   width: 100%;
   height: 50px;
 }
+
 .navbar-background {
   position: absolute;
   top: 0;
@@ -30,18 +30,20 @@ body {
   height: 100%;
   background-color: #000000;
 }
+
 .navbar-content {
   position: relative;
   display: flex;
   align-items: center;
   height: 100%;
 }
+
 .nav {
   text-decoration: none;
   color: white;
 }
+
 .logo {
   width: 50px;
   height: 50px;
-}
-</style>
+}</style>
