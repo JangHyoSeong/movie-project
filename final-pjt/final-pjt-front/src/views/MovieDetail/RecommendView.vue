@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>{{ movie.overview }}</p>
+    <p>추천 영화가 들어갈 위치</p>
   </div>
 </template>
 
