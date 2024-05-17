@@ -15,12 +15,12 @@
         <p v-if="openingDate">개봉 일자 : {{ openingDate }}</p>
       </article>
       <div class="youtube-container">
-        <MovieDetailNav/>
+        <iframe width="560" height="315" :src="videoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
 
     <div class="view-container">
-
+      <MovieDetailNav :movie="movie"/>
     </div>
 
 
@@ -31,17 +31,19 @@
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter, RouterView } from 'vue-router'
 import axios from 'axios'
-import MovieDetailNav from '@/components/MovieDetailNav.vue';
+import MovieDetailNav from '@/components/MovieDetailNav.vue'
+import router from '@/router'
 
 // 변수
 const backgroundImageSrc = ref(null);
-const title = ref('');
+const title = ref('')
 const overView = ref('');
 const genre = ref([]);
 const country = ref('');
 const runningTime = ref('');
 const status = ref('')
 const openingDate = ref('')
+const movie = ref('')
 
 
 const route = useRoute();
@@ -52,6 +54,7 @@ onMounted(() => {
     url: `http://127.0.0.1:8000/api/v1/movie/${route.params.movie_id}/`,
   })
     .then((res) => {
+      movie.value = res.data
       backgroundImageSrc.value = res.data.snapshots[0].snapshot
       title.value = res.data.title
       overView.value = res.data.overview
@@ -68,10 +71,33 @@ onMounted(() => {
       if (res.data.opening_date) {
         openingDate.value = res.data.opening_date
       }
-      console.log(res.data)
     })
     .catch(err => console.log(err))
-});
+})
+
+// youtube 관련
+const videoUrl = ref(null)
+onMounted(() => {
+  const API_KEY = import.meta.env.VITE_YT_API_KEY
+
+  axios({
+    method: 'get',
+    url: `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}`,
+    params: {
+      part: 'snippet',
+      q: `${title.value} 트레일러`,
+      maxResults: 1,
+      type: 'video',
+    }
+  })
+    .then((res) => {
+      console.log(res.data)
+      videoUrl.value = `https://www.youtube.com/embed/${res.data.items[0].id.videoId}`
+      console.log(videoUrl.value)
+    })
+    .catch(err => console.log(err))
+})
+
 </script>
 
 <style scoped>
