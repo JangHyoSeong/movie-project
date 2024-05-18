@@ -10,7 +10,7 @@ class Movie(models.Model):
     poster = models.TextField(null=True)
     opening_date = models.DateField(null=True)
     running_time = models.IntegerField(null=True)
-    popularity = models.FloatField()
+    review_score = models.FloatField()
     
     # 영화 개봉 상태
     STATUS_CHOICES = [
