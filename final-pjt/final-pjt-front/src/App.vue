@@ -5,6 +5,7 @@
       <!-- 사이트 로고 이미지 -->
       <img src="../public/Logo_img.png" alt="Logo" class="logo">
       <RouterLink :to="{ name: 'home' }" class="nav">다각화</RouterLink>
+      <RouterLink :to="{ name: 'profile' }">프로필</RouterLink>
     </nav>
   </div>
 
@@ -26,6 +27,7 @@
   width: 100%;
   height: 100%;
   background-color: #111111;
+  opacity: 0.75;
 }
 
 .navbar-content {

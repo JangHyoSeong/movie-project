@@ -78,6 +78,11 @@ onMounted(() => {
   background-color: rgb(200, 200, 200);
 }
 
+.post:hover {
+  opacity: 0.75;
+  transform: scale(1.05); /* 크기 커지는 애니메이션 */
+}
+
 .movie-content {
   width: 300px;
   text-align: center;

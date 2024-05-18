@@ -44,11 +44,11 @@ def movie_detail(request, movie_id):
 
 @api_view(['GET'])
 def choice(request):
-    movies = get_list_or_404(Movie)[:8]
-    genres = get_list_or_404(Genre)[:8]
-    countries = get_list_or_404(Country)[:8]
-    actors = get_list_or_404(Actor)[:8]
-    producers = get_list_or_404(Producer)[:8]
+    movies = get_list_or_404(Movie)[:6]
+    genres = get_list_or_404(Genre)[:6]
+    countries = get_list_or_404(Country)[:6]
+    actors = get_list_or_404(Actor)[:6]
+    producers = get_list_or_404(Producer)[:6]
     
     data = {
         'movies': movies,

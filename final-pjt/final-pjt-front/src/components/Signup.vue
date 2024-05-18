@@ -9,11 +9,11 @@
       <div class="sign-popup-content">
         <h3 style="text-align: center">회원가입</h3>
         <form @submit.prevent="signUpRequest">
+          <p><input type="text" class="input-txt" placeholder="닉네임" v-model="nickname"></p>
           <p><input type="text" class="input-txt" placeholder="이름" v-model="username"></p>
           <p><input type="text" class="input-txt" placeholder="이메일" v-model="email"></p>
           <p><input type="text" class="input-txt" placeholder="비밀번호" v-model="password1"></p>
           <p><input type="text" class="input-txt" placeholder="비밀번호 확인" v-model="password2"></p>
-          <p><input type="text" class="input-txt" placeholder="닉네임" v-model="nickname"></p>
           <button class="sign-btn">회원가입</button>
         </form>
         <div class="sign-txt">
@@ -43,6 +43,14 @@ const SignVueOn = function () {
 const SignVueOff = function () {
   isSign.value = ''
 }
+const clearForm = function () {
+  username.value = null
+  email.value = null
+  password1.value = null
+  password2.value = null
+  nickname.value = null
+}
+
 const signUpRequest = function () {
   axios({
     method: 'post',
@@ -56,9 +64,12 @@ const signUpRequest = function () {
     }
   })
     .then((res) => {
-      console.log('회원가입 성공');
+      alert('회원가입에 성공하였습니다')
+      SignVueOff()
+      clearForm()
     })
     .catch((err) => {
+      alert("회원가입에 실패하였습니다")
       console.log(err);
     })
 }
@@ -68,7 +79,7 @@ const signUpRequest = function () {
 .sign {
   position: absolute;
   top: 0%;
-  right: 5%;
+  right: 4%;
   color: white;
 }
 

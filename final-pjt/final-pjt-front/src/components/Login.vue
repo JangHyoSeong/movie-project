@@ -113,6 +113,7 @@ const LoginVueOff = function () {
 }
 
 .login-btn {
+  margin-top: 1%;
   padding: 2%;
   color: white;
   border-style: none;

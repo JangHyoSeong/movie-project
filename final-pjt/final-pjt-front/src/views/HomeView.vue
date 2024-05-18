@@ -1,66 +1,69 @@
 <template>
-  <img src="../../public/background_img.png" alt="background_img" class="background_img">
 
-  <div class="on-background">
-    <div class="main_txt">
-      <h5>어떤 영화를 찾으시나요?</h5>
-      <h1>당신을 위한 영화 추천 사이트</h1>
-      <h5>당신의 선택을 통하여 다양한 시각에서 영화를 추천해드립니다</h5>
-    </div>
+  <main>
+    <img src="../../public/background_img.png" class="background-img" alt="background_img">
 
-    <p class="recommend-btn" @click="recommend">추천 받기</p>
-
-    <div class="movie_info_cnt">
-      <div class="movie_cnt">
-        <h2>{{ movieCount }}</h2>
-        <h2>{{ genreCount }}</h2>
-        <h2>{{ producerCount }}</h2>
-        <h2>{{ actorCount }}</h2>
-        <h2>{{ countryCount }}</h2>
+    <div class="main-txt">
+      <div class="main-explan-txt">
+        <h5>어떤 영화를 찾으시나요?</h5>
+        <h1>당신을 위한 영화 추천 사이트</h1>
+        <h5>당신의 선택을 통하여 다양한 시각에서 영화를 추천해드립니다</h5>
       </div>
-      <div class="movie_info">
-        <h2>영화 수</h2>
-        <h2>장르 수</h2>
-        <h2>감독 수</h2>
-        <h2>배우 수</h2>
-        <h2>국가 수</h2>
-      </div>
-      <h3 class="scroll">Scroll ▽</h3>
-    </div>
 
-    <div class="under-background-movie">
-      <div class="new-entire-movie">
-        <h1>[ 현재 개봉작 ]</h1>
-        <div class="new-movie">
-          <div @click="newMovieDetail(movie)" v-for="movie in moviesList">
-            <img :src="movie.poster" class="post" alt="#">
-          </div>
+      <h1 class="recommend-btn" @click="recommend">추천 받기</h1>
+
+      <div class="movie-info-cnt">
+        <div class="movie-cnt">
+          <h2>{{ movieCount }}</h2>
+          <h2>{{ genreCount }}</h2>
+          <h2>{{ producerCount }}</h2>
+          <h2>{{ actorCount }}</h2>
+          <h2>{{ countryCount }}</h2>
         </div>
+        <div class="movie-cnt">
+          <h2>영화 수</h2>
+          <h2>장르 수</h2>
+          <h2>감독 수</h2>
+          <h2>배우 수</h2>
+          <h2>국가 수</h2>
+        </div>
+        <h3 class="scroll">Scroll ▽</h3>
+      </div>
+    </div>
+  </main>
 
-        <h1>[ 개봉 예정작 ]</h1>
-        <div class="new-movie">
-          <div @click="newMovieDetail(movie)" v-for="movie in moviesList">
-            <img :src="movie.poster" class="post" alt="#">
-          </div>
+  <section>
+    <div class="section-movie">
+      <h1>[ 현재 개봉작 ]</h1>
+      <div class="movies-poster">
+        <div @click="newMovieDetail(movie)" v-for="movie in moviesList">
+          <img :src="movie.poster" class="poster" alt="#">
         </div>
       </div>
 
+      <h1>[ 개봉 예정작 ]</h1>
+      <div class="movies-poster">
+        <div @click="newMovieDetail(movie)" v-for="movie in moviesList">
+          <img :src="movie.poster" class="poster" alt="#">
+        </div>
+      </div>
     </div>
 
-    <div class="footer">
-      <div class="sns-logo">
-        <a href="https://blog.naver.com/ehdgus3726"><img src="../../public/blog.png" alt="blog"></a>
-        <a href="https://www.instagram.com/"><img src="../../public/instagram.png" alt="instagram"></a>
-        <a href="https://www.youtube.com/"><img src="../../public/youtube.png" alt="youtube"></a>
-      </div>
-      <div class="copy">Copyright ⓒ 2024. SSAFY All Right Reserved</div>
+    <div class="sns-logo">
+      <a href="https://blog.naver.com/ehdgus3726"><img src="../../public/blog.png" alt="blog"></a>
+      <a href="https://www.instagram.com/"><img src="../../public/instagram.png" alt="instagram"></a>
+      <a href="https://www.youtube.com/"><img src="../../public/youtube.png" alt="youtube"></a>
     </div>
-  </div>
+
+    <p class="copyright">Copyright ⓒ 2024. SSAFY All Right Reserved</p>
+  </section>
+
   <Login />
   <Signup />
 </template>
 
 <script setup>
+import 'animate.css'
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -117,127 +120,132 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* 사이트 크기 */
-.on-background {
-  height: 2000px;
+/* 상단 화면 비율 */
+main {
+  width: 100%;
+  height: 88vh;
 }
 
 /* 배경 이미지 */
-.background_img {
+.background-img {
   position: absolute;
+  top: 0%;
   width: 100%;
   height: 100%;
   z-index: -1;
 }
 
-/* 메인화면 텍스트 */
-.main_txt {
+/* 메인화면 전체 텍스트 */
+.main-txt {
   position: relative;
-  top: 5%;
+  top: 7vh;
+}
+
+/* 메인화면 텍스트 */
+.main-explan-txt {
   text-align: center;
-  width: 100%;
-  height: 30%;
   font-size: 200%;
   color: white;
   z-index: -1;
 }
 
-/* 영화 정보 개수 */
-.movie_info_cnt {
-  width: 100%;
-  height: 10.5%;
+/* 추천 받기 버튼 */
+.recommend-btn {
+  position: relative;
+  left: 44%;
+  width: 9.2%;
+  padding: 1%;
+  color: white;
+  text-align: center;
+  border: 1px solid white;
 }
 
-.movie_cnt,
-.movie_info {
+.recommend-btn:hover {
+  border-style: none;
+  background-color: #166AE8;
+}
+
+/* 영화 정보 영역 */
+.movie-info-cnt {
+  position: relative;
+  top: 5vh;
+}
+
+/* 영화 정보 갯수 */
+.movie-cnt {
   display: flex;
   justify-content: space-around;
   color: white;
 }
 
-
-/* 추천 받기 버튼 */
-.recommend-btn {
-  position: absolute;
-  top: 50%;
-  left: 45.3%;
-  color: white;
-  font-size: 200%;
-  border: 1px solid white;
-  padding: 1%;
-}
-
-.recommend-btn:hover {
-  background-color: #166AE8;
-  border-style: none;
-}
-
+/* 스크롤 글자 */
 .scroll {
-  display: flex;
-  justify-content: center;
+  position: relative;
+  text-align: center;
   color: white;
-  margin-top: 1.5%;
+  margin-top: 7vh;
+  animation: moveUpDown 2s infinite; /* 움직이는 애니메이션 */
+}
+
+/* 애니메이션 위치 영역 */
+@keyframes moveUpDown {
+    0% { top: 0; }
+    50% { top: 10px; }
+    100% { top: 0; }
+}
+
+/* 하단 화면 비율 */
+section {
+  width: 100%;
+  height: 90vh;
 }
 
 /* 상영 영화 목록 */
-.under-background-movie {
-  width: 100%;
-  height: 55.5%;
-}
-
-.under-background-movie h1 {
+.section-movie {
+  height: 90vh;
   position: relative;
-  top: 26%;
+  top: 5vh;
   text-align: center;
   color: white;
 }
 
-.new-entire-movie {
-  position: relative;
-  top: 27%;
-  left: 8%;
-  width: 85%;
-}
-
-.new-movie {
+/* 영화 포스터 위치 */
+.movies-poster {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
-  color: white;
 }
 
-.post {
-  width: 240px;
-  height: 300px;
-  background-color: rgb(200, 200, 200);
+/* 영화 포스터 크기 */
+.poster {
+  width: 24vh;
+  height: 32vh;
 }
 
-/* footer */
-.footer {
-  display: flex;
-  width: 100%;
-  height: 3%;
-  background-color: black;
+.poster:hover {
+  opacity: 0.75;
+  transform: scale(1.1); /* 크기 커지는 애니메이션 */
 }
 
+/* SNS 로고 영역 */
 .sns-logo {
-  display: flex;
-  width: 15%;
-}
-
-.sns-logo a {
-  padding-left: 10%;
-}
-
-.sns-logo img {
-  height: 50%;
-}
-
-.copy {
   position: absolute;
-  bottom: -124%;
-  left: 8%;
-  width: 85%;
+  display: flex;
+  height: 8vh;
+}
+
+
+/* SNS 로고 이미지 */
+.sns-logo img {
+  padding: 1vh 0vh 0vh 3vh;
+  height: 4vh;
+}
+
+.sns-logo img:hover {
+  transform: scale(1.2); /* 크기 커지는 애니메이션 */
+}
+
+/* 저작권 글자 */
+.copyright {
   text-align: center;
   color: white;
 }

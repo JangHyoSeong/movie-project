@@ -7,6 +7,7 @@ import OverviewView from '@/views/MovieDetail/OverviewView.vue'
 import ReviewView from '@/views/MovieDetail/ReviewView.vue'
 import RecommendView from '@/views/MovieDetail/RecommendView.vue'
 import ChatView from '@/views/MovieDetail/ChatView.vue'
+import ProfileView from '@/views/ProfileView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,6 +38,11 @@ const router = createRouter({
         {path: 'chat', name: 'movie-chat', component: ChatView, props: true},
       ]
     },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: ProfileView
+    }
   ]
 })
 
