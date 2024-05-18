@@ -30,10 +30,10 @@ def actor(request):
 
 def download_movie(request):
     
-    MV_URL = f'	http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?'
+    MV_URL = f'http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?'
     TMDB_URL = f'https://api.themoviedb.org/3/search/movie?'
     
-    for i in range(1, 3):
+    for i in range(1, 1000):
         print(i)
         MV_params = {
             'key': MV_API_KEY,
@@ -70,14 +70,14 @@ def download_movie(request):
             if countries != []:
                 country = countries[0]
             else:
-                country = None
+                country = '기타'
 
             genres = download_genres(movie_data.get('genres'))
             actors = download_actor(movie_data.get('actors'), title)
             directors = download_producers(movie_data.get('directors'), title)
             
             overview = TMDB.get('overview')
-            popularity = TMDB.get('popularity')
+            review_score = TMDB.get('vote_average')
             poster = TMDB.get('poster_path')
             show_status_raw = movie.get('prdtStatNm')
             
@@ -111,7 +111,7 @@ def download_movie(request):
                 poster=poster,
                 opening_date=opening_date,
                 running_time=running_time,
-                popularity=popularity,
+                review_score=review_score,
                 show_status=show_status,
                 country=country
             )
