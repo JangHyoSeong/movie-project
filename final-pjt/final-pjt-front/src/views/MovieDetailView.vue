@@ -15,19 +15,15 @@
         <p v-if="openingDate">개봉 일자 : {{ openingDate }}</p>
       </article>
       <div class="youtube-container">
-        <iframe
-         width="560" height="315"
-         :src="videoUrl" 
-         frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        <iframe width="560" height="315" :src="videoUrl" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
         </iframe>
       </div>
     </div>
 
     <div class="view-container">
-      <MovieDetailNav :movie="movie"/>
+      <MovieDetailNav :movie="movie" />
     </div>
-
-
   </div>
 </template>
 
@@ -47,7 +43,6 @@ const runningTime = ref('');
 const status = ref('')
 const openingDate = ref('')
 const movie = ref('')
-
 
 const route = useRoute();
 const videoUrl = ref(null)
@@ -77,7 +72,6 @@ onMounted(() => {
     })
     .catch(err => console.log(err))
     .then((res) => {
-      
       const API_KEY = import.meta.env.VITE_YT_API_KEY
 
       axios({
@@ -96,22 +90,14 @@ onMounted(() => {
         .catch(err => console.log(err))
     })
 })
-
 </script>
 
 <style scoped>
-/* .background {
-  width: 100%;
-  height: 180vh;
-  background-color: #000;
-  position: absolute;
-  overflow: hidden;
-} */
-
+/* 영화 배경 스냅샷 위치 */
 .background-filter {
   position: absolute;
   width: 100%;
-  height: 40%;
+  height: 66%;
 }
 
 .background-filter img {
@@ -121,45 +107,50 @@ onMounted(() => {
   object-fit: cover;
 }
 
+/* 영화 스냅샵 그라데이션 */
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 90%), linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.75) 70%);
-  pointer-events: none; /* 오버레이가 클릭 이벤트를 막지 않도록 */
+  background: linear-gradient(190deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%), linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.75) 70%);
+  pointer-events: none;
+  /* 오버레이가 클릭 이벤트를 막지 않도록 */
 }
 
-.content-container{
+.content-container {
   position: relative;
-  top: 100px;
-  padding: 20px;
+  top: 3vh;
+  left: 3%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   /* border: 2px solid white; */
-  
 }
-.detail-container{
+
+.detail-container {
   color: white;
   text-align: center;
   /* border: 2px solid white; */
-  padding: 1%;
   padding-bottom: 5%;
   margin-left: 10%;
 }
-.detail-container > p{
+
+.detail-container>p {
   font-size: 25px;
 }
-.detail-container > h1{
+
+.detail-container>h1 {
   font-size: 40px;
 }
-.youtube-container{
+
+.youtube-container {
+  position: absolute;
+  top: 15.5%;
+  right: 10%;
   /* border: 2px solid white; */
 }
 
-.view-container{
+.view-container {
   /* border: 2px solid white; */
   top: 10%;
   color: white;

@@ -88,7 +88,7 @@ const signUpRequest = function () {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
+  width: 350px;
   height: 500px;
   background-color: white;
   border: 1px solid black;
@@ -103,6 +103,10 @@ const signUpRequest = function () {
 .logo-title {
   display: flex;
   justify-content: center;
+  transform: translate(0%, -20%);
+}
+
+.logo-title h1 {
   transform: translate(0%, -20%);
 }
 
@@ -131,7 +135,7 @@ const signUpRequest = function () {
 }
 
 .sign-btn {
-  padding: 2%;
+  padding: 2% 4%;
   color: white;
   border-style: none;
   border-radius: 10%;

@@ -65,7 +65,7 @@ const LoginVueOff = function () {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
+  width: 350px;
   height: 500px;
   display: none;
   border-radius: 3%;
@@ -80,7 +80,11 @@ const LoginVueOff = function () {
 .logo-title {
   display: flex;
   justify-content: center;
-  transform: translate(0%, 0%);
+  transform: translate(0%, -20%);
+}
+
+.logo-title h1 {
+  transform: translate(0%, -20%);
 }
 
 .logo {
@@ -100,6 +104,7 @@ const LoginVueOff = function () {
 .input-txt {
   width: 50%;
   padding: 3%;
+  margin: 1%;
 }
 
 .sign-login {
@@ -114,7 +119,7 @@ const LoginVueOff = function () {
 
 .login-btn {
   margin-top: 1%;
-  padding: 2%;
+  padding: 2% 4%;
   color: white;
   border-style: none;
   border-radius: 10%;
