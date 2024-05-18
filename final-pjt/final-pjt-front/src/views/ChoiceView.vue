@@ -4,7 +4,6 @@
     <div div class="poster">
       <div v-for="genre in genres">
         <p class="post-txt">{{ genre.genre }}</p>
-
       </div>
     </div>
 
@@ -16,9 +15,10 @@
     </div>
 
     <h2>[ 배우 선택 ]</h2>
-    <div div class="poster">
+    <div class="poster">
       <div v-for="act in actors">
         <img :src="act.profile_image" class="post-img" alt="#">
+        <p class="actor-name">{{ act.actor }}</p>
       </div>
     </div>
 
@@ -26,6 +26,7 @@
     <div div class="poster">
       <div v-for="product in producers">
         <img :src="product.profile_image" class="post-img" alt="#">
+        <p class="product-name">{{ product.producer }}</p>
       </div>
     </div>
 
@@ -34,6 +35,7 @@
       <h4 class="select-end-btn" @click="goToDetail">최종 선택</h4>
     </div>
   </div>
+
 </template>
 
 <script setup>
@@ -69,6 +71,7 @@ onMounted(() => {
       countries.value = res.data.countries
       actors.value = res.data.actors
       producers.value = res.data.producers
+      console.log(res.data);
     })
     .catch((err) => console.log(err))
 })
@@ -81,6 +84,7 @@ onMounted(() => {
   width: 85%;
   color: white;
   text-align: center;
+
 }
 
 .poster {
@@ -110,12 +114,37 @@ onMounted(() => {
   font-weight: bold;
   color: white;
   background-color: darkgray;
-  transform: scale(1.1); /* 크기 커지는 애니메이션 */
+  transform: scale(1.1);
+  /* 크기 커지는 애니메이션 */
 }
 
 .post-img:hover {
-  opacity: 0.75;
-  transform: scale(1.1); /* 크기 커지는 애니메이션 */
+  opacity: 0.5;
+  transform: scale(1.1);
+  /* 크기 커지는 애니메이션 */
+}
+
+/* 마우스 올리면 이름 글자 나타내기 */
+.post-img:hover+.actor-name {
+  display: block !important
+}
+
+.post-img:hover+.product-name {
+  display: block !important
+}
+
+.actor-name {
+  position: absolute;
+  top: 55%;
+  font-size: 150%;
+  display: none
+}
+
+.product-name {
+  position: absolute;
+  top: 85%;
+  font-size: 150%;
+  display: none
 }
 
 .btn {

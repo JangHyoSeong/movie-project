@@ -7,7 +7,7 @@
       <div class="main-explan-txt">
         <h5>어떤 영화를 찾으시나요?</h5>
         <h1>당신을 위한 영화 추천 사이트</h1>
-        <h5>당신의 선택을 통하여 다양한 시각에서 영화를 추천해드립니다</h5>
+        <h5>다양한 시각에서 영화를 추천해드립니다</h5>
       </div>
 
       <h1 class="recommend-btn" @click="recommend">추천 받기</h1>
