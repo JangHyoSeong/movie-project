@@ -10,7 +10,7 @@ export const useLoginStore = defineStore('login', () => {
   const login = function (payload) {
     const username = payload.username
     const password = payload.password
-    
+
     axios({
       method: 'post',
       url: 'http://127.0.0.1:8000/dj-rest-auth/login/',
@@ -20,7 +20,7 @@ export const useLoginStore = defineStore('login', () => {
     })
       .then((res) => {
         token.value = res.data.key
-        router.push({name: 'home'})
+        router.push({ name: 'home' })
         console.log(token.value)
       })
       .catch(err => console.log(err))
@@ -35,4 +35,4 @@ export const useLoginStore = defineStore('login', () => {
   })
 
   return { token, login, isLogin }
-}, { persist: true})
+}, { persist: true })

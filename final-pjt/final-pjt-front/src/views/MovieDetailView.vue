@@ -1,11 +1,15 @@
 <template>
   <div class="background">
+    <!-- 배경 이미지 -->
     <div class="background-filter">
       <img :src="backgroundImageSrc" alt="snapshot" />
+      <!-- 그라데이션 오버레이 -->
       <div class="overlay"></div>
     </div>
 
+    <!-- 내용 컨테이너 -->
     <div class="content-container">
+      <!-- 영화 상세 정보 -->
       <article class="detail-container">
         <h1>{{ title }}</h1>
         <p>장르 : {{ genre.join(', ') }}</p>
@@ -14,6 +18,7 @@
         <p v-if="runningTime">러닝타임 : {{ runningTime }}분</p>
         <p v-if="openingDate">개봉 일자 : {{ openingDate }}</p>
       </article>
+      <!-- 유튜브 플레이어 -->
       <div class="youtube-container">
         <iframe width="560" height="315" :src="videoUrl" frameborder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
@@ -21,6 +26,7 @@
       </div>
     </div>
 
+    <!-- 영화 선택 네비게이션 -->
     <div class="view-container">
       <MovieDetailNav :movie="movie" />
     </div>
@@ -29,7 +35,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRoute, useRouter, RouterView } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import axios from 'axios'
 import MovieDetailNav from '@/components/MovieDetailNav.vue'
 
@@ -46,7 +52,9 @@ const movie = ref('')
 
 const route = useRoute();
 const videoUrl = ref(null)
+
 onMounted(() => {
+  // 영화 정보 로드
   axios({
     method: 'get',
     url: `http://127.0.0.1:8000/api/v1/movie/${route.params.movie_id}/`,
@@ -72,6 +80,7 @@ onMounted(() => {
     })
     .catch(err => console.log(err))
     .then((res) => {
+      // 유튜브 트레일러 로드
       const API_KEY = import.meta.env.VITE_YT_API_KEY
 
       axios({
@@ -93,7 +102,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* 영화 배경 스냅샷 위치 */
+/* 배경 스냅샷 스타일 */
 .background-filter {
   position: absolute;
   width: 100%;
@@ -107,7 +116,7 @@ onMounted(() => {
   object-fit: cover;
 }
 
-/* 영화 스냅샵 그라데이션 */
+/* 그라데이션 오버레이 스타일 */
 .overlay {
   position: absolute;
   width: 100%;
@@ -117,6 +126,7 @@ onMounted(() => {
   /* 오버레이가 클릭 이벤트를 막지 않도록 */
 }
 
+/* 내용 컨테이너 스타일 */
 .content-container {
   position: relative;
   top: 3vh;
@@ -124,17 +134,17 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* border: 2px solid white; */
 }
 
+/* 영화 상세 정보 컨테이너 스타일 */
 .detail-container {
   color: white;
   text-align: center;
-  /* border: 2px solid white; */
   padding-bottom: 5%;
   margin-left: 10%;
 }
 
+/* 영화 상세 정보 스타일 */
 .detail-container>p {
   font-size: 25px;
 }
@@ -143,15 +153,15 @@ onMounted(() => {
   font-size: 40px;
 }
 
+/* 유튜브 플레이어 컨테이너 스타일 */
 .youtube-container {
   position: absolute;
   top: 15.5%;
   right: 10%;
-  /* border: 2px solid white; */
 }
 
+/* 영화 선택 네비게이션 컨테이너 스타일 */
 .view-container {
-  /* border: 2px solid white; */
   top: 10%;
   color: white;
   position: relative;

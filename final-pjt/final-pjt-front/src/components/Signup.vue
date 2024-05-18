@@ -1,26 +1,38 @@
 <template>
+  <!-- 회원가입 버튼 -->
   <p @click="SignVueOn" class="sign">회원가입</p>
+  <!-- 회원가입 팝업 -->
   <div class="sign-popup" :class="isSign">
     <div class="sign-popup-detail">
+      <!-- 로고 및 제목 -->
       <div class="logo-title">
         <img src="../../public/Logo_img.png" alt="Logo" class="logo">
         <h1 style="color: #166AE8;">다각화</h1>
       </div>
+      <!-- 회원가입 컨텐츠 -->
       <div class="sign-popup-content">
         <h3 style="text-align: center">회원가입</h3>
         <form @submit.prevent="signUpRequest">
+          <!-- 닉네임 입력창 -->
           <p><input type="text" class="input-txt" placeholder="닉네임" v-model="nickname"></p>
+          <!-- 이름 입력창 -->
           <p><input type="text" class="input-txt" placeholder="이름" v-model="username"></p>
-          <p><input type="text" class="input-txt" placeholder="이메일" v-model="email"></p>
-          <p><input type="text" class="input-txt" placeholder="비밀번호" v-model="password1"></p>
-          <p><input type="text" class="input-txt" placeholder="비밀번호 확인" v-model="password2"></p>
+          <!-- 이메일 입력창 -->
+          <p><input type="email" class="input-txt" placeholder="이메일" v-model="email"></p>
+          <!-- 비밀번호 입력창 -->
+          <p><input type="password" class="input-txt" placeholder="비밀번호" v-model="password1"></p>
+          <!-- 비밀번호 확인 입력창 -->
+          <p><input type="password" class="input-txt" placeholder="비밀번호 확인" v-model="password2"></p>
+          <!-- 회원가입 버튼 -->
           <button class="sign-btn">회원가입</button>
         </form>
+        <!-- 로그인 링크 -->
         <div class="sign-txt">
           <p>이미 가입하셨나요?</p>
           <p style="color: #166AE8; text-decoration:underline;">로그인</p>
         </div>
       </div>
+      <!-- 팝업 닫기 버튼 -->
       <button class="popup-close-btn" @click="SignVueOff">x</button>
     </div>
   </div>
@@ -30,6 +42,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 
+// 데이터 상태
 const username = ref(null)
 const email = ref(null)
 const password1 = ref(null)
@@ -37,12 +50,17 @@ const password2 = ref(null)
 const nickname = ref(null)
 const isSign = ref(null)
 
+// 회원가입 팝업 활성화 함수
 const SignVueOn = function () {
   isSign.value = 'display-show'
 }
+
+// 회원가입 팝업 비활성화 함수
 const SignVueOff = function () {
   isSign.value = ''
 }
+
+// 입력 폼 초기화 함수
 const clearForm = function () {
   username.value = null
   email.value = null
@@ -51,6 +69,7 @@ const clearForm = function () {
   nickname.value = null
 }
 
+// 회원가입 요청 함수
 const signUpRequest = function () {
   axios({
     method: 'post',
@@ -76,6 +95,7 @@ const signUpRequest = function () {
 </script>
 
 <style scoped>
+/* 회원가입 버튼 스타일 */
 .sign {
   position: absolute;
   top: 0%;
@@ -83,6 +103,7 @@ const signUpRequest = function () {
   color: white;
 }
 
+/* 회원가입 팝업 스타일 */
 .sign-popup {
   position: absolute;
   left: 50%;
@@ -96,44 +117,52 @@ const signUpRequest = function () {
   display: none;
 }
 
+/* 회원가입 팝업 디테일 스타일 */
 .sign-popup-detail {
   margin-top: 10%;
 }
 
+/* 로고 및 제목 스타일 */
 .logo-title {
   display: flex;
   justify-content: center;
   transform: translate(0%, -20%);
 }
 
+/* 제목 스타일 */
 .logo-title h1 {
   transform: translate(0%, -20%);
 }
 
+/* 로고 이미지 스타일 */
 .logo {
   width: 20%;
   height: 20%;
 }
 
+/* 회원가입 링크 스타일 */
 .sign-txt {
   display: flex;
   justify-content: center;
-}
-
-.sign-popup-content {
-  text-align: center;
-  transform: translate(0%, -10%);
 }
 
 .sign-txt p {
   margin: 4% 2% 0% 0%;
 }
 
+/* 회원가입 컨텐츠 스타일 */
+.sign-popup-content {
+  text-align: center;
+  transform: translate(0%, -10%);
+}
+
+/* 입력창 스타일
 .input-txt {
   padding: 2%;
   width: 50%;
 }
 
+/* 회원가입 버튼 스타일 */
 .sign-btn {
   padding: 2% 4%;
   color: white;
@@ -142,12 +171,14 @@ const signUpRequest = function () {
   background-color: #166AE8;
 }
 
+/* 팝업 닫기 버튼 스타일 */
 .popup-close-btn {
   position: absolute;
   left: 92%;
   top: 2%;
 }
 
+/* 팝업 표시 스타일 */
 .display-show {
   display: block;
 }

@@ -1,39 +1,60 @@
 <template>
+  <!-- 장르 선택 섹션 -->
   <div class="movie-select">
     <h2>[ 장르 선택 ]</h2>
     <div class="poster">
+      <!-- 장르 목록 -->
       <div v-for="genre in currentGenres" :key="genre.genre_id">
         <p class="post-txt">{{ genre.genre }}</p>
       </div>
-      <h1 class="arrow arrow1" @click="showNextGenre">></h1>
+      <!-- 이전/다음 장르 화살표 -->
+      <h1 class="arrow arrow5" @click="showPrevGenre">
+        < </h1>
+          <h1 class="arrow arrow1" @click="showNextGenre"> > </h1>
     </div>
 
+    <!-- 국가 선택 섹션 -->
     <h2>[ 국가 선택 ]</h2>
     <div class="poster">
+      <!-- 국가 목록 -->
       <div v-for="country in currentCountries" :key="country.country_id">
         <p class="post-txt">{{ country.country }}</p>
       </div>
-      <h1 class="arrow arrow2" @click="showNextCountry">></h1>
+      <!-- 이전/다음 국가 화살표 -->
+      <h1 class="arrow arrow6" @click="showPrevCountry">
+        < </h1>
+          <h1 class="arrow arrow2" @click="showNextCountry"> > </h1>
     </div>
 
+    <!-- 배우 선택 섹션 -->
     <h2>[ 배우 선택 ]</h2>
     <div class="poster">
+      <!-- 배우 목록 -->
       <div v-for="actor in currentActors" :key="actor.actor_id">
         <img :src="actor.profile_image" class="post-img" alt="#">
         <p class="actor-name">{{ actor.actor }}</p>
       </div>
-      <h1 class="arrow arrow3" @click="showNextActor">></h1>
+      <!-- 이전/다음 배우 화살표 -->
+      <h1 class="arrow arrow7" @click="showPrevActor">
+        < </h1>
+          <h1 class="arrow arrow3" @click="showNextActor"> > </h1>
     </div>
 
+    <!-- 감독 선택 섹션 -->
     <h2>[ 감독 선택 ]</h2>
     <div class="poster">
+      <!-- 감독 목록 -->
       <div v-for="producer in currentProducers" :key="producer.producer_id">
         <img :src="producer.profile_image" class="post-img" alt="#">
         <p class="product-name">{{ producer.producer }}</p>
       </div>
-      <h1 class="arrow arrow4" @click="showNextProducer">></h1>
+      <!-- 이전/다음 감독 화살표 -->
+      <h1 class="arrow arrow8" @click="showPrevProducer">
+        < </h1>
+          <h1 class="arrow arrow4" @click="showNextProducer"> > </h1>
     </div>
 
+    <!-- 홈으로/최종 선택 버튼 -->
     <div class="btn">
       <h4 class="select-end-btn" @click="goToHome">홈으로</h4>
       <h4 class="select-end-btn" @click="goToDetail">최종 선택</h4>
@@ -57,6 +78,7 @@ const goToHome = () => {
   router.push({ name: 'home' })
 }
 
+// 영화 정보 관련 데이터
 const genres = ref([])
 const countries = ref([])
 const actors = ref([])
@@ -144,13 +166,42 @@ const showNextProducer = () => {
     endIndexProducer.value = 6
   }
 }
+
+// 슬라이더를 반대로 이동하는 로직 추가
+const showPrevGenre = () => {
+  if (startIndexGenre.value !== 0) {
+    startIndexGenre.value -= 1
+    endIndexGenre.value -= 1
+  }
+}
+
+const showPrevCountry = () => {
+  if (startIndexCountry.value !== 0) {
+    startIndexCountry.value -= 1
+    endIndexCountry.value -= 1
+  }
+}
+
+const showPrevActor = () => {
+  if (startIndexActor.value !== 0) {
+    startIndexActor.value -= 1
+    endIndexActor.value -= 1
+  }
+}
+
+const showPrevProducer = () => {
+  if (startIndexProducer.value !== 0) {
+    startIndexProducer.value -= 1
+    endIndexProducer.value -= 1
+  }
+}
 </script>
 
 <style scoped>
+/* 슬라이더 화살표 스타일 */
 .arrow {
   position: absolute;
   padding-bottom: 2.5%;
-  right: 0%;
   font-size: 200%;
   width: 3.5%;
   height: 2%;
@@ -161,11 +212,24 @@ const showNextProducer = () => {
   opacity: 0.75;
 }
 
+/* 화살표에 호버 효과 적용 */
 .arrow1:hover,
 .arrow2:hover,
 .arrow3:hover,
-.arrow4:hover {
+.arrow4:hover,
+.arrow5:hover,
+.arrow6:hover,
+.arrow7:hover,
+.arrow8:hover {
   opacity: 1;
+}
+
+/* 화살표 위치 및 스타일 조정 */
+.arrow1,
+.arrow2,
+.arrow3,
+.arrow4 {
+  right: 0%;
 }
 
 .arrow1 {
@@ -184,6 +248,30 @@ const showNextProducer = () => {
   bottom: 15%;
 }
 
+.arrow5,
+.arrow6,
+.arrow7,
+.arrow8 {
+  left: 0%;
+}
+
+.arrow5 {
+  bottom: 85%;
+}
+
+.arrow6 {
+  bottom: 68%;
+}
+
+.arrow7 {
+  bottom: 45%;
+}
+
+.arrow8 {
+  bottom: 15%;
+}
+
+/* 영화 선택 영역 스타일 */
 .movie-select {
   position: relative;
   left: 8%;
@@ -192,12 +280,14 @@ const showNextProducer = () => {
   text-align: center;
 }
 
+/* 포스터 그룹 스타일 */
 .poster {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
+/* 포스터 텍스트 스타일 */
 .post-txt {
   margin: 0%;
   display: flex;
@@ -210,11 +300,13 @@ const showNextProducer = () => {
   background-color: rgb(200, 200, 200);
 }
 
+/* 포스터 이미지 스타일 */
 .post-img {
   width: 180px;
   height: 210px;
 }
 
+/* 포스터 텍스트 호버 효과 스타일 */
 .post-txt:hover {
   font-weight: bold;
   color: white;
@@ -222,39 +314,35 @@ const showNextProducer = () => {
   transform: scale(1.1);
 }
 
+/* 포스터 이미지 호버 효과 스타일 */
 .post-img:hover {
   opacity: 0.5;
   transform: scale(1.1);
 }
 
-.post-img:hover+.actor-name {
-  display: block !important;
-}
-
-.post-img:hover+.product-name {
-  display: block !important;
+/* 배우/감독 이름 스타일 */
+.actor-name,
+.product-name {
+  position: absolute;
+  font-size: 175%;
+  font-weight: bold;
+  display: none;
 }
 
 .actor-name {
-  position: absolute;
   top: 55%;
-  font-size: 175%;
-  font-weight: bold;
-  display: none;
 }
 
 .product-name {
-  position: absolute;
   top: 85%;
-  font-size: 175%;
-  font-weight: bold;
-  display: none;
 }
 
+/* 버튼 그룹 스타일 */
 .btn {
   display: flex;
 }
 
+/* 선택 종료 버튼 스타일 */
 .select-end-btn {
   margin: 1% 0% 1% 1%;
   display: flex;
@@ -268,6 +356,7 @@ const showNextProducer = () => {
   color: white;
 }
 
+/* 선택 종료 버튼 호버 효과 스타일 */
 .select-end-btn:hover {
   color: white;
   border-style: none;

@@ -32,10 +32,10 @@ const router = createRouter({
       name: 'movieDetail',
       component: MovieDetailView,
       children: [
-        {path: '', name: 'movie-overview', component: OverviewView, props: true},
-        {path: 'review', name: 'movie-review', component: ReviewView, props: true},
-        {path: 'recommend', name: 'movie-recommend', component: RecommendView, props: true},
-        {path: 'chat', name: 'movie-chat', component: ChatView, props: true},
+        { path: '', name: 'movie-overview', component: OverviewView, props: true },
+        { path: 'review', name: 'movie-review', component: ReviewView, props: true },
+        { path: 'recommend', name: 'movie-recommend', component: RecommendView, props: true },
+        { path: 'chat', name: 'movie-chat', component: ChatView, props: true },
       ]
     },
     {

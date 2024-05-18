@@ -1,7 +1,10 @@
 <template>
+  <!-- 메인 컨텐츠 -->
   <main>
+    <!-- 배경 이미지 -->
     <img src="../../public/background_img.png" class="background-img" alt="background_img">
 
+    <!-- 메인 텍스트 -->
     <div class="main-txt" :class="fadeMode">
       <div class="main-explan-txt">
         <h5>어떤 영화를 찾으시나요?</h5>
@@ -9,10 +12,12 @@
         <h5>다양한 시각에서 영화를 추천해드립니다</h5>
       </div>
 
+      <!-- 추천 받기 버튼 -->
       <div class="recommend-btn" @click="recommend">
         <h2 class="recommend">추천 받기</h2>
       </div>
 
+      <!-- 영화 정보 -->
       <div class="movie-info-cnt">
         <div class="movie-animation">
           <div class="movie-cnt">
@@ -35,13 +40,16 @@
     </div>
   </main>
 
+  <!-- 섹션 -->
   <section>
+    <!-- 섹션 영화 -->
     <div class="section-movie">
       <h1>[ 현재 개봉작 ]</h1>
       <div class="movies-poster">
         <div @click="newMovieDetail(movie)" v-for="movie in currentMovies1" :key="movie.movie_id">
           <img :src="movie.poster" class="poster" alt="#">
         </div>
+        <!-- 포스터 이전/다음 버튼 -->
         <h1 class="arrow arrow1-1" @click="showNextPoster1_1">
           < </h1>
             <h1 class="arrow arrow1-2" @click="showNextPoster1_2"> > </h1>
@@ -52,29 +60,34 @@
         <div @click="newMovieDetail(movie)" v-for="movie in currentMovies2" :key="movie.movie_id">
           <img :src="movie.poster" class="poster" alt="#">
         </div>
+        <!-- 포스터 이전/다음 버튼 -->
         <h1 class="arrow arrow2-1" @click="showNextPoster2_1">
           < </h1>
             <h1 class="arrow arrow2-2" @click="showNextPoster2_2"> > </h1>
       </div>
     </div>
 
+    <!-- SNS 로고 -->
     <div class="sns-logo">
       <a href="https://blog.naver.com/ehdgus3726"><img src="../../public/blog.png" alt="blog"></a>
       <a href="https://www.instagram.com/"><img src="../../public/instagram.png" alt="instagram"></a>
       <a href="https://www.youtube.com/"><img src="../../public/youtube.png" alt="youtube"></a>
     </div>
 
+    <!-- 저작권 표시 -->
     <p class="copyright">Copyright ⓒ 2024. SSAFY All Right Reserved</p>
 
-    <!-- 배경 화면만 보이기 -->
+    <!-- 배경 모드 전환 버튼 -->
     <h5 @click="modeOn" class='mode-btn'>배경 ON</h5>
 
   </section>
 
+  <!-- 로그인 및 회원가입 컴포넌트 -->
   <Login />
   <Signup />
 </template>
 
+<!-- Vue 스크립트 -->
 <script setup>
 import 'animate.css'
 import axios from 'axios'
@@ -191,7 +204,9 @@ const modeOn = function () {
 }
 </script>
 
+<!-- CSS 스타일 -->
 <style scoped>
+/* 모드 전환 버튼 */
 .mode-btn {
   position: absolute;
   top: 91%;
@@ -207,6 +222,7 @@ const modeOn = function () {
   border: none;
 }
 
+/* 페이드 인 애니메이션 */
 .fade-in {
   opacity: 1;
   animation: fadeIn 2s forwards;
@@ -222,6 +238,7 @@ const modeOn = function () {
   }
 }
 
+/* 페이드 아웃 애니메이션 */
 .fade-out {
   opacity: 1;
   animation: fadeOut 2s forwards;
@@ -401,6 +418,7 @@ section {
   transform: scale(1.1);
 }
 
+/* 포스터 화살표 스타일 */
 .arrow {
   position: absolute;
   padding-bottom: 2.5%;
