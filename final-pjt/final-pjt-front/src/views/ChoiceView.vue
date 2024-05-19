@@ -30,7 +30,7 @@
     <h2>[ 배우 선택 ]</h2>
     <div class="poster">
       <!-- 배우 목록 -->
-      <div v-for="actor in currentActors" :key="actor.actor_id">
+      <div v-for="actor in currentActors" :key="actor.actor_id" class="actor-poster">
         <img :src="actor.profile_image" class="post-img" alt="#">
         <p class="actor-name">{{ actor.actor }}</p>
       </div>
@@ -44,7 +44,7 @@
     <h2>[ 감독 선택 ]</h2>
     <div class="poster">
       <!-- 감독 목록 -->
-      <div v-for="producer in currentProducers" :key="producer.producer_id">
+      <div v-for="producer in currentProducers" :key="producer.producer_id" class="producer-poster">
         <img :src="producer.profile_image" class="post-img" alt="#">
         <p class="product-name">{{ producer.producer }}</p>
       </div>
@@ -74,8 +74,10 @@ const goToDetail = () => {
   router.push({ name: 'choice_detail' })
 }
 
+// 홈으로 클릭 시, 메인 페이지로 이동하기
 const goToHome = () => {
   router.push({ name: 'home' })
+  window.scrollTo(0, 0) // 이동 시 가장 최상단 고정
 }
 
 // 영화 정보 관련 데이터
@@ -304,6 +306,7 @@ const showPrevProducer = () => {
 .post-img {
   width: 180px;
   height: 210px;
+  transition: opacity 0.3s, transform 0.3s;
 }
 
 /* 포스터 텍스트 호버 효과 스타일 */
@@ -324,9 +327,10 @@ const showPrevProducer = () => {
 .actor-name,
 .product-name {
   position: absolute;
-  font-size: 175%;
+  font-size: 150%;
   font-weight: bold;
   display: none;
+  color: white;
 }
 
 .actor-name {
@@ -335,6 +339,16 @@ const showPrevProducer = () => {
 
 .product-name {
   top: 85%;
+}
+
+/* 배우 포스터 호버 시 이름 표시 */
+.actor-poster:hover .actor-name {
+  display: block;
+}
+
+/* 감독 포스터 호버 시 이름 표시 */
+.producer-poster:hover .product-name {
+  display: block;
 }
 
 /* 버튼 그룹 스타일 */

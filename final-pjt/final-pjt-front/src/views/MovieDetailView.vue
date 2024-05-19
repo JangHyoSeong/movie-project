@@ -1,4 +1,6 @@
 <template>
+  <h5 class="select-end-btn" @click="goToHome">홈으로</h5>
+  
   <div class="background">
     <!-- 배경 이미지 -->
     <div class="background-filter">
@@ -20,7 +22,7 @@
       </article>
       <!-- 유튜브 플레이어 -->
       <div class="youtube-container">
-        <iframe width="560" height="315" :src="videoUrl" frameborder="0"
+        <iframe width="576" height="324" :src="videoUrl" frameborder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
         </iframe>
       </div>
@@ -38,6 +40,14 @@ import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import axios from 'axios'
 import MovieDetailNav from '@/components/MovieDetailNav.vue'
+
+const router = useRouter()
+
+// 홈으로 클릭 시, 메인 페이지로 이동하기
+const goToHome = () => {
+  router.push({ name: 'home' })
+  window.scrollTo(0, 0) // 이동 시 가장 최상단 고정
+}
 
 // 변수
 const backgroundImageSrc = ref(null);
@@ -156,7 +166,7 @@ onMounted(() => {
 /* 유튜브 플레이어 컨테이너 스타일 */
 .youtube-container {
   position: absolute;
-  top: 15.5%;
+  top: 14%;
   right: 10%;
 }
 
@@ -165,5 +175,27 @@ onMounted(() => {
   top: 10%;
   color: white;
   position: relative;
+}
+
+/* 선택 종료 버튼 스타일 */
+.select-end-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 5%;
+  left: 2%;
+  width: 4%;
+  height: 4%;
+  border: 1px solid white;
+  color: white;
+  z-index: 1;
+}
+
+/* 선택 종료 버튼 호버 효과 스타일 */
+.select-end-btn:hover {
+  color: white;
+  border-style: none;
+  background-color: #166AE8;
 }
 </style>

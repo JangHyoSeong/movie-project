@@ -78,7 +78,9 @@
     <p class="copyright">Copyright ⓒ 2024. SSAFY All Right Reserved</p>
 
     <!-- 배경 모드 전환 버튼 -->
-    <h5 @click="modeOn" class='mode-btn'>배경 ON</h5>
+    <h5 @click="modeOn" class='mode-btn'>Mode</h5>
+
+    <h5 @click="goTop" class="gotop">Top</h5>
 
   </section>
 
@@ -202,22 +204,38 @@ const modeOn = function () {
     fadeMode.value = 'fade-out';
   }
 }
+
+// 최상단으로 올라가는 버튼
+const goTop = function () {
+  window.scrollTo({left: 0, top: 0, behavior: 'smooth'})
+}
 </script>
 
 <!-- CSS 스타일 -->
 <style scoped>
+.gotop {
+  position: absolute;
+  bottom: -101%;
+  right: 2%;
+  padding: 0.6%;
+  color: white;
+  border: 1px solid white;
+  border-radius: 100%;
+  z-index: 1;
+}
+
 /* 모드 전환 버튼 */
 .mode-btn {
   position: absolute;
   top: 91%;
-  right: 4%;
+  right: 2%;
   padding: 0.5%;
   color: white;
   border: 1px solid white;
   border-radius: 100%;
 }
 
-.mode-btn:hover {
+.gotop:hover, .mode-btn:hover {
   background-color: #166AE8;
   border: none;
 }

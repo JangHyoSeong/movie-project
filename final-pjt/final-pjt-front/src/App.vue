@@ -23,7 +23,7 @@
 .navbar {
   width: 100%;
   height: 50px;
-  position: relative;
+  opacity: 0.75;
   background-color: #111111; /* 배경 색상을 여기로 이동 */
 }
 
@@ -34,7 +34,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.75;
   z-index: -1;
 }
 

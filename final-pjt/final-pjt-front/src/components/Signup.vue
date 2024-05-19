@@ -156,7 +156,6 @@ const signUpRequest = function () {
   transform: translate(0%, -10%);
 }
 
-/* 입력창 스타일
 .input-txt {
   padding: 2%;
   width: 50%;

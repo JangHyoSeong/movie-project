@@ -54,6 +54,7 @@ onMounted(() => {
   margin: 0.5%;
   padding: 0.5%;
   color: white;
+  z-index: 1;
 }
 
 .order-time:hover,
@@ -76,6 +77,7 @@ onMounted(() => {
   width: 300px;
   height: 450px;
   background-color: rgb(200, 200, 200);
+  z-index: 1;
 }
 
 .post:hover {
