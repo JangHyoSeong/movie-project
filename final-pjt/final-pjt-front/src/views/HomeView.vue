@@ -1,68 +1,99 @@
 <template>
-  <img src="../../public/background_img.png" alt="background_img" class="background_img">
+  <!-- 메인 컨텐츠 -->
+  <main>
+    <!-- 배경 이미지 -->
+    <img src="../../public/background_img.png" class="background-img" alt="background_img">
 
-  <div class="on-background">
-    <div class="main_txt">
-      <h5>어떤 영화를 찾으시나요?</h5>
-      <h1>당신을 위한 영화 추천 사이트</h1>
-      <h5>당신의 선택을 통하여 다양한 시각에서 영화를 추천해드립니다</h5>
-    </div>
-
-    <p class="recommend-btn" @click="recommend">추천 받기</p>
-
-    <div class="movie_info_cnt">
-      <div class="movie_cnt">
-        <h2>{{ movieCount }}</h2>
-        <h2>{{ genreCount }}</h2>
-        <h2>{{ producerCount }}</h2>
-        <h2>{{ actorCount }}</h2>
-        <h2>{{ countryCount }}</h2>
+    <!-- 메인 텍스트 -->
+    <div class="main-txt" :class="fadeMode">
+      <div class="main-explan-txt">
+        <h5>어떤 영화를 찾으시나요?</h5>
+        <h1>당신을 위한 영화 추천 사이트</h1>
+        <h5>다양한 시각에서 영화를 추천해드립니다</h5>
       </div>
-      <div class="movie_info">
-        <h2>영화 수</h2>
-        <h2>장르 수</h2>
-        <h2>감독 수</h2>
-        <h2>배우 수</h2>
-        <h2>국가 수</h2>
-      </div>
-      <h3 class="scroll">Scroll ▽</h3>
-    </div>
 
-    <div class="under-background-movie">
-      <div class="new-entire-movie">
-        <h1>[ 현재 개봉작 ]</h1>
-        <div class="new-movie">
-          <div @click="newMovieDetail(movie)" v-for="movie in moviesList">
-            <img :src="movie.poster" class="post" alt="#">
+      <!-- 추천 받기 버튼 -->
+      <div class="recommend-btn" @click="recommend">
+        <h2 class="recommend">추천 받기</h2>
+      </div>
+
+      <!-- 영화 정보 -->
+      <div class="movie-info-cnt">
+        <div class="movie-animation">
+          <div class="movie-cnt">
+            <h2>{{ movieCount }}</h2>
+            <h2>{{ genreCount }}</h2>
+            <h2>{{ producerCount }}</h2>
+            <h2>{{ actorCount }}</h2>
+            <h2>{{ countryCount }}</h2>
+          </div>
+          <div class="movie-cnt">
+            <h2>영화 수</h2>
+            <h2>장르 수</h2>
+            <h2>감독 수</h2>
+            <h2>배우 수</h2>
+            <h2>국가 수</h2>
           </div>
         </div>
+        <h3 class="scroll">Scroll ▽</h3>
+      </div>
+    </div>
+  </main>
 
-        <h1>[ 개봉 예정작 ]</h1>
-        <div class="new-movie">
-          <div @click="newMovieDetail(movie)" v-for="movie in moviesList">
-            <img :src="movie.poster" class="post" alt="#">
-          </div>
+  <!-- 섹션 -->
+  <section>
+    <!-- 섹션 영화 -->
+    <div class="section-movie">
+      <h1>[ 현재 개봉작 ]</h1>
+      <div class="movies-poster">
+        <div class="posts" @click="newMovieDetail(movie)" v-for="movie in currentMovies1" :key="movie.movie_id">
+          <img :src="movie.poster" class="poster" alt="#">
         </div>
+        <!-- 포스터 이전/다음 버튼 -->
+        <h1 class="arrow arrow1-1" @click="showNextPoster1_1">
+          < </h1>
+            <h1 class="arrow arrow1-2" @click="showNextPoster1_2"> > </h1>
       </div>
 
+      <h1>[ 개봉 예정작 ]</h1>
+      <div class="movies-poster">
+        <div class="posts" @click="newMovieDetail(movie)" v-for="movie in currentMovies2" :key="movie.movie_id">
+          <img :src="movie.poster" class="poster" alt="#">
+        </div>
+        <!-- 포스터 이전/다음 버튼 -->
+        <h1 class="arrow arrow2-1" @click="showNextPoster2_1">
+          < </h1>
+            <h1 class="arrow arrow2-2" @click="showNextPoster2_2"> > </h1>
+      </div>
     </div>
 
-    <div class="footer">
-      <div class="sns-logo">
-        <a href="https://blog.naver.com/ehdgus3726"><img src="../../public/blog.png" alt="blog"></a>
-        <a href="https://www.instagram.com/"><img src="../../public/instagram.png" alt="instagram"></a>
-        <a href="https://www.youtube.com/"><img src="../../public/youtube.png" alt="youtube"></a>
-      </div>
-      <div class="copy">Copyright ⓒ 2024. SSAFY All Right Reserved</div>
+    <!-- SNS 로고 -->
+    <div class="sns-logo">
+      <a href="https://blog.naver.com/ehdgus3726"><img src="../../public/blog.png" alt="blog"></a>
+      <a href="https://www.instagram.com/"><img src="../../public/instagram.png" alt="instagram"></a>
+      <a href="https://www.youtube.com/"><img src="../../public/youtube.png" alt="youtube"></a>
     </div>
-  </div>
+
+    <!-- 저작권 표시 -->
+    <p class="copyright">Copyright ⓒ 2024. SSAFY All Right Reserved</p>
+
+    <!-- 배경 모드 전환 버튼 -->
+    <h5 @click="modeOn" class='mode-btn'>Mode</h5>
+
+    <h5 @click="goTop" class="gotop">Top</h5>
+
+  </section>
+
+  <!-- 로그인 및 회원가입 컴포넌트 -->
   <Login />
   <Signup />
 </template>
 
+<!-- Vue 스크립트 -->
 <script setup>
+import 'animate.css'
 import axios from 'axios'
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import Login from '@/components/Login.vue'
 import Signup from '@/components/Signup.vue'
@@ -74,7 +105,7 @@ const recommend = function () {
   router.push({ name: 'choice' })
 }
 
-// 포스터 클리 시, 영화 Detail 페이지로 이동하기
+// 포스터 클릭 시, 영화 Detail 페이지로 이동하기
 const newMovieDetail = function (movie) {
   router.push({ name: 'movieDetail', params: { movie_id: movie.movie_id } })
 }
@@ -85,7 +116,8 @@ const genreCount = ref(0)
 const producerCount = ref(0)
 const actorCount = ref(0)
 const countryCount = ref(0)
-const moviesList = ref([])
+const currentMovieList = ref([])
+const upcomingMovieList = ref([])
 
 // 영화 정보 개수 받아오기
 onMounted(() => {
@@ -105,140 +137,415 @@ onMounted(() => {
 
 //  영화 리스트 받아오기
 onMounted(() => {
+  // 현재 개봉 영화 리스트
   axios({
     method: 'get',
-    url: 'http://127.0.0.1:8000/api/v1/movies/'
+    url: 'http://127.0.0.1:8000/api/v1/current_movies/'
   })
     .then((res) => {
-      moviesList.value = res.data
+      currentMovieList.value = res.data
+    })
+    .catch(err => console.log(err))
+
+  // 개봉 예정 영화 리스트
+  axios({
+    method: 'get',
+    url: 'http://127.0.0.1:8000/api/v1/upcoming_movies/'
+  })
+    .then((res) => {
+      upcomingMovieList.value = res.data
     })
     .catch(err => console.log(err))
 })
+
+// 관리하는 인덱스
+const startIndex1 = ref(0)
+const endIndex1 = ref(6)
+const startIndex2 = ref(0)
+const endIndex2 = ref(6)
+
+// 현재 영화 목록
+const currentMovies1 = computed(() => {
+  return currentMovieList.value.slice(startIndex1.value, endIndex1.value)
+})
+const currentMovies2 = computed(() => {
+  return upcomingMovieList.value.slice(startIndex2.value, endIndex2.value)
+})
+
+// 현재 포스터 표시
+const showNextPoster1_1 = () => {
+  if (startIndex1.value !== 0) {
+    startIndex1.value -= 1
+    endIndex1.value -= 1
+  }
+}
+const showNextPoster1_2 = () => {
+  if (endIndex1.value !== currentMovieList.value.length) {
+    startIndex1.value += 1
+    endIndex1.value += 1
+  } else {
+    startIndex1.value = 0
+    endIndex1.value = 6
+  }
+}
+// 다음 포스터 표시
+const showNextPoster2_1 = () => {
+  if (startIndex2.value !== 0) {
+    startIndex2.value -= 1
+    endIndex2.value -= 1
+  }
+}
+
+const showNextPoster2_2 = () => {
+  if (endIndex2.value !== upcomingMovieList.value.length) {
+    startIndex2.value += 1
+    endIndex2.value += 1
+  } else {
+    startIndex2.value = 0
+    endIndex2.value = 6
+  }
+}
+
+// 클릭 시, 모드 전환 활성화 (메인 화면만 보이게 되기)
+const fadeMode = ref()
+
+const modeOn = function () {
+  if (fadeMode.value === false || fadeMode.value === 'fade-out') {
+    fadeMode.value = 'fade-in';
+  } else {
+    fadeMode.value = 'fade-out';
+  }
+}
+
+// 최상단으로 올라가는 버튼
+const goTop = function () {
+  window.scrollTo({ left: 0, top: 0, behavior: 'smooth' })
+}
+// emit event
+// 로그인 로그아웃 팝업을 띄우는 데 사용
+const openSignup = function () {
+  const isSignClicked = ref(true)
+}
 </script>
 
+<!-- CSS 스타일 -->
 <style scoped>
-/* 사이트 크기 */
-.on-background {
-  height: 2000px;
+.gotop {
+  position: absolute;
+  bottom: -100%;
+  right: 2%;
+  padding: 0.6%;
+  color: rgb(200, 200, 200);
+  border: 1px solid white;
+  border-radius: 100%;
+  z-index: 1;
+  padding-bottom: 0.7%;
+}
+
+/* 모드 전환 버튼 */
+.mode-btn {
+  position: absolute;
+  top: 91%;
+  right: 2%;
+  padding: 0.5%;
+  color: white;
+  border: 1px solid white;
+  border-radius: 100%;
+}
+
+.gotop:hover,
+.mode-btn:hover {
+  color: white;
+  background: linear-gradient(145deg, #e81cff, #40c9ff) border-box;
+  border: none;
+}
+
+/* 페이드 인 애니메이션 */
+.fade-in {
+  opacity: 1;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* 페이드 아웃 애니메이션 */
+.fade-out {
+  opacity: 1;
+  animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* 상단 화면 비율 */
+main {
+  width: 100%;
+  height: 88vh;
 }
 
 /* 배경 이미지 */
-.background_img {
+.background-img {
   position: absolute;
+  top: 0%;
   width: 100%;
   height: 100%;
   z-index: -1;
 }
 
-/* 메인화면 텍스트 */
-.main_txt {
+/* 메인화면 전체 텍스트 */
+.main-txt {
   position: relative;
-  top: 5%;
+  top: 7vh;
+}
+
+/* 메인화면 텍스트 */
+.main-explan-txt {
+  font-weight: bold;
+  position: relative;
   text-align: center;
-  width: 100%;
-  height: 30%;
   font-size: 200%;
   color: white;
-  z-index: -1;
+  /* 움직이는 애니메이션 */
+  animation: moveLeft 2s;
 }
 
-/* 영화 정보 개수 */
-.movie_info_cnt {
-  width: 100%;
-  height: 10.5%;
-}
+/* 애니메이션 위치 영역 */
+@keyframes moveLeft {
+  0% {
+    left: -100%;
+  }
 
-.movie_cnt,
-.movie_info {
-  display: flex;
-  justify-content: space-around;
-  color: white;
+  100% {
+    left: 0%;
+  }
 }
-
 
 /* 추천 받기 버튼 */
-.recommend-btn {
-  position: absolute;
-  top: 50%;
-  left: 45.3%;
-  color: white;
-  font-size: 200%;
-  border: 1px solid white;
+.recommend {
+  position: relative;
+  left: 44.5%;
+  width: 9%;
   padding: 1%;
-}
-
-.recommend-btn:hover {
-  background-color: #166AE8;
-  border-style: none;
-}
-
-.scroll {
-  display: flex;
-  justify-content: center;
   color: white;
-  margin-top: 1.5%;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 10%;
+}
+
+.recommend-btn {
+  position: relative;
+  /* 움직이는 애니메이션 */
+  animation: moveRight 2s;
+}
+
+/* 애니메이션 위치 영역 */
+@keyframes moveRight {
+  0% {
+    right: -100%;
+  }
+
+  100% {
+    right: 0%;
+  }
+}
+
+.recommend:hover {
+  border-style: none;
+  background: linear-gradient(145deg, #e81cff, #40c9ff) border-box;
+}
+
+/* 영화 정보 영역 */
+.movie-info-cnt {
+  position: relative;
+  top: 5vh;
+}
+
+/* 영화 정보 갯수 */
+.movie-cnt {
+  display: flex;
+  justify-content: space-evenly;
+  color: white;
+}
+
+/* 움직이는 애니메이션 */
+.movie-animation {
+  position: relative;
+  animation: moveUp 2s;
+}
+
+/* 애니메이션 위치 영역 */
+@keyframes moveUp {
+  0% {
+    top: -100vh;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+/* 스크롤 글자 */
+.scroll {
+  position: relative;
+  text-align: center;
+  color: white;
+  margin-top: 7vh;
+  /* 움직이는 애니메이션 */
+  animation: moveUpDown 2s infinite;
+}
+
+/* 애니메이션 위치 영역 */
+@keyframes moveUpDown {
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: 10px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+/* 하단 화면 비율 */
+section {
+  width: 100%;
+  height: 90vh;
 }
 
 /* 상영 영화 목록 */
-.under-background-movie {
-  width: 100%;
-  height: 55.5%;
-}
-
-.under-background-movie h1 {
+.section-movie {
+  height: 90vh;
   position: relative;
-  top: 26%;
   text-align: center;
   color: white;
 }
 
-.new-entire-movie {
-  position: relative;
-  top: 27%;
-  left: 8%;
-  width: 85%;
-}
-
-.new-movie {
+/* 영화 포스터 위치 */
+.movies-poster {
   display: flex;
   justify-content: space-evenly;
+}
+
+.posts {
+  width: 205px;
+  height: 305px;
+  background: linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  color: white;
+  flex-direction: column;
+  border-radius: 16px;
+  background-size: 200% 100%;
+  animation: gradient 5s ease infinite;
 }
 
-.post {
-  width: 240px;
-  height: 300px;
-  background-color: rgb(200, 200, 200);
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-/* footer */
-.footer {
-  display: flex;
-  width: 100%;
-  height: 3%;
-  background-color: black;
+/* 영화 포스터 크기 */
+.poster {
+  border-radius: 6%;
+  width: 24vh;
+  height: 36vh;
 }
 
-.sns-logo {
-  display: flex;
-  width: 15%;
+.posts:hover {
+  opacity: 0.75;
+  /* 크기 커지는 애니메이션 */
+  transform: scale(1.1);
 }
 
-.sns-logo a {
-  padding-left: 10%;
-}
-
-.sns-logo img {
-  height: 50%;
-}
-
-.copy {
+/* 포스터 화살표 스타일 */
+.arrow {
   position: absolute;
-  bottom: -124%;
-  left: 8%;
-  width: 85%;
+  padding-bottom: 2.5%;
+  font-size: 200%;
+  width: 3.5%;
+  height: 2%;
+  border: 3px solid white;
+  border-radius: 100%;
+  color: gray;
+  background-color: white;
+  opacity: 0.75;
+}
+
+.arrow1-1 {
+  left: 1%;
+  bottom: 66%;
+}
+
+.arrow1-2 {
+  right: 1%;
+  bottom: 66%;
+}
+
+.arrow2-1 {
+  left: 1%;
+  bottom: 16%;
+}
+
+.arrow2-2 {
+  right: 1%;
+  bottom: 16%;
+}
+
+.arrow1-1:hover,
+.arrow1-2:hover,
+.arrow2-1:hover,
+.arrow2-2:hover {
+  opacity: 1;
+}
+
+/* SNS 로고 영역 */
+.sns-logo {
+  position: absolute;
+  display: flex;
+  height: 8vh;
+}
+
+/* SNS 로고 이미지 */
+.sns-logo img {
+  padding: 1vh 0vh 0vh 3vh;
+  height: 4vh;
+}
+
+.sns-logo img:hover {
+  transform: scale(1.2);
+  /* 크기 커지는 애니메이션 */
+}
+
+/* 저작권 글자 */
+.copyright {
   text-align: center;
-  color: white;
+  color: rgb(200, 200, 200);
 }
 </style>
