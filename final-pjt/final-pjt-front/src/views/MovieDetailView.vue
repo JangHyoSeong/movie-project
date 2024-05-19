@@ -79,7 +79,7 @@ onMounted(() => {
       runningTime.value = res.data.running_time
       if (res.data.show_status == 0) {
         status.value = '개봉'
-      } else if (res.data.status == 1) {
+      } else if (res.data.show_status == 1) {
         status.value = '개봉 예정'
       } else {
         status.value = '기타'
@@ -91,7 +91,7 @@ onMounted(() => {
     .catch(err => console.log(err))
     .then((res) => {
       // 유튜브 트레일러 로드
-      const API_KEY = import.meta.env.VITE_YT_API_KEY
+      // const API_KEY = import.meta.env.VITE_YT_API_KEY
 
       axios({
         method: 'get',

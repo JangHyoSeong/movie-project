@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from ..models import *
 
@@ -103,3 +104,23 @@ class ChoiceSerializer(serializers.Serializer):
     actors = ActorSerializer(many=True)
     producers = ProducerSerializer(many=True)
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = '__all__'
+
+
+class ReviewListSerializer(serializers.ModelSerializer):
+         
+    user = UserSerializer(read_only=True)
+    
+    class Meta:
+        model = MovieReview
+        fields = '__all__'
+        
+class ReviewSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = MovieReview
+        fields = '__all__'
+        read_only_fields = ('user', 'movie',)

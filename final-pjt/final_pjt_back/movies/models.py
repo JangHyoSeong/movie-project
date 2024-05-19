@@ -79,11 +79,12 @@ class MovieReview(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content = models.TextField()
-    score = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
+    score = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(5)])
+    created_at = models.DateTimeField(auto_now_add=True)
     
     
 class MovieChat(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content = models.TextField(max_length=20)
-    created_at = models.DateTimeField(auto_now_add=False)
+    created_at = models.DateTimeField(auto_now_add=True)
