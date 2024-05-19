@@ -140,16 +140,14 @@ onMounted(() => {
 .content-container {
   position: relative;
   top: 3vh;
-  left: 3%;
+  left: 2%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 /* 영화 상세 정보 컨테이너 스타일 */
 .detail-container {
   color: white;
-  text-align: center;
   padding-bottom: 5%;
   margin-left: 10%;
 }

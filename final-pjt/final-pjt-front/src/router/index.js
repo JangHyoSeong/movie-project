@@ -7,7 +7,10 @@ import OverviewView from '@/views/MovieDetail/OverviewView.vue'
 import ReviewView from '@/views/MovieDetail/ReviewView.vue'
 import RecommendView from '@/views/MovieDetail/RecommendView.vue'
 import ChatView from '@/views/MovieDetail/ChatView.vue'
-import ProfileView from '@/views/ProfileView.vue'
+import ProfileDetailView from '@/views/ProfileDetailView.vue'
+import LikeView from '@/views/ProfileDetail/LikeView.vue'
+import CommentView from '@/views/ProfileDetail/CommentView.vue'
+import UpdateView from '@/views/ProfileDetail/UpdateView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,9 +42,14 @@ const router = createRouter({
       ]
     },
     {
-      path: '/profile',
-      name: 'profile',
-      component: ProfileView
+    path: '/profile',
+    name: 'profile',
+    component: ProfileDetailView,
+      children: [
+        { path: 'like', name: 'profile-like', component: LikeView },
+        { path: 'comment', name: 'profile-comment', component: CommentView },
+        { path: 'update', name: 'profile-update', component: UpdateView }
+      ]
     }
   ]
 })
