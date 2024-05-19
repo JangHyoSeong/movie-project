@@ -1,33 +1,36 @@
 <template>
-  <!-- 로그인 버튼 -->
-  <p @click="LoginVueOn" class="login">로그인</p>
-  <!-- 로그인 팝업 -->
-  <div class="login-popup" :class="isLogin">
-    <div class="login-popup-detail">
-      <!-- 로고 및 제목 -->
-      <div class="logo-title">
-        <img src="../../public/Logo_img.png" alt="Logo" class="logo">
-        <h1 style="color: #166AE8;">다각화</h1>
-      </div>
-      <!-- 로그인 컨텐츠 -->
-      <div class="login-popup-content">
-        <h3>로그인</h3>
-        <form @submit.prevent="login">
-          <!-- 아이디 입력창 -->
-          <p><input type="text" class="input-txt" placeholder="아이디" v-model.trim="username"></p>
-          <!-- 비밀번호 입력창 -->
-          <p><input type="password" class="input-txt" placeholder="비밀번호" v-model.trim="password"></p>
-          <!-- 로그인 버튼 -->
-          <input class="login-btn" type="submit" value="로그인">
-        </form>
-        <!-- 회원가입 링크 -->
-        <div class="sign-login">
-          <p>계정이 없으신가요?</p>
-          <p style="color: #166AE8; text-decoration:underline;">회원가입</p>
+  <div>
+    <!-- 로그인 버튼 -->
+    <p @click="LoginVueOn" v-show="!store.isLogin" class="login">로그인</p>
+    <p @click="store.logout" v-show="store.isLogin" class="login">로그아웃</p>
+    <!-- 로그인 팝업 -->
+    <div class="login-popup" :class="isLogin">
+      <div class="login-popup-detail">
+        <!-- 로고 및 제목 -->
+        <div class="logo-title">
+          <img src="../../public/Logo_img.png" alt="Logo" class="logo">
+          <h1 style="color: #166AE8;">다각화</h1>
         </div>
+        <!-- 로그인 컨텐츠 -->
+        <div class="login-popup-content">
+          <h3>로그인</h3>
+          <form @submit.prevent="login">
+            <!-- 아이디 입력창 -->
+            <p><input type="text" class="input-txt" placeholder="아이디" v-model.trim="username"></p>
+            <!-- 비밀번호 입력창 -->
+            <p><input type="password" class="input-txt" placeholder="비밀번호" v-model.trim="password"></p>
+            <!-- 로그인 버튼 -->
+            <input class="login-btn" type="submit" value="로그인">
+          </form>
+          <!-- 회원가입 링크 -->
+          <div class="sign-login">
+            <p>계정이 없으신가요?</p>
+            <p style="color: #166AE8; text-decoration:underline;">회원가입</p>
+          </div>
+        </div>
+        <!-- 팝업 닫기 버튼 -->
+        <button class="popup-close-btn" @click="LoginVueOff">x</button>
       </div>
-      <!-- 팝업 닫기 버튼 -->
-      <button class="popup-close-btn" @click="LoginVueOff">x</button>
     </div>
   </div>
 </template>
@@ -47,7 +50,16 @@ const login = function () {
     username: username.value,
     password: password.value,
   }
+
   store.login(payload)
+  if (store.loginResult === true) {
+    LoginVueOff()
+    isLogin.value = ''
+    username.value = ''
+    password.value = ''
+  } else {
+    password.value = ''
+  }
 }
 
 // 로그인 팝업 상태
@@ -62,6 +74,7 @@ const LoginVueOn = function () {
 const LoginVueOff = function () {
   isLogin.value = ''
 }
+
 </script>
 
 <style scoped>
@@ -75,7 +88,7 @@ const LoginVueOff = function () {
 
 /* 로그인 팝업 스타일 */
 .login-popup {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

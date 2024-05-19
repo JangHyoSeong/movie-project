@@ -22,8 +22,12 @@
 /* 네비게이션 바 */
 .navbar {
   width: 100%;
+<<<<<<< HEAD
   height: 50px;
   opacity: 0.75;
+=======
+  position: relative;
+>>>>>>> 19545c6aa14a0b9826233e22319ededd2564d698
   background-color: #111111; /* 배경 색상을 여기로 이동 */
 }
 
