@@ -19,6 +19,7 @@
         <p>개봉 상태 : {{ status }}</p>
         <p v-if="runningTime">러닝타임 : {{ runningTime }}분</p>
         <p v-if="openingDate">개봉 일자 : {{ openingDate }}</p>
+        <button @click="likeMovie">좋아요</button>
       </article>
       <!-- 유튜브 플레이어 -->
       <div class="youtube-container">
@@ -38,10 +39,12 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useLoginStore } from '@/stores/login'
 import axios from 'axios'
 import MovieDetailNav from '@/components/MovieDetailNav.vue'
 
 const router = useRouter()
+const store = useLoginStore()
 
 // 홈으로 클릭 시, 메인 페이지로 이동하기
 const goToHome = () => {
@@ -109,6 +112,25 @@ onMounted(() => {
         .catch(err => console.log(err))
     })
 })
+
+// 영화 좋아요 기능
+const likeMovie = function () {
+  axios({
+    method: 'post',
+    url: `http://127.0.0.1:8000/api/v1/${route.params.movie_id}/like/`,
+    data: {
+      movie_id: route.params.movie_id,
+    },
+    headers: {
+      Authorization: `Token ${store.token}`
+    }
+  })
+    .then((res) => {
+      // 이 부분은 나중에 좋아요 버튼 색깔이 바뀌는 것으로 수정 바람
+      alert('좋아요 성공')
+    })
+    .catch(err => console.log(err))
+}
 </script>
 
 <style scoped>

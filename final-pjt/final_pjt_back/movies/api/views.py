@@ -96,3 +96,20 @@ def current_user(request):
     user = get_object_or_404(get_user_model(), username=request.user)
     serializer = UserSerializer(user)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def user_profile(request):
+    user = get_object_or_404(get_user_model(), username=request.user)
+    serializer = UserSerializer()
+    
+@api_view(['POST'])
+def movie_like(request, movie_id):
+    movie = get_object_or_404(Movie, movie_id=movie_id)
+    user = get_object_or_404(get_user_model(), username=request.user)
+    
+    if user in movie.like_users.all():
+        movie.like_users.remove(user)
+    else:
+        movie.like_users.add(user)
+        
+    return Response(status=status.HTTP_202_ACCEPTED)
