@@ -67,7 +67,7 @@ onMounted(() => {
       genre.value = res.data.genre
       country.value = res.data.country
       runningTime.value = res.data.running_time
-      if (res.data.status == 0) {
+      if (res.data.show_status == 0) {
         status.value = '개봉'
       } else if (res.data.status == 1) {
         status.value = '개봉 예정'

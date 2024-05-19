@@ -114,7 +114,8 @@ const genreCount = ref(0)
 const producerCount = ref(0)
 const actorCount = ref(0)
 const countryCount = ref(0)
-const moviesList = ref([])
+const currentMovieList = ref([])
+const upcomingMovieList = ref([])
 
 // 영화 정보 개수 받아오기
 onMounted(() => {
@@ -134,12 +135,23 @@ onMounted(() => {
 
 //  영화 리스트 받아오기
 onMounted(() => {
+  // 현재 개봉 영화 리스트
   axios({
     method: 'get',
-    url: 'http://127.0.0.1:8000/api/v1/movies/'
+    url: 'http://127.0.0.1:8000/api/v1/current_movies/'
   })
     .then((res) => {
-      moviesList.value = res.data
+      currentMovieList.value = res.data
+    })
+    .catch(err => console.log(err))
+
+  // 개봉 예정 영화 리스트
+  axios({
+    method: 'get',
+    url: 'http://127.0.0.1:8000/api/v1/upcoming_movies/'
+  })
+    .then((res) => {
+      upcomingMovieList.value = res.data
     })
     .catch(err => console.log(err))
 })
@@ -152,10 +164,10 @@ const endIndex2 = ref(6)
 
 // 현재 영화 목록
 const currentMovies1 = computed(() => {
-  return moviesList.value.slice(startIndex1.value, endIndex1.value)
+  return currentMovieList.value.slice(startIndex1.value, endIndex1.value)
 })
 const currentMovies2 = computed(() => {
-  return moviesList.value.slice(startIndex2.value, endIndex2.value)
+  return upcomingMovieList.value.slice(startIndex2.value, endIndex2.value)
 })
 
 // 현재 포스터 표시
@@ -166,7 +178,7 @@ const showNextPoster1_1 = () => {
   }
 }
 const showNextPoster1_2 = () => {
-  if (endIndex1.value !== moviesList.value.length) {
+  if (endIndex1.value !== currentMovieList.value.length) {
     startIndex1.value += 1
     endIndex1.value += 1
   } else {
@@ -183,7 +195,7 @@ const showNextPoster2_1 = () => {
 }
 
 const showNextPoster2_2 = () => {
-  if (endIndex2.value !== moviesList.value.length) {
+  if (endIndex2.value !== upcomingMovieList.value.length) {
     startIndex2.value += 1
     endIndex2.value += 1
   } else {
