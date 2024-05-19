@@ -24,6 +24,19 @@
 defineProps({
   movie: Object,
 })
+
+import { onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+
+const route = useRoute()
+const router = useRouter()
+
+onMounted(() => {
+  if (route.path === `/movie/${route.params.movie_id}`) {
+    router.replace({name: 'movie-overview', params: {movie_id: route.params.movie_id}})
+  }
+})
+
 </script>
 
 <style scoped>
