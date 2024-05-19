@@ -202,6 +202,12 @@ const modeOn = function () {
     fadeMode.value = 'fade-out';
   }
 }
+
+// emit event
+// 로그인 로그아웃 팝업을 띄우는 데 사용
+const openSignup = function () {
+  const isSignClicked = ref(true)
+}
 </script>
 
 <!-- CSS 스타일 -->

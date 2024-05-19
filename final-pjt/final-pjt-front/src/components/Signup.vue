@@ -1,6 +1,6 @@
 <template>
   <!-- 회원가입 버튼 -->
-  <p @click="SignVueOn" class="sign">회원가입</p>
+  <p @click="SignVueOn" class="sign" v-show="!store.isLogin">회원가입</p>
   <!-- 회원가입 팝업 -->
   <div class="sign-popup" :class="isSign">
     <div class="sign-popup-detail">
@@ -40,7 +40,10 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useLoginStore } from '@/stores/login'
 import axios from 'axios'
+
+const store = useLoginStore()
 
 // 데이터 상태
 const username = ref(null)
