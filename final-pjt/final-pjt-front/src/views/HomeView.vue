@@ -205,16 +205,14 @@ const modeOn = function () {
   }
 }
 
-<<<<<<< HEAD
 // 최상단으로 올라가는 버튼
 const goTop = function () {
   window.scrollTo({left: 0, top: 0, behavior: 'smooth'})
-=======
+}
 // emit event
 // 로그인 로그아웃 팝업을 띄우는 데 사용
 const openSignup = function () {
   const isSignClicked = ref(true)
->>>>>>> 19545c6aa14a0b9826233e22319ededd2564d698
 }
 </script>
 
