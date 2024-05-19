@@ -1,5 +1,6 @@
 from django.shortcuts import get_list_or_404, get_object_or_404
 from django.db.models import Q
+from django.contrib.auth import get_user_model
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -65,4 +66,33 @@ def choice(request):
         'producers': producers,
     }
     serializer = ChoiceSerializer(data)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['GET', 'POST', 'DELETE'])
+def review(request, movie_id):
+    movie = get_object_or_404(Movie, movie_id=movie_id)
+    if request.method == 'GET':
+        reviews = get_list_or_404(MovieReview, movie=movie)
+        serializer = ReviewListSerializer(reviews, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    elif request.method == 'POST':
+        user = get_object_or_404(get_user_model(), username=request.user)
+        serializer = ReviewSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save(movie=movie, user=user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+    elif request.method == 'DELETE':
+        print(request.data)
+        review = get_object_or_404(MovieReview, id=request.data.get('review_id'))
+        if review.user != request.user:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+        review.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET'])
+def current_user(request):
+    user = get_object_or_404(get_user_model(), username=request.user)
+    serializer = UserSerializer(user)
     return Response(serializer.data, status=status.HTTP_200_OK)

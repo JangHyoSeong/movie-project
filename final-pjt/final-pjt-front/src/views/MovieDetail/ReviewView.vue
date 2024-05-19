@@ -3,17 +3,17 @@
     <div class="review-score-container">
       <!-- 총 평점 및 리뷰 작성 버튼 -->
       <div class="total-score">
-        <p>총 평점 : 4.5</p>
+        <p>총 평점 : {{ reviewAvg }}</p>
         <button @click="showReviewModal">리뷰 작성</button>
       </div>
       <!-- 리뷰 개수 -->
-      <p>1234개의 평점이 등록되었습니다</p>
+      <p>{{ reviewNum }}개의 평점이 등록되었습니다</p>
     </div>
     <div class="review-list-container">
       <!-- 최신 순, 평점 순 버튼 -->
       <div class="sort-buttons">
-        <button>최신 순</button>
-        <button>평점 순</button>
+        <button @click="orderByNew">최신 순</button>
+        <button @click="orderByScore">평점 순</button>
       </div>
       <!-- 리뷰 목록 -->
       <div class="review-list">
@@ -24,7 +24,7 @@
             <p>{{ format(review.created_at, 'yyyy-MM-dd HH:mm:ss') }}</p>
             <p>{{ review.content }}</p>
           </div>
-          <button class="delete-button" @click="deleteReview(review.id)">✖</button>
+          <button v-show="isCurrentUser(review.user)" class="delete-button" @click="deleteReview(review.id)">✖</button>
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
 defineProps({
   movie: Object,
 })
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { format } from 'date-fns'
 import { useLoginStore } from '@/stores/login'
@@ -70,15 +70,38 @@ onMounted(() => {
   })
     .then((res) => {
       reviews.value = res.data
-      console.log(reviews.value)
     })
     .catch(err => {
       console.log(err)
     })
 })
 
+// 리뷰 관련 변수들
+const reviewAvg = computed(() => {
+  let reviewSum = 0
+  reviews.value.forEach((review) => {
+    reviewSum += review.score
+  })
+  return (reviewSum / reviews.value.length).toFixed(2)
+})
+
+const reviewNum = computed(() => {
+  return reviews.value.length
+})
+
+
+// 리뷰 최신순 정렬
+const orderByNew = function () {
+  reviews.value.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+}
+
+// 리뷰 평점순 정렬
+const orderByScore = function () {
+  reviews.value.sort((a, b) => b.score - a.score)
+}
+
+
 // 리뷰 삭제 기능
-// 현재는 아무나 리뷰 삭제 가능. 고쳐야함
 const deleteReview = function (review_id) {
   axios({
     method: 'delete',
@@ -94,8 +117,29 @@ const deleteReview = function (review_id) {
       alert('리뷰가 정상적으로 삭제되었습니다.')
     })
     .catch((err) => {
-      alert('오류 발생')
+      alert('권한이 없습니다')
     })
+}
+
+// 현재 로그인된 유저 정보 가져오기
+const currentUser = ref(null)
+onMounted(() => {
+  axios({
+    method: 'get',
+    url: 'http://127.0.0.1:8000/api/v1/current_user/',
+    headers: {
+      Authorization: `Token ${store.token}`
+    }
+  })
+    .then((res) => {
+      currentUser.value = res.data
+    })
+    .catch(err => console.log(err))
+})
+
+// 현재 유저가 리뷰 작성자인지 확인
+const isCurrentUser = function (user) {
+  return currentUser.value && user.id === currentUser.value.id
 }
 </script>
 
