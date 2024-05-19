@@ -74,7 +74,6 @@ const LoginVueOn = function () {
 const LoginVueOff = function () {
   isLogin.value = ''
 }
-
 </script>
 
 <style scoped>
@@ -88,16 +87,18 @@ const LoginVueOff = function () {
 
 /* 로그인 팝업 스타일 */
 .login-popup {
+  background: linear-gradient(#212121, #212121) padding-box,
+    linear-gradient(0deg, #e81cff, #40c9ff) border-box;
+  border: 3px solid transparent;
+  color: white;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 350px;
-  height: 500px;
-  display: none;
+  height: 450px;
   border-radius: 3%;
-  border: 1px solid black;
-  background-color: white;
+  display: none;
 }
 
 /* 로그인 팝업 디테일 스타일 */
@@ -126,7 +127,7 @@ const LoginVueOff = function () {
 /* 로그인 컨텐츠 스타일 */
 .login-popup-content {
   text-align: center;
-  transform: translate(0%, 0%);
+  transform: translate(0%, -10%);
 }
 
 /* 로그인 입력창 스타일 */
@@ -150,7 +151,7 @@ const LoginVueOff = function () {
 /* 로그인 버튼 스타일 */
 .login-btn {
   margin-top: 1%;
-  padding: 2% 4%;
+  padding: 2% 23%;
   color: white;
   border-style: none;
   border-radius: 10%;

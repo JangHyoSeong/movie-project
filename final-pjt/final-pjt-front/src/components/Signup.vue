@@ -108,14 +108,16 @@ const signUpRequest = function () {
 
 /* 회원가입 팝업 스타일 */
 .sign-popup {
-  position: absolute;
+  background: linear-gradient(#212121, #212121) padding-box,
+    linear-gradient(0deg, #e81cff, #40c9ff) border-box;
+  border: 3px solid transparent;
+  color: white;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 350px;
   height: 500px;
-  background-color: white;
-  border: 1px solid black;
   border-radius: 3%;
   display: none;
 }
@@ -143,6 +145,12 @@ const signUpRequest = function () {
   height: 20%;
 }
 
+/* 회원가입 컨텐츠 스타일 */
+.sign-popup-content {
+  text-align: center;
+  transform: translate(0%, -12%);
+}
+
 /* 회원가입 링크 스타일 */
 .sign-txt {
   display: flex;
@@ -153,12 +161,6 @@ const signUpRequest = function () {
   margin: 4% 2% 0% 0%;
 }
 
-/* 회원가입 컨텐츠 스타일 */
-.sign-popup-content {
-  text-align: center;
-  transform: translate(0%, -10%);
-}
-
 .input-txt {
   padding: 2%;
   width: 50%;
@@ -166,7 +168,7 @@ const signUpRequest = function () {
 
 /* 회원가입 버튼 스타일 */
 .sign-btn {
-  padding: 2% 4%;
+  padding: 2% 20%;
   color: white;
   border-style: none;
   border-radius: 10%;
@@ -175,9 +177,9 @@ const signUpRequest = function () {
 
 /* 팝업 닫기 버튼 스타일 */
 .popup-close-btn {
-  position: absolute;
   left: 92%;
   top: 2%;
+  position: absolute;
 }
 
 /* 팝업 표시 스타일 */

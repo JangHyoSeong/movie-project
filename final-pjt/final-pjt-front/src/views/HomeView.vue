@@ -46,7 +46,7 @@
     <div class="section-movie">
       <h1>[ 현재 개봉작 ]</h1>
       <div class="movies-poster">
-        <div @click="newMovieDetail(movie)" v-for="movie in currentMovies1" :key="movie.movie_id">
+        <div class="posts" @click="newMovieDetail(movie)" v-for="movie in currentMovies1" :key="movie.movie_id">
           <img :src="movie.poster" class="poster" alt="#">
         </div>
         <!-- 포스터 이전/다음 버튼 -->
@@ -57,7 +57,7 @@
 
       <h1>[ 개봉 예정작 ]</h1>
       <div class="movies-poster">
-        <div @click="newMovieDetail(movie)" v-for="movie in currentMovies2" :key="movie.movie_id">
+        <div class="posts" @click="newMovieDetail(movie)" v-for="movie in currentMovies2" :key="movie.movie_id">
           <img :src="movie.poster" class="poster" alt="#">
         </div>
         <!-- 포스터 이전/다음 버튼 -->
@@ -219,7 +219,7 @@ const modeOn = function () {
 
 // 최상단으로 올라가는 버튼
 const goTop = function () {
-  window.scrollTo({left: 0, top: 0, behavior: 'smooth'})
+  window.scrollTo({ left: 0, top: 0, behavior: 'smooth' })
 }
 // emit event
 // 로그인 로그아웃 팝업을 띄우는 데 사용
@@ -232,13 +232,14 @@ const openSignup = function () {
 <style scoped>
 .gotop {
   position: absolute;
-  bottom: -101%;
+  bottom: -100%;
   right: 2%;
   padding: 0.6%;
-  color: white;
+  color: rgb(200, 200, 200);
   border: 1px solid white;
   border-radius: 100%;
   z-index: 1;
+  padding-bottom: 0.7%;
 }
 
 /* 모드 전환 버튼 */
@@ -252,8 +253,10 @@ const openSignup = function () {
   border-radius: 100%;
 }
 
-.gotop:hover, .mode-btn:hover {
-  background-color: #166AE8;
+.gotop:hover,
+.mode-btn:hover {
+  color: white;
+  background: linear-gradient(145deg, #e81cff, #40c9ff) border-box;
   border: none;
 }
 
@@ -312,6 +315,7 @@ main {
 
 /* 메인화면 텍스트 */
 .main-explan-txt {
+  font-weight: bold;
   position: relative;
   text-align: center;
   font-size: 200%;
@@ -362,7 +366,7 @@ main {
 
 .recommend:hover {
   border-style: none;
-  background-color: #166AE8;
+  background: linear-gradient(145deg, #e81cff, #40c9ff) border-box;
 }
 
 /* 영화 정보 영역 */
@@ -374,7 +378,7 @@ main {
 /* 영화 정보 갯수 */
 .movie-cnt {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   color: white;
 }
 
@@ -430,7 +434,6 @@ section {
 .section-movie {
   height: 90vh;
   position: relative;
-  top: 5vh;
   text-align: center;
   color: white;
 }
@@ -441,13 +444,41 @@ section {
   justify-content: space-evenly;
 }
 
-/* 영화 포스터 크기 */
-.poster {
-  width: 24vh;
-  height: 32vh;
+.posts {
+  width: 205px;
+  height: 305px;
+  background: linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 16px;
+  background-size: 200% 100%;
+  animation: gradient 5s ease infinite;
 }
 
-.poster:hover {
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 영화 포스터 크기 */
+.poster {
+  border-radius: 6%;
+  width: 24vh;
+  height: 36vh;
+}
+
+.posts:hover {
   opacity: 0.75;
   /* 크기 커지는 애니메이션 */
   transform: scale(1.1);
@@ -469,22 +500,22 @@ section {
 
 .arrow1-1 {
   left: 1%;
-  bottom: 68%;
+  bottom: 66%;
 }
 
 .arrow1-2 {
   right: 1%;
-  bottom: 68%;
+  bottom: 66%;
 }
 
 .arrow2-1 {
   left: 1%;
-  bottom: 22.5%;
+  bottom: 16%;
 }
 
 .arrow2-2 {
   right: 1%;
-  bottom: 22.5%;
+  bottom: 16%;
 }
 
 .arrow1-1:hover,
@@ -515,6 +546,6 @@ section {
 /* 저작권 글자 */
 .copyright {
   text-align: center;
-  color: white;
+  color: rgb(200, 200, 200);
 }
 </style>
