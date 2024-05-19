@@ -60,7 +60,7 @@ const submitReview = function () {
       reviewScore.value = 0
       reviewContent.value = ''
       closeModal()
-      router.push({name: 'movie-review', params:{movie_id: route.params.movie_id}})
+      location.reload(true)
     })
     .catch(err => {
       alert('리뷰 작성 권한이 없습니다')

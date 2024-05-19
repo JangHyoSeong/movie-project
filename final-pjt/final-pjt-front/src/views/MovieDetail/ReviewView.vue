@@ -26,6 +26,11 @@
           </div>
           <button v-show="isCurrentUser(review.user)" class="delete-button" @click="deleteReview(review.id)">✖</button>
         </div>
+        <div v-if="reviews.length===0" class="review-item">
+          <div class="review-content">
+            <p>아직 리뷰가 없습니다.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -79,6 +84,9 @@ onMounted(() => {
 // 리뷰 관련 변수들
 const reviewAvg = computed(() => {
   let reviewSum = 0
+  if (reviews.value.length === 0) {
+    return 0
+  }
   reviews.value.forEach((review) => {
     reviewSum += review.score
   })
@@ -115,6 +123,7 @@ const deleteReview = function (review_id) {
   })
     .then((res) => {
       alert('리뷰가 정상적으로 삭제되었습니다.')
+      location.reload(true)
     })
     .catch((err) => {
       alert('권한이 없습니다')
