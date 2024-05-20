@@ -2,7 +2,7 @@
   <div>
     <!-- 로그인 버튼 -->
     <p @click="LoginVueOn" v-show="!store.isLogin" class="login">로그인</p>
-    <p @click="store.logout" v-show="store.isLogin" class="login">로그아웃</p>
+    <p @click="store.logout" v-show="store.isLogin" class="logout">로그아웃</p>
     <!-- 로그인 팝업 -->
     <div class="login-popup" :class="isLogin">
       <div class="login-popup-detail">
@@ -77,18 +77,27 @@ const LoginVueOff = function () {
 </script>
 
 <style scoped>
+/* 로그아웃 스타일 */
+.logout {
+  position: absolute;
+  top: 0%;
+  right: 4%;
+  color: white;
+}
+
 /* 로그인 버튼 스타일 */
 .login {
   position: absolute;
   top: 0%;
-  right: 10%;
+  right: 9%;
   color: white;
+  cursor: pointer;
 }
 
 /* 로그인 팝업 스타일 */
 .login-popup {
   background: linear-gradient(#212121, #212121) padding-box,
-    linear-gradient(0deg, #e81cff, #40c9ff) border-box;
+    linear-gradient(330deg, #e81cff, #40c9ff) border-box;
   border: 3px solid transparent;
   color: white;
   position: fixed;

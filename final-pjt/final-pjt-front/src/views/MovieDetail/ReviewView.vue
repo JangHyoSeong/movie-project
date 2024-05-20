@@ -2,18 +2,16 @@
   <div class="review-container">
     <div class="review-score-container">
       <!-- 총 평점 및 리뷰 작성 버튼 -->
-      <div class="total-score">
-        <p>총 평점 : {{ reviewAvg }}</p>
-        <button @click="showReviewModal">리뷰 작성</button>
-      </div>
+      <p @click="showReviewModal" class="review-btn">리뷰 작성</p>
+      <h1 class="total-score">총 평점 : {{ reviewAvg }}</h1>
       <!-- 리뷰 개수 -->
-      <p>{{ reviewNum }}개의 평점이 등록되었습니다</p>
+      <p class="total-score">{{ reviewNum }}개의 평점이 등록되었습니다</p>
     </div>
     <div class="review-list-container">
       <!-- 최신 순, 평점 순 버튼 -->
       <div class="sort-buttons">
-        <button @click="orderByNew">최신 순</button>
-        <button @click="orderByScore">평점 순</button>
+        <p @click="orderByNew" class="btn">최신 순</p>
+        <p @click="orderByScore" class="btn">평점 순</p>
       </div>
       <!-- 리뷰 목록 -->
       <div class="review-list">
@@ -26,7 +24,7 @@
           </div>
           <button v-show="isCurrentUser(review.user)" class="delete-button" @click="deleteReview(review.id)">✖</button>
         </div>
-        <div v-if="reviews.length===0" class="review-item">
+        <div v-if="reviews.length === 0" class="review-item">
           <div class="review-content">
             <p>아직 리뷰가 없습니다.</p>
           </div>
@@ -36,7 +34,7 @@
   </div>
 
   <!-- 리뷰 작성 모달 -->
-  <MovieReviewForm v-if="reviewModalVisible" @closeModal="hideModal"/>
+  <MovieReviewForm v-if="reviewModalVisible" @closeModal="hideModal" />
 </template>
 
 <script setup>
@@ -153,33 +151,60 @@ const isCurrentUser = function (user) {
 </script>
 
 <style scoped>
+.review-btn {
+  border: 1px solid white;
+  padding: 5px;
+  width: 35%;
+  text-align: center;
+}
+
+.btn {
+  border: 1px solid white;
+  padding: 5px;
+  margin-left: 1%;
+}
+
+.btn:hover , .review-btn:hover {
+  background-color: #166AE8;
+  border-style: none;
+}
+
 .review-container {
   display: flex;
   padding: 20px;
 }
 
 .review-score-container {
-  flex: 1;
-  margin-right: 20px;
+  position: relative;
+  left: 12%;
+}
+
+.review-score-container p {
+  margin-top: 3%;
+  margin-left: 6%;
 }
 
 .review-list-container {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
+  position: absolute;
+  top: 29%;
+  left: 31.5%;
+  width: 55%;
 }
 
 .total-score {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: 30px;
+  margin-left: 4%;
+  width: 120%;
 }
 
 .sort-buttons {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
+
+}
+
+.sort-buttons button {
+  margin-left: 1%;
 }
 
 .review-list {

@@ -1,6 +1,6 @@
 <template>
-  <h5 class="select-end-btn" @click="goToHome">홈으로</h5>
-  
+  <h4 class="select-end-btn" @click="goToHome">Home</h4>
+
   <div class="background">
     <!-- 배경 이미지 -->
     <div class="background-filter">
@@ -19,11 +19,24 @@
         <p>개봉 상태 : {{ status }}</p>
         <p v-if="runningTime">러닝타임 : {{ runningTime }}분</p>
         <p v-if="openingDate">개봉 일자 : {{ openingDate }}</p>
-        <button @click="likeMovie">좋아요</button>
+
+        <!-- 좋아요 기능 -->
+        <label class="like-container" @click="likeMovie">
+          <input type="checkbox">
+          <div class="like-checkmark">
+            <svg viewBox="0 0 256 256">
+              <rect fill="none" height="256" width="256"></rect>
+              <path
+                d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z"
+                stroke-width="20px" stroke="#FFF" fill="none"></path>
+            </svg>
+          </div>
+        </label>
+
       </article>
       <!-- 유튜브 플레이어 -->
       <div class="youtube-container">
-        <iframe width="576" height="324" :src="videoUrl" frameborder="0"
+        <iframe width="600" height="350" :src="videoUrl" frameborder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
         </iframe>
       </div>
@@ -94,7 +107,7 @@ onMounted(() => {
     .catch(err => console.log(err))
     .then((res) => {
       // 유튜브 트레일러 로드
-      // const API_KEY = import.meta.env.VITE_YT_API_KEY
+      const API_KEY = import.meta.env.VITE_YT_API_KEY
 
       axios({
         method: 'get',
@@ -134,6 +147,67 @@ const likeMovie = function () {
 </script>
 
 <style scoped>
+.like-container input {
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.like-container {
+  position: absolute;
+  top: 4.5vh;
+  left: 15.5vh;
+  font-size: 20px;
+  user-select: none;
+  transition: 100ms;
+}
+
+.like-checkmark {
+  top: 0;
+  left: 0;
+  height: 2em;
+  width: 2em;
+  transition: 100ms;
+  animation: dislike_effect 400ms ease;
+}
+
+.like-container input:checked~.like-checkmark path {
+  fill: #FF5353;
+  stroke-width: 0;
+}
+
+.like-container input:checked~.like-checkmark {
+  animation: like_effect 400ms ease;
+}
+
+@keyframes like_effect {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes dislike_effect {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* 배경 스냅샷 스타일 */
 .background-filter {
   position: absolute;
@@ -186,8 +260,8 @@ const likeMovie = function () {
 /* 유튜브 플레이어 컨테이너 스타일 */
 .youtube-container {
   position: absolute;
-  top: 14%;
-  right: 10%;
+  top: 6%;
+  right: 12%;
 }
 
 /* 영화 선택 네비게이션 컨테이너 스타일 */

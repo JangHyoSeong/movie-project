@@ -50,9 +50,12 @@
           <img :src="movie.poster" class="poster" alt="#">
         </div>
         <!-- 포스터 이전/다음 버튼 -->
-        <h1 class="arrow arrow1-1" @click="showNextPoster1_1">
-          < </h1>
-            <h1 class="arrow arrow1-2" @click="showNextPoster1_2"> > </h1>
+        <div class="arrow arrow1-1" @click="showNextPoster1_1">
+          <p> &lt; </p>
+        </div>
+        <div class="arrow arrow1-2" @click="showNextPoster1_2">
+          <p> &gt; </p>
+        </div>
       </div>
 
       <h1>[ 개봉 예정작 ]</h1>
@@ -61,9 +64,12 @@
           <img :src="movie.poster" class="poster" alt="#">
         </div>
         <!-- 포스터 이전/다음 버튼 -->
-        <h1 class="arrow arrow2-1" @click="showNextPoster2_1">
-          < </h1>
-            <h1 class="arrow arrow2-2" @click="showNextPoster2_2"> > </h1>
+        <div class="arrow arrow2-1" @click="showNextPoster2_1">
+          <p> &lt; </p>
+        </div>
+        <div class="arrow arrow2-2" @click="showNextPoster2_2">
+          <p> &gt; </p>
+        </div>
       </div>
     </div>
 
@@ -232,7 +238,7 @@ const openSignup = function () {
 <style scoped>
 .gotop {
   position: absolute;
-  bottom: -100%;
+  bottom: -98.5%;
   right: 2%;
   padding: 0.6%;
   color: rgb(200, 200, 200);
@@ -240,6 +246,7 @@ const openSignup = function () {
   border-radius: 100%;
   z-index: 1;
   padding-bottom: 0.7%;
+  cursor: pointer;
 }
 
 /* 모드 전환 버튼 */
@@ -251,6 +258,7 @@ const openSignup = function () {
   color: white;
   border: 1px solid white;
   border-radius: 100%;
+  cursor: pointer;
 }
 
 .gotop:hover,
@@ -367,6 +375,7 @@ main {
 .recommend:hover {
   border-style: none;
   background: linear-gradient(145deg, #e81cff, #40c9ff) border-box;
+  cursor: pointer;
 }
 
 /* 영화 정보 영역 */
@@ -445,8 +454,8 @@ section {
 }
 
 .posts {
-  width: 205px;
-  height: 305px;
+  width: 24.5vh;
+  height: 36.5vh;
   background: linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
   display: flex;
   justify-content: center;
@@ -454,7 +463,7 @@ section {
   flex-direction: column;
   border-radius: 16px;
   background-size: 200% 100%;
-  animation: gradient 5s ease infinite;
+  animation: gradient 2.5s ease infinite;
 }
 
 @keyframes gradient {
@@ -476,6 +485,7 @@ section {
   border-radius: 6%;
   width: 24vh;
   height: 36vh;
+  cursor: pointer;
 }
 
 .posts:hover {
@@ -496,26 +506,33 @@ section {
   color: gray;
   background-color: white;
   opacity: 0.75;
+  cursor: pointer;
+}
+
+.arrow p {
+  position: relative;
+  top: -320%;
+  font-size: 150%;
 }
 
 .arrow1-1 {
-  left: 1%;
-  bottom: 66%;
+  left: 1.7%;
+  bottom: 68%;
 }
 
 .arrow1-2 {
-  right: 1%;
-  bottom: 66%;
+  right: 1.7%;
+  bottom: 68%;
 }
 
 .arrow2-1 {
-  left: 1%;
-  bottom: 16%;
+  left: 1.7%;
+  bottom: 20%;
 }
 
 .arrow2-2 {
-  right: 1%;
-  bottom: 16%;
+  right: 1.7%;
+  bottom: 20%;
 }
 
 .arrow1-1:hover,
@@ -530,6 +547,7 @@ section {
   position: absolute;
   display: flex;
   height: 8vh;
+  cursor: pointer;
 }
 
 /* SNS 로고 이미지 */
@@ -547,5 +565,4 @@ section {
 .copyright {
   text-align: center;
   color: rgb(200, 200, 200);
-}
-</style>
+}</style>

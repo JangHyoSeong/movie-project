@@ -4,19 +4,19 @@
     <!-- 모달 내부 컨텐츠 -->
     <div class="modal-content">
       <button class="close-button" @click="closeModal">X</button>
-      <h3>리뷰 작성</h3>
+      <h2>리뷰 작성</h2>
 
       <!-- 작성 form -->
-      <form @submit.prevent="submitReview">
-        <div>
-          <label for="score">평점</label>
-          <input type="number" id="score" v-model="reviewScore" min="0" max="5" step="0.1" required>
+      <form @submit.prevent="submitReview" class="form">
+        <div class="score">
+          <label for="score">평점 : </label>
+          <input type="number" id="score" v-model="reviewScore" min="0" max="5" step="1" required>
         </div>
-        <div>
-          <label for="review">리뷰</label>
-          <textarea id="review" v-model="reviewContent" required></textarea>
+        <div class="review">
+          <label for="review"></label>
+          <textarea id="review" v-model="reviewContent" required placeholder="당신의 감상을 들려주세요."></textarea>
         </div>
-        <button type="submit">작성</button>
+        <button class="submit" type="submit">작성</button>
       </form>
 
     </div>
@@ -70,33 +70,74 @@ const submitReview = function () {
 
 <style scoped>
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(#212121, #212121) padding-box,
+    linear-gradient(330deg, #e81cff, #40c9ff) border-box;
+  border: 3px solid transparent;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 300px;
+  border-radius: 3%;
 }
 
 .modal-content {
-  background: white;
-  color: black;
+  color: white;
   padding: 20px;
-  border-radius: 8px;
   width: 300px;
-  position: relative;
+  text-align: center;
+  position: absolute;
+  top: 0%;
+}
+
+.modal-content h2 {
+  margin: 10% 0% 0% 0%;
 }
 
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5%;
+  right: 10%;
   background: none;
   border: none;
   font-size: 20px;
   cursor: pointer;
+  color: white;
+}
+
+.form {
+  transform: translate(0%, 10%);
+}
+
+.score {
+  margin: 5%;
+}
+
+.review {
+  margin: 2%;
+  padding: 2%;
+}
+
+#review {
+  width: 200px;
+  height: 50px;
+}
+
+.submit {
+  margin: 2%;
+  padding: 2% 8%;
+  border-radius: 15%;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+.submit:hover {
+  background-color: #166AE8;
+  border-style: none;
+  color: white;
 }
 </style>
