@@ -227,7 +227,7 @@ const likeMovie = function () {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(190deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%), linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.75) 70%);
+  background: linear-gradient(190deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 60%), linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 70%);
   pointer-events: none;
   /* 오버레이가 클릭 이벤트를 막지 않도록 */
 }
