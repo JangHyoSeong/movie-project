@@ -5,6 +5,7 @@
       <div class="order-range">평점순</div>
     </div>
 
+    <div v-if="movies.length > 0">
     <div class="poster">
       <img :src="movies[0].poster" alt="" class="post">
     </div>
@@ -16,8 +17,9 @@
         <p>평점 : {{ movies[0].review_score }}</p>
       </div>
     </div>
+    </div>
     <p class="go-to-select" @click="goToSelect">돌아가기</p>
-  </div>
+    </div>
 </template>
 
 <script setup>

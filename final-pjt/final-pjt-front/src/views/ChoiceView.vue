@@ -72,7 +72,7 @@
 
 <script setup>
 import axios from 'axios'
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
 
 const router = useRouter()
@@ -111,7 +111,6 @@ onMounted(() => {
       actors.value = res.data.actors
       producers.value = res.data.producers
       movies.value = res.data.movies
-      console.log(movies.value)
     })
     .catch((err) => console.log(err))
 })
@@ -225,6 +224,7 @@ const selectedParams = ref({
 
 const genreSelect = function (genre) {
   selectedParams.value.genre = genre
+  console.log(selectedParams.value)
 }
 
 const countrySelect = function (country) {
@@ -238,6 +238,22 @@ const actorSelect = function (actor) {
 const producerSelect = function (producer) {
   selectedParams.value.producer = producer
 }
+
+// 현재 선택된 요소에 따라 영화를 필터링
+const filteredMovies = computed(() => {
+  return movies.value.filter(movie => {
+    return (
+      (selectedParams.value.genre === null || selectedParams.value.genre.includes(movie.genre)) &&
+      (selectedParams.value.country === null || movie.country === selectedParams.value.country) &&
+      (selectedParams.value.actor === null || selectedParams.value.actor.includes(movie.actor)) &&
+      (selectedParams.value.producer === null || selectedParams.value.producer.includes(movie.producer))
+    )
+  })
+})
+
+watch(selectedParams, () => {
+  console.log('Filtered Movies:', filteredMovies.value)
+}, { deep: true })
 
 </script>
 
