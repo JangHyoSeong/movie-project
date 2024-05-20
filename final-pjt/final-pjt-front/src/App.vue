@@ -30,6 +30,7 @@ const selectData = ref({})
 
 // choice를 한 정보를 choicedetail로 넘겨줌
   const selectDataPass = function (data) {
+    console.log(data.value)
     selectData.value = data.value
   }
 </script>
