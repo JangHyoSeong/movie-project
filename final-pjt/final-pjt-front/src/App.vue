@@ -10,7 +10,7 @@
       <!-- 홈 링크 -->
       <RouterLink :to="{ name: 'home' }" class="nav">다각화</RouterLink>
       <!-- 검색 창 -->
-      <input type="text" name="search" class="search" placeholder="영화, 배우, 감독을 검색해보세요.">
+      <input type="text" name="search" class="search-nav" placeholder="영화, 배우, 감독을 검색해보세요.">
       <!-- 프로필 링크 -->
       <RouterLink :to="{ name: 'profile-like' }" class="profile-nav">프로필</RouterLink>
     </nav>
@@ -35,9 +35,9 @@ const selectData = ref({})
 </script>
 
 <style>
-.search {
+.search-nav {
   position: relative;
-  left: 60%;
+  left: 65%;
   width: 15%;
   height: 40%;
   border-style: none;
@@ -45,7 +45,7 @@ const selectData = ref({})
 
 .profile-nav {
   position: absolute;
-  right: 15%;
+  right: 10%;
   color: white;
   text-decoration: none;
 }
