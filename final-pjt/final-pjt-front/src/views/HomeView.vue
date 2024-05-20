@@ -100,9 +100,6 @@
 
   </section>
 
-  <!-- 로그인 및 회원가입 컴포넌트 -->
-  <Login />
-  <Signup />
   </div>
 </template>
 
@@ -111,14 +108,20 @@
 import axios from 'axios'
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useLoginStore } from '@/stores/login'
 import Login from '@/components/Login.vue'
 import Signup from '@/components/Signup.vue'
 
 const router = useRouter()
+const store = useLoginStore()
 
 // 추천 받기 클릭 시, Choice 페이지로 이동
 const recommend = function () {
-  router.push({ name: 'choice' })
+  if (store.isLogin === true){
+    router.push({ name: 'choice' })
+  } else {
+    alert('로그인 후 사용 가능합니다.')
+  }
 }
 
 // 포스터 클릭 시, 영화 Detail 페이지로 이동하기

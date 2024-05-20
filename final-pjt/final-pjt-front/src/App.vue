@@ -12,10 +12,12 @@
       <!-- 검색 창 -->
       <input type="text" name="search" class="search-nav" placeholder="영화, 배우, 감독을 검색해보세요.">
       <!-- 프로필 링크 -->
-      <RouterLink :to="{ name: 'profile-like' }" class="profile-nav">프로필</RouterLink>
+      <RouterLink :to="{ name: 'profile-like' }" class="profile-nav" v-show="store.isLogin">프로필</RouterLink>
     </nav>
   </div>
-
+    <!-- 로그인 및 회원가입 컴포넌트 -->
+  <Login />
+  <Signup />
   <!-- 라우터 뷰 -->
   <RouterView 
     @select-event="selectDataPass"
@@ -25,6 +27,11 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useLoginStore } from './stores/login'
+import Login from './components/Login.vue'
+import Signup from './components/Signup.vue'
+
+const store = useLoginStore()
 
 const selectData = ref({})
 
