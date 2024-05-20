@@ -6,15 +6,14 @@
     </div>
 
     <div class="poster">
-      <p class="post"></p>
+      <img :src="movies[0].poster" alt="" class="post">
     </div>
 
     <div class="movie-content-list">
       <div class="movie-content">
-        <p>제목 : 쇼생크 탈출</p>
-        <p>방영일 : 24.05.10</p>
-        <p>평점 : 5.0</p>
-        <p>{{ selectData }}dd</p>
+        <p>제목 : {{ movies[0].title }}</p>
+        <p>방영일 : {{ movies[0].opening_date }}</p>
+        <p>평점 : {{ movies[0].review_score }}</p>
       </div>
     </div>
     <p class="go-to-select" @click="goToSelect">돌아가기</p>
@@ -37,12 +36,24 @@ const goToSelect = function () {
 }
 
 // 필터링 된 영화 받아오기
+
+const movies = ref([])
 onMounted(() => {
+  console.log(props.selectData)
   axios({
     method: 'get',
-    url: ''
+    url: 'http://127.0.0.1:8000/api/v1/choice/result/',
+    params: {
+      genre: props.selectData.genre,
+      country: props.selectData.country,
+      actor: props.selectData.actor,
+      producer: props.selectData.producer
+    }
   })
-    .then((res) => {})
+    .then((res) => {
+      movies.value = res.data
+      console.log(movies.value)
+    })
     .catch(err => console.log(err))
 })
 </script>
