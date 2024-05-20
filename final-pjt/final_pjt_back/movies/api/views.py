@@ -113,3 +113,11 @@ def movie_like(request, movie_id):
         movie.like_users.add(user)
         
     return Response(status=status.HTTP_202_ACCEPTED)
+
+@api_view(['GET'])
+def movie_associate(request, movie_id):
+    movie = get_object_or_404(Movie, movie_id=movie_id)
+    genres = movie.genre.all()
+    related_movies = Movie.objects.filter(genre__in=genres, review_score__lt=9.4).exclude(movie_id=movie_id).distinct().order_by('-review_score')[:5]
+    serializer = MovieListSerializer(related_movies, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
