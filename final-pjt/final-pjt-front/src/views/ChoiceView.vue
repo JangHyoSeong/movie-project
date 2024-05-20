@@ -1,72 +1,76 @@
 <template>
-  <!-- 장르 선택 섹션 -->
-  <div class="movie-select">
-    <h2>[ 장르 선택 ]</h2>
-    <div class="poster">
-      <!-- 장르 목록 -->
-      <div v-for="genre in currentGenres" :key="genre.genre_id">
-        <p class="post-txt" @click="genreSelect(genre.genre)">{{ genre.genre }}</p>
+  <div v-if="isLoading" class="loading-screen">
+    <div class="loaderBar">
+      <h1>Loding</h1>
+    </div>
+  </div>
+
+  <!-- 3초 후 Loding이 끝나면 실행되는 화면 -->
+  <div v-else>
+    <!-- 장르 선택 섹션 -->
+    <div class="movie-select">
+      <h2>[ 장르 선택 ]</h2>
+      <div class="poster">
+        <!-- 장르 목록 -->
+        <div v-for="genre in currentGenres" :key="genre.genre_id">
+          <p class="post-txt" @click="genreSelect(genre.genre)">{{ genre.genre }}</p>
+        </div>
+        <!-- 이전/다음 장르 화살표 -->
+        <h1 class="arrow arrow5" @click="showPrevGenre">
+          &lt; </h1>
+        <h1 class="arrow arrow1" @click="showNextGenre"> &gt; </h1>
       </div>
-      <!-- 이전/다음 장르 화살표 -->
-      <h1 class="arrow arrow5" @click="showPrevGenre">
-        < </h1>
-          <h1 class="arrow arrow1" @click="showNextGenre"> > </h1>
+
+      <!-- 국가 선택 섹션 -->
+      <h2>[ 국가 선택 ]</h2>
+      <div class="poster">
+        <!-- 국가 목록 -->
+        <div v-for="country in currentCountries" :key="country.country_id">
+          <p class="post-txt" @click="countrySelect(country.country)">{{ country.country }}</p>
+        </div>
+        <!-- 이전/다음 국가 화살표 -->
+        <h1 class="arrow arrow6" @click="showPrevCountry">
+          &lt; </h1>
+        <h1 class="arrow arrow2" @click="showNextCountry"> &gt; </h1>
+      </div>
+
+      <!-- 배우 선택 섹션 -->
+      <h2>[ 배우 선택 ]</h2>
+      <div class="poster">
+        <!-- 배우 목록 -->
+        <div v-for="actor in currentActors" :key="actor.actor_id" class="actor-poster">
+          <img :src="actor.profile_image ? actor.profile_image : '../public/default_img.jpg'" class="post-img" alt="#"
+            @click="actorSelect(actor.actor)">
+          <p class="actor-name">{{ actor.actor }}</p>
+        </div>
+        <!-- 이전/다음 배우 화살표 -->
+        <h1 class="arrow arrow7" @click="showPrevActor">
+          < </h1>
+            <h1 class="arrow arrow3" @click="showNextActor"> > </h1>
+      </div>
+
+      <!-- 감독 선택 섹션 -->
+      <h2>[ 감독 선택 ]</h2>
+      <div class="poster">
+        <!-- 감독 목록 -->
+        <div v-for="producer in currentProducers" :key="producer.producer_id" class="producer-poster">
+          <img :src="producer.profile_image ? producer.profile_image : '../public/default_img.'" class="post-img" alt="#"
+            @click="producerSelect(producer.producer)">
+          <p class="product-name">{{ producer.producer }}</p>
+        </div>
+        <!-- 이전/다음 감독 화살표 -->
+        <h1 class="arrow arrow8" @click="showPrevProducer">
+          < </h1>
+            <h1 class="arrow arrow4" @click="showNextProducer"> > </h1>
+      </div>
+
+      <!-- 홈으로/최종 선택 버튼 -->
+      <div class="btn">
+        <h4 class="select-end-btn" @click="goToHome">홈으로</h4>
+        <h4 class="select-end-btn" @click="goToDetail" :selectedParams="selectedParams">최종 선택</h4>
+      </div>
     </div>
 
-    <!-- 국가 선택 섹션 -->
-    <h2>[ 국가 선택 ]</h2>
-    <div class="poster">
-      <!-- 국가 목록 -->
-      <div v-for="country in currentCountries" :key="country.country_id">
-        <p class="post-txt" @click="countrySelect(country.country)">{{ country.country }}</p>
-      </div>
-      <!-- 이전/다음 국가 화살표 -->
-      <h1 class="arrow arrow6" @click="showPrevCountry">
-        < </h1>
-          <h1 class="arrow arrow2" @click="showNextCountry"> > </h1>
-    </div>
-
-    <!-- 배우 선택 섹션 -->
-    <h2>[ 배우 선택 ]</h2>
-    <div class="poster">
-      <!-- 배우 목록 -->
-      <div v-for="actor in currentActors" :key="actor.actor_id" class="actor-poster">
-        <img 
-          :src="actor.profile_image ? actor.profile_image : '../public/default_img.jpg'" 
-          class="post-img" alt="#"
-          @click="actorSelect(actor.actor)"
-        >
-        <p class="actor-name">{{ actor.actor }}</p>
-      </div>
-      <!-- 이전/다음 배우 화살표 -->
-      <h1 class="arrow arrow7" @click="showPrevActor">
-        < </h1>
-          <h1 class="arrow arrow3" @click="showNextActor"> > </h1>
-    </div>
-
-    <!-- 감독 선택 섹션 -->
-    <h2>[ 감독 선택 ]</h2>
-    <div class="poster">
-      <!-- 감독 목록 -->
-      <div v-for="producer in currentProducers" :key="producer.producer_id" class="producer-poster">
-        <img 
-          :src="producer.profile_image ? producer.profile_image : '../public/default_img.'" 
-          class="post-img" alt="#"
-          @click="producerSelect(producer.producer)"
-        >
-        <p class="product-name">{{ producer.producer }}</p>
-      </div>
-      <!-- 이전/다음 감독 화살표 -->
-      <h1 class="arrow arrow8" @click="showPrevProducer">
-        < </h1>
-          <h1 class="arrow arrow4" @click="showNextProducer"> > </h1>
-    </div>
-
-    <!-- 홈으로/최종 선택 버튼 -->
-    <div class="btn">
-      <h4 class="select-end-btn" @click="goToHome">홈으로</h4>
-      <h4 class="select-end-btn" @click="goToDetail" :selectedParams="selectedParams">최종 선택</h4>
-    </div>
   </div>
 </template>
 
@@ -74,6 +78,15 @@
 import axios from 'axios'
 import { ref, computed, onMounted } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
+
+const isLoading = ref(true);
+
+onMounted(() => {
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 3000); // 3초 후에 로딩 상태를 false로 변경
+});
+
 
 const router = useRouter()
 
@@ -83,7 +96,7 @@ const emit = defineEmits(['selectEvent'])
 // 최종 선택 클릭 시, 선택 결과 페이지로 이동하기
 const goToDetail = () => {
   emit('selectEvent', selectedParams)
-  router.push({ name:'choice_detail', props:{ selectedParams: selectedParams.value}})
+  router.push({ name: 'choice_detail', props: { selectedParams: selectedParams.value } })
 }
 
 // 홈으로 클릭 시, 메인 페이지로 이동하기
@@ -213,8 +226,6 @@ const showPrevProducer = () => {
   }
 }
 
-
-
 // 어떤 장르, 국가, 배우, 감독을 선택헀는지 저장할 변수
 const selectedParams = ref({
   genre: null,
@@ -242,13 +253,71 @@ const producerSelect = function (producer) {
 </script>
 
 <style scoped>
+/* 3초동안 Loding 화면 */
+.loaderBar {
+  width: 30%;
+  height: 75px;
+  background: #cccccc;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.loaderBar h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  color: white;
+}
+
+.loaderBar::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  animation: fillProgress 3s ease-in-out infinite, lightEffect 1s infinite linear;
+  animation-fill-mode: forwards;
+  z-index: -1;
+}
+
+
+
+@keyframes fillProgress {
+  0% {
+    width: 0;
+  }
+
+  50% {
+    width: 50%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes lightEffect {
+
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
+    background: linear-gradient(137deg, #ffdb3b 10%, #FE53BB 45%, #8F51EA 67%, #0044ff 87%);
+  }
+}
+
 /* 슬라이더 화살표 스타일 */
 .arrow {
   position: absolute;
   padding-bottom: 2.5%;
   font-size: 200%;
-  width: 3.5%;
-  height: 2%;
+  width: 3%;
+  height: 1%;
   border: 3px solid white;
   border-radius: 100%;
   color: gray;
@@ -273,22 +342,26 @@ const producerSelect = function (producer) {
 .arrow2,
 .arrow3,
 .arrow4 {
-  right: 0%;
+  right: 2.2%;
 }
 
-.arrow1 {
+.arrow1,
+.arrow5 {
   bottom: 85%;
 }
 
-.arrow2 {
+.arrow2,
+.arrow6 {
   bottom: 68%;
 }
 
-.arrow3 {
+.arrow3,
+.arrow7 {
   bottom: 45%;
 }
 
-.arrow4 {
+.arrow4,
+.arrow8 {
   bottom: 15%;
 }
 
@@ -296,23 +369,7 @@ const producerSelect = function (producer) {
 .arrow6,
 .arrow7,
 .arrow8 {
-  left: 0%;
-}
-
-.arrow5 {
-  bottom: 85%;
-}
-
-.arrow6 {
-  bottom: 68%;
-}
-
-.arrow7 {
-  bottom: 45%;
-}
-
-.arrow8 {
-  bottom: 15%;
+  left: 2.2%;
 }
 
 /* 영화 선택 영역 스타일 */

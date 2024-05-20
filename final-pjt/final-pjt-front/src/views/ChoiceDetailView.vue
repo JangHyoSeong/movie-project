@@ -5,11 +5,11 @@
       <div class="order-range">평점순</div>
     </div>
 
-    <div class="poster">
-      <img :src="movies[0].poster" alt="" class="post">
+    <div v-if="movies.length > 0" class="poster">
+      <img :src="movies[0].poster" alt="#" class="post">
     </div>
 
-    <div class="movie-content-list">
+    <div v-if="movies.length > 0" class="movie-content-list">
       <div class="movie-content">
         <p>제목 : {{ movies[0].title }}</p>
         <p>방영일 : {{ movies[0].opening_date }}</p>
@@ -31,13 +31,13 @@ const props = defineProps({
 const router = useRouter()
 
 // 돌아가기 클릭 시, 선택 페이지로 이동하기
-const goToSelect = function () {
+const goToSelect = () => {
   router.push({ name: 'choice' })
 }
 
 // 필터링 된 영화 받아오기
-
 const movies = ref([])
+
 onMounted(() => {
   console.log(props.selectData)
   axios({
