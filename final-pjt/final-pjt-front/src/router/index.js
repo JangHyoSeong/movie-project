@@ -23,12 +23,14 @@ const router = createRouter({
     {
       path: '/choice',
       name: 'choice',
-      component: ChoiceView
+      component: ChoiceView,
+      props: true,
     },
     {
       path: '/choice_detail',
       name: 'choice_detail',
-      component: ChoiceDetailView
+      component: ChoiceDetailView,
+      props: true,
     },
     {
       path: '/movie/:movie_id',

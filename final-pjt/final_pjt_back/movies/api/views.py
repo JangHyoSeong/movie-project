@@ -52,11 +52,11 @@ def movie_detail(request, movie_id):
 
 @api_view(['GET'])
 def choice(request):
-    movies = get_list_or_404(Movie)[:10]
-    genres = get_list_or_404(Genre)[:10]
-    countries = get_list_or_404(Country)[:10]
-    actors = get_list_or_404(Actor)[:10]
-    producers = get_list_or_404(Producer)[:10]
+    movies = get_list_or_404(Movie)
+    genres = get_list_or_404(Genre)
+    countries = get_list_or_404(Country)
+    actors = get_list_or_404(Actor)
+    producers = get_list_or_404(Producer)
     
     data = {
         'movies': movies,
@@ -66,6 +66,27 @@ def choice(request):
         'producers': producers,
     }
     serializer = ChoiceSerializer(data)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def choice_result(request):
+    genre = request.query_params.get('genre')
+    country = request.query_params.get('country')
+    actor = request.query_params.get('actor')
+    producer = request.query_params.get('producer')
+    
+    query = Q()
+    if genre is not None:
+        query &= Q(genre=genre)
+    if country is not None:
+        query &= Q(country=country)
+    if actor is not None:
+        query &= Q(actor=actor)
+    if producer is not None:
+        query &= Q(producer=producer)
+    
+    queried_movies = Movie.objects.filter(query).order_by('-review_score')
+    serializer = MovieSerializer(queried_movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['GET', 'POST', 'DELETE'])
