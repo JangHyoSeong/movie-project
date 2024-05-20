@@ -86,8 +86,6 @@
     <!-- 배경 모드 전환 버튼 - 로고 위에 덮어져있음 -->
     <h5 @click="modeOn" class='mode-btn'></h5>
 
-
-
     <!-- 최상단으로 올라가는 버튼 -->
     <button @click="goTop" class="go-top-btn">
       <svg class="svgIcon" viewBox="0 0 384 512">
@@ -614,4 +612,5 @@ section {
   opacity: 1;
   bottom: unset;
   transition-duration: 0.3s;
-}</style>
+}
+</style>
