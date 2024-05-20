@@ -1,21 +1,24 @@
 <template>
-  <div class="order-list">
-    <div class="order-time">시간순</div>
-    <div class="order-range">평점순</div>
-  </div>
-
-  <div class="poster">
-    <p class="post"></p>
-  </div>
-
-  <div class="movie-content-list">
-    <div class="movie-content">
-      <p>제목 : 쇼생크 탈출</p>
-      <p>방영일 : 24.05.10</p>
-      <p>평점 : 5.0</p>
+  <div>
+    <div class="order-list">
+      <div class="order-time">시간순</div>
+      <div class="order-range">평점순</div>
     </div>
+
+    <div class="poster">
+      <p class="post"></p>
+    </div>
+
+    <div class="movie-content-list">
+      <div class="movie-content">
+        <p>제목 : 쇼생크 탈출</p>
+        <p>방영일 : 24.05.10</p>
+        <p>평점 : 5.0</p>
+        <p>{{ selectData }}dd</p>
+      </div>
+    </div>
+    <p class="go-to-select" @click="goToSelect">돌아가기</p>
   </div>
-  <p class="go-to-select" @click="goToSelect">돌아가기</p>
 </template>
 
 <script setup>
@@ -23,6 +26,9 @@ import axios from 'axios'
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
+const props = defineProps({
+  selectData: Object
+})
 const router = useRouter()
 
 // 돌아가기 클릭 시, 선택 페이지로 이동하기

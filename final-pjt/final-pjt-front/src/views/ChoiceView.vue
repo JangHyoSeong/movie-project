@@ -5,7 +5,7 @@
     <div class="poster">
       <!-- 장르 목록 -->
       <div v-for="genre in currentGenres" :key="genre.genre_id">
-        <p class="post-txt">{{ genre.genre }}</p>
+        <p class="post-txt" @click="genreSelect(genre.genre)">{{ genre.genre }}</p>
       </div>
       <!-- 이전/다음 장르 화살표 -->
       <h1 class="arrow arrow5" @click="showPrevGenre">
@@ -18,7 +18,7 @@
     <div class="poster">
       <!-- 국가 목록 -->
       <div v-for="country in currentCountries" :key="country.country_id">
-        <p class="post-txt">{{ country.country }}</p>
+        <p class="post-txt" @click="countrySelect(country.country)">{{ country.country }}</p>
       </div>
       <!-- 이전/다음 국가 화살표 -->
       <h1 class="arrow arrow6" @click="showPrevCountry">
@@ -31,7 +31,11 @@
     <div class="poster">
       <!-- 배우 목록 -->
       <div v-for="actor in currentActors" :key="actor.actor_id" class="actor-poster">
-        <img :src="actor.profile_image" class="post-img" alt="#">
+        <img 
+          :src="actor.profile_image ? actor.profile_image : '../public/default_img.jpg'" 
+          class="post-img" alt="#"
+          @click="actorSelect(actor.actor)"
+        >
         <p class="actor-name">{{ actor.actor }}</p>
       </div>
       <!-- 이전/다음 배우 화살표 -->
@@ -45,7 +49,11 @@
     <div class="poster">
       <!-- 감독 목록 -->
       <div v-for="producer in currentProducers" :key="producer.producer_id" class="producer-poster">
-        <img :src="producer.profile_image" class="post-img" alt="#">
+        <img 
+          :src="producer.profile_image ? producer.profile_image : '../public/default_img.'" 
+          class="post-img" alt="#"
+          @click="producerSelect(producer.producer)"
+        >
         <p class="product-name">{{ producer.producer }}</p>
       </div>
       <!-- 이전/다음 감독 화살표 -->
@@ -57,7 +65,7 @@
     <!-- 홈으로/최종 선택 버튼 -->
     <div class="btn">
       <h4 class="select-end-btn" @click="goToHome">홈으로</h4>
-      <h4 class="select-end-btn" @click="goToDetail">최종 선택</h4>
+      <h4 class="select-end-btn" @click="goToDetail" :selectedParams="selectedParams">최종 선택</h4>
     </div>
   </div>
 </template>
@@ -65,13 +73,17 @@
 <script setup>
 import axios from 'axios'
 import { ref, computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, RouterLink } from 'vue-router'
 
 const router = useRouter()
 
+// 부모 컴포넌트로 emit
+const emit = defineEmits(['selectEvent'])
+
 // 최종 선택 클릭 시, 선택 결과 페이지로 이동하기
 const goToDetail = () => {
-  router.push({ name: 'choice_detail' })
+  emit('selectEvent', selectedParams)
+  router.push({ name:'choice_detail', props:{ selectedParams: selectedParams.value}})
 }
 
 // 홈으로 클릭 시, 메인 페이지로 이동하기
@@ -85,6 +97,7 @@ const genres = ref([])
 const countries = ref([])
 const actors = ref([])
 const producers = ref([])
+const movies = ref([])
 
 // 영화 상세 정보 받아오기
 onMounted(() => {
@@ -97,6 +110,8 @@ onMounted(() => {
       countries.value = res.data.countries
       actors.value = res.data.actors
       producers.value = res.data.producers
+      movies.value = res.data.movies
+      console.log(movies.value)
     })
     .catch((err) => console.log(err))
 })
@@ -197,6 +212,33 @@ const showPrevProducer = () => {
     endIndexProducer.value -= 1
   }
 }
+
+
+
+// 어떤 장르, 국가, 배우, 감독을 선택헀는지 저장할 변수
+const selectedParams = ref({
+  genre: null,
+  country: null,
+  actor: null,
+  producer: null
+})
+
+const genreSelect = function (genre) {
+  selectedParams.value.genre = genre
+}
+
+const countrySelect = function (country) {
+  selectedParams.value.country = country
+}
+
+const actorSelect = function (actor) {
+  selectedParams.value.actor = actor
+}
+
+const producerSelect = function (producer) {
+  selectedParams.value.producer = producer
+}
+
 </script>
 
 <style scoped>

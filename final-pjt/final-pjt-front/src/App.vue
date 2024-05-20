@@ -15,8 +15,22 @@
   </div>
 
   <!-- 라우터 뷰 -->
-  <RouterView />
+  <RouterView 
+    @select-event="selectDataPass"
+    :selectData="selectData"
+  />
 </template>
+
+<script setup>
+import { ref } from 'vue'
+
+const selectData = ref({})
+
+// choice를 한 정보를 choicedetail로 넘겨줌
+  const selectDataPass = function (data) {
+    selectData.value = data.value
+  }
+</script>
 
 <style>
 .profile-nav {
