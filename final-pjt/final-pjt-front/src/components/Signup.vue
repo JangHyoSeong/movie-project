@@ -109,6 +109,7 @@ const signUpRequest = function () {
 
 /* 회원가입 팝업 스타일 */
 .sign-popup {
+  z-index: 9999;
   background: linear-gradient(#212121, #212121) padding-box,
     linear-gradient(330deg, #e81cff, #40c9ff) border-box;
   border: 3px solid transparent;

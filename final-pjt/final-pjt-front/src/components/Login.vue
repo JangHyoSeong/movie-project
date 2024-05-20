@@ -38,8 +38,10 @@
 <script setup>
 import { ref } from 'vue'
 import { useLoginStore } from '@/stores/login'
+import { useRouter } from 'vue-router'
 
 const store = useLoginStore()
+const router = useRouter()
 
 const username = ref('')
 const password = ref('')
@@ -73,6 +75,7 @@ const LoginVueOn = function () {
 // 로그인 팝업 비활성화 함수
 const LoginVueOff = function () {
   isLogin.value = ''
+  router.push({name: 'home'})
 }
 </script>
 
@@ -109,6 +112,7 @@ const LoginVueOff = function () {
   height: 450px;
   border-radius: 3%;
   display: none;
+  z-index: 9999;
 }
 
 /* 로그인 팝업 디테일 스타일 */
