@@ -46,9 +46,9 @@ const router = createRouter({
     name: 'profile',
     component: ProfileDetailView,
       children: [
-        { path: 'like', name: 'profile-like', component: LikeView },
-        { path: 'comment', name: 'profile-comment', component: CommentView },
-        { path: 'update', name: 'profile-update', component: UpdateView }
+        { path: '', name: 'profile-like', component: LikeView, props: true },
+        { path: 'comment', name: 'profile-comment', component: CommentView, props: true },
+        { path: 'update', name: 'profile-update', component: UpdateView, props: true }
       ]
     }
   ]

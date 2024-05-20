@@ -1,12 +1,15 @@
 <template>
   <div class="like-container">
     <h1>좋아요</h1>
+    <div v-for="movie in userData.like_movies">
+      <img :src="movie.poster" alt="" width="100px">
+    </div>
   </div>
 </template>
 
 <script setup>
 defineProps({
-  profile: Object,
+  userData: Object,
 })
 </script>
 

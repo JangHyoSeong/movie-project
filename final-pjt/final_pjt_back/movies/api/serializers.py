@@ -124,3 +124,17 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = MovieReview
         fields = '__all__'
         read_only_fields = ('user', 'movie',)
+
+
+class UserLikedMovieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = ('title', 'poster',)
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    like_movies = UserLikedMovieSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = get_user_model()
+        fields = ('username', 'email', 'like_movies', 'review_movies', 'nickname', 'profile_image',)

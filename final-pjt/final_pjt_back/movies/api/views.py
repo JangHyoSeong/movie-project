@@ -121,3 +121,19 @@ def movie_associate(request, movie_id):
     related_movies = Movie.objects.filter(genre__in=genres, review_score__lt=9.4).exclude(movie_id=movie_id).distinct().order_by('-review_score')[:5]
     serializer = MovieListSerializer(related_movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def profile(request):
+    user = get_object_or_404(get_user_model(), username=request.user)
+    serializer = UserProfileSerializer(user)
+    
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def profile_review(request):
+    user = get_object_or_404(get_user_model(), username=request.user)
+    movies = Movie.objects.filter(request.data)
+    return Response(status=status.HTTP_400_BAD_REQUEST)
+

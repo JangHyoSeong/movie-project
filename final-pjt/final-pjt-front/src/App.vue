@@ -10,7 +10,7 @@
       <!-- 홈 링크 -->
       <RouterLink :to="{ name: 'home' }" class="nav">다각화</RouterLink>
       <!-- 프로필 링크 -->
-      <RouterLink :to="{ name: 'profile' }">프로필</RouterLink>
+      <RouterLink :to="{ name: 'profile-like' }">프로필</RouterLink>
     </nav>
   </div>
 

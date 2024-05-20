@@ -7,11 +7,25 @@
     </div>
   </div>
   <hr class="hr">
-  <RouterView />
+  <RouterView :userData="userData"/>
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
+const route = useRoute()
+const router = useRouter()
+
+defineProps({
+  userData: Object
+})
+
+onMounted(() => {
+  if (route.path === `/profile`) {
+    router.replace({name: 'profile-like'})
+  }
+})
 </script>
 
 <style scoped>
