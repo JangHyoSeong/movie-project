@@ -107,7 +107,7 @@ onMounted(() => {
     .catch(err => console.log(err))
     .then((res) => {
       // 유튜브 트레일러 로드
-      const API_KEY = import.meta.env.VITE_YT_API_KEY
+      // const API_KEY = import.meta.env.VITE_YT_API_KEY
 
       axios({
         method: 'get',
@@ -236,7 +236,6 @@ const likeMovie = function () {
 .content-container {
   position: relative;
   top: 3vh;
-  left: 2%;
   display: flex;
   align-items: center;
 }
@@ -249,11 +248,11 @@ const likeMovie = function () {
 }
 
 /* 영화 상세 정보 스타일 */
-.detail-container>p {
+.detail-container > p {
   font-size: 25px;
 }
 
-.detail-container>h1 {
+.detail-container > h1 {
   font-size: 40px;
 }
 

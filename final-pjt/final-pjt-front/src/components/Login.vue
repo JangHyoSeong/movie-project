@@ -83,6 +83,7 @@ const LoginVueOff = function () {
   top: 0%;
   right: 4%;
   color: white;
+  cursor: pointer;
 }
 
 /* 로그인 버튼 스타일 */

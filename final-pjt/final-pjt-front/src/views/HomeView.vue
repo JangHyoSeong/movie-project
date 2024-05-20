@@ -83,10 +83,19 @@
     <!-- 저작권 표시 -->
     <p class="copyright">Copyright ⓒ 2024. SSAFY All Right Reserved</p>
 
-    <!-- 배경 모드 전환 버튼 -->
-    <h5 @click="modeOn" class='mode-btn'>Mode</h5>
+    <!-- 배경 모드 전환 버튼 - 로고 위에 덮어져있음 -->
+    <h5 @click="modeOn" class='mode-btn'></h5>
 
-    <h5 @click="goTop" class="gotop">Top</h5>
+
+
+    <!-- 최상단으로 올라가는 버튼 -->
+    <button @click="goTop" class="go-top-btn">
+      <svg class="svgIcon" viewBox="0 0 384 512">
+        <path
+          d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z">
+        </path>
+      </svg>
+    </button>
 
   </section>
 
@@ -97,7 +106,6 @@
 
 <!-- Vue 스크립트 -->
 <script setup>
-import 'animate.css'
 import axios from 'axios'
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -236,36 +244,15 @@ const openSignup = function () {
 
 <!-- CSS 스타일 -->
 <style scoped>
-.gotop {
-  position: absolute;
-  bottom: -98.5%;
-  right: 2%;
-  padding: 0.6%;
-  color: rgb(200, 200, 200);
-  border: 1px solid white;
-  border-radius: 100%;
-  z-index: 1;
-  padding-bottom: 0.7%;
-  cursor: pointer;
-}
-
 /* 모드 전환 버튼 */
 .mode-btn {
   position: absolute;
-  top: 91%;
-  right: 2%;
+  top: -1%;
+  left: 1.7%;
   padding: 0.5%;
-  color: white;
-  border: 1px solid white;
-  border-radius: 100%;
+  z-index: 1;
+  opacity: 0;
   cursor: pointer;
-}
-
-.gotop:hover,
-.mode-btn:hover {
-  color: white;
-  background: linear-gradient(145deg, #e81cff, #40c9ff) border-box;
-  border: none;
 }
 
 /* 페이드 인 애니메이션 */
@@ -346,22 +333,34 @@ main {
 /* 추천 받기 버튼 */
 .recommend {
   position: relative;
-  left: 44.5%;
-  width: 9%;
+  left: 45%;
   padding: 1%;
+  width: 8%;
   color: white;
-  text-align: center;
-  border: 1px solid white;
-  border-radius: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: 300% 300%;
+  backdrop-filter: blur(1rem);
+  transition: 0.5s;
+  border: 1px solid;
+  border-image: linear-gradient(137deg, #ffdb3b 10%, #FE53BB 45%, #8F51EA 67%, #0044ff 87%);
+  border-image-slice: 1;
+}
+
+.recommend:hover {
+  transform: scale(1.1);
+  border-style: none;
+  cursor: pointer;
+  animation: gradient 5s ease infinite;
+  background-image: linear-gradient(137deg, #ffdb3b 10%, #FE53BB 45%, #8F51EA 67%, #0044ff 87%);
 }
 
 .recommend-btn {
   position: relative;
-  /* 움직이는 애니메이션 */
   animation: moveRight 2s;
 }
 
-/* 애니메이션 위치 영역 */
 @keyframes moveRight {
   0% {
     right: -100%;
@@ -370,12 +369,6 @@ main {
   100% {
     right: 0%;
   }
-}
-
-.recommend:hover {
-  border-style: none;
-  background: linear-gradient(145deg, #e81cff, #40c9ff) border-box;
-  cursor: pointer;
 }
 
 /* 영화 정보 영역 */
@@ -565,4 +558,60 @@ section {
 .copyright {
   text-align: center;
   color: rgb(200, 200, 200);
+}
+
+/* 최상단으로 올라가는 버튼 */
+.go-top-btn {
+  bottom: 4%;
+  right: -94.5%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 0px 3px rgba(180, 160, 255, 0.253);
+  cursor: pointer;
+  transition-duration: 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: 0.3s;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.go-top-btn:hover {
+  width: 75px;
+  border-radius: 50px;
+  transition-duration: 0.3s;
+  background: linear-gradient(145deg, #e81cff, #40c9ff) border-box;
+  align-items: center;
+}
+
+.go-top-btn:hover .svgIcon {
+  transition-duration: 0.3s;
+  transform: translateY(-200%);
+}
+
+.go-top-btn::before {
+  position: absolute;
+  bottom: -20px;
+  content: "Go to Top";
+  color: white;
+  font-size: 0px;
+}
+
+.go-top-btn:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  bottom: unset;
+  transition-duration: 0.3s;
 }</style>

@@ -10,7 +10,7 @@
       <!-- 홈 링크 -->
       <RouterLink :to="{ name: 'home' }" class="nav">다각화</RouterLink>
       <!-- 프로필 링크 -->
-      <RouterLink :to="{ name: 'profile-like' }">프로필</RouterLink>
+      <RouterLink :to="{ name: 'profile-like' }" class="profile-nav">프로필</RouterLink>
     </nav>
   </div>
 
@@ -19,6 +19,12 @@
 </template>
 
 <style>
+.profile-nav {
+  position: absolute;
+  right: 15%;
+  color: white;
+  text-decoration: none;
+}
 /* 네비게이션 바 */
 .navbar {
   width: 100%;

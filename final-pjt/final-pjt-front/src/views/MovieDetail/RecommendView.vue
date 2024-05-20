@@ -1,21 +1,28 @@
 <template>
   <div>
-    <div v-for="movie in recommendedMovies">
-      <img :src="movie.poster" alt="">
+    <div @click="newMovieDetail(movie)" v-for="movie in recommendedMovies" class="poster">
+      <img :src="movie.poster" class="post" alt="#">
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import axios from 'axios'
 
 const route = useRoute()
+const router = useRouter()
 
 defineProps({
   movie: Object,
 })
+
+// 포스터 클릭 시, 영화 Detail 페이지로 이동하기
+const newMovieDetail = function (movie) {
+  router.push({ name: 'movieDetail', params: { movie_id: movie.movie_id } })
+  setInterval(function () { location.reload() }, 100)
+}
 
 const recommendedMovies = ref([])
 
@@ -32,5 +39,16 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.poster {
+  position: relative;
+  left: 2%;
+  display: inline;
+}
 
+.post {
+  margin: 0.5%;
+  width: 350px;
+  height: 250px;
+  border-radius: 10%;
+}
 </style>
