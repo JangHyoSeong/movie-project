@@ -9,6 +9,8 @@
       <img src="../public/Logo_img.png" alt="Logo" class="logo">
       <!-- 홈 링크 -->
       <RouterLink :to="{ name: 'home' }" class="nav">다각화</RouterLink>
+      <!-- 검색 창 -->
+      <input type="text" name="search" class="search" placeholder="영화, 배우, 감독을 검색해보세요.">
       <!-- 프로필 링크 -->
       <RouterLink :to="{ name: 'profile-like' }" class="profile-nav">프로필</RouterLink>
     </nav>
@@ -19,19 +21,19 @@
 </template>
 
 <style>
+.search {
+  position: relative;
+  left: 60%;
+  width: 15%;
+  height: 40%;
+  border-style: none;
+}
+
 .profile-nav {
   position: absolute;
   right: 15%;
   color: white;
   text-decoration: none;
-}
-/* 네비게이션 바 */
-.navbar {
-  width: 100%;
-  height: 50px;
-  opacity: 0.75;
-  position: relative;
-  background-color: #111111; /* 배경 색상을 여기로 이동 */
 }
 
 /* 네비게이션 바 배경 */
@@ -49,14 +51,26 @@
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 20px; /* 좌우 패딩 추가 */
+  padding: 0 20px;
+  /* 좌우 패딩 추가 */
 }
 
 /* 네비게이션 링크 */
 .nav {
   color: white;
   text-decoration: none;
-  margin-right: 20px; /* 링크 사이 간격 추가 */
+  margin-right: 20px;
+  /* 링크 사이 간격 추가 */
+}
+
+/* 네비게이션 바 */
+.navbar {
+  width: 100%;
+  height: 50px;
+  opacity: 0.75;
+  position: relative;
+  background-color: #111111;
+  /* 배경 색상을 여기로 이동 */
 }
 
 /* 로고 이미지 */
@@ -69,5 +83,4 @@
 body {
   margin: 0%;
   background-color: black;
-}
-</style>
+}</style>

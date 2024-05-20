@@ -227,7 +227,7 @@ const likeMovie = function () {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(190deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 60%), linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 70%);
+  background: linear-gradient(190deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 65%), linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 70%);
   pointer-events: none;
   /* 오버레이가 클릭 이벤트를 막지 않도록 */
 }
@@ -277,7 +277,7 @@ const likeMovie = function () {
   align-items: center;
   position: absolute;
   top: 5%;
-  left: 2%;
+  left: 1.8%;
   width: 4%;
   height: 4%;
   border: 1px solid white;
