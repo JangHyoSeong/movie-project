@@ -275,21 +275,18 @@ watch(selectedParams, () => {
 /* 3초동안 Loding 화면 */
 .loaderBar {
   width: 30%;
-  height: 75px;
+  height: 10%;
   background: #cccccc;
   border-radius: 10px;
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 35%;
   overflow: hidden;
   z-index: -1;
 }
 
 .loaderBar h1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
+  text-align: center;
   color: white;
 }
 

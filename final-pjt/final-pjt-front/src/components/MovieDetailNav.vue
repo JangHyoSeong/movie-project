@@ -56,7 +56,7 @@ onMounted(() => {
 /* 네비게이션 링크 스타일 */
 .navbar-link {
   position: relative;
-  left: -75%;
+  left: -85%;
   width: 16vh;
   text-decoration: none;
   color: white;

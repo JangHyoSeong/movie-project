@@ -1,103 +1,101 @@
 <template>
   <div>
-  <!-- 메인 컨텐츠 -->
-  <main>
-    <!-- 배경 이미지 -->
-    <img src="../../public/background_img.png" class="background-img" alt="background_img">
+    <!-- 메인 컨텐츠 -->
+    <main>
+      <!-- 배경 이미지 -->
+      <img src="../../public/background_img.png" class="background-img" alt="background_img">
 
-    <!-- 메인 텍스트 -->
-    <div class="main-txt" :class="fadeMode">
-      <div class="main-explan-txt">
-        <h5>어떤 영화를 찾으시나요?</h5>
-        <h1>당신을 위한 영화 추천 사이트</h1>
-        <h5>다양한 시각에서 영화를 추천해드립니다</h5>
-      </div>
+      <!-- 메인 텍스트 -->
+      <div class="main-txt" :class="fadeMode">
+        <div class="main-explan-txt">
+          <h5>어떤 영화를 찾으시나요?</h5>
+          <h1>당신을 위한 영화 추천 사이트</h1>
+          <h5>다양한 시각에서 영화를 추천해드립니다</h5>
+        </div>
 
-      <!-- 추천 받기 버튼 -->
-      <div class="recommend-btn" @click="recommend">
-        <h2 class="recommend">추천 받기</h2>
-      </div>
+        <!-- 추천 받기 버튼 -->
+        <div class="recommend-btn" @click="recommend">
+          <h2 class="recommend">추천 받기</h2>
+        </div>
 
-      <!-- 영화 정보 -->
-      <div class="movie-info-cnt">
-        <div class="movie-animation">
-          <div class="movie-cnt">
-            <h2>{{ movieCount }}</h2>
-            <h2>{{ genreCount }}</h2>
-            <h2>{{ producerCount }}</h2>
-            <h2>{{ actorCount }}</h2>
-            <h2>{{ countryCount }}</h2>
+        <!-- 영화 정보 -->
+        <div class="movie-info-cnt">
+          <div class="movie-animation">
+            <div class="movie-cnt">
+              <h2>{{ movieCount }}</h2>
+              <h2>{{ genreCount }}</h2>
+              <h2>{{ producerCount }}</h2>
+              <h2>{{ actorCount }}</h2>
+              <h2>{{ countryCount }}</h2>
+            </div>
+            <div class="movie-cnt">
+              <h2>영화 수</h2>
+              <h2>장르 수</h2>
+              <h2>감독 수</h2>
+              <h2>배우 수</h2>
+              <h2>국가 수</h2>
+            </div>
           </div>
-          <div class="movie-cnt">
-            <h2>영화 수</h2>
-            <h2>장르 수</h2>
-            <h2>감독 수</h2>
-            <h2>배우 수</h2>
-            <h2>국가 수</h2>
+          <h3 class="scroll">Scroll ▽</h3>
+        </div>
+      </div>
+    </main>
+
+    <!-- 섹션 -->
+    <section>
+      <!-- 섹션 영화 -->
+      <div class="section-movie">
+        <h1>[ 현재 개봉작 ]</h1>
+        <div class="movies-poster">
+          <div class="posts" @click="newMovieDetail(movie)" v-for="movie in currentMovies1" :key="movie.movie_id">
+            <img :src="movie.poster" class="poster" alt="#">
+          </div>
+          <!-- 포스터 이전/다음 버튼 -->
+          <div class="arrow arrow1-1" @click="showNextPoster1_1">
+            <p> &lt; </p>
+          </div>
+          <div class="arrow arrow1-2" @click="showNextPoster1_2">
+            <p> &gt; </p>
           </div>
         </div>
-        <h3 class="scroll">Scroll ▽</h3>
-      </div>
-    </div>
-  </main>
 
-  <!-- 섹션 -->
-  <section>
-    <!-- 섹션 영화 -->
-    <div class="section-movie">
-      <h1>[ 현재 개봉작 ]</h1>
-      <div class="movies-poster">
-        <div class="posts" @click="newMovieDetail(movie)" v-for="movie in currentMovies1" :key="movie.movie_id">
-          <img :src="movie.poster" class="poster" alt="#">
-        </div>
-        <!-- 포스터 이전/다음 버튼 -->
-        <div class="arrow arrow1-1" @click="showNextPoster1_1">
-          <p> &lt; </p>
-        </div>
-        <div class="arrow arrow1-2" @click="showNextPoster1_2">
-          <p> &gt; </p>
+        <h1>[ 개봉 예정작 ]</h1>
+        <div class="movies-poster">
+          <div class="posts" @click="newMovieDetail(movie)" v-for="movie in currentMovies2" :key="movie.movie_id">
+            <img :src="movie.poster" class="poster" alt="#">
+          </div>
+          <!-- 포스터 이전/다음 버튼 -->
+          <div class="arrow arrow2-1" @click="showNextPoster2_1">
+            <p> &lt; </p>
+          </div>
+          <div class="arrow arrow2-2" @click="showNextPoster2_2">
+            <p> &gt; </p>
+          </div>
         </div>
       </div>
 
-      <h1>[ 개봉 예정작 ]</h1>
-      <div class="movies-poster">
-        <div class="posts" @click="newMovieDetail(movie)" v-for="movie in currentMovies2" :key="movie.movie_id">
-          <img :src="movie.poster" class="poster" alt="#">
-        </div>
-        <!-- 포스터 이전/다음 버튼 -->
-        <div class="arrow arrow2-1" @click="showNextPoster2_1">
-          <p> &lt; </p>
-        </div>
-        <div class="arrow arrow2-2" @click="showNextPoster2_2">
-          <p> &gt; </p>
-        </div>
+      <!-- SNS 로고 -->
+      <div class="sns-logo">
+        <a href="https://blog.naver.com/ehdgus3726"><img src="../../public/blog.png" alt="blog"></a>
+        <a href="https://www.instagram.com/"><img src="../../public/instagram.png" alt="instagram"></a>
+        <a href="https://www.youtube.com/"><img src="../../public/youtube.png" alt="youtube"></a>
       </div>
-    </div>
 
-    <!-- SNS 로고 -->
-    <div class="sns-logo">
-      <a href="https://blog.naver.com/ehdgus3726"><img src="../../public/blog.png" alt="blog"></a>
-      <a href="https://www.instagram.com/"><img src="../../public/instagram.png" alt="instagram"></a>
-      <a href="https://www.youtube.com/"><img src="../../public/youtube.png" alt="youtube"></a>
-    </div>
+      <!-- 저작권 표시 -->
+      <p class="copyright">Copyright ⓒ 2024. SSAFY All Right Reserved</p>
 
-    <!-- 저작권 표시 -->
-    <p class="copyright">Copyright ⓒ 2024. SSAFY All Right Reserved</p>
+      <!-- 배경 모드 전환 버튼 - 로고 위에 덮어져있음 -->
+      <h5 @click="modeOn" class='mode-btn'></h5>
 
-    <!-- 배경 모드 전환 버튼 - 로고 위에 덮어져있음 -->
-    <h5 @click="modeOn" class='mode-btn'></h5>
-
-    <!-- 최상단으로 올라가는 버튼 -->
-    <button @click="goTop" class="go-top-btn">
-      <svg class="svgIcon" viewBox="0 0 384 512">
-        <path
-          d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z">
-        </path>
-      </svg>
-    </button>
-
-  </section>
-
+      <!-- 최상단으로 올라가는 버튼 -->
+      <button @click="goTop" class="go-top-btn">
+        <svg class="svgIcon" viewBox="0 0 384 512">
+          <path
+            d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z">
+          </path>
+        </svg>
+      </button>
+    </section>
   </div>
 </template>
 
@@ -115,7 +113,7 @@ const store = useLoginStore()
 
 // 추천 받기 클릭 시, Choice 페이지로 이동
 const recommend = function () {
-  if (store.isLogin === true){
+  if (store.isLogin === true) {
     router.push({ name: 'choice' })
   } else {
     alert('로그인 후 사용 가능합니다.')
@@ -308,7 +306,7 @@ main {
 /* 메인화면 전체 텍스트 */
 .main-txt {
   position: relative;
-  top: 7vh;
+  top: 5%;
 }
 
 /* 메인화면 텍스트 */
@@ -344,7 +342,6 @@ main {
   justify-content: center;
   align-items: center;
   background-size: 300% 300%;
-  backdrop-filter: blur(1rem);
   transition: 0.5s;
   border: 1px solid;
   border-image: linear-gradient(137deg, #ffdb3b 10%, #FE53BB 45%, #8F51EA 67%, #0044ff 87%);
@@ -409,7 +406,7 @@ main {
   position: relative;
   text-align: center;
   color: white;
-  margin-top: 7vh;
+  margin-top: 5%;
   /* 움직이는 애니메이션 */
   animation: moveUpDown 2s infinite;
 }
