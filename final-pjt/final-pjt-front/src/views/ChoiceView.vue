@@ -14,7 +14,7 @@
         <!-- 장르 목록 -->
         <div v-for="genre in currentGenres" :key="genre.genre_id">
           <p class="post-txt" @click="genreSelect(genre.genre)"
-          :class="{'is-selected' : selectedParams.genre === genre.genre}">{{ genre.genre }}</p>
+            :class="{ 'is-selected': selectedParams.genre === genre.genre }">{{ genre.genre }}</p>
         </div>
         <!-- 이전/다음 장르 화살표 -->
         <h1 class="arrow arrow5" @click="showPrevGenre">
@@ -27,11 +27,8 @@
       <div class="poster">
         <!-- 국가 목록 -->
         <div v-for="country in currentCountries" :key="country.country_id">
-          <p 
-            class="post-txt" 
-            @click="countrySelect(country.country)"
-            :class="{'is-selected' : selectedParams.country === country.country}"
-          >{{ country.country }}</p>
+          <p class="post-txt" @click="countrySelect(country.country)"
+            :class="{ 'is-selected': selectedParams.country === country.country }">{{ country.country }}</p>
         </div>
         <!-- 이전/다음 국가 화살표 -->
         <h1 class="arrow arrow6" @click="showPrevCountry">
@@ -44,18 +41,14 @@
       <div class="poster">
         <!-- 배우 목록 -->
         <div v-for="actor in currentActors" :key="actor.actor_id" class="actor-poster">
-          <img 
-            :src="actor.profile_image ? actor.profile_image : '../public/default_img.jpg'"
-            class="post-img" alt="#"
-            @click="actorSelect(actor.actor)"
-            :class="{'is-selected' : selectedParams.actor === actor.actor}"
-          >
+          <img :src="actor.profile_image ? actor.profile_image : '../public/default_img.jpg'" class="post-img" alt="#"
+            @click="actorSelect(actor.actor)" :class="{ 'is-selected': selectedParams.actor === actor.actor }">
           <p class="actor-name">{{ actor.actor }}</p>
         </div>
         <!-- 이전/다음 배우 화살표 -->
         <h1 class="arrow arrow7" @click="showPrevActor">
-          < </h1>
-            <h1 class="arrow arrow3" @click="showNextActor"> > </h1>
+          &lt; </h1>
+        <h1 class="arrow arrow3" @click="showNextActor"> &gt; </h1>
       </div>
 
       <!-- 감독 선택 섹션 -->
@@ -63,18 +56,15 @@
       <div class="poster">
         <!-- 감독 목록 -->
         <div v-for="producer in currentProducers" :key="producer.producer_id" class="producer-poster">
-          <img 
-            :src="producer.profile_image ?  producer.profile_image : '../public/default_img.'" 
-            class="post-img" 
-            :class="{'is-selected' : selectedParams.producer === producer.producer}"
-            alt="#"
+          <img :src="producer.profile_image ? producer.profile_image : '../public/default_img.'" class="post-img"
+            :class="{ 'is-selected': selectedParams.producer === producer.producer }" alt="#"
             @click="producerSelect(producer.producer)">
           <p class="product-name">{{ producer.producer }}</p>
         </div>
         <!-- 이전/다음 감독 화살표 -->
         <h1 class="arrow arrow8" @click="showPrevProducer">
-          < </h1>
-            <h1 class="arrow arrow4" @click="showNextProducer"> > </h1>
+          &lt; </h1>
+        <h1 class="arrow arrow4" @click="showNextProducer"> &gt; </h1>
       </div>
 
       <!-- 홈으로/최종 선택 버튼 -->
@@ -507,6 +497,8 @@ watch(selectedParams, () => {
 
 /* 선택된 이미지 */
 .is-selected {
-  border: rgb(134, 27, 235) 3px solid;
+  border: 5px solid;
+  border-image: linear-gradient(135deg, #ff3322, #ff4422);
+  border-image-slice: 1;
 }
 </style>

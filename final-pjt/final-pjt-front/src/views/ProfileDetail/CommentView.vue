@@ -45,9 +45,6 @@ const loadReview = function () {
 onMounted(() => {
   loadReview()
 })
-
-
-
 </script>
 
 <style scoped>
