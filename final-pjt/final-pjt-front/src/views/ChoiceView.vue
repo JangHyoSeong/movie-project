@@ -16,10 +16,15 @@
           <p class="post-txt" @click="genreSelect(genre.genre)"
           :class="{'is-selected' : selectedParams.genre === genre.genre}">{{ genre.genre }}</p>
         </div>
+        <div @click="resetGenre" v-if="currentGenres.length === 0">
+          <p class="post-txt">조건에 맞는 장르가 존재하지 않습니다.</p>
+        </div>
         <!-- 이전/다음 장르 화살표 -->
-        <h1 class="arrow arrow5" @click="showPrevGenre">
-          &lt; </h1>
-        <h1 class="arrow arrow1" @click="showNextGenre"> &gt; </h1>
+        <div v-if="filteredGenres.length > 6">
+          <h1 class="arrow arrow5" @click="showPrevGenre">
+            &lt; </h1>
+          <h1 class="arrow arrow1" @click="showNextGenre"> &gt; </h1>
+        </div>
       </div>
 
       <!-- 국가 선택 섹션 -->
@@ -33,10 +38,15 @@
             :class="{'is-selected' : selectedParams.country === country.country}"
           >{{ country.country }}</p>
         </div>
+        <div @click="resetCountry" v-if="currentCountries.length === 0">
+          <p class="post-txt">조건에 맞는 국가가 존재하지 않습니다.</p>
+        </div>
         <!-- 이전/다음 국가 화살표 -->
-        <h1 class="arrow arrow6" @click="showPrevCountry">
-          &lt; </h1>
-        <h1 class="arrow arrow2" @click="showNextCountry"> &gt; </h1>
+        <div v-if="filteredCountries.length > 6">
+          <h1 class="arrow arrow6" @click="showPrevCountry">
+            &lt; </h1>
+          <h1 class="arrow arrow2" @click="showNextCountry"> &gt; </h1>
+        </div>
       </div>
 
       <!-- 배우 선택 섹션 -->
@@ -52,10 +62,15 @@
           >
           <p class="actor-name">{{ actor.actor }}</p>
         </div>
+        <div @click="resetActor" v-if="currentActors.length === 0">
+          <p class="post-txt">조건에 맞는 배우가 존재하지 않습니다.</p>
+        </div>
         <!-- 이전/다음 배우 화살표 -->
-        <h1 class="arrow arrow7" @click="showPrevActor">
-          < </h1>
-            <h1 class="arrow arrow3" @click="showNextActor"> > </h1>
+        <div v-if="filteredActors.length > 6">
+          <h1 class="arrow arrow7" @click="showPrevActor">
+            &lt; </h1>
+          <h1 class="arrow arrow3" @click="showNextActor"> &gt; </h1>
+        </div>
       </div>
 
       <!-- 감독 선택 섹션 -->
@@ -71,10 +86,15 @@
             @click="producerSelect(producer.producer)">
           <p class="product-name">{{ producer.producer }}</p>
         </div>
+        <div @click="resetProducer" v-if="currentProducers.length === 0">
+          <p class="post-txt">조건에 맞는 감독이 존재하지 않습니다.</p>
+        </div>
         <!-- 이전/다음 감독 화살표 -->
-        <h1 class="arrow arrow8" @click="showPrevProducer">
-          < </h1>
-            <h1 class="arrow arrow4" @click="showNextProducer"> > </h1>
+        <div v-if="filteredProducers.length > 6">
+          <h1 class="arrow arrow8" @click="showPrevProducer">
+          &lt; </h1>
+          <h1 class="arrow arrow4" @click="showNextProducer"> &gt; </h1>
+        </div>
       </div>
 
       <!-- 홈으로/최종 선택 버튼 -->
@@ -97,7 +117,7 @@ const isLoading = ref(true);
 onMounted(() => {
   setTimeout(() => {
     isLoading.value = false;
-  }, 3000); // 3초 후에 로딩 상태를 false로 변경
+  }, 1500); // 1.5초 후에 로딩 상태를 false로 변경
 });
 
 
@@ -153,11 +173,11 @@ const endIndexProducer = ref(6)
 
 // 현재 항목 목록
 const currentGenres = computed(() => {
-  return genres.value.slice(startIndexGenre.value, endIndexGenre.value)
+  return filteredGenres.value.slice(startIndexGenre.value, endIndexGenre.value)
 })
 
 const currentCountries = computed(() => {
-  return countries.value.slice(startIndexCountry.value, endIndexCountry.value)
+  return filteredCountries.value.slice(startIndexCountry.value, endIndexCountry.value)
 })
 
 const currentActors = computed(() => {
@@ -165,47 +185,35 @@ const currentActors = computed(() => {
 })
 
 const currentProducers = computed(() => {
-  return producers.value.slice(startIndexProducer.value, endIndexProducer.value)
+  return filteredProducers.value.slice(startIndexProducer.value, endIndexProducer.value)
 })
 
 // 포스터 표시
 const showNextGenre = () => {
-  if (endIndexGenre.value < genres.value.length) {
+  if (endIndexGenre.value < filteredGenres.value.length) {
     startIndexGenre.value += 1
     endIndexGenre.value += 1
-  } else {
-    startIndexGenre.value = 0
-    endIndexGenre.value = 6
   }
 }
 
 const showNextCountry = () => {
-  if (endIndexCountry.value < countries.value.length) {
+  if (endIndexCountry.value < filteredCountries.value.length) {
     startIndexCountry.value += 1
     endIndexCountry.value += 1
-  } else {
-    startIndexCountry.value = 0
-    endIndexCountry.value = 6
   }
 }
 
 const showNextActor = () => {
-  if (endIndexActor.value < actors.value.length) {
+  if (endIndexActor.value < filteredActors.value.length) {
     startIndexActor.value += 1
     endIndexActor.value += 1
-  } else {
-    startIndexActor.value = 0
-    endIndexActor.value = 6
   }
 }
 
 const showNextProducer = () => {
-  if (endIndexProducer.value < producers.value.length) {
+  if (endIndexProducer.value < filteredProducers.value.length) {
     startIndexProducer.value += 1
     endIndexProducer.value += 1
-  } else {
-    startIndexProducer.value = 0
-    endIndexProducer.value = 6
   }
 }
 
@@ -247,20 +255,51 @@ const selectedParams = ref({
 })
 
 const genreSelect = function (genre) {
-  selectedParams.value.genre = genre
-  console.log(selectedParams.value)
+  if (selectedParams.value.genre === genre) {
+    selectedParams.value.genre = null
+  } else {
+    selectedParams.value.genre = genre
+  }
 }
 
 const countrySelect = function (country) {
-  selectedParams.value.country = country
+  if (selectedParams.value.country === country) {
+    selectedParams.value.country = null
+  } else {
+    selectedParams.value.country = country
+  }
 }
 
 const actorSelect = function (actor) {
-  selectedParams.value.actor = actor
+  if (selectedParams.value.actor === actor) {
+    selectedParams.value.actor = null
+  } else {
+    selectedParams.value.actor = actor
+  }
 }
 
 const producerSelect = function (producer) {
-  selectedParams.value.producer = producer
+  if (selectedParams.value.producer === producer) {
+    selectedParams.value.producer = null
+  } else {
+    selectedParams.value.producer = producer
+  }
+}
+
+const resetGenre = function() {
+  selectedParams.value.genre = null
+}
+
+const resetCountry = function() {
+  selectedParams.value.Country = null
+}
+
+const resetActor = function() {
+  selectedParams.value.actor = null
+}
+
+const resetProducer = function() {
+  selectedParams.value.Producer = null
 }
 
 // 현재 선택된 요소에 따라 영화를 필터링
@@ -291,40 +330,46 @@ watch(selectedParams, () => {
 
 
 const filteredGenres = computed(() => {
-  const usedGenres = new Set(filteredMovies.value.map(movie => movie.genre))
+  const usedGenres = new Set()
+  filteredMovies.value.forEach(movie => {
+    movie.genre.forEach(genre => {
+      usedGenres.add(genre.id)
+    })
+  })
   return genres.value.filter(genre => usedGenres.has(genre.id))
 })
 
 const filteredCountries = computed(() => {
   const usedCountries = new Set(filteredMovies.value.map(movie => movie.country))
-  return countries.value.filter(country => usedCountries.has(country.id))
+  return countries.value.filter(country => usedCountries.has(country.country))
 })
 
 const filteredActors = computed(() => {
   const usedActors = new Set()
   filteredMovies.value.forEach(movie => {
     movie.actor.forEach(actor => {
-      usedActors.add(actor.id)
+      usedActors.add(actor.actor)
     })
   })
-  return actors.value.filter(actor => usedActors.has(actor.id))
+  return actors.value.filter(actor => usedActors.has(actor.actor))
 })
 
 const filteredProducers = computed(() => {
   const usedProducers = new Set()
   filteredMovies.value.forEach(movie => {
     movie.producer.forEach(producer => {
-      usedProducers.add(producer.id) 
+      usedProducers.add(producer.producer) 
     })
   })
-  return producers.value.filter(producer => usedProducers.has(producer.id))
+  return producers.value.filter(producer => usedProducers.has(producer.producer))
 })
 
 watch(selectedParams, (newVal, oldVal) => {
   // This will trigger re-computation of filteredMovies, filteredCountries, filteredActors, and filteredProducers
-  console.log(`배우 : ${filteredActors.value}`)
-  console.log(`감독 : ${filteredProducers.value}`)
-  // console.log(`배우 : ${filteredActors.value}`)
+  console.log('배우', filteredActors.value)
+  console.log('감독', filteredProducers.value)
+  console.log('장르', filteredGenres.value)
+  console.log('나라', filteredCountries.value)
 }, { deep: true })
 </script>
 
@@ -354,7 +399,7 @@ watch(selectedParams, (newVal, oldVal) => {
   content: "";
   position: absolute;
   height: 100%;
-  animation: fillProgress 3s ease-in-out infinite, lightEffect 1s infinite linear;
+  animation: fillProgress 1.5s ease-in-out infinite, lightEffect 1s infinite linear;
   animation-fill-mode: forwards;
   z-index: -1;
 }
