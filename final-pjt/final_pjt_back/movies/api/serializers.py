@@ -149,3 +149,12 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = ('username', 'email', 'like_movies', 'review_movies', 'nickname', 'profile_image',)
+
+class MovieLikeSerializer(serializers.Serializer):
+    is_liked = serializers.SerializerMethodField()
+    
+    def get_is_liked(self, obj):
+        user = self.context['request'].user
+        movie = obj
+        
+        return user in movie.like_users.all()

@@ -21,8 +21,8 @@
         <p v-if="openingDate">개봉 일자 : {{ openingDate }}</p>
 
         <!-- 좋아요 기능 -->
-        <label class="like-container" @click="likeMovie">
-          <input type="checkbox">
+        <label class="like-container">
+          <input type="checkbox" @click="likeMovie" v-model="isLiked">
           <div class="like-checkmark">
             <svg viewBox="0 0 256 256">
               <rect fill="none" height="256" width="256"></rect>
@@ -125,6 +125,27 @@ onMounted(() => {
     })
 })
 
+// 좋아요 여부를 저장할 반응형 변수
+const isLiked = ref(false)
+
+onMounted(() => {
+  axios({
+    method: 'get',
+    url: `http://127.0.0.1:8000/api/v1/${route.params.movie_id}/like/`,
+    data: {
+      movie_id: route.params.movie_id,
+    },
+    headers: {
+      Authorization: `Token ${store.token}`
+    }
+  })
+    .then((res) => {
+      isLiked.value = res.data.is_liked
+      console.log('좋아요', res.data)
+    })
+    .catch(err => console.log(err))
+})
+
 // 영화 좋아요 기능
 const likeMovie = function () {
   axios({
@@ -138,7 +159,7 @@ const likeMovie = function () {
     }
   })
     .then((res) => {
-      alert('좋아하는 영화에 등록되었습니다')
+      console.log(isLiked.value)
     })
     .catch(err => console.log(err))
 }
