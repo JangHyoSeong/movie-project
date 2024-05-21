@@ -161,7 +161,7 @@ const currentCountries = computed(() => {
 })
 
 const currentActors = computed(() => {
-  return actors.value.slice(startIndexActor.value, endIndexActor.value)
+  return filteredActors.value.slice(startIndexActor.value, endIndexActor.value)
 })
 
 const currentProducers = computed(() => {
@@ -266,12 +266,22 @@ const producerSelect = function (producer) {
 // 현재 선택된 요소에 따라 영화를 필터링
 const filteredMovies = computed(() => {
   return movies.value.filter(movie => {
-    return (
-      (selectedParams.value.genre === null || selectedParams.value.genre.includes(movie.genre)) &&
-      (selectedParams.value.country === null || movie.country === selectedParams.value.country) &&
-      (selectedParams.value.actor === null || selectedParams.value.actor.includes(movie.actor)) &&
-      (selectedParams.value.producer === null || selectedParams.value.producer.includes(movie.producer))
-    )
+    let isMatch = true
+
+    if (selectedParams.value.genre) {
+      isMatch = isMatch && selectedParams.value.genre.includes(movie.genre)
+    }
+    if (selectedParams.value.country) {
+      isMatch = isMatch && movie.country === selectedParams.value.country
+    }
+    if (selectedParams.value.actor) {
+      isMatch = isMatch && selectedParams.value.actor.includes(movie.actor)
+    }
+    if (selectedParams.value.producer) {
+      isMatch = isMatch && selectedParams.value.producer.includes(movie.producer)
+    }
+
+    return isMatch
   })
 })
 
@@ -279,6 +289,43 @@ watch(selectedParams, () => {
   console.log('Filtered Movies:', filteredMovies.value)
 }, { deep: true })
 
+
+const filteredGenres = computed(() => {
+  const usedGenres = new Set(filteredMovies.value.map(movie => movie.genre))
+  return genres.value.filter(genre => usedGenres.has(genre.id))
+})
+
+const filteredCountries = computed(() => {
+  const usedCountries = new Set(filteredMovies.value.map(movie => movie.country))
+  return countries.value.filter(country => usedCountries.has(country.id))
+})
+
+const filteredActors = computed(() => {
+  const usedActors = new Set()
+  filteredMovies.value.forEach(movie => {
+    movie.actor.forEach(actor => {
+      usedActors.add(actor.id)
+    })
+  })
+  return actors.value.filter(actor => usedActors.has(actor.id))
+})
+
+const filteredProducers = computed(() => {
+  const usedProducers = new Set()
+  filteredMovies.value.forEach(movie => {
+    movie.producer.forEach(producer => {
+      usedProducers.add(producer.id) 
+    })
+  })
+  return producers.value.filter(producer => usedProducers.has(producer.id))
+})
+
+watch(selectedParams, (newVal, oldVal) => {
+  // This will trigger re-computation of filteredMovies, filteredCountries, filteredActors, and filteredProducers
+  console.log(`배우 : ${filteredActors.value}`)
+  console.log(`감독 : ${filteredProducers.value}`)
+  // console.log(`배우 : ${filteredActors.value}`)
+}, { deep: true })
 </script>
 
 <style scoped>
