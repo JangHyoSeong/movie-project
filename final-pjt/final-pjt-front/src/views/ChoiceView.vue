@@ -14,7 +14,7 @@
         <!-- 장르 목록 -->
         <div v-for="genre in currentGenres" :key="genre.genre_id">
           <p class="post-txt" @click="genreSelect(genre.genre)"
-          :class="{'is-selected' : selectedParams.genre === genre.genre}">{{ genre.genre }}</p>
+            :class="{ 'is-selected': selectedParams.genre === genre.genre }">{{ genre.genre }}</p>
         </div>
         <div @click="resetGenre" v-if="currentGenres.length === 0">
           <p class="post-txt">조건에 맞는 장르가 존재하지 않습니다.</p>
@@ -32,11 +32,8 @@
       <div class="poster">
         <!-- 국가 목록 -->
         <div v-for="country in currentCountries" :key="country.country_id">
-          <p 
-            class="post-txt" 
-            @click="countrySelect(country.country)"
-            :class="{'is-selected' : selectedParams.country === country.country}"
-          >{{ country.country }}</p>
+          <p class="post-txt" @click="countrySelect(country.country)"
+            :class="{ 'is-selected': selectedParams.country === country.country }">{{ country.country }}</p>
         </div>
         <div @click="resetCountry" v-if="currentCountries.length === 0">
           <p class="post-txt">조건에 맞는 국가가 존재하지 않습니다.</p>
@@ -54,23 +51,25 @@
       <div class="poster">
         <!-- 배우 목록 -->
         <div v-for="actor in currentActors" :key="actor.actor_id" class="actor-poster">
-          <img 
-            :src="actor.profile_image ? actor.profile_image : '../public/default_img.jpg'"
-            class="post-img" alt="#"
-            @click="actorSelect(actor.actor)"
-            :class="{'is-selected' : selectedParams.actor === actor.actor}"
-          >
+          <img :src="actor.profile_image ? actor.profile_image : '../public/default_img.jpg'" class="post-img" alt="#"
+            @click="actorSelect(actor.actor)" :class="{ 'is-selected': selectedParams.actor === actor.actor }">
           <p class="actor-name">{{ actor.actor }}</p>
         </div>
         <div @click="resetActor" v-if="currentActors.length === 0">
           <p class="post-txt">조건에 맞는 배우가 존재하지 않습니다.</p>
         </div>
         <!-- 이전/다음 배우 화살표 -->
+<<<<<<< HEAD
         <div v-if="filteredActors.length > 6">
           <h1 class="arrow arrow7" @click="showPrevActor">
             &lt; </h1>
           <h1 class="arrow arrow3" @click="showNextActor"> &gt; </h1>
         </div>
+=======
+        <h1 class="arrow arrow7" @click="showPrevActor">
+          &lt; </h1>
+        <h1 class="arrow arrow3" @click="showNextActor"> &gt; </h1>
+>>>>>>> 8f723fa89ea5f81be23430c1ae8c328f53c16fb8
       </div>
 
       <!-- 감독 선택 섹션 -->
@@ -78,11 +77,8 @@
       <div class="poster">
         <!-- 감독 목록 -->
         <div v-for="producer in currentProducers" :key="producer.producer_id" class="producer-poster">
-          <img 
-            :src="producer.profile_image ?  producer.profile_image : '../public/default_img.'" 
-            class="post-img" 
-            :class="{'is-selected' : selectedParams.producer === producer.producer}"
-            alt="#"
+          <img :src="producer.profile_image ? producer.profile_image : '../public/default_img.'" class="post-img"
+            :class="{ 'is-selected': selectedParams.producer === producer.producer }" alt="#"
             @click="producerSelect(producer.producer)">
           <p class="product-name">{{ producer.producer }}</p>
         </div>
@@ -90,11 +86,17 @@
           <p class="post-txt">조건에 맞는 감독이 존재하지 않습니다.</p>
         </div>
         <!-- 이전/다음 감독 화살표 -->
+<<<<<<< HEAD
         <div v-if="filteredProducers.length > 6">
           <h1 class="arrow arrow8" @click="showPrevProducer">
           &lt; </h1>
           <h1 class="arrow arrow4" @click="showNextProducer"> &gt; </h1>
         </div>
+=======
+        <h1 class="arrow arrow8" @click="showPrevProducer">
+          &lt; </h1>
+        <h1 class="arrow arrow4" @click="showNextProducer"> &gt; </h1>
+>>>>>>> 8f723fa89ea5f81be23430c1ae8c328f53c16fb8
       </div>
 
       <!-- 홈으로/최종 선택 버튼 -->
@@ -599,6 +601,8 @@ watch(selectedParams, (newVal, oldVal) => {
 
 /* 선택된 이미지 */
 .is-selected {
-  border: rgb(134, 27, 235) 3px solid;
+  border: 5px solid;
+  border-image: linear-gradient(135deg, #ff3322, #ff4422);
+  border-image-slice: 1;
 }
 </style>
