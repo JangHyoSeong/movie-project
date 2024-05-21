@@ -21,19 +21,30 @@ class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
         fields = '__all__'
+        
+class ActorNameSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Actor
+        fields = ('actor', )
+        
+class ProducerNameSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Producer
+        fields = ('producer', )
+    
 
 class MovieSerializer(serializers.ModelSerializer):
+    
+    actor = ActorNameSerializer(many=True, read_only=True)
+    producer = ProducerNameSerializer(many=True, read_only=True)
     class Meta:
         model = Movie
-        fields = '__all__'
+        fields = ('genre', 'country', 'actor', 'producer', 'title', )
 
 class MovieListSerializer(serializers.ModelSerializer):
     
-    class ActorNameSerializer(serializers.ModelSerializer):
-        
-        class Meta:
-            model = Actor
-            fields = ('actor', )
     
     actor = ActorNameSerializer(many=True, read_only=True)    
       

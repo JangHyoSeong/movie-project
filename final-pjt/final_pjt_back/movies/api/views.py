@@ -52,7 +52,9 @@ def movie_detail(request, movie_id):
 
 @api_view(['GET'])
 def choice(request):
-    movies = get_list_or_404(Movie)
+    movies = Movie.objects.filter(
+        Q(genre__isnull=False) & Q(country__isnull=False) & Q(producer__isnull=False)
+    ).distinct()
     genres = get_list_or_404(Genre)
     countries = get_list_or_404(Country)
     actors = get_list_or_404(Actor)
