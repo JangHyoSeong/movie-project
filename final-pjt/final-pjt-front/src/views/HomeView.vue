@@ -175,9 +175,9 @@ onMounted(() => {
 
 // 관리하는 인덱스
 const startIndex1 = ref(0)
-const endIndex1 = ref(6)
+const endIndex1 = ref(7)
 const startIndex2 = ref(0)
-const endIndex2 = ref(6)
+const endIndex2 = ref(7)
 
 // 현재 영화 목록
 const currentMovies1 = computed(() => {
@@ -490,42 +490,42 @@ section {
 /* 포스터 화살표 스타일 */
 .arrow {
   position: absolute;
-  padding-bottom: 2.5%;
-  font-size: 200%;
-  width: 3.5%;
-  height: 2%;
-  border: 3px solid white;
-  border-radius: 100%;
-  color: gray;
-  background-color: white;
-  opacity: 0.75;
+  font-size: 500%;
+  width: 4%;
+  height: 40%;
+  color: white;
   cursor: pointer;
+  opacity: 0.3;
 }
 
-.arrow p {
-  position: relative;
-  top: -320%;
-  font-size: 150%;
+.arrow1-1 p, .arrow2-1 p  {
+  padding-top: 3vh;
+  padding-right: 2vh;
+}
+
+.arrow1-2 p, .arrow2-2 p  {
+  padding-top: 3vh;
+  padding-left: 2vh;
 }
 
 .arrow1-1 {
-  left: 1.7%;
-  bottom: 68%;
+  left: 0%;
+  bottom: 53.5%;
 }
 
 .arrow1-2 {
-  right: 1.7%;
-  bottom: 68%;
+  right: 0%;
+  bottom: 53.5%;
 }
 
 .arrow2-1 {
-  left: 1.7%;
-  bottom: 20%;
+  left: 0%;
+  bottom: 4%;
 }
 
 .arrow2-2 {
-  right: 1.7%;
-  bottom: 20%;
+  right: 0%;
+  bottom: 4%;
 }
 
 .arrow1-1:hover,

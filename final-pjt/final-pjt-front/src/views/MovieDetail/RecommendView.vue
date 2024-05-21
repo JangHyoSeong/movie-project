@@ -41,14 +41,14 @@ onMounted(() => {
 <style scoped>
 .poster {
   position: relative;
-  left: 2%;
+  left: 5%;
   display: inline;
 }
 
 .post {
-  margin: 0.5%;
-  width: 350px;
-  height: 250px;
-  border-radius: 10%;
+  margin: 0.5% 1% 0% 0%;
+  width: 270px;
+  height: 270px;
+  border-radius: 5%;
 }
 </style>
