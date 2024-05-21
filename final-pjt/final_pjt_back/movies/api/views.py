@@ -150,6 +150,22 @@ def movie_associate(request, movie_id):
     serializer = MovieListSerializer(related_movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+@api_view(['GET', 'POST'])
+def movie_chat(request, movie_id):
+    movie = get_object_or_404(Movie, movie_id=movie_id)
+    user = get_object_or_404(get_user_model(), username=request.user)
+    
+    if request.method == 'GET':
+        chats = get_list_or_404(MovieChat, movie=movie)
+        serializer = MovieChatSerialzier(chats, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    elif request.method == 'POST':
+        user = get_object_or_404(get_user_model(), username=request.user)
+        serializer = MovieChatSerialzier(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save(movie=movie, user=user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET'])
 def profile(request):

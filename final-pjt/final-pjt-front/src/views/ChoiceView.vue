@@ -1,109 +1,111 @@
 <template>
-  <div v-if="isLoading" class="loading-screen">
-    <div class="loaderBar">
-      <h1>Loding</h1>
-    </div>
-  </div>
-
-  <!-- 3초 후 Loding이 끝나면 실행되는 화면 -->
-  <div v-else>
-    <!-- 장르 선택 섹션 -->
-    <div class="movie-select">
-      <h2>[ 장르 선택 ]</h2>
-      <div class="poster">
-        <!-- 장르 목록 -->
-        <div v-for="genre in currentGenres" :key="genre.genre_id">
-          <p class="post-txt" @click="genreSelect(genre.genre)"
-          :class="{ 'is-selected' : selectedParams.genre === genre.genre}">{{ genre.genre }}</p>
-        </div>
-        <div @click="resetGenre" v-if="currentGenres.length === 0">
-          <p class="post-txt">조건에 맞는 장르가 존재하지 않습니다.</p>
-        </div>
-        <!-- 이전/다음 장르 화살표 -->
-        <div v-if="filteredGenres.length > 6">
-          <h1 class="arrow arrow5" @click="showPrevGenre">
-            &lt; </h1>
-          <h1 class="arrow arrow1" @click="showNextGenre"> &gt; </h1>
-        </div>
-      </div>
-
-      <!-- 국가 선택 섹션 -->
-      <h2>[ 국가 선택 ]</h2>
-      <div class="poster">
-        <!-- 국가 목록 -->
-        <div v-for="country in currentCountries" :key="country.country_id">
-          <p 
-            class="post-txt" 
-            @click="countrySelect(country.country)"
-            :class="{'is-selected' : selectedParams.country === country.country}"
-          >{{ country.country }}</p>
-        </div>
-        <div @click="resetCountry" v-if="currentCountries.length === 0">
-          <p class="post-txt">조건에 맞는 국가가 존재하지 않습니다.</p>
-        </div>
-        <!-- 이전/다음 국가 화살표 -->
-        <div v-if="filteredCountries.length > 6">
-          <h1 class="arrow arrow6" @click="showPrevCountry">
-            &lt; </h1>
-          <h1 class="arrow arrow2" @click="showNextCountry"> &gt; </h1>
-        </div>
-      </div>
-
-      <!-- 배우 선택 섹션 -->
-      <h2>[ 배우 선택 ]</h2>
-      <div class="poster">
-        <!-- 배우 목록 -->
-        <div v-for="actor in currentActors" :key="actor.actor_id" class="actor-poster">
-          <img 
-            :src="actor.profile_image ? actor.profile_image : '../public/default_img.jpg'"
-            class="post-img" alt="#"
-            @click="actorSelect(actor.actor)"
-            :class="{'is-selected' : selectedParams.actor === actor.actor}"
-          >
-          <p class="actor-name">{{ actor.actor }}</p>
-        </div>
-        <div @click="resetActor" v-if="currentActors.length === 0">
-          <p class="post-txt">조건에 맞는 배우가 존재하지 않습니다.</p>
-        </div>
-        <!-- 이전/다음 배우 화살표 -->
-        <div v-if="filteredActors.length > 6">
-          <h1 class="arrow arrow7" @click="showPrevActor">
-            &lt; </h1>
-          <h1 class="arrow arrow3" @click="showNextActor"> &gt; </h1>
-        </div>
-      </div>
-
-      <!-- 감독 선택 섹션 -->
-      <h2>[ 감독 선택 ]</h2>
-      <div class="poster">
-        <!-- 감독 목록 -->
-        <div v-for="producer in currentProducers" :key="producer.producer_id" class="producer-poster">
-          <img 
-            :src="producer.profile_image ?  producer.profile_image : '../public/default_img.'" 
-            class="post-img" 
-            :class="{'is-selected' : selectedParams.producer === producer.producer}"
-            alt="#"
-            @click="producerSelect(producer.producer)">
-          <p class="product-name">{{ producer.producer }}</p>
-        </div>
-        <div @click="resetProducer" v-if="currentProducers.length === 0">
-          <p class="post-txt">조건에 맞는 감독이 존재하지 않습니다.</p>
-        </div>
-        <!-- 이전/다음 감독 화살표 -->
-        <div v-if="filteredProducers.length > 6">
-          <h1 class="arrow arrow8" @click="showPrevProducer">
-          &lt; </h1>
-          <h1 class="arrow arrow4" @click="showNextProducer"> &gt; </h1>
-        </div>
-      </div>
-
-      <!-- 홈으로/최종 선택 버튼 -->
-      <div class="btn">
-        <h4 class="select-end-btn" @click="goToHome">홈으로</h4>
-        <h4 class="select-end-btn" @click="goToDetail" :selectedParams="selectedParams">최종 선택</h4>
+  <div>
+    <div v-if="isLoading" class="loading-screen">
+      <div class="loaderBar">
+        <h1>Loding</h1>
       </div>
     </div>
 
+    <!-- 3초 후 Loding이 끝나면 실행되는 화면 -->
+    <div v-else>
+      <!-- 장르 선택 섹션 -->
+      <div class="movie-select">
+        <h2>[ 장르 선택 ]</h2>
+        <div class="poster">
+          <!-- 장르 목록 -->
+          <div v-for="genre in currentGenres" :key="genre.genre_id">
+            <p class="post-txt" @click="genreSelect(genre.genre)"
+            :class="{ 'is-selected' : selectedParams.genre === genre.genre}">{{ genre.genre }}</p>
+          </div>
+          <div @click="resetGenre" v-if="currentGenres.length === 0">
+            <p class="post-txt">조건에 맞는 장르가 존재하지 않습니다.</p>
+          </div>
+          <!-- 이전/다음 장르 화살표 -->
+          <div v-if="filteredGenres.length > 6">
+            <h1 class="arrow arrow5" @click="showPrevGenre">
+              &lt; </h1>
+            <h1 class="arrow arrow1" @click="showNextGenre"> &gt; </h1>
+          </div>
+        </div>
+
+        <!-- 국가 선택 섹션 -->
+        <h2>[ 국가 선택 ]</h2>
+        <div class="poster">
+          <!-- 국가 목록 -->
+          <div v-for="country in currentCountries" :key="country.country_id">
+            <p 
+              class="post-txt" 
+              @click="countrySelect(country.country)"
+              :class="{'is-selected' : selectedParams.country === country.country}"
+            >{{ country.country }}</p>
+          </div>
+          <div @click="resetCountry" v-if="currentCountries.length === 0">
+            <p class="post-txt">조건에 맞는 국가가 존재하지 않습니다.</p>
+          </div>
+          <!-- 이전/다음 국가 화살표 -->
+          <div v-if="filteredCountries.length > 6">
+            <h1 class="arrow arrow6" @click="showPrevCountry">
+              &lt; </h1>
+            <h1 class="arrow arrow2" @click="showNextCountry"> &gt; </h1>
+          </div>
+        </div>
+
+        <!-- 배우 선택 섹션 -->
+        <h2>[ 배우 선택 ]</h2>
+        <div class="poster">
+          <!-- 배우 목록 -->
+          <div v-for="actor in currentActors" :key="actor.actor_id" class="actor-poster">
+            <img 
+              :src="actor.profile_image ? actor.profile_image : '../public/default_img.jpg'"
+              class="post-img" alt="#"
+              @click="actorSelect(actor.actor)"
+              :class="{'is-selected' : selectedParams.actor === actor.actor}"
+            >
+            <p class="actor-name">{{ actor.actor }}</p>
+          </div>
+          <div @click="resetActor" v-if="currentActors.length === 0">
+            <p class="post-txt">조건에 맞는 배우가 존재하지 않습니다.</p>
+          </div>
+          <!-- 이전/다음 배우 화살표 -->
+          <div v-if="filteredActors.length > 6">
+            <h1 class="arrow arrow7" @click="showPrevActor">
+              &lt; </h1>
+            <h1 class="arrow arrow3" @click="showNextActor"> &gt; </h1>
+          </div>
+        </div>
+
+        <!-- 감독 선택 섹션 -->
+        <h2>[ 감독 선택 ]</h2>
+        <div class="poster">
+          <!-- 감독 목록 -->
+          <div v-for="producer in currentProducers" :key="producer.producer_id" class="producer-poster">
+            <img 
+              :src="producer.profile_image ?  producer.profile_image : '../public/default_img.'" 
+              class="post-img" 
+              :class="{'is-selected' : selectedParams.producer === producer.producer}"
+              alt="#"
+              @click="producerSelect(producer.producer)">
+            <p class="product-name">{{ producer.producer }}</p>
+          </div>
+          <div @click="resetProducer" v-if="currentProducers.length === 0">
+            <p class="post-txt">조건에 맞는 감독이 존재하지 않습니다.</p>
+          </div>
+          <!-- 이전/다음 감독 화살표 -->
+          <div v-if="filteredProducers.length > 6">
+            <h1 class="arrow arrow8" @click="showPrevProducer">
+            &lt; </h1>
+            <h1 class="arrow arrow4" @click="showNextProducer"> &gt; </h1>
+          </div>
+        </div>
+
+        <!-- 홈으로/최종 선택 버튼 -->
+        <div class="btn">
+          <h4 class="select-end-btn" @click="goToHome">홈으로</h4>
+          <h4 class="select-end-btn" @click="goToDetail" :selectedParams="selectedParams">최종 선택</h4>
+        </div>
+      </div>
+
+    </div>
   </div>
 </template>
 

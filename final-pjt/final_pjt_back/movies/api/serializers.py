@@ -118,7 +118,7 @@ class ChoiceSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = '__all__'
+        fields = ('username', 'id', 'email', 'nickname', )
 
 
 class ReviewListSerializer(serializers.ModelSerializer):
@@ -158,3 +158,12 @@ class MovieLikeSerializer(serializers.Serializer):
         movie = obj
         
         return user in movie.like_users.all()
+    
+class MovieChatSerialzier(serializers.ModelSerializer):
+    
+    user = UserSerializer(read_only=True)
+    
+    class Meta:
+        model = MovieChat
+        fields = '__all__'
+        read_only_fields = ('user', 'movie',)

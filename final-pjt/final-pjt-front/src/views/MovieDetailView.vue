@@ -1,50 +1,52 @@
 <template>
-  <h4 class="select-end-btn" @click="goToHome">Home</h4>
+  <div>
+    <h4 class="select-end-btn" @click="goToHome">Home</h4>
 
-  <div class="background">
-    <!-- 배경 이미지 -->
-    <div class="background-filter">
-      <img :src="backgroundImageSrc" alt="snapshot" />
-      <!-- 그라데이션 오버레이 -->
-      <div class="overlay"></div>
-    </div>
-
-    <!-- 내용 컨테이너 -->
-    <div class="content-container">
-      <!-- 영화 상세 정보 -->
-      <article class="detail-container">
-        <h1>{{ title }}</h1>
-        <p>장르 : {{ genre.join(', ') }}</p>
-        <p>국가 : {{ country }}</p>
-        <p>개봉 상태 : {{ status }}</p>
-        <p v-if="runningTime">러닝타임 : {{ runningTime }}분</p>
-        <p v-if="openingDate">개봉 일자 : {{ openingDate }}</p>
-
-        <!-- 좋아요 기능 -->
-        <label class="like-container">
-          <input type="checkbox" @click="likeMovie" v-model="isLiked">
-          <div class="like-checkmark">
-            <svg viewBox="0 0 256 256">
-              <rect fill="none" height="256" width="256"></rect>
-              <path
-                d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z"
-                stroke-width="20px" stroke="#FFF" fill="none"></path>
-            </svg>
-          </div>
-        </label>
-
-      </article>
-      <!-- 유튜브 플레이어 -->
-      <div class="youtube-container">
-        <iframe width="600" height="350" :src="videoUrl" frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-        </iframe>
+    <div class="background">
+      <!-- 배경 이미지 -->
+      <div class="background-filter">
+        <img :src="backgroundImageSrc" alt="snapshot" />
+        <!-- 그라데이션 오버레이 -->
+        <div class="overlay"></div>
       </div>
-    </div>
 
-    <!-- 영화 선택 네비게이션 -->
-    <div class="view-container">
-      <MovieDetailNav :movie="movie" />
+      <!-- 내용 컨테이너 -->
+      <div class="content-container">
+        <!-- 영화 상세 정보 -->
+        <article class="detail-container">
+          <h1>{{ title }}</h1>
+          <p>장르 : {{ genre.join(', ') }}</p>
+          <p>국가 : {{ country }}</p>
+          <p>개봉 상태 : {{ status }}</p>
+          <p v-if="runningTime">러닝타임 : {{ runningTime }}분</p>
+          <p v-if="openingDate">개봉 일자 : {{ openingDate }}</p>
+
+          <!-- 좋아요 기능 -->
+          <label class="like-container">
+            <input type="checkbox" @click="likeMovie" v-model="isLiked">
+            <div class="like-checkmark">
+              <svg viewBox="0 0 256 256">
+                <rect fill="none" height="256" width="256"></rect>
+                <path
+                  d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z"
+                  stroke-width="20px" stroke="#FFF" fill="none"></path>
+              </svg>
+            </div>
+          </label>
+
+        </article>
+        <!-- 유튜브 플레이어 -->
+        <div class="youtube-container">
+          <iframe width="600" height="350" :src="videoUrl" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- 영화 선택 네비게이션 -->
+      <div class="view-container">
+        <MovieDetailNav :movie="movie" />
+      </div>
     </div>
   </div>
 </template>
@@ -141,7 +143,6 @@ onMounted(() => {
   })
     .then((res) => {
       isLiked.value = res.data.is_liked
-      console.log('좋아요', res.data)
     })
     .catch(err => console.log(err))
 })
