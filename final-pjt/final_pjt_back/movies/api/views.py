@@ -181,3 +181,9 @@ def profile_review(request):
     movies = Movie.objects.filter(request.data)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
+
+@api_view(['DELETE'])
+def member_leave(request):
+    user = get_object_or_404(get_user_model(), username=request.user)
+    user.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)

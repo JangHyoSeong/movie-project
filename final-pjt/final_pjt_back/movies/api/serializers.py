@@ -140,15 +140,21 @@ class ReviewSerializer(serializers.ModelSerializer):
 class UserLikedMovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = ('title', 'poster',)
+        fields = ('title', 'poster', 'movie_id')
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
     like_movies = UserLikedMovieSerializer(many=True, read_only=True)
+    review_movies = serializers.SerializerMethodField()
 
     class Meta:
         model = get_user_model()
         fields = ('username', 'email', 'like_movies', 'review_movies', 'nickname', 'profile_image',)
+        
+    def get_review_movies(self, obj):
+        movies = obj.review_movies.all()
+        return UserLikedMovieSerializer(movies, many=True).data
+
 
 class MovieLikeSerializer(serializers.Serializer):
     is_liked = serializers.SerializerMethodField()

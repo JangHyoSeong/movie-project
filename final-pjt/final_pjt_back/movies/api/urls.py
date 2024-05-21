@@ -18,4 +18,5 @@ urlpatterns = [
     path('v1/<str:movie_id>/chat/', views.movie_chat),
     path('v1/profile/', views.profile),
     path('v1/profile/reviews/', views.profile_review),
+    path('v1/profile/member_leave/', views.member_leave),
 ]
