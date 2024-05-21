@@ -8,6 +8,7 @@ import ReviewView from '@/views/MovieDetail/ReviewView.vue'
 import RecommendView from '@/views/MovieDetail/RecommendView.vue'
 import ChatView from '@/views/MovieDetail/ChatView.vue'
 import ProfileDetailView from '@/views/ProfileDetailView.vue'
+import LikeView from '@/views/ProfileDetail/LikeView.vue'
 import UpdateView from '@/views/ProfileDetail/UpdateView.vue'
 
 const router = createRouter({
@@ -46,6 +47,7 @@ const router = createRouter({
     name: 'profile',
     component: ProfileDetailView,
       children: [
+        { path: '', name: 'profile-like', component: LikeView, props: true },
         { path: 'update', name: 'profile-update', component: UpdateView, props: true }
       ]
     }

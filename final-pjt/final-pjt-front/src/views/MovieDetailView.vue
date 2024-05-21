@@ -75,7 +75,6 @@ const runningTime = ref('');
 const status = ref('')
 const openingDate = ref('')
 const movie = ref('')
-
 const route = useRoute();
 const videoUrl = ref(null)
 
@@ -139,8 +138,7 @@ const likeMovie = function () {
     }
   })
     .then((res) => {
-      // 이 부분은 나중에 좋아요 버튼 색깔이 바뀌는 것으로 수정 바람
-      alert('좋아요 성공')
+      alert('좋아하는 영화에 등록되었습니다')
     })
     .catch(err => console.log(err))
 }
