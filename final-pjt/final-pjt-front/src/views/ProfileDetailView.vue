@@ -1,9 +1,11 @@
 <template>
-  <div class="profile-content">
-    <h1>{{ userData.username }}님의 프로필 페이지</h1>
-    <hr>
+  <div>
+    <div class="profile-content">
+      <h1>{{ userData.username }}님의 프로필 페이지</h1>
+      <hr>
+    </div>
+    <ProfileDetailNav :userData="userData" />
   </div>
-  <ProfileDetailNav :userData="userData" />
 </template>
 
 <script setup>
@@ -28,7 +30,6 @@ const loadUserData = function () {
   })
     .then((res) => {
       userData.value = res.data
-      console.log(userData.value)
     })
     .catch(err => console.log(err))
 }

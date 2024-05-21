@@ -77,7 +77,7 @@ const chatSubmit = function () {
 }
 
 // 1초마다 채팅을 새로불러옴
-const repeat = setInterval(loadMessage, 1000)
+// const repeat = setInterval(loadMessage, 1000)
 
 // 현재 로그인된 유저 정보 가져오기
 const currentUser = ref(null)
