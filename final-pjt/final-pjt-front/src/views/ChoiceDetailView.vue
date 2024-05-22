@@ -40,16 +40,21 @@ const goToSelect = () => {
 // 필터링 된 영화 받아오기
 const movies = ref([])
 
+const genre = props.selectData.genre ? props.selectData.genre : null
+const country = props.selectData.country ? props.selectData.country : null
+const actor_code = props.selectData.actor ? props.selectData.actor.actor_code : null
+const producer = props.selectData.producer ? props.selectData.producer.producer_id : null
+
 onMounted(() => {
   console.log(props.selectData)
   axios({
     method: 'get',
     url: 'http://127.0.0.1:8000/api/v1/choice/result/',
     params: {
-      genre: props.selectData.genre,
-      country: props.selectData.country,
-      actor: props.selectData.actor.actor_code,
-      producer: props.selectData.producer
+      genre: genre,
+      country: country,
+      actor: actor_code,
+      producer: producer,
     }
   })
     .then((res) => {
