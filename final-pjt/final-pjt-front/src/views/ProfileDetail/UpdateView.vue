@@ -20,7 +20,9 @@
     <p class="nownickname">{{ userData.username }}</p>
     <p>변경 닉네임</p>
     <input class="afternickname" type="text" placeholder="변경할 닉네임을 입력해주세요" v-model="newUsername" />
-    <button @click="updateUsername">닉네임 변경</button>
+    <div>
+      <button class="nickname-btn" @click="updateUsername">닉네임 변경</button>
+    </div>
   </div>
 
   <hr>
@@ -131,6 +133,22 @@ const passwordUpdate = function () {
   color: white;
   position: relative;
   left: 3%;
+}
+
+.nickname-btn {
+  margin: 1%  0%  0% 0.5%;
+  width: 13.3%;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  padding: 0.2%;
+}
+
+.nickname-btn:hover {
+  background-color: #166AE8;
+  color: white;
+  border-style: none;
 }
 
 .profile-container {
