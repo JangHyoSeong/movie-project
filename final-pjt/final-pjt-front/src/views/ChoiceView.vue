@@ -15,16 +15,19 @@
           <!-- 장르 목록 -->
           <div v-for="genre in currentGenres" :key="genre.genre_id">
             <p class="post-txt" @click="genreSelect(genre.genre)"
-            :class="{ 'is-selected' : selectedParams.genre === genre.genre}">{{ genre.genre }}</p>
+              :class="{ 'is-selected': selectedParams.genre === genre.genre }">{{ genre.genre }}</p>
           </div>
           <div @click="resetGenre" v-if="currentGenres.length === 0">
-            <p class="post-txt">조건에 맞는 장르가 존재하지 않습니다.</p>
+            <p class="post-txt">X</p>
           </div>
           <!-- 이전/다음 장르 화살표 -->
-          <div v-if="filteredGenres.length > 6">
-            <h1 class="arrow arrow5" @click="showPrevGenre">
-              &lt; </h1>
-            <h1 class="arrow arrow1" @click="showNextGenre"> &gt; </h1>
+          <div v-if="filteredGenres.length > 7">
+            <h1 class="arrow5" @click="showPrevGenre">
+              <p>&lt;</p>
+            </h1>
+            <h1 class="arrow1" @click="showNextGenre">
+              <p>&gt;</p>
+            </h1>
           </div>
         </div>
 
@@ -33,20 +36,20 @@
         <div class="poster">
           <!-- 국가 목록 -->
           <div v-for="country in currentCountries" :key="country.country_id">
-            <p 
-              class="post-txt" 
-              @click="countrySelect(country.country)"
-              :class="{'is-selected' : selectedParams.country === country.country}"
-            >{{ country.country }}</p>
+            <p class="post-txt" @click="countrySelect(country.country)"
+              :class="{ 'is-selected': selectedParams.country === country.country }">{{ country.country }}</p>
           </div>
           <div @click="resetCountry" v-if="currentCountries.length === 0">
-            <p class="post-txt">조건에 맞는 국가가 존재하지 않습니다.</p>
+            <p class="post-txt">X</p>
           </div>
           <!-- 이전/다음 국가 화살표 -->
-          <div v-if="filteredCountries.length > 6">
-            <h1 class="arrow arrow6" @click="showPrevCountry">
-              &lt; </h1>
-            <h1 class="arrow arrow2" @click="showNextCountry"> &gt; </h1>
+          <div v-if="filteredCountries.length > 7">
+            <h1 class="arrow6" @click="showPrevCountry">
+              <p>&lt;</p>
+            </h1>
+            <h1 class="arrow2" @click="showNextCountry">
+              <p>&gt;</p>
+            </h1>
           </div>
         </div>
 
@@ -55,22 +58,21 @@
         <div class="poster">
           <!-- 배우 목록 -->
           <div v-for="actor in currentActors" :key="actor.actor_id" class="actor-poster">
-            <img 
-              :src="actor.profile_image ? actor.profile_image : '../public/default_img.jpg'"
-              class="post-img" alt="#"
-              @click="actorSelect(actor)"
-              :class="{'is-selected' : selectedParams.actor === actor}"
-            >
+            <img :src="actor.profile_image ? actor.profile_image : '../public/default_img.jpg'" class="post-img" alt="#"
+              @click="actorSelect(actor)" :class="{ 'is-selected': selectedParams.actor === actor }">
             <p class="actor-name">{{ actor.actor }}</p>
           </div>
           <div v-if="currentActors.length === 0">
-            <p @click="resetActor" class="post-txt">조건에 맞는 배우가 존재하지 않습니다.</p>
+            <p @click="resetActor" class="post-txt">X</p>
           </div>
           <!-- 이전/다음 배우 화살표 -->
-          <div v-if="filteredActors.length > 6">
-            <h1 class="arrow arrow7" @click="showPrevActor">
-              &lt; </h1>
-            <h1 class="arrow arrow3" @click="showNextActor"> &gt; </h1>
+          <div v-if="filteredActors.length > 7">
+            <h1 class="arrow7" @click="showPrevActor">
+              <p>&lt;</p>
+            </h1>
+            <h1 class="arrow3" @click="showNextActor">
+              <p>&gt;</p>
+            </h1>
           </div>
         </div>
 
@@ -79,22 +81,21 @@
         <div class="poster">
           <!-- 감독 목록 -->
           <div v-for="producer in currentProducers" :key="producer.producer_id" class="producer-poster">
-            <img 
-              :src="producer.profile_image ?  producer.profile_image : '../public/default_img.'" 
-              class="post-img" 
-              :class="{'is-selected' : selectedParams.producer === producer}"
-              alt="#"
-              @click="producerSelect(producer)">
+            <img :src="producer.profile_image ? producer.profile_image : '../public/default_img.'" class="post-img"
+              :class="{ 'is-selected': selectedParams.producer === producer }" alt="#" @click="producerSelect(producer)">
             <p class="product-name">{{ producer.producer }}</p>
           </div>
           <div v-if="currentProducers.length === 0">
-            <p @click="resetProducer" class="post-txt">조건에 맞는 감독이 존재하지 않습니다.</p>
+            <p @click="resetProducer" class="post-txt">X</p>
           </div>
           <!-- 이전/다음 감독 화살표 -->
-          <div v-if="filteredProducers.length > 6">
-            <h1 class="arrow arrow8" @click="showPrevProducer">
-            &lt; </h1>
-            <h1 class="arrow arrow4" @click="showNextProducer"> &gt; </h1>
+          <div v-if="filteredProducers.length > 7">
+            <h1 class="arrow8" @click="showPrevProducer">
+              <p>&lt;</p>
+            </h1>
+            <h1 class="arrow4" @click="showNextProducer">
+              <p>&gt;</p>
+            </h1>
           </div>
         </div>
 
@@ -165,13 +166,13 @@ onMounted(() => {
 
 // 관리하는 인덱스
 const startIndexGenre = ref(0)
-const endIndexGenre = computed(() => Math.min(startIndexGenre.value + 6, filteredGenres.value.length))
+const endIndexGenre = computed(() => Math.min(startIndexGenre.value + 7, filteredGenres.value.length))
 const startIndexCountry = ref(0)
-const endIndexCountry = computed(() => Math.min(startIndexCountry.value + 6, filteredCountries.value.length))
+const endIndexCountry = computed(() => Math.min(startIndexCountry.value + 7, filteredCountries.value.length))
 const startIndexActor = ref(0)
-const endIndexActor = computed(() => Math.min(startIndexActor.value + 6, filteredActors.value.length))
+const endIndexActor = computed(() => Math.min(startIndexActor.value + 7, filteredActors.value.length))
 const startIndexProducer = ref(0)
-const endIndexProducer = computed(() => Math.min(startIndexProducer.value + 6, filteredProducers.value.length))
+const endIndexProducer = computed(() => Math.min(startIndexProducer.value + 7, filteredProducers.value.length))
 
 const currentGenres = computed(() => {
   return filteredGenres.value.slice(startIndexGenre.value, endIndexGenre.value)
@@ -191,25 +192,25 @@ const currentProducers = computed(() => {
 
 const showNextGenre = () => {
   if (endIndexGenre.value < filteredGenres.value.length) {
-    startIndexGenre.value = Math.min(startIndexGenre.value + 1, filteredGenres.value.length - 6)
+    startIndexGenre.value = Math.min(startIndexGenre.value + 1, filteredGenres.value.length - 7)
   }
 }
 
 const showNextCountry = () => {
   if (endIndexCountry.value < filteredCountries.value.length) {
-    startIndexCountry.value = Math.min(startIndexCountry.value + 1, filteredCountries.value.length - 6)
+    startIndexCountry.value = Math.min(startIndexCountry.value + 1, filteredCountries.value.length - 7)
   }
 }
 
 const showNextActor = () => {
   if (endIndexActor.value < filteredActors.value.length) {
-    startIndexActor.value = Math.min(startIndexActor.value + 1, filteredActors.value.length - 6)
+    startIndexActor.value = Math.min(startIndexActor.value + 1, filteredActors.value.length - 7)
   }
 }
 
 const showNextProducer = () => {
   if (endIndexProducer.value < filteredProducers.value.length) {
-    startIndexProducer.value = Math.min(startIndexProducer.value + 1, filteredProducers.value.length - 6)
+    startIndexProducer.value = Math.min(startIndexProducer.value + 1, filteredProducers.value.length - 7)
   }
 }
 
@@ -277,19 +278,19 @@ const producerSelect = function (producer) {
   }
 }
 
-const resetGenre = function() {
+const resetGenre = function () {
   selectedParams.value.genre = null
 }
 
-const resetCountry = function() {
+const resetCountry = function () {
   selectedParams.value.Country = null
 }
 
-const resetActor = function() {
+const resetActor = function () {
   selectedParams.value.actor = null
 }
 
-const resetProducer = function() {
+const resetProducer = function () {
   selectedParams.value.producer = null
 }
 
@@ -412,8 +413,6 @@ watch(selectedParams, (newVal, oldVal) => {
   z-index: -1;
 }
 
-
-
 @keyframes fillProgress {
   0% {
     width: 0;
@@ -433,26 +432,57 @@ watch(selectedParams, (newVal, oldVal) => {
   0%,
   20%,
   40%,
-  60%,
+  70%,
   80%,
   100% {
-    background: linear-gradient(137deg, #ffdb3b 10%, #FE53BB 45%, #8F51EA 67%, #0044ff 87%);
+    background: linear-gradient(137deg, #ffdb3b 10%, #FE53BB 45%, #8F51EA 77%, #0044ff 87%);
   }
 }
 
 /* 슬라이더 화살표 스타일 */
-.arrow {
+.arrow1,
+.arrow2,
+.arrow5,
+.arrow6 {
   position: absolute;
-  padding-bottom: 2.5%;
   font-size: 200%;
-  width: 3%;
-  height: 1%;
-  border: 3px solid white;
-  border-radius: 100%;
-  color: gray;
-  background-color: white;
-  opacity: 0.75;
+  width: 4%;
+  opacity: 0.3;
+  height: 10%;
+  cursor: pointer;
 }
+
+.arrow3,
+.arrow4,
+.arrow7,
+.arrow8 {
+  position: absolute;
+  font-size: 200%;
+  width: 4%;
+  height: 22%;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.arrow1 p,
+.arrow2 p,
+.arrow5 p,
+.arrow6 p {
+  font-size: 150%;
+  position: relative;
+  top: -40%;
+}
+
+.arrow3 p,
+.arrow4 p,
+.arrow7 p,
+.arrow8 p {
+  font-size: 150%;
+  position: relative;
+  top: 8%;
+}
+
+
 
 /* 화살표에 호버 효과 적용 */
 .arrow1:hover,
@@ -471,41 +501,42 @@ watch(selectedParams, (newVal, oldVal) => {
 .arrow2,
 .arrow3,
 .arrow4 {
-  right: 2.2%;
-}
-
-.arrow1,
-.arrow5 {
-  bottom: 85%;
-}
-
-.arrow2,
-.arrow6 {
-  bottom: 68%;
-}
-
-.arrow3,
-.arrow7 {
-  bottom: 45%;
-}
-
-.arrow4,
-.arrow8 {
-  bottom: 15%;
+  right: 0.5%;
 }
 
 .arrow5,
 .arrow6,
 .arrow7,
 .arrow8 {
-  left: 2.2%;
+  left: -1.5%;
 }
+
+.arrow1,
+.arrow5 {
+  bottom: 82.5%;
+}
+
+.arrow2,
+.arrow6 {
+  bottom: 65.5%;
+}
+
+.arrow3,
+.arrow7 {
+  bottom: 37%;
+}
+
+.arrow4,
+.arrow8 {
+  bottom: 7%;
+}
+
 
 /* 영화 선택 영역 스타일 */
 .movie-select {
   position: relative;
-  left: 8%;
-  width: 85%;
+  left: 11%;
+  width: 80%;
   color: white;
   text-align: center;
 }
@@ -523,11 +554,12 @@ watch(selectedParams, (newVal, oldVal) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 150%;
+  font-size: 175%;
   color: black;
   width: 180px;
   height: 90px;
-  background-color: rgb(200, 200, 200);
+  background-color: white;
+  border-radius: 10px;
 }
 
 /* 포스터 이미지 스타일 */
@@ -535,6 +567,7 @@ watch(selectedParams, (newVal, oldVal) => {
   width: 180px;
   height: 210px;
   transition: opacity 0.3s, transform 0.3s;
+  border-radius: 10px;
 }
 
 /* 포스터 텍스트 호버 효과 스타일 */
@@ -602,11 +635,11 @@ watch(selectedParams, (newVal, oldVal) => {
 .select-end-btn:hover {
   color: white;
   border-style: none;
-  background-color: #166AE8;
+  background-color: #177AE8;
 }
 
 /* 선택된 이미지 */
 .is-selected {
-  border: rgb(134, 27, 235) 3px solid;
+  border: rgb(235, 45, 45) 3px solid;
 }
 </style>

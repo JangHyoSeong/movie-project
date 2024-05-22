@@ -6,20 +6,20 @@
     </div>
 
     <div v-if="movies.length > 0">
-    <div class="poster">
-      <img :src="movies[0].poster" alt="" class="post">
-    </div>
+      <div class="poster">
+        <img :src="movies[0].poster" alt="" class="post">
+      </div>
 
-    <div v-if="movies.length > 0" class="movie-content-list">
-      <div class="movie-content">
-        <p>제목 : {{ movies[0].title }}</p>
-        <p>방영일 : {{ movies[0].opening_date }}</p>
-        <p>평점 : {{ movies[0].review_score }}</p>
+      <div v-if="movies.length > 0" class="movie-content-list">
+        <div class="movie-content">
+          <p>제목 : {{ movies[0].title }}</p>
+          <p>방영일 : {{ movies[0].opening_date }}</p>
+          <p>평점 : {{ movies[0].review_score }}</p>
+        </div>
       </div>
     </div>
-    </div>
     <p class="go-to-select" @click="goToSelect">돌아가기</p>
-    </div>
+  </div>
 </template>
 
 <script setup>
@@ -96,21 +96,25 @@ onMounted(() => {
 }
 
 .post {
-  margin: 0%;
-  padding: 0%;
   width: 300px;
   height: 450px;
   background-color: rgb(200, 200, 200);
   z-index: 1;
+  border-radius: 20px;
+  cursor: pointer;
+  background: linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff);
+  padding: 3px;
+  box-sizing: border-box;
 }
 
 .post:hover {
   opacity: 0.75;
-  transform: scale(1.05); /* 크기 커지는 애니메이션 */
+  transform: scale(1.05);
+  /* 크기 커지는 애니메이션 */
 }
 
 .movie-content {
-  width: 300px;
+  width: 290px;
   text-align: center;
   color: white;
 }

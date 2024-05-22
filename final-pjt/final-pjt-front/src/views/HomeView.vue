@@ -449,13 +449,13 @@ section {
 .posts {
   width: 24.5vh;
   height: 36.5vh;
-  background: linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   border-radius: 15px;
   background-size: 200% 100%;
+  background: linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
   animation: gradient 2.5s ease infinite;
 }
 
