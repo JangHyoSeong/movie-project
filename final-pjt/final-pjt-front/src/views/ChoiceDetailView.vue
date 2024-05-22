@@ -48,7 +48,7 @@ onMounted(() => {
     params: {
       genre: props.selectData.genre,
       country: props.selectData.country,
-      actor: props.selectData.actor,
+      actor: props.selectData.actor.actor_code,
       producer: props.selectData.producer
     }
   })
