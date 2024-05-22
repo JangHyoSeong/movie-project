@@ -53,12 +53,12 @@ def movie_detail(request, movie_id):
 @api_view(['GET'])
 def choice(request):
     movies = Movie.objects.filter(
-        Q(genre__isnull=False) & Q(country__isnull=False) & Q(producer__isnull=False)
+        Q(genre__isnull=False) & Q(country__isnull=False) & Q(producer__isnull=False) & Q(actor__isnull=False)
     ).distinct()
-    genres = get_list_or_404(Genre)
-    countries = get_list_or_404(Country)
-    actors = get_list_or_404(Actor)
-    producers = get_list_or_404(Producer)
+    genres = Genre.objects.filter(movie__isnull=False).distinct()
+    countries = Country.objects.filter(movie__isnull=False).distinct()
+    actors = Actor.objects.filter(movie__isnull=False, profile_image__isnull=False).distinct()
+    producers = Producer.objects.filter(movie__isnull=False, profile_image__isnull=False).distinct()
     
     data = {
         'movies': movies,
@@ -87,8 +87,8 @@ def choice_result(request):
     if producer is not None:
         query &= Q(producer=producer)
     
-    queried_movies = Movie.objects.filter(query).order_by('-review_score')
-    serializer = MovieSerializer(queried_movies, many=True)
+    queried_movies = Movie.objects.filter(query, opening_date__isnull=False, review_score__lt=9).order_by('-review_score')
+    serializer = MovieResultSerializer(queried_movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['GET', 'POST', 'DELETE'])
