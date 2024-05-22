@@ -58,8 +58,8 @@
             <img 
               :src="actor.profile_image ? actor.profile_image : '../public/default_img.jpg'"
               class="post-img" alt="#"
-              @click="actorSelect(actor.actor)"
-              :class="{'is-selected' : selectedParams.actor === actor.actor}"
+              @click="actorSelect(actor)"
+              :class="{'is-selected' : selectedParams.actor === actor}"
             >
             <p class="actor-name">{{ actor.actor }}</p>
           </div>
@@ -82,9 +82,9 @@
             <img 
               :src="producer.profile_image ?  producer.profile_image : '../public/default_img.'" 
               class="post-img" 
-              :class="{'is-selected' : selectedParams.producer === producer.producer}"
+              :class="{'is-selected' : selectedParams.producer === producer}"
               alt="#"
-              @click="producerSelect(producer.producer)">
+              @click="producerSelect(producer)">
             <p class="product-name">{{ producer.producer }}</p>
           </div>
           <div v-if="currentProducers.length === 0">
@@ -165,15 +165,14 @@ onMounted(() => {
 
 // 관리하는 인덱스
 const startIndexGenre = ref(0)
-const endIndexGenre = ref(6)
+const endIndexGenre = computed(() => Math.min(startIndexGenre.value + 6, filteredGenres.value.length))
 const startIndexCountry = ref(0)
-const endIndexCountry = ref(6)
+const endIndexCountry = computed(() => Math.min(startIndexCountry.value + 6, filteredCountries.value.length))
 const startIndexActor = ref(0)
-const endIndexActor = ref(6)
+const endIndexActor = computed(() => Math.min(startIndexActor.value + 6, filteredActors.value.length))
 const startIndexProducer = ref(0)
-const endIndexProducer = ref(6)
+const endIndexProducer = computed(() => Math.min(startIndexProducer.value + 6, filteredProducers.value.length))
 
-// 현재 항목 목록
 const currentGenres = computed(() => {
   return filteredGenres.value.slice(startIndexGenre.value, endIndexGenre.value)
 })
@@ -190,61 +189,51 @@ const currentProducers = computed(() => {
   return filteredProducers.value.slice(startIndexProducer.value, endIndexProducer.value)
 })
 
-// 포스터 표시
 const showNextGenre = () => {
   if (endIndexGenre.value < filteredGenres.value.length) {
-    startIndexGenre.value += 1
-    endIndexGenre.value += 1
+    startIndexGenre.value = Math.min(startIndexGenre.value + 1, filteredGenres.value.length - 6)
   }
 }
 
 const showNextCountry = () => {
   if (endIndexCountry.value < filteredCountries.value.length) {
-    startIndexCountry.value += 1
-    endIndexCountry.value += 1
+    startIndexCountry.value = Math.min(startIndexCountry.value + 1, filteredCountries.value.length - 6)
   }
 }
 
 const showNextActor = () => {
   if (endIndexActor.value < filteredActors.value.length) {
-    startIndexActor.value += 1
-    endIndexActor.value += 1
+    startIndexActor.value = Math.min(startIndexActor.value + 1, filteredActors.value.length - 6)
   }
 }
 
 const showNextProducer = () => {
   if (endIndexProducer.value < filteredProducers.value.length) {
-    startIndexProducer.value += 1
-    endIndexProducer.value += 1
+    startIndexProducer.value = Math.min(startIndexProducer.value + 1, filteredProducers.value.length - 6)
   }
 }
 
-// 슬라이더를 반대로 이동하는 로직 추가
 const showPrevGenre = () => {
-  if (startIndexGenre.value !== 0) {
-    startIndexGenre.value -= 1
-    endIndexGenre.value -= 1
+  if (startIndexGenre.value > 0) {
+    startIndexGenre.value = Math.max(startIndexGenre.value - 1, 0)
   }
 }
 
 const showPrevCountry = () => {
-  if (startIndexCountry.value !== 0) {
-    startIndexCountry.value -= 1
-    endIndexCountry.value -= 1
+  if (startIndexCountry.value > 0) {
+    startIndexCountry.value = Math.max(startIndexCountry.value - 1, 0)
   }
 }
 
 const showPrevActor = () => {
-  if (startIndexActor.value !== 0) {
-    startIndexActor.value -= 1
-    endIndexActor.value -= 1
+  if (startIndexActor.value > 0) {
+    startIndexActor.value = Math.max(startIndexActor.value - 1, 0)
   }
 }
 
 const showPrevProducer = () => {
-  if (startIndexProducer.value !== 0) {
-    startIndexProducer.value -= 1
-    endIndexProducer.value -= 1
+  if (startIndexProducer.value > 0) {
+    startIndexProducer.value = Math.max(startIndexProducer.value - 1, 0)
   }
 }
 
@@ -301,7 +290,7 @@ const resetActor = function() {
 }
 
 const resetProducer = function() {
-  selectedParams.value.Producer = null
+  selectedParams.value.producer = null
 }
 
 // 현재 선택된 요소에 따라 영화를 필터링
@@ -310,16 +299,19 @@ const filteredMovies = computed(() => {
     let isMatch = true
 
     if (selectedParams.value.genre) {
-      isMatch = isMatch && selectedParams.value.genre.includes(movie.genre)
+      // isMatch = isMatch && selectedParams.value.genre.includes(movie.genre)
+      isMatch = isMatch && movie.genre.includes(selectedParams.value.genre)
     }
     if (selectedParams.value.country) {
       isMatch = isMatch && movie.country === selectedParams.value.country
     }
     if (selectedParams.value.actor) {
-      isMatch = isMatch && selectedParams.value.actor.includes(movie.actor)
+      // isMatch = isMatch && selectedParams.value.actor.includes(movie.actor)
+      isMatch = isMatch && movie.actor.some(actor => actor.actor === selectedParams.value.actor.actor)
     }
     if (selectedParams.value.producer) {
-      isMatch = isMatch && selectedParams.value.producer.includes(movie.producer)
+      // isMatch = isMatch && selectedParams.value.producer.includes(movie.producer)
+      isMatch = isMatch && movie.producer.some(producer => producer.producer === selectedParams.value.producer.producer)
     }
 
     return isMatch
@@ -328,6 +320,7 @@ const filteredMovies = computed(() => {
 
 watch(selectedParams, () => {
   console.log('Filtered Movies:', filteredMovies.value)
+  console.log(selectedParams.value)
 }, { deep: true })
 
 
