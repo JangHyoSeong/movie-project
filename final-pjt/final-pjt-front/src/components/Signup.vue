@@ -173,7 +173,7 @@ const signUpRequest = function () {
   padding: 2% 20%;
   color: white;
   border-style: none;
-  border-radius: 10%;
+  border-radius: 10px;
   background-color: #166AE8;
 }
 
@@ -182,6 +182,11 @@ const signUpRequest = function () {
   left: 92%;
   top: 2%;
   position: absolute;
+  cursor: pointer;
+  color: white;
+  background-color: transparent;
+  border: none;
+  font-size: 17px;
 }
 
 /* 팝업 표시 스타일 */

@@ -168,7 +168,7 @@ const LoginVueOff = function () {
   padding: 2% 23%;
   color: white;
   border-style: none;
-  border-radius: 10%;
+  border-radius: 10px;
   background-color: #166AE8;
 }
 
@@ -177,6 +177,11 @@ const LoginVueOff = function () {
   top: 2%;
   left: 92%;
   position: absolute;
+  cursor: pointer;
+  color: white;
+  background-color: transparent;
+  border: none;
+  font-size: 17px;
 }
 
 /* 활성화된 팝업 표시 스타일 */
