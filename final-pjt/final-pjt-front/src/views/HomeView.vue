@@ -454,7 +454,7 @@ section {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 16px;
+  border-radius: 15px;
   background-size: 200% 100%;
   animation: gradient 2.5s ease infinite;
 }
@@ -475,7 +475,7 @@ section {
 
 /* 영화 포스터 크기 */
 .poster {
-  border-radius: 6%;
+  border-radius: 15px;
   width: 24vh;
   height: 36vh;
   cursor: pointer;
@@ -563,7 +563,7 @@ section {
 /* 최상단으로 올라가는 버튼 */
 .go-top-btn {
   bottom: 4%;
-  right: -94.5%;
+  right: -95%;
   width: 30px;
   height: 30px;
   border-radius: 50%;

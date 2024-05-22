@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="profile-container">
-      <h1>좋아요</h1>
+      <h2>좋아요</h2>
       <div class="like-container">
         <div v-for="movie in userData.like_movies" class="like-post">
           <img :src="movie.poster" alt="#" width="200px" @click="goToMovie(movie.movie_id)">
@@ -12,7 +12,7 @@
     <hr>
 
     <div class="profile-container">
-      <h1>리뷰</h1>
+      <h2>리뷰</h2>
       <div class="review-container">
         <div v-for="movie in reviewList" class="review-post">
           <img :src="movie.poster" alt="#" width="200px" @click="goToMovieReview(movie.movie_id)">
@@ -72,11 +72,17 @@ const goToMovieReview = function (movie_id) {
 
 hr {
   width: 95%;
+  background: white;
+  height:1px;
+  border: 0px;
+  opacity: 0.5;
+  margin-top: 1%;
 }
 
 .like-post {
   display: flex;
   padding-left: 1%;
+  cursor: pointer;
 }
 
 .review-container {
@@ -86,5 +92,7 @@ hr {
 .review-post {
   display: flex;
   padding-left: 1%;
+  margin-bottom: 1%;
+  cursor: pointer;
 }
 </style>

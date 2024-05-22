@@ -10,7 +10,7 @@
       <input type="text" name="password2" class="password" v-model="password2" placeholder="Password Check">
 
       <!-- 제출 버튼 -->
-      <input type="submit" value="변경">
+      <input type="submit" class="password-btn" value="변경">
     </form>
   </div>
 
@@ -112,6 +112,23 @@ hr {
 
 .user-delete:hover {
   background-color: red;
+  border-style: none;
+}
+
+.password-btn {
+  margin-left: 3%;
+  width: 94%;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  margin-top: 3%;
+  padding: 1%;
+}
+
+.password-btn:hover {
+  background-color: #166AE8;
+  color: white;
   border-style: none;
 }
 </style>

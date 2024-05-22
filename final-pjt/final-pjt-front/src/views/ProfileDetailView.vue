@@ -51,5 +51,10 @@ onMounted(() => {
 
 hr {
   width: 95%;
+  background: white;
+  height:1px;
+  border: 0px;
+  opacity: 0.5;
+  margin-top: 1%;
 }
 </style>
