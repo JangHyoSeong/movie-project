@@ -14,16 +14,16 @@
   <hr>
 
   <!-- 닉네임 변경하기 -->
-  <div class="nickname">
+  <form @submit.prevent="updateUsername" class="nickname">
     <h2>닉네임 변경</h2>
     <p>현재 닉네임</p>
-    <p class="nownickname">{{ userData.username }}</p>
+    <p class="nownickname">{{ userData.nickname }}</p>
     <p>변경 닉네임</p>
     <input class="afternickname" type="text" placeholder="변경할 닉네임을 입력해주세요" v-model="newUsername" />
     <div>
-      <button class="nickname-btn" @click="updateUsername">닉네임 변경</button>
+      <input type="submit" class="nickname-btn" value="닉네임 변경">
     </div>
-  </div>
+  </form>
 
   <hr>
 
@@ -40,9 +40,10 @@ import { useRouter } from 'vue-router'
 import axios from 'axios'
 import { defineProps, defineEmits } from 'vue';
 
-defineProps({
+const props = defineProps({
   profile: Object,
   userData: Object,
+  loadUserData: Function,
 })
 
 // 닉네임 변경
@@ -50,7 +51,7 @@ const newUsername = ref('')
 const updateUsername = () => {
   axios({
     method: 'post',
-    url: ``,
+    url: `http://127.0.0.1:8000/api/v1/profile/change_nickname/`,
     headers: {
       Authorization: `Token ${store.token}`
     },
@@ -60,11 +61,12 @@ const updateUsername = () => {
   })
     .then((res) => {
       alert('닉네임 변경이 성공했습니다')
+      newUsername.value = ''
+      router.push({name: 'profile-like'})
     })
     .catch((err) => {
       console.log(err)
-      alert("닉네임이 중복되었습니다.")
-      
+      alert("닉네임 변경에 실패했습니다.")
     })
 }
 

@@ -4,7 +4,7 @@
       <h1>{{ userData.username }}님의 프로필 페이지</h1>
       <hr>
     </div>
-    <ProfileDetailNav :userData="userData" />
+    <ProfileDetailNav :userData="userData" :loadUserData="loadUserData"/>
   </div>
 </template>
 
