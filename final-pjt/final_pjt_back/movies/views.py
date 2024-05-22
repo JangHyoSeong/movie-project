@@ -33,12 +33,12 @@ def download_movie(request):
     MV_URL = f'http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?'
     TMDB_URL = f'https://api.themoviedb.org/3/search/movie?'
     
-    for i in range(1, 1000):
+    for i in range(40, 1000):
         print(i)
         MV_params = {
             'key': MV_API_KEY,
             'curPage': i,
-            'itemPerPage': 20,
+            'itemPerPage': 50,
         }
         
         data = req.get(MV_URL, params=MV_params).json().get('movieListResult').get('movieList')
@@ -138,22 +138,19 @@ def download_movie(request):
 
 
 def download_genres(genres):
-    
     new_genres = []
     
-    if genres == [] or genres is None:
+    if not genres:
         return list()
     
     for genre in genres:
-        new_genre = Genre(genre=genre.get('genreNm'))
-        new_genre.save()
+        new_genre, created = Genre.objects.get_or_create(genre=genre.get('genreNm'))
         new_genres.append(new_genre)
         
-    return new_genres # 리스트 요소를 반환
+    return new_genres
 
 
 def download_actor(actors, movie_name):
-    
     new_actors = []
     try:
         for idx in range(5):
@@ -179,13 +176,12 @@ def download_actor(actors, movie_name):
             except:
                 continue
             
-            if response != []:
+            if response:
                 profile_image_url = f'https://image.tmdb.org/t/p/original{response[0].get("profile_path")}'
             else:
-                profile_image_url = None
+                continue
                 
-            new_actor = Actor(actor_code=actor_code, actor=actor_name, profile_image=profile_image_url)
-            new_actor.save()
+            new_actor, created = Actor.objects.get_or_create(actor_code=actor_code, actor=actor_name, profile_image=profile_image_url)
             new_actors.append(new_actor)
             
     except IndexError:
@@ -210,10 +206,9 @@ def download_country(countries):
 
 
 def download_producers(producers, movie_name):
-    
     new_producers = []
     
-    if producers == []:
+    if not producers:
         return list()
     
     for producer in producers:
@@ -242,7 +237,7 @@ def download_producers(producers, movie_name):
         except:
             continue
     
-        if TMDB_data == [] or TMDB_data is None:
+        if not TMDB_data:
             continue
         
         try:
@@ -250,8 +245,7 @@ def download_producers(producers, movie_name):
         except:
             continue
         
-        new_producer = Producer(producer_id=producer_code, producer=producer_name, profile_image=producer_image_url)
-        new_producer.save()
+        new_producer, created = Producer.objects.get_or_create(producer_id=producer_code, producer=producer_name, profile_image=producer_image_url)
         new_producers.append(new_producer)
         
     return new_producers

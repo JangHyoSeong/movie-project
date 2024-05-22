@@ -63,8 +63,8 @@
             >
             <p class="actor-name">{{ actor.actor }}</p>
           </div>
-          <div v-if="currentActors.length === 0">
-            <p @click="resetActor" class="post-txt">조건에 맞는 배우가 존재하지 않습니다.</p>
+          <div @click="resetActor" v-if="currentActors.length === 0">
+            <p class="post-txt">조건에 맞는 배우가 존재하지 않습니다.</p>
           </div>
           <!-- 이전/다음 배우 화살표 -->
           <div v-if="filteredActors.length > 6">
@@ -87,8 +87,8 @@
               @click="producerSelect(producer.producer)">
             <p class="product-name">{{ producer.producer }}</p>
           </div>
-          <div v-if="currentProducers.length === 0">
-            <p @click="resetProducer" class="post-txt">조건에 맞는 감독이 존재하지 않습니다.</p>
+          <div @click="resetProducer" v-if="currentProducers.length === 0">
+            <p class="post-txt">조건에 맞는 감독이 존재하지 않습니다.</p>
           </div>
           <!-- 이전/다음 감독 화살표 -->
           <div v-if="filteredProducers.length > 6">
@@ -338,19 +338,11 @@ const filteredGenres = computed(() => {
       usedGenres.add(genre.id)
     })
   })
-  // 선택된 장르 추가
-  if (selectedParams.value.genre) {
-    usedGenres.add(selectedParams.value.genre.id)
-  }
   return genres.value.filter(genre => usedGenres.has(genre.id))
 })
 
 const filteredCountries = computed(() => {
   const usedCountries = new Set(filteredMovies.value.map(movie => movie.country))
-  // 선택된 국가 추가
-  if (selectedParams.value.country) {
-    usedCountries.add(selectedParams.value.country.country)
-  }
   return countries.value.filter(country => usedCountries.has(country.country))
 })
 
@@ -361,10 +353,6 @@ const filteredActors = computed(() => {
       usedActors.add(actor.actor)
     })
   })
-  // 선택된 배우 추가
-  if (selectedParams.value.actor) {
-    usedActors.add(selectedParams.value.actor.actor)
-  }
   return actors.value.filter(actor => usedActors.has(actor.actor))
 })
 
@@ -372,13 +360,9 @@ const filteredProducers = computed(() => {
   const usedProducers = new Set()
   filteredMovies.value.forEach(movie => {
     movie.producer.forEach(producer => {
-      usedProducers.add(producer.producer)
+      usedProducers.add(producer.producer) 
     })
   })
-  // 선택된 프로듀서 추가
-  if (selectedParams.value.producer) {
-    usedProducers.add(selectedParams.value.producer.producer)
-  }
   return producers.value.filter(producer => usedProducers.has(producer.producer))
 })
 
