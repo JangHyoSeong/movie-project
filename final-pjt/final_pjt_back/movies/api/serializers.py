@@ -173,3 +173,10 @@ class MovieChatSerialzier(serializers.ModelSerializer):
         model = MovieChat
         fields = '__all__'
         read_only_fields = ('user', 'movie',)
+        
+        
+class MovieResultSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Movie
+        fields = ('title', 'opening_date', 'review_score', 'poster')
