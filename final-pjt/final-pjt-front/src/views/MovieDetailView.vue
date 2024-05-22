@@ -1,6 +1,33 @@
 <template>
+  <div class="explan">
+    <p>포스터</p>
+    <p>좋아요</p>
+  </div>
+
+  <label for="">
+      <div class="container" @click="toggleImg">
+      <input type="checkbox">
+      <svg height="24px" id="Layer_1" version="1.2" viewBox="0 0 24 24" width="24px" xml:space="preserve"
+        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g>
+          <g>
+            <path
+              d="M9.362,9.158c0,0-3.16,0.35-5.268,0.584c-0.19,0.023-0.358,0.15-0.421,0.343s0,0.394,0.14,0.521    
+              c1.566,1.429,3.919,3.569,3.919,3.569c-0.002,0-0.646,3.113-1.074,5.19c-0.036,0.188,0.032,0.387,0.196,0.506    
+              c0.163,0.119,0.373,0.121,0.538,0.028c1.844-1.048,4.606-2.624,4.606-2.624s2.763,1.576,4.604,2.625    
+              c0.168,0.092,0.378,0.09,0.541-0.029c0.164-0.119,0.232-0.318,0.195-0.505c-0.428-2.078-1.071-5.191-1.071-5.191    
+              s2.353-2.14,3.919-3.566c0.14-0.131,0.202-0.332,0.14-0.524s-0.23-0.319-0.42-0.341c-2.108-0.236-5.269-0.586-5.269-0.586    
+              s-1.31-2.898-2.183-4.83c-0.082-0.173-0.254-0.294-0.456-0.294s-0.375,0.122-0.453,0.294C10.671,6.26,9.362,9.158,9.362,9.158z">
+            </path>
+          </g>
+        </g>
+      </svg>
+    </div>
+    </label>
+  <img class="show-img" :class="{ 'display-show': isImgVisible }" :src="backgroundImageSrc" alt="snapshot" />
+
   <div>
-    <h4 class="select-end-btn" @click="goToHome">Home</h4>
+    <h5 class="select-end-btn" @click="goToHome">Home</h5>
 
     <div class="background">
       <!-- 배경 이미지 -->
@@ -79,6 +106,7 @@ const openingDate = ref('')
 const movie = ref('')
 const route = useRoute();
 const videoUrl = ref(null)
+const isImgVisible = ref(false) // 이미지 표시 여부를 관리할 반응형 변수 추가
 
 onMounted(() => {
   // 영화 정보 로드
@@ -164,9 +192,95 @@ const likeMovie = function () {
     })
     .catch(err => console.log(err))
 }
+
+// 이미지 표시 토글 기능
+const toggleImg = function () {
+  isImgVisible.value = !isImgVisible.value
+}
 </script>
 
+
+
 <style scoped>
+.explan {
+  display: flex;
+  position: absolute;
+  top: 15%;
+  left: 4.8%;
+  color: white;
+  z-index: 1;
+  gap: 15px;
+  font-size: 75%
+}
+.show-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  z-index: 1;
+  display: none;
+}
+
+.display-show {
+  display: block;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  position: absolute;
+  top: 10.6%;
+  left: 4.5%;
+  color: white;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.container svg {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  transition: all 0.3s;
+  fill: #ffeb49;
+  animation: effect 400ms ease;
+}
+
+@keyframes effect {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.container svg:hover {
+  transform: scale(1.1);
+}
+
+/* .container input:checked~svg {
+  fill: #ffeb49;
+} */
+
+
 .like-container input {
   position: absolute;
   cursor: pointer;
@@ -175,7 +289,7 @@ const likeMovie = function () {
 
 .like-container {
   position: absolute;
-  top: 4.5vh;
+  top: 3.5vh;
   left: 15.5vh;
   font-size: 20px;
   user-select: none;
@@ -255,7 +369,7 @@ const likeMovie = function () {
 /* 내용 컨테이너 스타일 */
 .content-container {
   position: relative;
-  top: 3vh;
+  top: 2.5vh;
   display: flex;
   align-items: center;
 }
@@ -268,11 +382,11 @@ const likeMovie = function () {
 }
 
 /* 영화 상세 정보 스타일 */
-.detail-container > p {
+.detail-container>p {
   font-size: 25px;
 }
 
-.detail-container > h1 {
+.detail-container>h1 {
   font-size: 40px;
 }
 
@@ -296,10 +410,10 @@ const likeMovie = function () {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 5%;
-  left: 1.8%;
-  width: 4%;
-  height: 4%;
+  top: 4%;
+  left: 1.5%;
+  width: 3%;
+  height: 3%;
   border: 1px solid white;
   color: white;
   z-index: 1;

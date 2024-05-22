@@ -1,17 +1,23 @@
 <template>
   <div style="display: flex;">
     <!-- 채팅창 전체를 감싸는 div -->
-    <div class="chat-container">
+    <div class="chat-container" :style="{ backgroundColor: chatBackgroundColor, color: fontColor }" ref="chatContainer">
       <!-- 지금까지의 채팅이 들어가는 영역 -->
       <div class="chat-list">
         <!-- 채팅 -->
-        <div v-for="chat in chatList" :class="{ 'my-chat': currentUser.id === chat.user.id }">
+        <div v-for="chat in chatList" :key="chat.id" :class="{ 'my-chat': currentUser.id === chat.user.id }">
           <div class="chat-array">
             <p>유저 : {{ chat.user.nickname }}</p>
             <p>채팅 : {{ chat.content }}</p>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- 버튼을 클릭하여 채팅 창의 색을 변경하는 버튼 -->
+    <div class="change-color">
+      <button class="back-color" @click="changeChatBackgroundColor">배경색 변경</button>
+      <button class="font-color" @click="changeChatFont">글자색 변경</button>
     </div>
 
     <!-- 채팅 입력구간 -->
@@ -21,12 +27,11 @@
         <input type="submit" class="chat-btn" value="전송하기">
       </form>
     </div>
-
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUpdated } from 'vue'
 import { useRoute } from 'vue-router'
 import { useLoginStore } from '@/stores/login'
 import axios from 'axios'
@@ -40,6 +45,7 @@ defineProps({
 
 const chatList = ref([])
 
+// 메시지 불러오기
 const loadMessage = function () {
   axios({
     method: 'get',
@@ -54,10 +60,6 @@ const loadMessage = function () {
     })
     .catch(err => console.log(err))
 }
-
-onMounted(() => {
-  loadMessage()
-})
 
 // 현재 입력창의 메시지와 쌍방향 연결
 const chatMessage = ref('')
@@ -81,9 +83,6 @@ const chatSubmit = function () {
     .catch(err => console.log(err))
 }
 
-// 1초마다 채팅을 새로불러옴
-// const repeat = setInterval(loadMessage, 1000)
-
 // 현재 로그인된 유저 정보 가져오기
 const currentUser = ref(null)
 onMounted(() => {
@@ -100,13 +99,92 @@ onMounted(() => {
     .catch(err => console.log(err))
 })
 
-// 현재 유저가 리뷰 작성자인지 확인
-const isCurrentUser = function (user) {
-  return currentUser.value && user.id === currentUser.value.id
+// 스크롤을 맨 아래로 내리는 함수
+const scrollToBottom = () => {
+  if (chatContainer.value) {
+    chatContainer.value.scrollTop = chatContainer.value.scrollHeight
+  }
+}
+
+const chatContainer = ref(null)
+
+onMounted(() => {
+  loadMessage()
+  scrollToBottom()
+
+  const observer = new MutationObserver(() => {
+    scrollToBottom()
+  })
+
+  const config = { childList: true, subtree: true }
+
+  if (chatContainer.value) {
+    observer.observe(chatContainer.value, config)
+  }
+})
+
+// 채팅이 갱신될 때마다 스크롤을 맨 아래로 내리는 함수 호출
+onUpdated(() => {
+  scrollToBottom()
+})
+
+// 채팅 창의 배경 색을 저장하는 변수
+const chatBackgroundColor = ref('black')
+
+// 채팅 창의 글씨 색을 저장하는 변수
+const fontColor = ref('white')
+
+// 랜덤한 색상 생성 함수
+const generateRandomColor = () => {
+  const letters = '0123456789ABCDEF'
+  let color = '#'
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)]
+  }
+  return color
+}
+
+// 채팅 창의 배경색을 변경하는 함수
+const changeChatBackgroundColor = () => {
+  // 랜덤한 배경색으로 변경
+  const randomColor = generateRandomColor()
+  chatBackgroundColor.value = randomColor
+}
+
+const changeChatFont = () => {
+  // 랜덤한 글자색으로 변경
+  const rendomFont = generateRandomColor()
+  fontColor.value = rendomFont
 }
 </script>
 
 <style scoped>
+.back-color, .font-color {
+  background-color: black;
+  color: white;
+  border-style: none;
+  border: 1px solid white;
+  padding: 5% 0%;
+}
+
+.back-color:hover, .font-color:hover {
+  background-color: #166AE8;
+  color: white;
+  border-style: none;
+}
+
+.change-color {
+  width: 5%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 5%;
+  margin-left: 0.5%;
+}
+.chat-position {
+  position: absolute;
+  top: 1%;
+}
 .chat-container {
   margin-left: 15%;
   width: 70%;
