@@ -106,10 +106,18 @@ class MovieDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = '__all__'
-        
+
+class MovieNestedSerializer(serializers.ModelSerializer):
+    
+    actor = ActorSerializer(many=True)
+    producer = ProducerSerializer(many=True)
+    
+    class Meta:
+        model = Movie
+        fields = ('actor', 'genre', 'country', 'producer', 'title',)
 
 class ChoiceSerializer(serializers.Serializer):
-    movies = MovieSerializer(many=True)
+    movies = MovieNestedSerializer(many=True)
     genres = GenreSerializer(many=True)
     countries = CountrySerializer(many=True)
     actors = ActorSerializer(many=True)

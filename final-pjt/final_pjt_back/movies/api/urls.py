@@ -19,4 +19,5 @@ urlpatterns = [
     path('v1/profile/', views.profile),
     path('v1/profile/reviews/', views.profile_review),
     path('v1/profile/member_leave/', views.member_leave),
+    path('v1/profile/change_nickname/', views.nickname_change),
 ]

@@ -52,9 +52,12 @@ def movie_detail(request, movie_id):
 
 @api_view(['GET'])
 def choice(request):
-    movies = Movie.objects.filter(
-        Q(genre__isnull=False) & Q(country__isnull=False) & Q(producer__isnull=False) & Q(actor__isnull=False)
-    ).distinct()
+    # movies = Movie.objects.filter(
+    #   Q(genre__isnull=False) & Q(country__isnull=False) & Q(producer__isnull=False) & Q(actor__isnull=False)
+    # ).distinct()
+    movies = Movie.objects.exclude(
+    Q(genre__isnull=True) & Q(country__isnull=True) & Q(producer__isnull=True) & Q(actor__isnull=True)).distinct()
+    # movies = Movie.objects.all().distinct()
     genres = Genre.objects.filter(movie__isnull=False).distinct()
     countries = Country.objects.filter(movie__isnull=False).distinct()
     actors = Actor.objects.filter(movie__isnull=False, profile_image__isnull=False).distinct()
@@ -87,7 +90,7 @@ def choice_result(request):
     if producer is not None:
         query &= Q(producer=producer)
     
-    queried_movies = Movie.objects.filter(query, opening_date__isnull=False, review_score__lt=9).order_by('-review_score')
+    queried_movies = Movie.objects.filter(query, review_score__lt=9).order_by('-review_score')
     serializer = MovieResultSerializer(queried_movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -187,3 +190,14 @@ def member_leave(request):
     user = get_object_or_404(get_user_model(), username=request.user)
     user.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['POST'])
+def nickname_change(request):
+    new_nickname = request.data.get('nickname')
+    User = get_user_model()
+    if request.user:
+        user = User.objects.get(username=request.user.username)
+        user.nickname = new_nickname
+        user.save()
+        return Response(status=status.HTTP_202_ACCEPTED)
+    return Response(status=status.HTTP_404_NOT_FOUND)
