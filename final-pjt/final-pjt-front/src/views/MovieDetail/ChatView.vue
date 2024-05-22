@@ -1,21 +1,26 @@
 <template>
-  <!-- 채팅창 전체를 감싸는 div -->
-  <div class="chat-container">
-
-    <!-- 지금까지의 채팅이 들어가는 영역 -->
-    <div class="chat-list">
-      <!-- 채팅 -->
-      <div v-for="chat in chatList" class="chat" :class="{ 'my-chat': currentUser.id === chat.user.id }">
-        <p>채팅 유저 : {{ chat.user.nickname }}</p>
-        <p>채팅 : {{ chat.content }}</p>
+  <div style="display: flex;">
+    <!-- 채팅창 전체를 감싸는 div -->
+    <div class="chat-container">
+      <!-- 지금까지의 채팅이 들어가는 영역 -->
+      <div class="chat-list">
+        <!-- 채팅 -->
+        <div v-for="chat in chatList" :class="{ 'my-chat': currentUser.id === chat.user.id }">
+          <div class="chat-array">
+            <p>유저 : {{ chat.user.nickname }}</p>
+            <p>채팅 : {{ chat.content }}</p>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- 채팅 입력구간 -->
-    <form @submit.prevent="chatSubmit">
-      <input class="chat-input" type="text" placeholder="NewComment" v-model="chatMessage">
-      <input type="submit" value="submit">
-    </form>
+    <div class="chat-position">
+      <form @submit.prevent="chatSubmit" class="chat-input">
+        <input class="chat-txt" type="text" placeholder="20 Max Chat" v-model="chatMessage">
+        <input type="submit" class="chat-btn" value="전송하기">
+      </form>
+    </div>
 
   </div>
 </template>
@@ -102,26 +107,54 @@ const isCurrentUser = function (user) {
 </script>
 
 <style scoped>
-.chat-container{
+.chat-container {
+  margin-left: 15%;
+  width: 70%;
+  height: 27vh;
   border: 2px solid white;
-  position: relative;
+  overflow: auto;
 }
 
-.chat-list{
-  height: 300px;
-  width: 60%;
-}
-
-.chat-input{
-  background-color: white;
-  height: 30px;
-  width: 100%;
-  bottom: 0;
+/* 상대방 채팅 크기 */
+.chat-list {
+  margin: 0.5%;
+  width: 31%;
 }
 
 /* 내 채팅 */
-.my-chat{
-  text-align: right;
-  color: red;
+.my-chat {
+  position: relative;
+  left: 220%;
+  width: 100%;
+}
+
+.chat-array {
+  padding: 0% 2%;
+  margin: 2%;
+  border: 1px solid white;
+}
+
+.chat-position {
+  position: absolute;
+  top: 101%;
+  left: 14.9%;
+  width: 80.4%;
+}
+
+.chat-input {
+  display: flex;
+}
+
+.chat-txt {
+  background-color: white;
+  padding: 0.5%;
+  width: 75.4%;
+}
+
+.chat-btn {
+  cursor: pointer;
+  padding: 0% 3%;
+  font-size: 110%;
+  font-weight: bold;
 }
 </style>

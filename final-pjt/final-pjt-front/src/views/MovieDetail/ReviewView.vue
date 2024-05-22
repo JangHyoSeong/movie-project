@@ -7,12 +7,12 @@
       <!-- 리뷰 개수 -->
       <p class="total-score">{{ reviewNum }}개의 평점이 등록되었습니다</p>
     </div>
+    <!-- 최신 순, 평점 순 버튼 -->
+    <div class="sort-buttons">
+      <p @click="orderByNew" class="btn">최신 순</p>
+      <p @click="orderByScore" class="btn">평점 순</p>
+    </div>
     <div class="review-list-container">
-      <!-- 최신 순, 평점 순 버튼 -->
-      <div class="sort-buttons">
-        <p @click="orderByNew" class="btn">최신 순</p>
-        <p @click="orderByScore" class="btn">평점 순</p>
-      </div>
       <!-- 리뷰 목록 -->
       <div class="review-list">
         <div v-for="review in reviews" class="review-item">
@@ -164,7 +164,8 @@ const isCurrentUser = function (user) {
   margin-left: 1%;
 }
 
-.btn:hover , .review-btn:hover {
+.btn:hover,
+.review-btn:hover {
   background-color: #166AE8;
   border-style: none;
 }
@@ -186,9 +187,11 @@ const isCurrentUser = function (user) {
 
 .review-list-container {
   position: absolute;
-  top: 29%;
+  top: 45%;
   left: 31.5%;
   width: 55%;
+  overflow-y: auto;
+  max-height: 25vh;
 }
 
 .total-score {
@@ -200,7 +203,10 @@ const isCurrentUser = function (user) {
 
 .sort-buttons {
   display: flex;
-
+  position: absolute;
+  top: 22%;
+  left: 31%;
+  width: 50%;
 }
 
 .sort-buttons button {

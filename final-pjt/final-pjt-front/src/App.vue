@@ -10,7 +10,7 @@
       <!-- 홈 링크 -->
       <RouterLink :to="{ name: 'home' }" class="nav">다각화</RouterLink>
       <!-- 검색 창 -->
-      <input type="text" name="search" class="search-nav" placeholder="영화, 배우, 감독을 검색해보세요.">
+      <input type="text" name="search" class="search-nav" placeholder=" ▷ 영화, 배우, 감독을 검색해보세요">
       <!-- 프로필 링크 -->
       <RouterLink :to="{ name: 'profile' }" class="profile-nav" v-show="store.isLogin">프로필</RouterLink>
     </nav>
@@ -89,7 +89,6 @@ const selectData = ref({})
 .navbar {
   width: 100%;
   height: 50px;
-  opacity: 0.75;
   position: relative;
   background-color: #111111;
   /* 배경 색상을 여기로 이동 */

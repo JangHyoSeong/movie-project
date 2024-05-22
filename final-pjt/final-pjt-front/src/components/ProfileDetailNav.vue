@@ -27,8 +27,9 @@ onMounted(() => {
 <style scoped>
 .navbar-content {
   position: absolute;
-  top: -37.5%;
-  left: 75%;
+  top: 10.5%;
+  left: 69.5%;
+  height: auto;
 }
 .navbar-link {
   width: 20vh;

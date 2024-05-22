@@ -3,7 +3,7 @@
     <div class="profile-container">
       <h2>좋아요</h2>
       <div class="like-container">
-        <div v-for="movie in userData.like_movies" class="like-post">
+        <div v-for="movie in userData.like_movies" class="post">
           <img :src="movie.poster" alt="#" width="200px" @click="goToMovie(movie.movie_id)">
         </div>
       </div>
@@ -14,7 +14,7 @@
     <div class="profile-container">
       <h2>리뷰</h2>
       <div class="review-container">
-        <div v-for="movie in reviewList" class="review-post">
+        <div v-for="movie in reviewList" class="post">
           <img :src="movie.poster" alt="#" width="200px" @click="goToMovieReview(movie.movie_id)">
         </div>
       </div>
@@ -50,22 +50,22 @@ const reviewList = computed(() => {
 
 // 영화 상세정보로 이동
 const goToMovie = function (movie_id) {
-  router.push({name: "movieDetail", params: {movie_id: movie_id}})
+  router.push({ name: "movieDetail", params: { movie_id: movie_id } })
 }
 
 const goToMovieReview = function (movie_id) {
-  router.push({name: "movie-review", params: {movie_id: movie_id}})
+  router.push({ name: "movie-review", params: { movie_id: movie_id } })
 }
 </script>
 
 <style scoped>
-
 .profile-container {
   position: relative;
   left: 3%;
   width: 95%;
   color: white;
 }
+
 .like-container {
   display: flex;
 }
@@ -73,13 +73,13 @@ const goToMovieReview = function (movie_id) {
 hr {
   width: 95%;
   background: white;
-  height:1px;
+  height: 1px;
   border: 0px;
   opacity: 0.5;
   margin-top: 1%;
 }
 
-.like-post {
+.post {
   display: flex;
   padding-left: 1%;
   cursor: pointer;
@@ -87,12 +87,5 @@ hr {
 
 .review-container {
   display: flex;
-}
-
-.review-post {
-  display: flex;
-  padding-left: 1%;
-  margin-bottom: 1%;
-  cursor: pointer;
 }
 </style>

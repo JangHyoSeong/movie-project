@@ -1,21 +1,31 @@
 <template>
   <div class="profile-container">
+    <!-- 비밀번호 변경 -->
     <form class="password-update" @submit.prevent="passwordUpdate">
       <h2>비밀번호 변경</h2>
-      
       <label for="password1">새 비밀번호</label>
       <input type="text" name="password1" class="password" v-model="password1" placeholder="New Password">
-
       <label for="password2">새 비밀번호 확인</label>
       <input type="text" name="password2" class="password" v-model="password2" placeholder="Password Check">
-
-      <!-- 제출 버튼 -->
       <input type="submit" class="password-btn" value="변경">
     </form>
   </div>
 
   <hr>
 
+  <!-- 닉네임 변경하기 -->
+  <div class="nickname">
+    <h2>닉네임 변경</h2>
+    <p>현재 닉네임</p>
+    <p class="nownickname">{{ userData.username }}</p>
+    <p>변경 닉네임</p>
+    <input class="afternickname" type="text" placeholder="변경할 닉네임을 입력해주세요" v-model="newUsername" />
+    <button @click="updateUsername">닉네임 변경</button>
+  </div>
+
+  <hr>
+
+  <!-- 회원탈퇴 -->
   <div class="profile-container">
     <p class="user-delete" @click="userDelete">회원정보 탈퇴</p>
   </div>
@@ -26,10 +36,35 @@ import { ref } from 'vue'
 import { useLoginStore } from '@/stores/login'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
+import { defineProps, defineEmits } from 'vue';
 
 defineProps({
   profile: Object,
+  userData: Object,
 })
+
+// 닉네임 변경
+const newUsername = ref('')
+const updateUsername = () => {
+  axios({
+    method: 'post',
+    url: ``,
+    headers: {
+      Authorization: `Token ${store.token}`
+    },
+    data: {
+      nickname: newUsername.value
+    }
+  })
+    .then((res) => {
+      alert('닉네임 변경이 성공했습니다')
+    })
+    .catch((err) => {
+      console.log(err)
+      alert("닉네임이 중복되었습니다.")
+      
+    })
+}
 
 const store = useLoginStore()
 const router = useRouter()
@@ -47,7 +82,7 @@ const userDelete = function () {
     .then((res) => {
       alert('회원 탈퇴가 실행되었습니다.')
       store.logout()
-      router.push({name: 'home'})
+      router.push({ name: 'home' })
     })
     .catch(err => console.log(err))
 }
@@ -64,20 +99,40 @@ const passwordUpdate = function () {
     headers: {
       Authorization: `Token ${store.token}`
     },
-    data:{
+    data: {
       new_password1: password1.value,
       new_password2: password2.value
     }
   })
     .then((res) => {
       alert('비밀번호 변경이 완료되었습니다')
-      router.push({name: 'profile-like'})
+      router.push({ name: 'profile-like' })
     })
     .catch(err => console.log(err))
 }
 </script>
 
 <style scoped>
+.nownickname {
+  background-color: white;
+  color: black;
+  width: 12.3%;
+  padding: 0.1% 0.5%;
+  margin-left: 0.5%;
+}
+
+.afternickname {
+  width: 12.3%;
+  padding: 0.2% 0.4%;
+  margin-left: 0.45%;
+}
+
+.nickname {
+  color: white;
+  position: relative;
+  left: 3%;
+}
+
 .profile-container {
   position: relative;
   left: 3%;
@@ -87,6 +142,11 @@ const passwordUpdate = function () {
 
 hr {
   width: 95%;
+  background: white;
+  height: 1px;
+  border: 0px;
+  opacity: 0.5;
+  margin-top: 1%;
 }
 
 .password-update {
