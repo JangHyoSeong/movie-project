@@ -1,32 +1,35 @@
 <template>
-  <div>
-    <div class="order-list">
-      <div @click="orderByNew" class="order-time">시간순</div>
-      <div @click="orderByScore" class="order-range">평점순</div>
-    </div>
-
-    <div v-for="movie in movies">
+  <div class="out-post">
+    <div v-for="movie in currentMovies">
       <div class="poster">
-        <img :src="movie.poster" alt="#" class="post" @click="newMovieDetail(movies[0])">
-      </div>
-
-      <div class="movie-content-list">
-        <div class="movie-content">
+        <div>
+          <img :src="movie.poster" alt="#" class="post" @click="newMovieDetail(movie)">
           <p>제목 : {{ movie.title }}</p>
-          <p v-show="movie.opening_date">방영일 : {{ movie.opening_date }}</p>
-          <p v-show="!movie.opening_date">방영일 정보가 존재하지 않습니다</p>
-          <p v-show="movie.review_score">평점 : {{ movie.review_score }}</p>
-          <p v-show="!movie.review_score">아직 평점이 존재하지 않습니다.</p>
         </div>
       </div>
     </div>
+
+    <!-- 포스터 이전/다음 버튼 -->
+    <div v-show="movies.length > 5">
+      <div class="arrow arrow1" @click="showNextPoster1">
+        <p> &lt; </p>
+      </div>
+      <div class="arrow arrow2" @click="showNextPoster2">
+        <p> &gt; </p>
+      </div>
+    </div>
+
+    <div v-show="movies.length === 0">
+      <h1 style="color: white;">검색 결과가 없습니다</h1>
+    </div>
+
     <p class="go-to-select" @click="goToSelect">돌아가기</p>
   </div>
 </template>
 
 <script setup>
 import axios from 'axios'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -47,6 +50,32 @@ const goToSelect = () => {
 
 // 필터링 된 영화 받아오기
 const movies = ref([])
+
+// 관리하는 인덱스
+const startIndex = ref(0)
+const endIndex = ref(5)
+
+// 현재 영화 목록
+const currentMovies = computed(() => {
+  return movies.value.slice(startIndex.value, endIndex.value)
+})
+
+// 현재 포스터 표시
+const showNextPoster1 = () => {
+  if (startIndex.value !== 0) {
+    startIndex.value -= 1
+    endIndex.value -= 1
+  }
+}
+const showNextPoster2 = () => {
+  if (endIndex.value !== movies.value.length) {
+    startIndex.value += 1
+    endIndex.value += 1
+  } else {
+    startIndex.value = 0
+    endIndex.value = 5
+  }
+}
 
 const genre = props.selectData.genre ? props.selectData.genre : null
 const country = props.selectData.country ? props.selectData.country : null
@@ -87,46 +116,54 @@ const orderByScore = function () {
 </script>
 
 <style scoped>
-.order-list {
-  display: flex;
-  padding: 2% 0% 0.5% 3.2%;
-}
-
-.order-time,
-.order-range {
-  width: 40px;
-  border: 1px solid white;
-  margin: 0.5%;
-  padding: 0.2% 0.5%;
+.arrow {
+  position: absolute;
+  font-size: 500%;
+  width: 4%;
+  height: 40%;
   color: white;
-  z-index: 1;
+  cursor: pointer;
+  opacity: 0.3;
 }
 
-.order-time:hover,
-.order-range:hover,
-.go-to-select:hover {
-  background-color: #166AE8;
-  border-style: none;
-  color: white;
+.arrow:hover {
+  opacity: 1;
 }
 
-.poster,
-.movie-content-list {
+.arrow1 {
+  left: 1%;
+  bottom: 30%;
+}
+
+.arrow2 {
+  right: 0%;
+  bottom: 30%;
+}
+
+.out-post {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 1%;
+  margin-top: 7%;
+}
+
+.poster {
+  text-align: center;
+  color: white;
 }
 
 .post {
-  width: 300px;
-  height: 450px;
+  width: 330px;
+  height: 480px;
   z-index: 1;
   border-radius: 20px;
   cursor: pointer;
   padding: 3px;
-  box-sizing: border-box;
+  background-size: 200% 100%;
   background-image: linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff);
-  background-size: 200% 100%;  /* background-size를 추가 */
-  background-position: 0% 50%;  /* 초기 background-position을 설정 */
+  /* background-size를 추가 */
+  background-position: 0% 50%;
+  /* 초기 background-position을 설정 */
   animation: gradient 2.5s ease infinite;
 }
 
@@ -134,14 +171,15 @@ const orderByScore = function () {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
 }
-
 
 .post:hover {
   opacity: 0.75;
@@ -149,19 +187,15 @@ const orderByScore = function () {
   /* 크기 커지는 애니메이션 */
 }
 
-.movie-content {
-  width: 290px;
-  text-align: center;
-  color: white;
-}
-
 .go-to-select {
-  position: relative;
+  position: absolute;
+  top: 80%;
   left: 47.5%;
   width: 5%;
   color: white;
   padding: 0.5% 0%;
   text-align: center;
   border: 1px solid white;
+  cursor: pointer;
 }
 </style>
