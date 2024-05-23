@@ -90,7 +90,7 @@ def choice_result(request):
     if producer is not None:
         query &= Q(producer=producer)
     
-    queried_movies = Movie.objects.filter(query, review_score__lt=9).order_by('-review_score')
+    queried_movies = Movie.objects.filter(query, review_score__lt=9).order_by('-review_score')[:10]
     serializer = MovieResultSerializer(queried_movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 

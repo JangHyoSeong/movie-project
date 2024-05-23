@@ -5,16 +5,18 @@
       <div @click="orderByScore" class="order-range">평점순</div>
     </div>
 
-    <div v-if="movies.length > 0">
+    <div v-for="movie in movies">
       <div class="poster">
-        <img :src="movies[0].poster" alt="#" class="post" @click="newMovieDetail(movies[0])">
+        <img :src="movie.poster" alt="#" class="post" @click="newMovieDetail(movies[0])">
       </div>
 
-      <div v-if="movies.length > 0" class="movie-content-list">
+      <div class="movie-content-list">
         <div class="movie-content">
-          <p>제목 : {{ movies[0].title }}</p>
-          <p>방영일 : {{ movies[0].opening_date }}</p>
-          <p>평점 : {{ movies[0].review_score }}</p>
+          <p>제목 : {{ movie.title }}</p>
+          <p v-show="movie.opening_date">방영일 : {{ movie.opening_date }}</p>
+          <p v-show="!movie.opening_date">방영일 정보가 존재하지 않습니다</p>
+          <p v-show="movie.review_score">평점 : {{ movie.review_score }}</p>
+          <p v-show="!movie.review_score">아직 평점이 존재하지 않습니다.</p>
         </div>
       </div>
     </div>
