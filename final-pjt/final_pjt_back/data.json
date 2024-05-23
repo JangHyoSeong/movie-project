@@ -38761,11 +38761,6 @@
 },
 {
     "model": "movies.country",
-    "pk": "",
-    "fields": {}
-},
-{
-    "model": "movies.country",
     "pk": "그리스",
     "fields": {}
 },

@@ -58,7 +58,7 @@
         <div class="poster">
           <!-- 배우 목록 -->
           <div v-for="actor in currentActors" :key="actor.actor_id" class="actor-poster">
-            <img :src="actor.profile_image ? actor.profile_image : '../public/default_img.jpg'" class="post-img" alt="#"
+            <img :src="actor.profile_image ? actor.profile_image : '../public/default_img.jpg'" class="post-img" :alt="actor.actor"
               @click="actorSelect(actor)" :class="{ 'is-selected': selectedParams.actor === actor }">
             <p class="actor-name">{{ actor.actor }}</p>
           </div>
