@@ -60,7 +60,7 @@ const login = function () {
 
   store.login(payload)
   if (store.loginResult === true) {
-    LoginVueOff()
+    // LoginVueOff()
     isLogin.value = ''
     username.value = ''
     password.value = ''

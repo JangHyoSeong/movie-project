@@ -14,7 +14,7 @@
         <h3 style="text-align: center">회원가입</h3>
         <form @submit.prevent="signUpRequest">
           <!-- 닉네임 입력창 -->
-          <p><input type="text" class="input-txt" placeholder="닉네임" v-model="nickname"></p>
+          <p><input type="text" class="input-txt" placeholder="닉네임" maxlength="15" v-model="nickname"></p>
           <!-- 이름 입력창 -->
           <p><input type="text" class="input-txt" placeholder="이름" v-model="username"></p>
           <!-- 이메일 입력창 -->
