@@ -201,3 +201,39 @@ def nickname_change(request):
         user.save()
         return Response(status=status.HTTP_202_ACCEPTED)
     return Response(status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['GET'])
+def search(request):
+    query_data = request.query_params.get('query_params', '')  # GET 요청에서 쿼리 파라미터 'query'를 가져옴
+    if not query_data:
+        return Response({"error": "Query parameter is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+    # title 필터링
+    query = Q(title__icontains=query_data)
+
+    # genre 필터링 (ManyToManyField)
+    try:
+        genre = Genre.objects.get(genre=query_data)
+        query |= Q(genre=genre)
+    except:
+        pass
+    
+    # actor 필터링 (ManyToManyField)
+    try:
+        actor = Actor.objects.get(actor=query_data)
+        query |= Q(actor=actor)
+    except:
+        pass
+
+    # producer 필터링(ManyToManyField)
+    try:
+        producer = Producer.objects.get(producer=query_data)
+        query |= Q(producer=producer)
+    except:
+        pass
+
+    movies = Movie.objects.filter(query).distinct()[:10] 
+
+    serializer = MovieListSerializer(movies, many=True)
+
+    return Response(serializer.data, status=status.HTTP_200_OK)

@@ -10,7 +10,13 @@
       <!-- 홈 링크 -->
       <RouterLink :to="{ name: 'home' }" class="nav">다각화</RouterLink>
       <!-- 검색 창 -->
-      <input type="text" name="search" class="search-nav" placeholder=" ▷ 영화, 배우, 감독을 검색해보세요">
+      <input 
+        @keyup.enter="searchRequest" 
+        type="text" name="search" 
+        class="search-nav" 
+        placeholder=" ▷ 영화, 배우, 감독을 검색해보세요"
+        v-model="searchData"
+      >
       <!-- 프로필 링크 -->
       <RouterLink :to="{ name: 'profile' }" class="profile-nav" v-show="store.isLogin">프로필</RouterLink>
     </nav>
@@ -19,21 +25,21 @@
   <Login />
   <Signup />
   <!-- 라우터 뷰 -->
-  <RouterView @select-event="selectDataPass" :selectData="selectData" />
-
-  <!-- 구글 폰트 -->
-  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jua&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Gothic&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-    rel="stylesheet"> -->
+  <RouterView 
+    @select-event="selectDataPass"
+    :selectData="selectData"
+    :searchResult="searchResult"
+  />
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { useLoginStore } from './stores/login'
+import axios from 'axios'
 import Login from './components/Login.vue'
 import Signup from './components/Signup.vue'
+import { setQuarter } from 'date-fns'
+import router from './router'
 
 const store = useLoginStore()
 
@@ -45,6 +51,28 @@ const selectDataPass = function (data) {
   selectData.value = data.value
 }
 
+const searchData = ref('')
+const searchResult = ref([])
+const searchRequest = function (query_data) {
+  axios({
+    method: 'get',
+    url: 'http://127.0.0.1:8000/api/v1/search/',
+    params: {
+      query_params: searchData.value
+    },
+    headers: {
+      Authorization: `Token ${store.token}`
+    }
+  })
+    .then((res) => {
+      searchData.value = ''
+      searchResult.value = res.data
+      router.push({name: 'searchResult', props: { searchResult: searchResult.value }})
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
 
 </script>
 
