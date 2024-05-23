@@ -40,6 +40,26 @@
     }
 },
 {
+    "model": "accounts.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$ExHigw5JuBTkZcR6L4qmyM$sWEzhSc5XLnwTByoO8yQgypGZiMtlFXBdjuEWOJdW7Y=",
+        "last_login": "2024-05-23T05:07:33.698Z",
+        "is_superuser": false,
+        "username": "nickname",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-05-23T05:07:24.559Z",
+        "nickname": "nickname",
+        "email": "test@test.com",
+        "profile_image": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
     "model": "movies.movie",
     "pk": "19358018",
     "fields": {
@@ -3391,30 +3411,6 @@
 },
 {
     "model": "movies.movie",
-    "pk": "20050231",
-    "fields": {
-        "title": "사랑을 하는 여자 : 창녀",
-        "overview": "The unexpected acquaintance with a young prostitute helps the venerable writer to overcome writer's block. Quite shocking story of her life inspires him for a new book.",
-        "poster": "https://image.tmdb.org/t/p/original/K5cIptFRXpgX5t9O51pkq0WnHd.jpg",
-        "opening_date": null,
-        "running_time": 90,
-        "review_score": 4.2,
-        "show_status": 2,
-        "country": "캐나다",
-        "producer": [],
-        "actor": [
-            "10007795",
-            "10023604"
-        ],
-        "genre": [
-            "드라마",
-            "멜로/로맨스"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
     "pk": "20050257",
     "fields": {
         "title": "케이브",
@@ -3812,30 +3808,6 @@
 },
 {
     "model": "movies.movie",
-    "pk": "20079472",
-    "fields": {
-        "title": "섹스아이콘 우씨 오브마이어",
-        "overview": "사람들은 그녀의 벗은 몸을 봤지만, 카메라는 자유를 보았다 롤링스톤즈를 만나기 전, 우씨는 베를린에서 68혁명 시절 '코뮌 1(Kommune 1)'이라는 혁명의 거점을 이끌었던 실존인물 라이너 랑한스(Rainer Langhans)를 만난다. 자유로운 삶을 찾아 집을 떠나온 우씨에게 문도 없고 벽도 없는 공간에서 자유로운 공동체 삶을 이끌고 있는 랑한스는 그녀가 원하는 것을 제공해 주었다. 구세대에 저항하며 누디즘(nudism, 나체주의)과 프리섹스주의를 실천하고 있는 랑한스는 우씨와의 첫만남에서도 옷을 전혀 입지 않은 채 자신의 주장을 기자들에게 강력하게 호소하고 있었다. 이후 우씨는 랑한스와 함께 활동하며 언론에 급진적 혁명가처럼 묘사되기도 했지만 결국 롤링스톤즈를 만나 그들을 따라가면서 결별한다.",
-        "poster": "https://image.tmdb.org/t/p/original/utT1hTdNyU4Gx5JHKgSBEiSYGaz.jpg",
-        "opening_date": null,
-        "running_time": 114,
-        "review_score": 6.5,
-        "show_status": 2,
-        "country": "독일",
-        "producer": [],
-        "actor": [
-            "10023956",
-            "20127090"
-        ],
-        "genre": [
-            "드라마",
-            "코미디"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
     "pk": "20080035",
     "fields": {
         "title": "크레이지",
@@ -3923,29 +3895,6 @@
         "country": "프랑스",
         "producer": [],
         "actor": [],
-        "genre": [
-            "드라마"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": "20080490",
-    "fields": {
-        "title": "가라, 가라 두 번째 처녀",
-        "overview": "한 소년이 맨션의 옥상 위에서 벌어진 윤간을 지켜본다. 불량배들을 처단한 소년은 소녀와 옥상에 머물다가 새벽이 오자 건물 아래를 향해 몸을 던지고 만다.",
-        "poster": "https://image.tmdb.org/t/p/original/b1vuQMFttcNxbBRP2FBsSy9H5PW.jpg",
-        "opening_date": null,
-        "running_time": 65,
-        "review_score": 6.8,
-        "show_status": 2,
-        "country": "일본",
-        "producer": [],
-        "actor": [
-            "10042657",
-            "10076398"
-        ],
         "genre": [
             "드라마"
         ],
@@ -4597,31 +4546,6 @@
 },
 {
     "model": "movies.movie",
-    "pk": "20100006",
-    "fields": {
-        "title": "섹스 앤 데스",
-        "overview": "한 남자가 자신이 과거에 섹스했던 여자와 미래에 섹스할 여자들의 목록이 담긴 이메일을 받는다는 설정의 영화로, 위노나 라이더가 성범죄자를 상대하는 역할을 연기한다.  어느 날 갑자기 날아든 이메일 한 통. 101명의 여성들의 이름이 나열된 리스트가 도착되는 순간, 주인공 로드릭 블랭크는 달라질 자신의 인생을 예감한다. 성공한 햄버거 기업의 사장인 로드릭은 아름답고 지적인 여자친구와의 결혼을 앞두고 탄탄대로의 삶을 살아가고 있었다. 하지만 101명의 여성들의 이름이 적힌 기묘한 리스트를 받아 든 순간 그는 알 수 없는 기분에 사로잡히게 된다. 친구들과 함께한 총각파티에서 만난 여성이 리스트 속 30번째 여자의 이름과 동일함을 알았을 때, 그의 마음속에 감춰진 욕망이 분출되기 시작한다.",
-        "poster": "https://image.tmdb.org/t/p/original/fy3b1lO7mAvOMWwZMsCfhf272YZ.jpg",
-        "opening_date": null,
-        "running_time": 100,
-        "review_score": 6.1,
-        "show_status": 2,
-        "country": "미국",
-        "producer": [],
-        "actor": [
-            "10034345",
-            "10052861"
-        ],
-        "genre": [
-            "드라마",
-            "멜로/로맨스",
-            "코미디"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
     "pk": "20100008",
     "fields": {
         "title": "시노비",
@@ -4760,46 +4684,6 @@
         "genre": [
             "액션"
         ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": "20100479",
-    "fields": {
-        "title": "심포니",
-        "overview": "음악가 존 바티스트와 작가 술레이카 자와드 부부의 속 깊은 이야기를 담은 다큐멘터리. 아내가 암 치료를 받는 동안, 존은 교향곡 작곡에 도전한다.",
-        "poster": "https://image.tmdb.org/t/p/original/skfO62LOEg805x9fMYeEDQRorXP.jpg",
-        "opening_date": null,
-        "running_time": null,
-        "review_score": 7.05,
-        "show_status": 2,
-        "country": "",
-        "producer": [
-            "20112563"
-        ],
-        "actor": [],
-        "genre": [],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": "20100505",
-    "fields": {
-        "title": "여행극",
-        "overview": "영화는 끊임없이 어딘가로 떠나고 싶어하지만, 현실에 머무른 채 살아갈 수 밖에 없는 일상의 단면을 담아낸다. 배우들의 리얼한 연기와 사실감 넘치는 미장센은 감독의 의도를 효과적으로 전달한다.",
-        "poster": null,
-        "opening_date": null,
-        "running_time": null,
-        "review_score": 0.0,
-        "show_status": 2,
-        "country": "",
-        "producer": [
-            "10054336"
-        ],
-        "actor": [],
-        "genre": [],
         "like_users": []
     }
 },
@@ -4980,28 +4864,6 @@
 },
 {
     "model": "movies.movie",
-    "pk": "20101269",
-    "fields": {
-        "title": "백서",
-        "overview": "이른 새벽 한강변에서 성운은 군 입영 통지서를 태운다. 그는 병역거부 소견서를 쓰려고 시도한다.",
-        "poster": null,
-        "opening_date": null,
-        "running_time": 50,
-        "review_score": 0.0,
-        "show_status": 2,
-        "country": "한국",
-        "producer": [],
-        "actor": [
-            "20211126"
-        ],
-        "genre": [
-            "드라마"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
     "pk": "20101374",
     "fields": {
         "title": "신 독일 영년 ",
@@ -5082,24 +4944,6 @@
 },
 {
     "model": "movies.movie",
-    "pk": "20101417",
-    "fields": {
-        "title": "패밀리(3)",
-        "overview": "예전처럼 가족이 가까이 지내길 원하는 엄마는 크리스마스를 맞이해 산악 스키 여행을 준비한다. 크게 당황한 할아버지와 쥘은 '가족과 함께 보내는 시간'이라는 여행 의도가 무색하게 호텔에서 비밀리에 작전을 수행한다. 엄마는 둘을 이해하지 못하고, 오빠가 보고 싶은 노르는 모든 동생이 할 법한 일을 저지른다. 그건 바로, 대놓고 혹은 몰래 오빠가 가는 곳마다 따라가는 것. 그 결과 피할 수 없는 일이 발생하고 노르가 크리스마스 세계를 발견하게 되면서 한바탕 소동이 일어난다. 노르는 고민에 빠진다. 왜 나는 오빠처럼 산타클로스가 될 수 없는 거지?",
-        "poster": "https://image.tmdb.org/t/p/original/aJg7z3AVwBakEUDdJaah5QyebXn.jpg",
-        "opening_date": null,
-        "running_time": 42,
-        "review_score": 5.8,
-        "show_status": 2,
-        "country": "",
-        "producer": [],
-        "actor": [],
-        "genre": [],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
     "pk": "20102423",
     "fields": {
         "title": "왕각흑야",
@@ -5173,26 +5017,6 @@
         "genre": [
             "서부극(웨스턴)",
             "코미디"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": "20108508",
-    "fields": {
-        "title": "쌍용",
-        "overview": "과거 남자에게 배신을 당하고 술집에서 일하게 된 지지는 손님들의 많은 유혹을 받지만 거절하고 꿋꿋하게 살아간다. 그러던 어느날 지지는 아룡(막소총 분)을 만나게 되는데 옛날의 아픈 상처 때문에 마음을 주려하지 않는다. 한편 아룡에게 아치(주성치 분)라는 친구가 있는 데 이들은 과거에 건달생활을 하여 결국은 사랑하는 사이가 된다. 지지와 아룡은 드디어 결혼날짜를 잡고 동거를 한다. 하지만 지지는 아룡의 친구인 건달들을 싫어하여 이런 이유로 둘은 갈등을 겪게 된다. 결국 지지는 아룡의 겉을 떠나게 되고 그후, 아룡은 택시운전을 하면서 새로운 삶은 개척해 나가는데 어느날 아룡의 택시에 지지가 타면서 지지가 다른 남자와 결혼하여 아들까지 낳았다는 것을 알게 된다.",
-        "poster": "https://image.tmdb.org/t/p/original/xkqGLWr6OwUirSU3hxIEIhCfiwa.jpg",
-        "opening_date": null,
-        "running_time": null,
-        "review_score": 5.8,
-        "show_status": 2,
-        "country": "홍콩",
-        "producer": [],
-        "actor": [],
-        "genre": [
-            "액션"
         ],
         "like_users": []
     }
@@ -5706,28 +5530,6 @@
 },
 {
     "model": "movies.movie",
-    "pk": "20111252",
-    "fields": {
-        "title": "엄마",
-        "overview": "자신보다 나이가 꽤 많은 민수와 결혼하게 된 다희.  덕분에 나이차이가 얼마 나지 않은 아들을 얻게 된다. 어색한 재혁과 친해지기 위해 노력하는데..\r 나연과 함께 있다가 재혁과 만나게 되고 나연은 재혁과 데이트를 가진다. 데이트를 끝내고 집으로 돌아오는 세 사람을 발견한 민수. 재혁이 두 여자와 함께 있는 모습을 보고 작은 분노를 느낀다.\r 곧 바로 다희를 찾아가 나연에 대해 묻는 민수. 재혁 몰래 민수와 만나게 된 나연.  하지만 민수와 나연의 관계를 알고 있는 다희는 재혁에게 이 사실을 털어놓는다.​",
-        "poster": "https://image.tmdb.org/t/p/original/zarhMAQRWKjjsNBR1rviIXZ5xtt.jpg",
-        "opening_date": null,
-        "running_time": 98,
-        "review_score": 6.0,
-        "show_status": 2,
-        "country": "일본",
-        "producer": [
-            "10006851"
-        ],
-        "actor": [],
-        "genre": [
-            "드라마"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
     "pk": "20111254",
     "fields": {
         "title": "오누이",
@@ -5991,10 +5793,10 @@
     "model": "movies.movie",
     "pk": "20111638",
     "fields": {
-        "title": "피닉스",
-        "overview": "어린 시절 비극적 교통사고로 능력을 알게 된 진 그레이는 자비에 영재학교에서 새로운 가족을 맞이하게 된다. 엄청난 잠재능력을 지닌 그녀는 엑스맨으로 성장해 우주에서 구조 임무를 수행하던 중 목숨을 잃을 뻔한 사고를 겪고, 폭주하는 힘과 억눌려왔던 어둠에 눈을 뜨게 된 그녀는 엑스맨의 가장 강력하고 파괴적인 적, 다크 피닉스로 변하게 된다. 프로페서 X는 물론 매그니토까지 능가하는 두려운 존재가 된 그녀 앞에 힘을 이용하려는 미스터리한 외계 존재가 나타나 그녀를 뒤흔들고, 엑스맨은 사랑하는 친구이자 가장 강력한 적이 된 다크 피닉스와 맞서야 하는데...",
+        "title": "엑스맨 다크피닉스",
+        "overview": "어린 시절 비극적 교통사고로 능력을 알게 된 진 그레이는 자비에 영재학교에서 새로운 가족을 맞이하게 된다. 엄청난 잠재능력을 지닌 그녀는 엑스맨으로 성장해 우주에서 구조 임무를 수행하던 중 목숨을 잃을 뻔한 사고를 겪고, 폭주하는 힘과 억눌려왔던 어둠에 눈을 뜨게 된 그녀는 엑스맨의 가장 강력하고 파괴적인 적, 다크 피닉스로 변하게 된다. 프로페서 X는 물론 매그니토까지 능가하는 두려운 존재가 된 그녀 앞에 힘을 이용하려는 미스터리한 외계 존재가 나타나 그녀를 뒤흔들고, 엑스맨은 사랑하는 친구이자 가장 강력한 적이 된 다크 피닉스와",
         "poster": "https://image.tmdb.org/t/p/original/rNRfYkuRvM0z1RWHPbc2I8HCdvd.jpg",
-        "opening_date": null,
+        "opening_date": "2022-07-01",
         "running_time": 142,
         "review_score": 5.98,
         "show_status": 2,
@@ -6005,8 +5807,12 @@
         "actor": [
             "10064198"
         ],
-        "genre": [],
-        "like_users": []
+        "genre": [
+            "액션"
+        ],
+        "like_users": [
+            1
+        ]
     }
 },
 {
@@ -6025,26 +5831,6 @@
         "actor": [],
         "genre": [
             "드라마"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": "20111805",
-    "fields": {
-        "title": "성",
-        "overview": "진화한 유인원과 퇴화된 인간들이 살아가는 땅. 유인원 리더 프록시무스는 완전한 군림을 위해 인간들을 사냥하며 자신의 제국을 건설한다. 한편, 또 다른 유인원 노아는 우연히 숨겨진 과거의 이야기와 시저의 가르침을 듣게 되고 인간과 유인원이 함께 할 새로운 세상을 꿈꾼다. 어느 날 그의 앞에 나타난 의문의 한 인간 소녀. 노아는 그녀와 함께 자유를 향한 여정을 시작하게 되는데…",
-        "poster": "https://image.tmdb.org/t/p/original/plNOSbqkSuGEK2i15A5btAXtB7t.jpg",
-        "opening_date": null,
-        "running_time": 90,
-        "review_score": 7.201,
-        "show_status": 2,
-        "country": "이탈리아",
-        "producer": [],
-        "actor": [],
-        "genre": [
-            "다큐멘터리"
         ],
         "like_users": []
     }
@@ -7316,29 +7102,6 @@
             "10088643"
         ],
         "genre": [],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": "20120887",
-    "fields": {
-        "title": "성의 도적:섹스 잭",
-        "overview": "청년 노동자인 스즈키는 반체제활동으로 수배된 학생들을 숨겨준다. 스즈키는 고된 노동에 힘들어도 꼬박꼬박 학생들에게 먹을 것을 챙겨준다. 그러나 학생들은 스즈키의 방 안에서 끝도 없는 토론과 논쟁에 몰두하고, 싸우는가 하면, ‘장밋빛 연대’라는 프리섹스에도 열중한다. 아무 것도 모르는 듯 그들을 지켜보던 스즈키는 조용히 자신만의 거사를 준비한다. 조그만 방 안에서 자기들만의 논쟁에 몰두하는 학생들을 통해 관념적이고 자기만족적인 투쟁의 허상을 신랄하게 비판했다.",
-        "poster": "https://image.tmdb.org/t/p/original/ee2oJYEH2LC4hGrQ3YM7DGPKBst.jpg",
-        "opening_date": null,
-        "running_time": 70,
-        "review_score": 5.2,
-        "show_status": 2,
-        "country": "일본",
-        "producer": [],
-        "actor": [
-            "10042657",
-            "10074034"
-        ],
-        "genre": [
-            "드라마"
-        ],
         "like_users": []
     }
 },
@@ -10327,27 +10090,6 @@
 },
 {
     "model": "movies.movie",
-    "pk": "20170824",
-    "fields": {
-        "title": "착한 형수: 뜨거운 육체",
-        "overview": "미망인이 된 형수와 시동생의 사랑을 그린 성애 영화",
-        "poster": "https://image.tmdb.org/t/p/original/ntwrOciigxwmhkqS4XuDCSy9Fmu.jpg",
-        "opening_date": "2017-02-10",
-        "running_time": 59,
-        "review_score": 0.0,
-        "show_status": 0,
-        "country": "일본",
-        "producer": [],
-        "actor": [],
-        "genre": [
-            "드라마",
-            "멜로/로맨스"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
     "pk": "20171310",
     "fields": {
         "title": "지하실",
@@ -10506,31 +10248,6 @@
         ],
         "genre": [
             "드라마"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": "20174602",
-    "fields": {
-        "title": "노무현입니다",
-        "overview": "2002년, 새천년민주당은 정당 최초로 국민 참여 경선제를 도입하여 대통령 후보를 선출하기로 결정한다. 기라성 같은 정치인들이 경선에 뛰어든 가운데, 1995년 부산시장 선거, 1996년 15대 총선 등 출마하는 선거마다 번번이 낙선했던 만년 꼴찌 후보 노무현이 당당히 출사표를 던진다. 제주를 시작으로 전국 16개 도시에서 치러진 대국민 이벤트. 당내 입지가 거의 없던 상태에서 쟁쟁한 후보들과 엎치락뒤치락하며 제주 경선 3위, 울산 1위, 그리고 광주까지 석권한 지지율 2%의 꼴찌 후보 노무현이 전국을 뒤흔들기 시작한다.",
-        "poster": "https://image.tmdb.org/t/p/original/glFVYtcumNbV8k5rX2MR3k2Cehx.jpg",
-        "opening_date": "2017-05-25",
-        "running_time": 109,
-        "review_score": 8.2,
-        "show_status": 0,
-        "country": "한국",
-        "producer": [
-            "10057682"
-        ],
-        "actor": [
-            "10008060",
-            "20289588"
-        ],
-        "genre": [
-            "다큐멘터리"
         ],
         "like_users": []
     }
@@ -10876,32 +10593,6 @@
         "genre": [
             "드라마",
             "멜로/로맨스"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": "20183050",
-    "fields": {
-        "title": "번 더 스테이지: 더 무비",
-        "overview": "19개 도시, 40회의 공연, 55만석 날개를 펼친 소년들의 역사. 성공적인 월드 투어로 마무리된 ‘2017 방탄소년단 라이브 트릴로지 에피소드3 윙스 투어(2017 BTS LIVE TRILOGY EPOSODE III THE WINGS TOUR)’를 가장 가까이에서 담아낸 방탄소년단의 첫 번째 영화! 지금, 우리  함께 빛나는 청춘의 순간이 스크린에 펼쳐진다.",
-        "poster": "https://image.tmdb.org/t/p/original/pJKy1yvnKh8UjcuYeG3Rt35xHFA.jpg",
-        "opening_date": "2018-11-15",
-        "running_time": 82,
-        "review_score": 8.4,
-        "show_status": 0,
-        "country": "한국",
-        "producer": [],
-        "actor": [
-            "20311774",
-            "20311775",
-            "20311776",
-            "20311792",
-            "20311793"
-        ],
-        "genre": [
-            "기타"
         ],
         "like_users": []
     }
@@ -13188,35 +12879,6 @@
 },
 {
     "model": "movies.movie",
-    "pk": "20226499",
-    "fields": {
-        "title": "크로스",
-        "overview": "여러 성장통을 겪으며 새로운 스파이더맨이 된 마일스 모랄레스. 그 앞에 다른 평행세계의 스파이더우먼 그웬이 다시 나타난다. 모든 차원의 멀티버스 속 스파이더맨들을 만나게 되지만, 질서에 대한 신념이 부딪히며 예상치 못한 균열이 생기는데… 상상 그 이상을 넘어서는 멀티버스의 세계가 열린다!",
-        "poster": "https://image.tmdb.org/t/p/original/lMWTlGr9jVUC18T515hPRKym5QQ.jpg",
-        "opening_date": null,
-        "running_time": null,
-        "review_score": 8.364,
-        "show_status": 2,
-        "country": "한국",
-        "producer": [
-            "20260533"
-        ],
-        "actor": [
-            "10049852",
-            "10061699",
-            "10090290",
-            "20112423",
-            "20172721"
-        ],
-        "genre": [
-            "액션",
-            "코미디"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
     "pk": "20226540",
     "fields": {
         "title": "프램",
@@ -14377,28 +14039,6 @@
 },
 {
     "model": "movies.movie",
-    "pk": "20232168",
-    "fields": {
-        "title": "저, 엉덩이만 들여놔도 될까요?",
-        "overview": "선영의 앞에 갑자기 고향 후배 유라가 나타난다. 선영은 이틀만 신세를 지겠다며 다짜고짜 상경한 유라를 집에 받아들인다. 하지만 이틀이 지나도 유라는 나가지 않고 선영의 속은 부글댄다. 결국 쫓아내려고 결심하지만 맘대로 되지 않는다.",
-        "poster": "https://image.tmdb.org/t/p/original/uQJI8fl7CUdymQz5dCH1ykWVB2N.jpg",
-        "opening_date": null,
-        "running_time": 40,
-        "review_score": 0.0,
-        "show_status": 2,
-        "country": "한국",
-        "producer": [
-            "20153842"
-        ],
-        "actor": [],
-        "genre": [
-            "기타"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
     "pk": "20232175",
     "fields": {
         "title": "낙원",
@@ -15123,24 +14763,6 @@
         "genre": [
             "드라마"
         ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": "20232514",
-    "fields": {
-        "title": "야! 너두 섹스 할 수 있어",
-        "overview": "All men who want to have sex with their single mother-in-law or with their ideal type, gather up! A new world will be opened where you can enjoy the sex you want with the person you want. A world where you can fully enjoy things you have never done with your lover. However, there is only a slight difference in cost.",
-        "poster": "https://image.tmdb.org/t/p/original/57Ghi5kILiEZgGwgGw0T0w4mRa3.jpg",
-        "opening_date": null,
-        "running_time": 72,
-        "review_score": 0.0,
-        "show_status": 2,
-        "country": "한국",
-        "producer": [],
-        "actor": [],
-        "genre": [],
         "like_users": []
     }
 },
@@ -15938,12 +15560,12 @@
     "pk": "20235353",
     "fields": {
         "title": "길위에 김대중",
-        "overview": "목포의 제일 가는 청년사업가 김대중. 탄탄대로를 걷던 그의 눈에 들어온 것은 이념의 정치에 희생되던 무고한 국민들이었다. 국민의 정치, 민주주의가 뿌리내린 세상을 만들기 위해 김대중은 정치인이 되기로 결심한다. 보장된 미래를 뒤로 하고 파란곡절의 길 위에 첫 발걸음을 내딛은 그 선택의 대가는 납치, 살해 위협, 투옥과 사형선고가 되어 그를 뒤흔들지만 죽음을 선고 받은 마지막 순간에서도 김대중은 조금의 흔들림 없이 외쳤다. 다섯 번의 죽을 고비를 넘긴 사형수, 네 번의 국회의원 선거와 세 번의 대선 낙선을 거친 '낙선전문가' 김대중 대통령의 일생이 대한민국 현대사 위로 아로새겨진다.",
+        "overview": "목포의 제일 가는 청년사업가 김대중. 탄탄대로를 걷던 그의 눈에 들어온 것은 이념의 정치에 희생되던 무고한 국민들이었다. 국민의 정치, 민주주의가 뿌리내린 세상을 만들기 위해 김대중은 정치인이 되기로 결심한다. 보장된 미래를 뒤로 하고 파란곡절의 길 위에 첫 발걸음을 내딛은 그 선택의 대가는 납치, 살해 위협, 투옥과 사형선고가 되어 그를 뒤흔들지만 죽음을 선고 받은 마지막 순간에서도 김대중은 조금의 흔들림 없이 외쳤다. 다섯 번의 죽을 고비를 넘긴 사형수, 네 번의 국회의원 선거와 세 번의 대선 낙선을 거친 '낙선전문가' ..",
         "poster": "https://image.tmdb.org/t/p/original/5J27fz6YpLcFvEzdxWPyxi38eEW.jpg",
         "opening_date": "2024-01-10",
         "running_time": 125,
         "review_score": 8.5,
-        "show_status": 0,
+        "show_status": 2,
         "country": "한국",
         "producer": [
             "10027878"
@@ -15958,7 +15580,9 @@
         "genre": [
             "다큐멘터리"
         ],
-        "like_users": []
+        "like_users": [
+            1
+        ]
     }
 },
 {
@@ -16642,31 +16266,6 @@
         ],
         "genre": [
             "애니메이션"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": "20236720",
-    "fields": {
-        "title": "더 버스",
-        "overview": "여러 성장통을 겪으며 새로운 스파이더맨이 된 마일스 모랄레스. 그 앞에 다른 평행세계의 스파이더우먼 그웬이 다시 나타난다. 모든 차원의 멀티버스 속 스파이더맨들을 만나게 되지만, 질서에 대한 신념이 부딪히며 예상치 못한 균열이 생기는데… 상상 그 이상을 넘어서는 멀티버스의 세계가 열린다!",
-        "poster": "https://image.tmdb.org/t/p/original/lMWTlGr9jVUC18T515hPRKym5QQ.jpg",
-        "opening_date": null,
-        "running_time": 90,
-        "review_score": 8.364,
-        "show_status": 2,
-        "country": "한국",
-        "producer": [],
-        "actor": [
-            "10001907",
-            "10026039",
-            "20328733"
-        ],
-        "genre": [
-            "범죄",
-            "코미디"
         ],
         "like_users": []
     }
@@ -20214,24 +19813,6 @@
 },
 {
     "model": "movies.movie",
-    "pk": "20248223",
-    "fields": {
-        "title": "과외선생님과 색 밝히는 가족",
-        "overview": "엄마가 돈을 잘 벌어서 그런지 철이 없는 아들 용우는 대학을 가지 못했다\r 이런저런 과외선생님을 차버리는 아들인데,,,,\r 그런 동생을 보다 못한 형 용성이가 동생에게 여자 후배를 과외선생님으로 소개하는데  용성의 후배이자 용우의 과외선생님 연희는\r 막무가내인 용우를 특별히 가르치는 방법이 있었다.\r 연희에게 과외를 받은 용우는 성적이 빠르게 상승하게 된다.",
-        "poster": "https://image.tmdb.org/t/p/original/vMOb1CjD4pffVyW7qc4zkt8pHvq.jpg",
-        "opening_date": null,
-        "running_time": 61,
-        "review_score": 0.0,
-        "show_status": 2,
-        "country": "한국",
-        "producer": [],
-        "actor": [],
-        "genre": [],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
     "pk": "20248403",
     "fields": {
         "title": "브레이브 온 파이어",
@@ -20501,29 +20082,6 @@
 },
 {
     "model": "movies.movie",
-    "pk": "20248550",
-    "fields": {
-        "title": "섹스 봇 선녀",
-        "overview": "Na-moo, heartbroken after breaking up with her girlfriend, accidentally sees a post selling sex robots on the internet and purchases one that can love him unconditionally. He gradually falls in love with her sex bot, 'Fairy', and when his friend Seok-jin finds out about it, he visits his house and asks him to share his robot. But when Na-moo rejected his friend's request, Seok-jin secretly stole the operating command of the sex robot and had sex with 'Fairy'.",
-        "poster": "https://image.tmdb.org/t/p/original/7oROs4lplTvRYkgaGnkJmpWIljz.jpg",
-        "opening_date": "2024-04-05",
-        "running_time": 70,
-        "review_score": 0.0,
-        "show_status": 0,
-        "country": "한국",
-        "producer": [
-            "20392019"
-        ],
-        "actor": [],
-        "genre": [
-            "드라마",
-            "멜로/로맨스"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
     "pk": "20248552",
     "fields": {
         "title": "은빛살구",
@@ -20725,7 +20283,7 @@
         "opening_date": "2024-03-28",
         "running_time": 83,
         "review_score": 0.0,
-        "show_status": 0,
+        "show_status": 2,
         "country": "한국",
         "producer": [
             "10005961"
@@ -20738,7 +20296,9 @@
         "genre": [
             "다큐멘터리"
         ],
-        "like_users": []
+        "like_users": [
+            1
+        ]
     }
 },
 {
@@ -22372,27 +21932,6 @@
         ],
         "genre": [
             "공포(호러)"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": "20249518",
-    "fields": {
-        "title": "낭인",
-        "overview": "서핑 마니아들의 유토피아, 완안은 잘 알려지지 않은 곳이다. 동빈은 바닷가에 서핑용품 가게를 열고 다양한 손님을 맞고 있다. 샤오팡은 과거의 비밀을 숨기고, 위안용은 부모님의 보호를 벗어났으며, 양판은 미지의 세계로 나아갈 방향을 모색한다. 모호하고 진솔한 감정을 터뜨리며, 그들은 희미한 빛으로 서로를 비춘다. 그들의 비밀은 영원히 바다에 잠기게 될까, 아니면 서로의 기억 속에서 다른 버전으로 남게 될까?",
-        "poster": "https://image.tmdb.org/t/p/original/mMxT2nm5eGwxu3gpxjZJ5mpfj9X.jpg",
-        "opening_date": null,
-        "running_time": 91,
-        "review_score": 0.0,
-        "show_status": 2,
-        "country": "중국",
-        "producer": [],
-        "actor": [],
-        "genre": [
-            "드라마",
-            "멜로/로맨스"
         ],
         "like_users": []
     }
@@ -38761,6 +38300,11 @@
 },
 {
     "model": "movies.country",
+    "pk": "",
+    "fields": {}
+},
+{
+    "model": "movies.country",
     "pk": "그리스",
     "fields": {}
 },
@@ -40193,14 +39737,6 @@
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/10pqf9LEZp9ZDpPiiOdkSoCDWKR.jpg",
         "movie": "20249845"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 138,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/8yugpdDjm0WDAtmkd2ZYNMlDWj3.jpg",
-        "movie": "20249518"
     }
 },
 {
@@ -42625,46 +42161,6 @@
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/qOsfPvre477qeQLtQAXLgf9LRsH.jpg",
         "movie": "20212932"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 493,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/4HodYYKEIsGOdinkGi2Ucz6X9i0.jpg",
-        "movie": "20226499"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 494,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/kGWpZewzInbzTuaIHcy0bFgzXuM.jpg",
-        "movie": "20226499"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 495,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/9xfDWXAUbFXQK585JvByT5pEAhe.jpg",
-        "movie": "20226499"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 496,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/kVd3a9YeLGkoeR50jGEXM6EqseS.jpg",
-        "movie": "20226499"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 497,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/jbthbh0KzaUWFPYvkfmXAamjI8j.jpg",
-        "movie": "20226499"
     }
 },
 {
@@ -45333,14 +44829,6 @@
 },
 {
     "model": "movies.snapshot",
-    "pk": 928,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/jdDHUEuYm2NV8yDtvne5xpCQer1.jpg",
-        "movie": "20248550"
-    }
-},
-{
-    "model": "movies.snapshot",
     "pk": 929,
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/cACLjetKctoZFOZ8RaCDPykB9F8.jpg",
@@ -45561,46 +45049,6 @@
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/A2IZGdkL1BqrxIiFlu56tv8Zc8L.jpg",
         "movie": "20235353"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 992,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/4HodYYKEIsGOdinkGi2Ucz6X9i0.jpg",
-        "movie": "20236720"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 993,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/kGWpZewzInbzTuaIHcy0bFgzXuM.jpg",
-        "movie": "20236720"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 994,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/9xfDWXAUbFXQK585JvByT5pEAhe.jpg",
-        "movie": "20236720"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 995,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/kVd3a9YeLGkoeR50jGEXM6EqseS.jpg",
-        "movie": "20236720"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 996,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/jbthbh0KzaUWFPYvkfmXAamjI8j.jpg",
-        "movie": "20236720"
     }
 },
 {
@@ -45981,14 +45429,6 @@
 },
 {
     "model": "movies.snapshot",
-    "pk": 1052,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/XvcqYr1ij4zo1n65gJpLaPRofc.jpg",
-        "movie": "20120887"
-    }
-},
-{
-    "model": "movies.snapshot",
     "pk": 1053,
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/dC3YJdh3LOSJB6B3G62soMYxtpG.jpg",
@@ -46001,30 +45441,6 @@
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/pQu7hySjqa3mZFeOicxmP2Ke745.jpg",
         "movie": "20249873"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 1055,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/omKgqKsmfcHihKshQAocj8Dzi6i.jpg",
-        "movie": "20080490"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 1056,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/5u7nHBW4D0emIQJQCxlONpSRhWC.jpg",
-        "movie": "20080490"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 1057,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/8tOuoTrSnzBOfV7P2hcYhZb2y89.jpg",
-        "movie": "20080490"
     }
 },
 {
@@ -49077,46 +48493,6 @@
 },
 {
     "model": "movies.snapshot",
-    "pk": 1575,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/qEr93DMd9uDlJz7K6USktHhE1rg.jpg",
-        "movie": "20101417"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 1576,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/AnI9lXDGAk0b1gAwlsmK7CKCbIo.jpg",
-        "movie": "20101417"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 1577,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/fySluKZXcyOh00qLWWXUWZAJvcI.jpg",
-        "movie": "20101417"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 1578,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/3gqeWf69sixP9R2X5xqy1rFwz2U.jpg",
-        "movie": "20101417"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 1579,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/eyjoBbQcRmyPTZfoyp0dueYX3Iy.jpg",
-        "movie": "20101417"
-    }
-},
-{
-    "model": "movies.snapshot",
     "pk": 1580,
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/yrjFk8OVnwOQ5qUxbHZJYobxQra.jpg",
@@ -50597,14 +49973,6 @@
 },
 {
     "model": "movies.snapshot",
-    "pk": 1792,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/g4j7H4yDoCR90X1VV2IEvAZ1LAP.jpg",
-        "movie": "20111252"
-    }
-},
-{
-    "model": "movies.snapshot",
     "pk": 1803,
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/8fTzsXNVgGtJn6iKCghsW0TUJD4.jpg",
@@ -51077,14 +50445,6 @@
 },
 {
     "model": "movies.snapshot",
-    "pk": 1885,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/4aLETP6e5HdxDdI1AglFNg9BZYM.jpg",
-        "movie": "20108508"
-    }
-},
-{
-    "model": "movies.snapshot",
     "pk": 1886,
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/xmhquRYBG2eFF0IS5uq2z4qd5PT.jpg",
@@ -51145,46 +50505,6 @@
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/yqpULyKVjl2NlVcvdgbSRZ3h6IT.jpg",
         "movie": "20111378"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 1894,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/5UlQDjIuJ0t8q4anVxzkW06FrDM.jpg",
-        "movie": "20100479"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 1895,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/tmctztVqNsQcGJl8BGDZqh1Fqsa.jpg",
-        "movie": "20100479"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 1896,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/tDHT6QeyBoQXbCN4BkJU0jDpYjX.jpg",
-        "movie": "20100479"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 1897,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/dl5fw7X9GyrJb5puG9wSrYIF2jT.jpg",
-        "movie": "20100479"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 1898,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/iUbPkDB1t6uhe86mwJ9DtLj4WPh.jpg",
-        "movie": "20100479"
     }
 },
 {
@@ -52573,62 +51893,6 @@
 },
 {
     "model": "movies.snapshot",
-    "pk": 2117,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/sTomxWxuyzUjnSvZ2Odsg6n7VOn.jpg",
-        "movie": "20079472"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2118,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/nkCie4uUskriH375NWIM4IU3aLg.jpg",
-        "movie": "20079472"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2119,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/r5Cpwv5VRMCPjyogMS0wfpmoRdx.jpg",
-        "movie": "20079472"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2120,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/4xB92r98QVtSPkI2BCokJjbZOmd.jpg",
-        "movie": "20079472"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2121,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/sub8lPQRZ28WzN8ggUtsH0R1bno.jpg",
-        "movie": "20100006"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2122,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/nwMaKmRfqOrngGSZHmpvZJDWCs4.jpg",
-        "movie": "20100006"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2123,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/nXZN13D9QnCsuNigUc1Z61wKpiF.jpg",
-        "movie": "20100006"
-    }
-},
-{
-    "model": "movies.snapshot",
     "pk": 2124,
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/vUTx2JxgDPRW3MYzXwGZXkhSWGV.jpg",
@@ -53465,46 +52729,6 @@
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/gXJr4wMiS9ESebO0eFlTcRggZ9P.jpg",
         "movie": "20135743"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2229,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/fypydCipcWDKDTTCoPucBsdGYXW.jpg",
-        "movie": "20111805"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2230,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/iHYh4cdO8ylA3W0dUxTDVdyJ5G9.jpg",
-        "movie": "20111805"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2231,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/ufAynWZolcl5wM22pZfqWJm8YK1.jpg",
-        "movie": "20111805"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2232,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/fqv8v6AycXKsivp1T5yKtLbGXce.jpg",
-        "movie": "20111805"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2233,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/wMPb9uQjeE6CJ2fJQlYzyhvA1HN.jpg",
-        "movie": "20111805"
     }
 },
 {
@@ -55217,14 +54441,6 @@
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/xdQ7kt7oPNvskV2V4Whzw7RrjLW.jpg",
         "movie": "19998250"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2487,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/1OIoZQ6oirHYjlBQ1402a8ETfpY.jpg",
-        "movie": "20232514"
     }
 },
 {
@@ -57797,46 +57013,6 @@
 },
 {
     "model": "movies.snapshot",
-    "pk": 2890,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/oSJmKBqSZsFxIbVAlPkEaaiFa8E.jpg",
-        "movie": "20174602"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2891,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/94W04VqKhRa3srKwdMwydkUxknk.jpg",
-        "movie": "20174602"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2892,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/n1VNrMrc6rFW3Eaocuhrzb5LEot.jpg",
-        "movie": "20174602"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2893,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/jIi6im2msQnLERlMlmARYzd4VLP.jpg",
-        "movie": "20174602"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2894,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/wzTTWPKFDhBsAiytnqyh7ft2BJV.jpg",
-        "movie": "20174602"
-    }
-},
-{
-    "model": "movies.snapshot",
     "pk": 2895,
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/3dpFYQ656qLRFISQ0uaEiLUhWFK.jpg",
@@ -59645,38 +58821,6 @@
 },
 {
     "model": "movies.snapshot",
-    "pk": 3297,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/aQ7444JX7gefPhGJTlvilj3zG2S.jpg",
-        "movie": "20183050"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 3298,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/wqwmU73GaIuxCjcHrhbzbIpaauF.jpg",
-        "movie": "20183050"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 3299,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/iWC8MffkS6z03AoWooBl4v1xuDg.jpg",
-        "movie": "20183050"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 3300,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/cRpwKupwZBfkz2iey6XyUNwSW7I.jpg",
-        "movie": "20183050"
-    }
-},
-{
-    "model": "movies.snapshot",
     "pk": 3301,
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/5F91KvV5HAkydf3YOeW5XVxxvkP.jpg",
@@ -60780,6 +59924,14 @@
 },
 {
     "model": "authtoken.token",
+    "pk": "22072cfcaae40d649d5d6571bd5295a99fc9e233",
+    "fields": {
+        "user": 3,
+        "created": "2024-05-23T05:07:33.697Z"
+    }
+},
+{
+    "model": "authtoken.token",
     "pk": "60de09a2985104a94916902ce949795b0a34661f",
     "fields": {
         "user": 1,
@@ -60794,6 +59946,16 @@
         "email": "test@test.com",
         "verified": false,
         "primary": true
+    }
+},
+{
+    "model": "account.emailaddress",
+    "pk": 2,
+    "fields": {
+        "user": 3,
+        "email": "test@test.com",
+        "verified": false,
+        "primary": false
     }
 },
 {
@@ -60917,6 +60079,331 @@
         "content_type": 5,
         "object_id": "20231437",
         "object_repr": "문재인입니다",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2024-05-23T04:34:54.532Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20248223",
+        "object_repr": "과외선생님과 색 밝히는 가족",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2024-05-23T04:35:27.317Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20248550",
+        "object_repr": "섹스 봇 선녀",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2024-05-23T04:36:28.349Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20232514",
+        "object_repr": "야! 너두 섹스 할 수 있어",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2024-05-23T04:36:53.981Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20232168",
+        "object_repr": "저, 엉덩이만 들여놔도 될까요?",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2024-05-23T04:37:04.924Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20226499",
+        "object_repr": "크로스",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2024-05-23T04:38:25.192Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20170824",
+        "object_repr": "착한 형수: 뜨거운 육체",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2024-05-23T04:39:12.412Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20120887",
+        "object_repr": "성의 도적:섹스 잭",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2024-05-23T04:39:47.246Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20111805",
+        "object_repr": "성",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2024-05-23T04:39:58.108Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20111252",
+        "object_repr": "엄마",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2024-05-23T04:40:13.709Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20108508",
+        "object_repr": "쌍용",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2024-05-23T04:40:23.206Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20101269",
+        "object_repr": "백서",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2024-05-23T04:40:38.454Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20100006",
+        "object_repr": "섹스 앤 데스",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2024-05-23T04:40:58.085Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20080490",
+        "object_repr": "가라, 가라 두 번째 처녀",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2024-05-23T04:41:10.222Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20079472",
+        "object_repr": "섹스아이콘 우씨 오브마이어",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2024-05-23T04:41:33.942Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20050231",
+        "object_repr": "사랑을 하는 여자 : 창녀",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2024-05-23T04:42:10.654Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20249518",
+        "object_repr": "낭인",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2024-05-23T04:44:31.907Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20111638",
+        "object_repr": "엑스맨 다크피닉스",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Overview\", \"Opening date\", \"Genre_movie\", \"Like users\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2024-05-23T04:45:21.909Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20174602",
+        "object_repr": "노무현입니다",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2024-05-23T04:46:44.109Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20248670",
+        "object_repr": "다시 김대중-함께 합시다",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Show status\", \"Like users\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2024-05-23T04:47:27.931Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20235353",
+        "object_repr": "길위에 김대중",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Overview\", \"Show status\", \"Like users\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2024-05-23T05:02:50.958Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20183050",
+        "object_repr": "번 더 스테이지: 더 무비",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2024-05-23T05:38:44.884Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20236720",
+        "object_repr": "더 버스",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2024-05-23T05:47:51.932Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20100479",
+        "object_repr": "심포니",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2024-05-23T05:48:09.732Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20101417",
+        "object_repr": "패밀리(3)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2024-05-23T05:48:28.100Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20100505",
+        "object_repr": "여행극",
         "action_flag": 3,
         "change_message": ""
     }
@@ -61931,10 +61418,26 @@
 },
 {
     "model": "sessions.session",
+    "pk": "edkin0wkksqb6ohvg0jzqc235mbkziw7",
+    "fields": {
+        "session_data": ".eJxljMsOwiAUBf-FdUPk2dKle7-BXC5gUYSkLW6M_641jYlxOzPnPAgg1lZWew9ziil4G26QMhlLy7n72raEmYxEkI5YaOv0ATb5f-YAr6Fswl-gnCvFWtY5OboldLcLPVUf8nFvfw4mWKb3mkWtPRgmQQ3IucGg-l7p6DkAUyAVxgDC9dG7g5ECuWAS9SC0H6SJSpLnC3_eSW8:1sA0fl:tHiv4OFt8PtHHbKRxPeCdhQI6pzjwWn70a5g6IUZqmw",
+        "expire_date": "2024-06-06T05:07:25.051Z"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "givgvwb1fhw5mqwqy066yrsgqc561z5q",
     "fields": {
         "session_data": ".eJxVjDEOwjAMRe-SGUVRG-OakZ0zRLaTkAJKpaadKu4OlTrA-t97fzOB16WEtaU5jNFcTGdOv5uwPlPdQXxwvU9Wp7rMo9hdsQdt9jbF9Loe7t9B4Va-tfSI4J0nio6VOWPuWAjZA0LuQc-U0IN6IBg0KqkOiN6pZAdIYt4f4uM39A:1s9zDk:5JZz0e5trzMOubclNDC7L5MZkRTyd7ae8qhDuB7RDtk",
         "expire_date": "2024-06-06T03:34:24.728Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "sr5j2dus1gnq9bc1nq249kjaf6ncinum",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSHyBpfu-w1kmAGpGkhKuzL-uzbpQrf3nHNfLMK21riNvMSZ2IUpdvrdEuAjtx3QHdqtc-xtXebEd4UfdPCpU35eD_fvoMKo31oUawmC0GA8ShkwG-eMLSQBhAFtsGRQyRVK56AVSiU0Wq8seR2K0ez9AeusN90:1sA0ft:OWLfJ0F43W3T0UMRC5wMOF1D0nAJmc1oZvf5i8GE8mE",
+        "expire_date": "2024-06-06T05:07:33.698Z"
     }
 },
 {
