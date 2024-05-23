@@ -5,7 +5,7 @@
     </div>
   </div>
   <div v-if="searchResult.length == 0">
-    <p class="no-result">검색 결과가 존재하지 않습니다</p>
+    <p class="no-result">검색 결과가 존재하지 않습니다.</p>
   </div>
 </template>
 
@@ -43,6 +43,7 @@ const newMovieDetail = function (movie) {
 }
 .no-result{
   color: white;
-  font-size: 100px;
+  font-size: 200%;
+  margin-left: 2%;
 }
 </style>

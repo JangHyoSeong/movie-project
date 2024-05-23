@@ -306,7 +306,7 @@ main {
 /* 메인화면 전체 텍스트 */
 .main-txt {
   position: relative;
-  top: -2%;
+  top: 5%;
 }
 
 /* 메인화면 텍스트 */

@@ -218,9 +218,6 @@ const hideImgOutsideClick = function (event) {
 }
 </script>
 
-
-
-
 <style scoped>
 .explan {
   display: flex;
@@ -391,7 +388,7 @@ const hideImgOutsideClick = function (event) {
 /* 내용 컨테이너 스타일 */
 .content-container {
   position: relative;
-  top: -5.6vh;
+  top: 2.5vh;
   display: flex;
   align-items: center;
 }
@@ -415,8 +412,8 @@ const hideImgOutsideClick = function (event) {
 /* 유튜브 플레이어 컨테이너 스타일 */
 .youtube-container {
   position: absolute;
-  top: 6%;
-  right: 12%;
+  top: 12%;
+  right: 10%;
 }
 
 /* 영화 선택 네비게이션 컨테이너 스타일 */
