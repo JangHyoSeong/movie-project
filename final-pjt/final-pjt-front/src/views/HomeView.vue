@@ -358,6 +358,7 @@ main {
 
 .recommend-btn {
   position: relative;
+  font-size: 120%;
   animation: moveRight 2s;
 }
 

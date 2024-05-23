@@ -4,6 +4,9 @@
       <img class="poster" @click="newMovieDetail(movie)" :src="movie.poster" alt="#">
     </div>
   </div>
+  <div v-if="searchResult.length == 0">
+    <p class="no-result">검색 결과가 존재하지 않습니다</p>
+  </div>
 </template>
 
 <script setup>
@@ -37,5 +40,9 @@ const newMovieDetail = function (movie) {
   margin: 30px;
   border-radius: 10px;
   cursor: pointer;
+}
+.no-result{
+  color: white;
+  font-size: 100px;
 }
 </style>
