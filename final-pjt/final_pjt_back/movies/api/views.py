@@ -16,7 +16,7 @@ from ..models  import *
 @api_view(['GET'])
 def current_movies(request):
     if request.method == 'GET':
-        movies = get_list_or_404(Movie.objects.order_by('-review_score').filter(show_status=0, review_score__lt=9.5))[:10]
+        movies = get_list_or_404(Movie.objects.order_by('-opening_date', '-review_score').filter(show_status=0, review_score__lt=9.5))[:10]
         serializer = MovieListSerializer(movies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

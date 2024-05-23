@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$600000$1Btq5HS47PG37dKItCSPEt$GrazdZbAl7d0zFXgJjWawckhxCEvcu6KK2aeCHA3AF4=",
-        "last_login": "2024-05-23T02:39:04.792Z",
+        "last_login": "2024-05-23T06:54:12.535Z",
         "is_superuser": false,
         "username": "test",
         "first_name": "",
@@ -54,6 +54,66 @@
         "date_joined": "2024-05-23T05:07:24.559Z",
         "nickname": "nickname",
         "email": "test@test.com",
+        "profile_image": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$XjuqGsZpAIab6j546KVH13$Ot9R87wIymQ8v4pqcFFhGDl4nHYXG17hc0kfV41AYjY=",
+        "last_login": "2024-05-23T07:04:52.367Z",
+        "is_superuser": false,
+        "username": "abc",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-05-23T07:04:43.757Z",
+        "nickname": "영화재밌다",
+        "email": "abc@abc.com",
+        "profile_image": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$ECDS0N0LNcMXSHwJDad1wY$zNlhBge1dn9Nm9VeuHurliEE2zmkP3DT38f6a023+4A=",
+        "last_login": "2024-05-23T07:05:46.486Z",
+        "is_superuser": false,
+        "username": "qwe",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-05-23T07:05:41.019Z",
+        "nickname": "다각화짱",
+        "email": "qwe@qwe.com",
+        "profile_image": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$4AmoRkXzsBJLg3dlF14fSS$ahUBvf/wLJ21MFb3alH+cE9j58/JBeJccF8xmUtpihQ=",
+        "last_login": "2024-05-23T07:07:14.472Z",
+        "is_superuser": false,
+        "username": "aaaa",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-05-23T07:07:09.190Z",
+        "nickname": "영화는 영..",
+        "email": "aa@aa.com",
         "profile_image": "",
         "groups": [],
         "user_permissions": []
@@ -11569,36 +11629,6 @@
 },
 {
     "model": "movies.movie",
-    "pk": "20198317",
-    "fields": {
-        "title": "인생은 아름다워",
-        "overview": "로마에 갓 상경한 시골 총각 귀도는 운명처럼 만난 여인 도라에게 첫눈에 반한다. 넘치는 재치와 유머로 약혼자가 있던 그녀를 사로잡은 귀도는 가정을 꾸리며 분신과도 같은 아들 조수아를 얻는다. 조수아의 다섯 살 생일, 갑작스레 들이닥친 군인들은 귀도와 조수아를 수용소 행 기차에 실어버리고, 소식을 들은 도라 역시 기차에 따라 오른다. 귀도는 아들을 달래기 위해 무자비한 수용소 생활을 단체게임이라 속이고 1,000점을 따는 우승자에게는 진짜 탱크가 주어진다고 말한다. 하루하루가 지나 어느덧 전쟁이 끝났다는 말을 들은 귀도는 조수아를 창고에 숨겨둔 채 아내를 찾아 나서는데...",
-        "poster": "https://image.tmdb.org/t/p/original/yjOqQsQHdsEZfAosZERqHiwjaty.jpg",
-        "opening_date": "2022-09-28",
-        "running_time": 122,
-        "review_score": 8.452,
-        "show_status": 0,
-        "country": "한국",
-        "producer": [
-            "10072117"
-        ],
-        "actor": [
-            "10019065",
-            "10049852",
-            "20285309",
-            "20304929",
-            "20323803"
-        ],
-        "genre": [
-            "뮤지컬"
-        ],
-        "like_users": [
-            1
-        ]
-    }
-},
-{
-    "model": "movies.movie",
     "pk": "20199251",
     "fields": {
         "title": "노나",
@@ -12335,31 +12365,6 @@
         "genre": [
             "공포(호러)",
             "드라마",
-            "스릴러"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": "20218459",
-    "fields": {
-        "title": "드라이브",
-        "overview": "헐리웃 스타의 꿈을 안고 LA에 온 베티는 멀홀랜드 드라이브에서 일어난 자동차 사고로 이름조차 기억하지 못하는 리타를 만나 그녀가 기억을 되찾을 수 있도록 도와준다. 베티의 적극적인 도움으로 단서를 찾아가던 리타는 한 카페의 여종업원 명찰에서 다이안이라는 이름을 보고 어떤 것을 떠올리게 된다. 베티는 이 이름이 분명 리타와 관계된 사람의 이름일 것이라 말하며 다이안이라는 인물을 찾기 시작한다. 마침내 다이안의 집을 찾아간 두 여인. 그러나 그들은 곧 상상을 초월하는 끔찍한 비밀을 발견하게 되는데...",
-        "poster": "https://image.tmdb.org/t/p/original/gRS4yRRuhQmg2kBZPPIpzUpljwc.jpg",
-        "opening_date": null,
-        "running_time": 89,
-        "review_score": 7.819,
-        "show_status": 1,
-        "country": "한국",
-        "producer": [],
-        "actor": [
-            "10004911",
-            "10062050",
-            "20237646",
-            "20336418"
-        ],
-        "genre": [
             "스릴러"
         ],
         "like_users": []
@@ -13149,35 +13154,6 @@
         ],
         "genre": [
             "드라마"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": "20228797",
-    "fields": {
-        "title": "범죄도시4",
-        "overview": "신종 마약 사건 3년 뒤, 괴물형사 ‘마석도’(마동석)와 서울 광수대는 배달앱을 이용한 마약 판매 사건을 수사하던 중 수배 중인 앱 개발자가 필리핀에서 사망한 사건이 대규모 온라인 불법 도박 조직과 연관되어 있음을 알아낸다. 필리핀에 거점을 두고 납치, 감금, 폭행, 살인 등으로 대한민국 온라인 불법 도박 시장을 장악한 특수부대 용병 출신의 빌런 ‘백창기’(김무열)와 한국에서 더 큰 판을 짜고 있는 IT업계 천재 CEO ‘장동철’(이동휘). ‘마석도’는 더 커진 판을 잡기 위해 ‘장이수’(박지환)에게 뜻밖의 협력을 제안하고 광역수사대는 물론, 사이버수사대까지 합류해 범죄를 소탕하기 시작하는데… 나쁜 놈 잡는데 국경도 영역도 제한 없다! 업그레이드 소탕 작전! 거침없이 싹 쓸어버린다!",
-        "poster": "https://image.tmdb.org/t/p/original/aWrzaKuQuCqLc55X04dCGY6ks89.jpg",
-        "opening_date": "2024-04-24",
-        "running_time": 109,
-        "review_score": 9.0,
-        "show_status": 0,
-        "country": "한국",
-        "producer": [
-            "10088291"
-        ],
-        "actor": [
-            "10004099",
-            "10021341",
-            "20147111",
-            "20186095",
-            "20258694"
-        ],
-        "genre": [
-            "범죄",
-            "액션"
         ],
         "like_users": []
     }
@@ -19307,35 +19283,6 @@
 },
 {
     "model": "movies.movie",
-    "pk": "20247525",
-    "fields": {
-        "title": "드라이브",
-        "overview": "헐리웃 스타의 꿈을 안고 LA에 온 베티는 멀홀랜드 드라이브에서 일어난 자동차 사고로 이름조차 기억하지 못하는 리타를 만나 그녀가 기억을 되찾을 수 있도록 도와준다. 베티의 적극적인 도움으로 단서를 찾아가던 리타는 한 카페의 여종업원 명찰에서 다이안이라는 이름을 보고 어떤 것을 떠올리게 된다. 베티는 이 이름이 분명 리타와 관계된 사람의 이름일 것이라 말하며 다이안이라는 인물을 찾기 시작한다. 마침내 다이안의 집을 찾아간 두 여인. 그러나 그들은 곧 상상을 초월하는 끔찍한 비밀을 발견하게 되는데...",
-        "poster": "https://image.tmdb.org/t/p/original/gRS4yRRuhQmg2kBZPPIpzUpljwc.jpg",
-        "opening_date": "2024-04-24",
-        "running_time": 83,
-        "review_score": 7.819,
-        "show_status": 0,
-        "country": "한국",
-        "producer": [
-            "10061953"
-        ],
-        "actor": [
-            "10004852",
-            "10061953",
-            "20143414",
-            "20338053",
-            "20355932"
-        ],
-        "genre": [
-            "드라마",
-            "멜로/로맨스"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
     "pk": "20247547",
     "fields": {
         "title": "극장판 후르츠 바스켓: 프렐류드",
@@ -19704,26 +19651,6 @@
         "genre": [
             "멜로/로맨스",
             "미스터리"
-        ],
-        "like_users": []
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": "20247944",
-    "fields": {
-        "title": "스텔라",
-        "overview": "세계 각국의 정부와 경제가 완전히 붕괴된 미래가 다가온다. 지난 20세기에 범한 잘못이 전 세계적인 식량 부족을 불러왔고, NASA도 해체되었다. 나사 소속 우주비행사였던 쿠퍼는 지구에 몰아친 식량난으로 옥수수나 키우며 살고 있다. 거센 황사가 몰아친 어느 날 알 수 없는 힘에 이끌려 딸과 함께 도착한 곳은 인류가 이주할 행성을 찾는 나사의 비밀본부. 이 때 시공간에 불가사의한 틈이 열리고, 이 곳을 탐험해 인류를 구해야 하는 임무를 위해 쿠퍼는 만류하는 딸을 뒤로한 채 우주선에 탑승하는데...",
-        "poster": "https://image.tmdb.org/t/p/original/zDNAeWU0PxKolEX1D8Vn1qWhGjH.jpg",
-        "opening_date": "2024-05-22",
-        "running_time": 120,
-        "review_score": 8.434,
-        "show_status": 1,
-        "country": "독일",
-        "producer": [],
-        "actor": [],
-        "genre": [
-            "드라마"
         ],
         "like_users": []
     }
@@ -38300,27 +38227,7 @@
 },
 {
     "model": "movies.country",
-    "pk": "한국",
-    "fields": {}
-},
-{
-    "model": "movies.country",
-    "pk": "미국",
-    "fields": {}
-},
-{
-    "model": "movies.country",
-    "pk": "일본",
-    "fields": {}
-},
-{
-    "model": "movies.country",
-    "pk": "중국",
-    "fields": {}
-},
-{
-    "model": "movies.country",
-    "pk": "영국",
+    "pk": "",
     "fields": {}
 },
 {
@@ -38405,6 +38312,11 @@
 },
 {
     "model": "movies.country",
+    "pk": "미국",
+    "fields": {}
+},
+{
+    "model": "movies.country",
     "pk": "베트남",
     "fields": {}
 },
@@ -38485,6 +38397,11 @@
 },
 {
     "model": "movies.country",
+    "pk": "영국",
+    "fields": {}
+},
+{
+    "model": "movies.country",
     "pk": "오스트리아 ",
     "fields": {}
 },
@@ -38521,6 +38438,16 @@
 {
     "model": "movies.country",
     "pk": "인도네시아",
+    "fields": {}
+},
+{
+    "model": "movies.country",
+    "pk": "일본",
+    "fields": {}
+},
+{
+    "model": "movies.country",
+    "pk": "중국",
     "fields": {}
 },
 {
@@ -38601,6 +38528,11 @@
 {
     "model": "movies.country",
     "pk": "필리핀",
+    "fields": {}
+},
+{
+    "model": "movies.country",
+    "pk": "한국",
     "fields": {}
 },
 {
@@ -39020,46 +38952,6 @@
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/3re1sH7PQKKFB5rye7KrTB27pAD.jpg",
         "movie": "2024A302"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 39,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/y1giivdsGLyo1LCvlsL6mLKyTZ7.jpg",
-        "movie": "20218459"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 40,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/A5n963lCjuVhiCHtBLTxMz1KgCF.jpg",
-        "movie": "20218459"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 41,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/rLGgPiqpsnIZc241pP2akDI0cp0.jpg",
-        "movie": "20218459"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 42,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/AuCTp6MzImaGnrXePdRuvVr5XIA.jpg",
-        "movie": "20218459"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 43,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/1P4vCGTvJc13VxejbRLbHA1dT6f.jpg",
-        "movie": "20218459"
     }
 },
 {
@@ -42016,46 +41908,6 @@
 },
 {
     "model": "movies.snapshot",
-    "pk": 470,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/xJHokMbljvjADYdit5fK5VQsXEG.jpg",
-        "movie": "20247944"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 471,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/9REO1DLpmwhrBJY3mYW5eVxkXFM.jpg",
-        "movie": "20247944"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 472,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/l33oR0mnvf20avWyIMxW02EtQxn.jpg",
-        "movie": "20247944"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 473,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/65BTgbR7w8g5h8PlNwUgRVWqPyQ.jpg",
-        "movie": "20247944"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 474,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/d9pKI0znqfl3dbUUTw59EaVilOd.jpg",
-        "movie": "20247944"
-    }
-},
-{
-    "model": "movies.snapshot",
     "pk": 475,
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/odBSDNyi5J6Sed2Xu3QKTtEAIzN.jpg",
@@ -44556,46 +44408,6 @@
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/95VwbLQh2rOlt5u9qQK7fvnQjDi.jpg",
         "movie": "20232263"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 868,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/y1giivdsGLyo1LCvlsL6mLKyTZ7.jpg",
-        "movie": "20247525"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 869,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/A5n963lCjuVhiCHtBLTxMz1KgCF.jpg",
-        "movie": "20247525"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 870,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/rLGgPiqpsnIZc241pP2akDI0cp0.jpg",
-        "movie": "20247525"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 871,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/AuCTp6MzImaGnrXePdRuvVr5XIA.jpg",
-        "movie": "20247525"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 872,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/1P4vCGTvJc13VxejbRLbHA1dT6f.jpg",
-        "movie": "20247525"
     }
 },
 {
@@ -56608,46 +56420,6 @@
 },
 {
     "model": "movies.snapshot",
-    "pk": 2835,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/gavyCu1UaTaTNPsVaGXT6pe5u24.jpg",
-        "movie": "20198317"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2836,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/6aNKD81RHR1DqUUa8kOZ1TBY1Lp.jpg",
-        "movie": "20198317"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2837,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/rIt6ON5s9lAFhkCPU7mVwENNFfE.jpg",
-        "movie": "20198317"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2838,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/zKxoWuWnmO7rLBhqOfM2RxAMfpC.jpg",
-        "movie": "20198317"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 2839,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/16vxMSVICZmXucbglF2I5zfukvm.jpg",
-        "movie": "20198317"
-    }
-},
-{
-    "model": "movies.snapshot",
     "pk": 2845,
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/cdKjKrls7ItSxqAe6j0Jz7EdKuN.jpg",
@@ -58132,46 +57904,6 @@
     "fields": {
         "snapshot": "https://image.tmdb.org/t/p/original/zuIvu89BpYREc42OKzWyXzANNAQ.jpg",
         "movie": "20249416"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 3142,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/xJHokMbljvjADYdit5fK5VQsXEG.jpg",
-        "movie": "20247944"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 3143,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/9REO1DLpmwhrBJY3mYW5eVxkXFM.jpg",
-        "movie": "20247944"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 3144,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/l33oR0mnvf20avWyIMxW02EtQxn.jpg",
-        "movie": "20247944"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 3145,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/65BTgbR7w8g5h8PlNwUgRVWqPyQ.jpg",
-        "movie": "20247944"
-    }
-},
-{
-    "model": "movies.snapshot",
-    "pk": 3146,
-    "fields": {
-        "snapshot": "https://image.tmdb.org/t/p/original/d9pKI0znqfl3dbUUTw59EaVilOd.jpg",
-        "movie": "20247944"
     }
 },
 {
@@ -59898,6 +59630,61 @@
     }
 },
 {
+    "model": "movies.moviereview",
+    "pk": 2,
+    "fields": {
+        "movie": "20249305",
+        "user": 1,
+        "content": "너무 재미있어요",
+        "score": 5.0,
+        "created_at": "2024-05-23T07:04:21.124Z"
+    }
+},
+{
+    "model": "movies.moviereview",
+    "pk": 4,
+    "fields": {
+        "movie": "20249305",
+        "user": 4,
+        "content": "이거거던~",
+        "score": 4.0,
+        "created_at": "2024-05-23T07:05:13.642Z"
+    }
+},
+{
+    "model": "movies.moviereview",
+    "pk": 5,
+    "fields": {
+        "movie": "20249305",
+        "user": 5,
+        "content": "흠..그정돈가?",
+        "score": 3.0,
+        "created_at": "2024-05-23T07:06:08.731Z"
+    }
+},
+{
+    "model": "movies.moviereview",
+    "pk": 6,
+    "fields": {
+        "movie": "20234045",
+        "user": 6,
+        "content": "너무 기대되요",
+        "score": 5.0,
+        "created_at": "2024-05-23T07:11:07.246Z"
+    }
+},
+{
+    "model": "movies.moviereview",
+    "pk": 7,
+    "fields": {
+        "movie": "19950084",
+        "user": 6,
+        "content": "이게 영화지 캬",
+        "score": 4.0,
+        "created_at": "2024-05-23T07:11:24.061Z"
+    }
+},
+{
     "model": "movies.moviechat",
     "pk": 1,
     "fields": {
@@ -59918,6 +59705,64 @@
     }
 },
 {
+    "model": "movies.moviechat",
+    "pk": 3,
+    "fields": {
+        "movie": "20249305",
+        "user": 5,
+        "content": "와 이거 뭐에요?",
+        "created_at": "2024-05-23T07:05:53.862Z"
+    }
+},
+{
+    "model": "movies.moviechat",
+    "pk": 4,
+    "fields": {
+        "movie": "20249305",
+        "user": 5,
+        "content": "짱 신기하다",
+        "created_at": "2024-05-23T07:05:55.939Z"
+    }
+},
+{
+    "model": "movies.moviechat",
+    "pk": 5,
+    "fields": {
+        "movie": "20249305",
+        "user": 6,
+        "content": "??",
+        "created_at": "2024-05-23T07:07:24.359Z"
+    }
+},
+{
+    "model": "movies.moviechat",
+    "pk": 6,
+    "fields": {
+        "movie": "20234045",
+        "user": 6,
+        "content": "오",
+        "created_at": "2024-05-23T07:11:11.820Z"
+    }
+},
+{
+    "model": "movies.moviechat",
+    "pk": 7,
+    "fields": {
+        "movie": "19950084",
+        "user": 6,
+        "content": "오",
+        "created_at": "2024-05-23T07:11:28.831Z"
+    }
+},
+{
+    "model": "authtoken.token",
+    "pk": "11e19e05b5c6a54be9588864f166af1229721d89",
+    "fields": {
+        "user": 5,
+        "created": "2024-05-23T07:05:46.469Z"
+    }
+},
+{
     "model": "authtoken.token",
     "pk": "22072cfcaae40d649d5d6571bd5295a99fc9e233",
     "fields": {
@@ -59931,6 +59776,22 @@
     "fields": {
         "user": 1,
         "created": "2024-05-22T05:12:13.137Z"
+    }
+},
+{
+    "model": "authtoken.token",
+    "pk": "859aa97198f6e89cb78a3fcee95ab71351880924",
+    "fields": {
+        "user": 6,
+        "created": "2024-05-23T07:07:14.454Z"
+    }
+},
+{
+    "model": "authtoken.token",
+    "pk": "8719cfa8dd9ed2921083fb8a5ca2c7b73c6bbeb2",
+    "fields": {
+        "user": 4,
+        "created": "2024-05-23T07:04:52.352Z"
     }
 },
 {
@@ -59951,6 +59812,36 @@
         "email": "test@test.com",
         "verified": false,
         "primary": false
+    }
+},
+{
+    "model": "account.emailaddress",
+    "pk": 3,
+    "fields": {
+        "user": 4,
+        "email": "abc@abc.com",
+        "verified": false,
+        "primary": true
+    }
+},
+{
+    "model": "account.emailaddress",
+    "pk": 4,
+    "fields": {
+        "user": 5,
+        "email": "qwe@qwe.com",
+        "verified": false,
+        "primary": true
+    }
+},
+{
+    "model": "account.emailaddress",
+    "pk": 5,
+    "fields": {
+        "user": 6,
+        "email": "aa@aa.com",
+        "verified": false,
+        "primary": true
     }
 },
 {
@@ -60399,6 +60290,71 @@
         "content_type": 5,
         "object_id": "20100505",
         "object_repr": "여행극",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2024-05-23T06:53:47.261Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20247525",
+        "object_repr": "드라이브",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2024-05-23T06:55:00.385Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20218459",
+        "object_repr": "드라이브",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2024-05-23T06:55:25.322Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20247944",
+        "object_repr": "스텔라",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2024-05-23T06:59:01.691Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20228797",
+        "object_repr": "범죄도시4",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2024-05-23T07:00:00.426Z",
+        "user": 2,
+        "content_type": 5,
+        "object_id": "20198317",
+        "object_repr": "인생은 아름다워",
         "action_flag": 3,
         "change_message": ""
     }
@@ -61381,10 +61337,42 @@
 },
 {
     "model": "sessions.session",
+    "pk": "13hurvxzm4xir34hk4zla6htmpo2wlno",
+    "fields": {
+        "session_data": ".eJxljMsOgjAQRf-la9JAHxRcuvcbmunMKNXaJkDdGP_dYIiJcXvOufcpALHUvPoHz_EcmTzfISZxyDWl5mvrwrM4CCsa4aGu0wf4SP8sAN44b4KukC9FYsnrHIPcErnbRZ4KcTru7c_BBMu0rbVVvXJIYNWolSVLg3PGBCSngiHV6VH1DmjsgAZATaYNyK5tTTCd0eL1BmcJSPc:1sA2WD:Xy4dsUACKBNphyIjcunRYEbQoEdnr_M16tCuJMVfvcY",
+        "expire_date": "2024-06-06T07:05:41.456Z"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "50aw94s02zvbx4cr7r1w0kes530u7fei",
     "fields": {
         "session_data": ".eJxVjDsOwjAQRO_iGlk22sReSnrOYO0vJIASKZ8q4u5gKQU0U8x7M7srtK192Raby6Du4qI7_XZM8rSxAn3QeJ-8TOM6D-yr4g-6-Nuk9roe7t9BT0v_XbNBPAdMgAahQ4mQu5ZUBQQISHMENsHQQkjS1NDcYEbtGDUZu_cH5YU4Rg:1s9x8s:zLj7XVNUi0FEo3ymmj7MuqxMKbbim2l4jyrCRH7MWsQ",
         "expire_date": "2024-06-06T01:21:14.916Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "6k4x1oyrewyvx4cspowwb554ajf47jn7",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQBe_iGlm2s_5R0ucM1tq74ABypDipEHeHSCmgfTPzXiLhtta0dV7SROIsQJx-t4zlwW0HdMd2m2WZ27pMWe6KPGiX40z8vBzu30HFXr91QCJrrgzZMpBSEbQjFckp4yBYq0kP3rHhwOxzGNg6nb1SIZaCwFG8P9oqN4A:1sA2VQ:KC7ucJd9UGsNUvzQ7Y_hxFJweoXe0locnVR5HtuCRq4",
+        "expire_date": "2024-06-06T07:04:52.367Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "7t7pzm2h1qh466s39xktjmwyszyb4kv9",
+    "fields": {
+        "session_data": ".eJxljMsOwiAQRf-FdUPKWFro0r3fQGZ4WBQhaYsb479rTWNi3J5z7n0wtLbUvJq7n2OI3hl_w5jYmGtKzdfWxc9sZD1rmMG6Th9govtnhPbq8ybcBfO5cFvyOkfiW8J3u_BTcT4d9_bnYMJleq9DEAcBHeEw-FZip8RAB1Iq6NZK0MJqSz1IDBqAJFgBAVwnsFektQyaPV9u_0kR:1sA2Xd:qG_KUMspAqJDezMactB8p3hzn-rDLvKJDbCYLzAGmU0",
+        "expire_date": "2024-06-06T07:07:09.640Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "8psp3wyd82tzdblj7adzne3lojhv0eur",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hAYhlJcuu8ZyMAQqRpISrsy3t2QdKHb_977bxHo2Es4et7CyuIqrLj8bpHSM9cB-EH13mRqdd_WKIciT9rl0ji_bqf7d1Col1EbCxO4xGTBG7BseXYOMSZ2EJFBGw-TI_aaeKZkGFVM2SmFETUa8fkC0X03Yw:1sA2WI:9sSWg7RMBb7tQJAHrQbpydSbTxgyDtT7s0AgJSzNSXk",
+        "expire_date": "2024-06-06T07:05:46.486Z"
     }
 },
 {
@@ -61413,6 +61401,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "e9m1sa0f07j66pdubgv923lf5qdxnr4o",
+    "fields": {
+        "session_data": ".eJxljMEOwiAQBf-Fc0NoBQo9evcbyMJuLYqQtMWL8d-1pjExXmfmvQeDEErNq7vTHMdI6OgGMbEh15Sar60LzWxgkjXMQV2nD3AR_5mHcKW8CbxAPhceSl7n6PmW8N0u_FSQ0nFvfw4mWKb32gCi6kaSXpFEIaxsNQqLWnRaGqVabA-9po4MUe_NgZRufS-EsSGAJMueL28JSRM:1sA2VI:f_pEKVCeE5OurNkyTN6CARkxjhM3cCZteu0QzgxN69A",
+        "expire_date": "2024-06-06T07:04:44.219Z"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "edkin0wkksqb6ohvg0jzqc235mbkziw7",
     "fields": {
         "session_data": ".eJxljMsOwiAUBf-FdUPk2dKle7-BXC5gUYSkLW6M_641jYlxOzPnPAgg1lZWew9ziil4G26QMhlLy7n72raEmYxEkI5YaOv0ATb5f-YAr6Fswl-gnCvFWtY5OboldLcLPVUf8nFvfw4mWKb3mkWtPRgmQQ3IucGg-l7p6DkAUyAVxgDC9dG7g5ECuWAS9SC0H6SJSpLnC3_eSW8:1sA0fl:tHiv4OFt8PtHHbKRxPeCdhQI6pzjwWn70a5g6IUZqmw",
@@ -61429,6 +61425,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "jpaovefqiqhg1dvim93ui5j7kda8fq4q",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQBe_iGlnxxr-lpOcM1q4_OIAcKU4qxN0hUgpo38y8lwi0rTVsPS9hSuIsrDj9bkzxkdsO0p3abZZxbusysdwVedAur3PKz8vh_h1U6vVbl6JGBZrJuTwY0l45Htn7gkM0gCpiZAuGCgKwgaigQNKKrGdEU1C8P9jGN3w:1sA2Xi:2ZDb8UT0jrm311lXCqVHqgvMmzZDd9nwfhpIJvl9O8c",
+        "expire_date": "2024-06-06T07:07:14.472Z"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "sr5j2dus1gnq9bc1nq249kjaf6ncinum",
     "fields": {
         "session_data": ".eJxVjMsOwiAQRf-FtSHyBpfu-w1kmAGpGkhKuzL-uzbpQrf3nHNfLMK21riNvMSZ2IUpdvrdEuAjtx3QHdqtc-xtXebEd4UfdPCpU35eD_fvoMKo31oUawmC0GA8ShkwG-eMLSQBhAFtsGRQyRVK56AVSiU0Wq8seR2K0ez9AeusN90:1sA0ft:OWLfJ0F43W3T0UMRC5wMOF1D0nAJmc1oZvf5i8GE8mE",
@@ -61441,6 +61445,14 @@
     "fields": {
         "session_data": ".eJxVjDsOwjAQRO_iGlk22sReSnrOYO0vJIASKZ8q4u5gKQU0U8x7M7srtK192Raby6Du4qI7_XZM8rSxAn3QeJ-8TOM6D-yr4g-6-Nuk9roe7t9BT0v_XbNBPAdMgAahQ4mQu5ZUBQQISHMENsHQQkjS1NDcYEbtGDUZu_cH5YU4Rg:1s9yMC:8XgJVuUZAoRJao4glGjh1cCFHioicS2kRryOwBwL_6I",
         "expire_date": "2024-06-06T02:39:04.798Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "vxuz888lba27gtx7f9j4io4tazwgkphc",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQRO_iGlk22sReSnrOYO0vJIASKZ8q4u5gKQU0U8x7M7srtK192Raby6Du4qI7_XZM8rSxAn3QeJ-8TOM6D-yr4g-6-Nuk9roe7t9BT0v_XbNBPAdMgAahQ4mQu5ZUBQQISHMENsHQQkjS1NDcYEbtGDUZu_cH5YU4Rg:1sA2L6:qraDWC4_TncbRP2SaizbeuZt5QwED7TnZgwE0E8qcPM",
+        "expire_date": "2024-06-06T06:54:12.551Z"
     }
 },
 {
