@@ -38300,7 +38300,27 @@
 },
 {
     "model": "movies.country",
-    "pk": "",
+    "pk": "한국",
+    "fields": {}
+},
+{
+    "model": "movies.country",
+    "pk": "미국",
+    "fields": {}
+},
+{
+    "model": "movies.country",
+    "pk": "일본",
+    "fields": {}
+},
+{
+    "model": "movies.country",
+    "pk": "중국",
+    "fields": {}
+},
+{
+    "model": "movies.country",
+    "pk": "영국",
     "fields": {}
 },
 {
@@ -38385,11 +38405,6 @@
 },
 {
     "model": "movies.country",
-    "pk": "미국",
-    "fields": {}
-},
-{
-    "model": "movies.country",
     "pk": "베트남",
     "fields": {}
 },
@@ -38470,11 +38485,6 @@
 },
 {
     "model": "movies.country",
-    "pk": "영국",
-    "fields": {}
-},
-{
-    "model": "movies.country",
     "pk": "오스트리아 ",
     "fields": {}
 },
@@ -38511,16 +38521,6 @@
 {
     "model": "movies.country",
     "pk": "인도네시아",
-    "fields": {}
-},
-{
-    "model": "movies.country",
-    "pk": "일본",
-    "fields": {}
-},
-{
-    "model": "movies.country",
-    "pk": "중국",
     "fields": {}
 },
 {
@@ -38601,11 +38601,6 @@
 {
     "model": "movies.country",
     "pk": "필리핀",
-    "fields": {}
-},
-{
-    "model": "movies.country",
-    "pk": "한국",
     "fields": {}
 },
 {
