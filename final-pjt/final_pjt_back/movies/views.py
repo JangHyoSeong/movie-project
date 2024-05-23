@@ -33,7 +33,7 @@ def download_movie(request):
     MV_URL = f'http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?'
     TMDB_URL = f'https://api.themoviedb.org/3/search/movie?'
     
-    for i in range(80, 1000):
+    for i in range(800, 850):
         print(i)
         MV_params = {
             'key': 'd45082b888da87c39065fcb53e176f8e',
@@ -268,3 +268,11 @@ def download_snapshot(movie_id, movie_cd):
             snapshot = f'https://image.tmdb.org/t/p/original{snapshot_url}'
             new_snapshot = Snapshot(snapshot=snapshot, movie=movie_cd)
             new_snapshot.save()
+            
+def delete(request):
+    movies = Movie.objects.filter(running_time__lt=30)
+    for movie in movies:
+        print(f'{movie.title} :삭제완료')
+        movie.delete()
+        
+    return redirect('index')
