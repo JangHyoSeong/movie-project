@@ -63,6 +63,7 @@ const updateUsername = () => {
       alert('닉네임 변경이 성공했습니다')
       newUsername.value = ''
       router.push({name: 'profile-like'})
+      setInterval(function () { location.reload() }, 100)
     })
     .catch((err) => {
       console.log(err)

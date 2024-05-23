@@ -386,6 +386,7 @@ watch(selectedParams, (newVal, oldVal) => {
 </script>
 
 <style scoped>
+
 /* 3초동안 Loding 화면 */
 .loaderBar {
   width: 30%;
@@ -568,6 +569,7 @@ watch(selectedParams, (newVal, oldVal) => {
   height: 210px;
   transition: opacity 0.3s, transform 0.3s;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 /* 포스터 텍스트 호버 효과 스타일 */

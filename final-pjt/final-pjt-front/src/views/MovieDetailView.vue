@@ -206,10 +206,10 @@ const toggleImg = function () {
   display: flex;
   position: absolute;
   top: 15%;
-  left: 4.8%;
+  left: 4.9%;
   color: white;
   z-index: 1;
-  gap: 15px;
+  gap: 22px;
   font-size: 75%
 }
 .show-img {

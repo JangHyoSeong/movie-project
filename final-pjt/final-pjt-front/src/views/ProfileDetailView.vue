@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="profile-content">
-      <h1>{{ userData.username }}님의 프로필 페이지</h1>
+      <h1>{{ userData.nickname }}님의 프로필 페이지</h1>
       <hr>
     </div>
     <ProfileDetailNav :userData="userData" :loadUserData="loadUserData"/>

@@ -15,14 +15,18 @@
       <RouterLink :to="{ name: 'profile' }" class="profile-nav" v-show="store.isLogin">프로필</RouterLink>
     </nav>
   </div>
-    <!-- 로그인 및 회원가입 컴포넌트 -->
+  <!-- 로그인 및 회원가입 컴포넌트 -->
   <Login />
   <Signup />
   <!-- 라우터 뷰 -->
-  <RouterView 
-    @select-event="selectDataPass"
-    :selectData="selectData"
-  />
+  <RouterView @select-event="selectDataPass" :selectData="selectData" />
+
+  <!-- 구글 폰트 -->
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jua&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Gothic&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet"> -->
 </template>
 
 <script setup>
@@ -36,13 +40,26 @@ const store = useLoginStore()
 const selectData = ref({})
 
 // choice를 한 정보를 choicedetail로 넘겨줌
-  const selectDataPass = function (data) {
-    console.log(data.value)
-    selectData.value = data.value
-  }
+const selectDataPass = function (data) {
+  console.log(data.value)
+  selectData.value = data.value
+}
+
+
 </script>
 
 <style>
+* {
+  font-family: "NEXONFootballGothicBA1", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NEXONFootballGothicBA1';
+  src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXONFootballGothicBA1.woff') format('woff');
+}
+
 .search-nav {
   position: relative;
   left: 65%;
@@ -104,4 +121,5 @@ const selectData = ref({})
 body {
   margin: 0%;
   background-color: black;
-}</style>
+}
+</style>

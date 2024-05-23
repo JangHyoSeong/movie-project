@@ -7,7 +7,7 @@
 
     <div v-if="movies.length > 0">
       <div class="poster">
-        <img :src="movies[0].poster" alt="" class="post">
+        <img :src="movies[0].poster" alt="#" class="post" @click="newMovieDetail(movies[0])">
       </div>
 
       <div v-if="movies.length > 0" class="movie-content-list">
@@ -27,10 +27,17 @@ import axios from 'axios'
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
+const router = useRouter()
+
+// 포스터 클릭 시, 영화 Detail 페이지로 이동하기
+const newMovieDetail = function (movie) {
+  console.log(movie)
+  router.push({ name: 'movieDetail', params: { movie_id: movie.movie_id } })
+}
+
 const props = defineProps({
   selectData: Object
 })
-const router = useRouter()
 
 // 돌아가기 클릭 시, 선택 페이지로 이동하기
 const goToSelect = () => {

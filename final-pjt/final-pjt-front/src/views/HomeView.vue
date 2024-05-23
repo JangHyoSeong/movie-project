@@ -498,12 +498,14 @@ section {
   opacity: 0.3;
 }
 
-.arrow1-1 p, .arrow2-1 p  {
+.arrow1-1 p,
+.arrow2-1 p {
   padding-top: 3vh;
   padding-right: 2vh;
 }
 
-.arrow1-2 p, .arrow2-2 p  {
+.arrow1-2 p,
+.arrow2-2 p {
   padding-top: 3vh;
   padding-left: 2vh;
 }
