@@ -283,7 +283,7 @@ const resetGenre = function () {
 }
 
 const resetCountry = function () {
-  selectedParams.value.Country = null
+  selectedParams.value.country = null
 }
 
 const resetActor = function () {
