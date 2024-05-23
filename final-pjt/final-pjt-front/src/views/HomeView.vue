@@ -306,7 +306,7 @@ main {
 /* 메인화면 전체 텍스트 */
 .main-txt {
   position: relative;
-  top: 5%;
+  top: -2%;
 }
 
 /* 메인화면 텍스트 */
@@ -358,8 +358,7 @@ main {
 
 .recommend-btn {
   position: relative;
-  font-size: 120%;
-  animation: moveRight 5s;
+  animation: moveRight 2s;
 }
 
 @keyframes moveRight {

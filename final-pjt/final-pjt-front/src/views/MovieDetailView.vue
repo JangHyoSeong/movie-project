@@ -366,8 +366,9 @@ const hideImgOutsideClick = function (event) {
 /* 배경 스냅샷 스타일 */
 .background-filter {
   position: absolute;
+  top: 5.5%;
   width: 100%;
-  height: 66%;
+  height: 90%;
 }
 
 .background-filter img {
@@ -382,7 +383,7 @@ const hideImgOutsideClick = function (event) {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(190deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 65%), linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 70%);
+  background: linear-gradient(185deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 65%), linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 80%);
   pointer-events: none;
   /* 오버레이가 클릭 이벤트를 막지 않도록 */
 }
@@ -390,7 +391,7 @@ const hideImgOutsideClick = function (event) {
 /* 내용 컨테이너 스타일 */
 .content-container {
   position: relative;
-  top: 2.5vh;
+  top: -5.6vh;
   display: flex;
   align-items: center;
 }
@@ -398,7 +399,7 @@ const hideImgOutsideClick = function (event) {
 /* 영화 상세 정보 컨테이너 스타일 */
 .detail-container {
   color: white;
-  padding-bottom: 5%;
+  padding-bottom: 2%;
   margin-left: 10%;
 }
 
