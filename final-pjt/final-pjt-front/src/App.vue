@@ -21,11 +21,6 @@
       <RouterLink :to="{ name: 'profile' }" class="profile-nav" v-show="store.isLogin">프로필</RouterLink>
     </nav>
   </div>
-<<<<<<< HEAD
-  <!-- 로그인 및 회원가입 컴포넌트 -->
-  <Login />
-  <Signup />
-=======
     <!-- 로그인 및 회원가입 컴포넌트 -->
   <Login 
     @login-convert-signup="LoginConvertSignup"
@@ -37,7 +32,6 @@
     @login-onto-off="loginOntoOff"
     :loginOn="loginOn"
     />
->>>>>>> authentication
   <!-- 라우터 뷰 -->
   <RouterView 
     @select-event="selectDataPass"

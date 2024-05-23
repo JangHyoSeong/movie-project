@@ -359,7 +359,7 @@ main {
 .recommend-btn {
   position: relative;
   font-size: 120%;
-  animation: moveRight 5s;
+  animation: moveRight 2s;
 }
 
 @keyframes moveRight {
