@@ -220,6 +220,7 @@ const toggleImg = function () {
   width: 50%;
   z-index: 1;
   display: none;
+  border: 1px solid white;
 }
 
 .display-show {
