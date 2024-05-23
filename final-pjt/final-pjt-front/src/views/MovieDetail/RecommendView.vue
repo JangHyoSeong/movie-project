@@ -50,5 +50,6 @@ onMounted(() => {
   width: 270px;
   height: 270px;
   border-radius: 5%;
+  cursor: pointer;
 }
 </style>

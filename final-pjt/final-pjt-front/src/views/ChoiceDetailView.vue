@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="order-list">
-      <div class="order-time">시간순</div>
-      <div class="order-range">평점순</div>
+      <div @click="orderByNew" class="order-time">시간순</div>
+      <div @click="orderByScore" class="order-range">평점순</div>
     </div>
 
     <div v-if="movies.length > 0">
@@ -31,7 +31,6 @@ const router = useRouter()
 
 // 포스터 클릭 시, 영화 Detail 페이지로 이동하기
 const newMovieDetail = function (movie) {
-  console.log(movie)
   router.push({ name: 'movieDetail', params: { movie_id: movie.movie_id } })
 }
 
@@ -70,6 +69,19 @@ onMounted(() => {
     })
     .catch(err => console.log(err))
 })
+
+// 리뷰 목록 가져오기
+const reviews = ref([])
+
+// 리뷰 최신순 정렬
+const orderByNew = function () {
+  reviews.value.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+}
+
+// 리뷰 평점순 정렬
+const orderByScore = function () {
+  reviews.value.sort((a, b) => b.score - a.score)
+}
 </script>
 
 <style scoped>
@@ -80,10 +92,10 @@ onMounted(() => {
 
 .order-time,
 .order-range {
-  width: 50px;
+  width: 40px;
   border: 1px solid white;
   margin: 0.5%;
-  padding: 0.5%;
+  padding: 0.2% 0.5%;
   color: white;
   z-index: 1;
 }
@@ -105,14 +117,29 @@ onMounted(() => {
 .post {
   width: 300px;
   height: 450px;
-  background-color: rgb(200, 200, 200);
   z-index: 1;
   border-radius: 20px;
   cursor: pointer;
-  background: linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff);
   padding: 3px;
   box-sizing: border-box;
+  background-image: linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff);
+  background-size: 200% 100%;  /* background-size를 추가 */
+  background-position: 0% 50%;  /* 초기 background-position을 설정 */
+  animation: gradient 2.5s ease infinite;
 }
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 .post:hover {
   opacity: 0.75;

@@ -133,6 +133,7 @@ const submitReview = function () {
   border-radius: 15%;
   font-weight: bold;
   font-size: 100%;
+  cursor: pointer;
 }
 
 .submit:hover {

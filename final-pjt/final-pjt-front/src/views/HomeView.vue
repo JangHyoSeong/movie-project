@@ -352,13 +352,14 @@ main {
   transform: scale(1.1);
   border-style: none;
   cursor: pointer;
-  animation: gradient 5s ease infinite;
+  animation: gradient 10s ease infinite;
   background-image: linear-gradient(137deg, #ffdb3b 10%, #FE53BB 45%, #8F51EA 67%, #0044ff 87%);
 }
 
 .recommend-btn {
   position: relative;
-  animation: moveRight 2s;
+  font-size: 120%;
+  animation: moveRight 5s;
 }
 
 @keyframes moveRight {
@@ -455,7 +456,7 @@ section {
   flex-direction: column;
   border-radius: 15px;
   background-size: 200% 100%;
-  background: linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+  background-image: linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff);
   animation: gradient 2.5s ease infinite;
 }
 
@@ -576,14 +577,14 @@ section {
   justify-content: center;
   box-shadow: 0px 0px 0px 3px rgba(180, 160, 255, 0.253);
   cursor: pointer;
-  transition-duration: 0.3s;
+  transition-duration: 0.5s;
   overflow: hidden;
   position: relative;
 }
 
 .svgIcon {
   width: 12px;
-  transition-duration: 0.3s;
+  transition-duration: 0.5s;
 }
 
 .svgIcon path {
@@ -593,13 +594,13 @@ section {
 .go-top-btn:hover {
   width: 75px;
   border-radius: 50px;
-  transition-duration: 0.3s;
+  transition-duration: 0.5s;
   background: linear-gradient(145deg, #e81cff, #40c9ff) border-box;
   align-items: center;
 }
 
 .go-top-btn:hover .svgIcon {
-  transition-duration: 0.3s;
+  transition-duration: 0.5s;
   transform: translateY(-200%);
 }
 
@@ -615,6 +616,6 @@ section {
   font-size: 13px;
   opacity: 1;
   bottom: unset;
-  transition-duration: 0.3s;
+  transition-duration: 0.5s;
 }
 </style>

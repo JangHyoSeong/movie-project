@@ -165,6 +165,7 @@ const changeChatFont = () => {
   border-style: none;
   border: 1px solid white;
   padding: 5% 0%;
+  cursor: pointer;
 }
 
 .back-color:hover, .font-color:hover {

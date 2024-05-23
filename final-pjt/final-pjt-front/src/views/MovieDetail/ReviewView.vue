@@ -156,12 +156,14 @@ const isCurrentUser = function (user) {
   padding: 5px;
   width: 35%;
   text-align: center;
+  cursor: pointer;
 }
 
 .btn {
   border: 1px solid white;
   padding: 5px;
   margin-left: 1%;
+  cursor: pointer;
 }
 
 .btn:hover,

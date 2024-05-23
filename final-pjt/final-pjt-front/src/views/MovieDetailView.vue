@@ -3,9 +3,9 @@
     <p>포스터</p>
     <p>좋아요</p>
   </div>
-
+  <!-- 별 모양 (포스터 기능) -->
   <label for="">
-      <div class="container" @click="toggleImg">
+    <div class="container" @click="toggleImg" ref="imgContainer">
       <input type="checkbox">
       <svg height="24px" id="Layer_1" version="1.2" viewBox="0 0 24 24" width="24px" xml:space="preserve"
         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -13,18 +13,19 @@
           <g>
             <path
               d="M9.362,9.158c0,0-3.16,0.35-5.268,0.584c-0.19,0.023-0.358,0.15-0.421,0.343s0,0.394,0.14,0.521    
-              c1.566,1.429,3.919,3.569,3.919,3.569c-0.002,0-0.646,3.113-1.074,5.19c-0.036,0.188,0.032,0.387,0.196,0.506    
-              c0.163,0.119,0.373,0.121,0.538,0.028c1.844-1.048,4.606-2.624,4.606-2.624s2.763,1.576,4.604,2.625    
-              c0.168,0.092,0.378,0.09,0.541-0.029c0.164-0.119,0.232-0.318,0.195-0.505c-0.428-2.078-1.071-5.191-1.071-5.191    
-              s2.353-2.14,3.919-3.566c0.14-0.131,0.202-0.332,0.14-0.524s-0.23-0.319-0.42-0.341c-2.108-0.236-5.269-0.586-5.269-0.586    
-              s-1.31-2.898-2.183-4.83c-0.082-0.173-0.254-0.294-0.456-0.294s-0.375,0.122-0.453,0.294C10.671,6.26,9.362,9.158,9.362,9.158z">
+                c1.566,1.429,3.919,3.569,3.919,3.569c-0.002,0-0.646,3.113-1.074,5.19c-0.036,0.188,0.032,0.387,0.196,0.506    
+                c0.163,0.119,0.373,0.121,0.538,0.028c1.844-1.048,4.606-2.624,4.606-2.624s2.763,1.576,4.604,2.625    
+                c0.168,0.092,0.378,0.09,0.541-0.029c0.164-0.119,0.232-0.318,0.195-0.505c-0.428-2.078-1.071-5.191-1.071-5.191    
+                s2.353-2.14,3.919-3.566c0.14-0.131,0.202-0.332,0.14-0.524s-0.23-0.319-0.42-0.341c-2.108-0.236-5.269-0.586-5.269-0.586    
+                s-1.31-2.898-2.183-4.83c-0.082-0.173-0.254-0.294-0.456-0.294s-0.375,0.122-0.453,0.294C10.671,6.26,9.362,9.158,9.362,9.158z">
             </path>
           </g>
         </g>
       </svg>
     </div>
-    </label>
-  <img class="show-img" :class="{ 'display-show': isImgVisible }" :src="backgroundImageSrc" alt="snapshot" />
+  </label>
+  
+  <img class="show-img" :class="{ 'display-show': isImgVisible }" :src="backgroundImageSrc" alt="snapshot" ref="showImg"/>
 
   <div>
     <h5 class="select-end-btn" @click="goToHome">Home</h5>
@@ -48,7 +49,7 @@
           <p v-if="runningTime">러닝타임 : {{ runningTime }}분</p>
           <p v-if="openingDate">개봉 일자 : {{ openingDate }}</p>
 
-          <!-- 좋아요 기능 -->
+          <!-- 하트 모양 (좋아요 기능) -->
           <label class="like-container">
             <input type="checkbox" @click="likeMovie" v-model="isLiked">
             <div class="like-checkmark">
@@ -79,7 +80,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useLoginStore } from '@/stores/login'
 import axios from 'axios'
@@ -107,6 +108,9 @@ const movie = ref('')
 const route = useRoute();
 const videoUrl = ref(null)
 const isImgVisible = ref(false) // 이미지 표시 여부를 관리할 반응형 변수 추가
+
+const imgContainer = ref(null);
+const showImg = ref(null);
 
 onMounted(() => {
   // 영화 정보 로드
@@ -153,6 +157,14 @@ onMounted(() => {
         })
         .catch(err => console.log(err))
     })
+
+  // 전역 클릭 이벤트 리스너 추가
+  window.addEventListener('click', hideImgOutsideClick);
+})
+
+onUnmounted(() => {
+  // 전역 클릭 이벤트 리스너 제거
+  window.removeEventListener('click', hideImgOutsideClick);
 })
 
 // 좋아요 여부를 저장할 반응형 변수
@@ -197,7 +209,15 @@ const likeMovie = function () {
 const toggleImg = function () {
   isImgVisible.value = !isImgVisible.value
 }
+
+// 전역 클릭 이벤트 리스너 함수
+const hideImgOutsideClick = function (event) {
+  if (!imgContainer.value.contains(event.target) && !showImg.value.contains(event.target)) {
+    isImgVisible.value = false;
+  }
+}
 </script>
+
 
 
 
