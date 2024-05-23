@@ -87,6 +87,31 @@
       <!-- 배경 모드 전환 버튼 - 로고 위에 덮어져있음 -->
       <h5 @click="modeOn" class='mode-btn'></h5>
 
+      <!-- 영화 엔딩 크레딧 효과 -->
+      <div class="credits" :class="ending_credit">
+        <h1>Movie Title</h1>
+        <p>Directed by Someone</p>
+        <p>Produced by Someone Else</p>
+        <p>Starring:</p>
+        <p>Actor One</p>
+        <p>Actor Two</p>
+        <p>Actor Three</p>
+        <h1>Movie Title</h1>
+        <p>Directed by Someone</p>
+        <p>Produced by Someone Else</p>
+        <p>Starring:</p>
+        <p>Actor One</p>
+        <p>Actor Two</p>
+        <p>Actor Three</p>
+        <h1>Movie Title</h1>
+        <p>Directed by Someone</p>
+        <p>Produced by Someone Else</p>
+        <p>Starring:</p>
+        <p>Actor One</p>
+        <p>Actor Two</p>
+        <p>Actor Three</p>
+      </div>
+
       <!-- 최상단으로 올라가는 버튼 -->
       <button @click="goTop" class="go-top-btn">
         <svg class="svgIcon" viewBox="0 0 384 512">
@@ -224,11 +249,16 @@ const showNextPoster2_2 = () => {
 // 클릭 시, 모드 전환 활성화 (메인 화면만 보이게 되기)
 const fadeMode = ref()
 
+// 영화 엔딩 크레딧 효과
+const ending_credit = ref()
+
 const modeOn = function () {
   if (fadeMode.value === false || fadeMode.value === 'fade-out') {
-    fadeMode.value = 'fade-in';
+    fadeMode.value = 'fade-in'
+    ending_credit.value = 'credits-off'
   } else {
-    fadeMode.value = 'fade-out';
+    fadeMode.value = 'fade-out'
+    ending_credit.value = 'credits-on'
   }
 }
 
@@ -245,6 +275,34 @@ const openSignup = function () {
 
 <!-- CSS 스타일 -->
 <style scoped>
+.credits {
+  display: none;
+}
+
+.credits-on {
+  display: block;
+  position: absolute;
+  bottom: -100%;
+  width: 100%;
+  text-align: center;
+  animation: scrollUp 15s linear infinite;
+  color: white;
+}
+
+@keyframes scrollUp {
+  from {
+    bottom: -100%;
+  }
+
+  to {
+    bottom: 100%;
+  }
+}
+
+.credits-off {
+  display: none;
+}
+
 /* 모드 전환 버튼 */
 .mode-btn {
   position: absolute;
@@ -531,10 +589,7 @@ section {
   bottom: 4%;
 }
 
-.arrow1-1:hover,
-.arrow1-2:hover,
-.arrow2-1:hover,
-.arrow2-2:hover {
+.arrow:hover {
   opacity: 1;
 }
 
