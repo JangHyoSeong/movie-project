@@ -200,7 +200,7 @@ const showNextPoster1_2 = () => {
     endIndex1.value += 1
   } else {
     startIndex1.value = 0
-    endIndex1.value = 6
+    endIndex1.value = 7
   }
 }
 // 다음 포스터 표시
@@ -217,7 +217,7 @@ const showNextPoster2_2 = () => {
     endIndex2.value += 1
   } else {
     startIndex2.value = 0
-    endIndex2.value = 6
+    endIndex2.value = 7
   }
 }
 
@@ -407,7 +407,7 @@ main {
   position: relative;
   text-align: center;
   color: white;
-  margin-top: 5%;
+  margin-top: 3%;
   /* 움직이는 애니메이션 */
   animation: moveUpDown 2s infinite;
 }

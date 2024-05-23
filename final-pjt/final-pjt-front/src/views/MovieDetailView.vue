@@ -1,31 +1,49 @@
 <template>
-  <div class="explan">
-    <p>포스터</p>
-    <p>좋아요</p>
-  </div>
-  <!-- 별 모양 (포스터 기능) -->
-  <label for="">
-    <div class="container" @click="toggleImg" ref="imgContainer">
-      <input type="checkbox">
-      <svg height="24px" id="Layer_1" version="1.2" viewBox="0 0 24 24" width="24px" xml:space="preserve"
-        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <g>
-          <g>
-            <path
-              d="M9.362,9.158c0,0-3.16,0.35-5.268,0.584c-0.19,0.023-0.358,0.15-0.421,0.343s0,0.394,0.14,0.521    
-                c1.566,1.429,3.919,3.569,3.919,3.569c-0.002,0-0.646,3.113-1.074,5.19c-0.036,0.188,0.032,0.387,0.196,0.506    
-                c0.163,0.119,0.373,0.121,0.538,0.028c1.844-1.048,4.606-2.624,4.606-2.624s2.763,1.576,4.604,2.625    
-                c0.168,0.092,0.378,0.09,0.541-0.029c0.164-0.119,0.232-0.318,0.195-0.505c-0.428-2.078-1.071-5.191-1.071-5.191    
-                s2.353-2.14,3.919-3.566c0.14-0.131,0.202-0.332,0.14-0.524s-0.23-0.319-0.42-0.341c-2.108-0.236-5.269-0.586-5.269-0.586    
-                s-1.31-2.898-2.183-4.83c-0.082-0.173-0.254-0.294-0.456-0.294s-0.375,0.122-0.453,0.294C10.671,6.26,9.362,9.158,9.362,9.158z">
-            </path>
-          </g>
-        </g>
-      </svg>
-    </div>
-  </label>
   
-  <img class="show-img" :class="{ 'display-show': isImgVisible }" :src="backgroundImageSrc" alt="snapshot" ref="showImg"/>
+  <div class="Figure">
+    <div class="explan">
+      <p>포스터</p>
+      <p>좋아요</p>
+    </div>
+    <!-- 별 모양 (포스터 기능) -->
+    <label for="">
+      <div class="container" @click="toggleImg" ref="imgContainer">
+        <input type="checkbox">
+        <svg height="24px" id="Layer_1" version="1.2" viewBox="0 0 24 24" width="24px" xml:space="preserve"
+          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g>
+            <g>
+              <path
+                d="M9.362,9.158c0,0-3.16,0.35-5.268,0.584c-0.19,0.023-0.358,0.15-0.421,0.343s0,0.394,0.14,0.521    
+                  c1.566,1.429,3.919,3.569,3.919,3.569c-0.002,0-0.646,3.113-1.074,5.19c-0.036,0.188,0.032,0.387,0.196,0.506    
+                  c0.163,0.119,0.373,0.121,0.538,0.028c1.844-1.048,4.606-2.624,4.606-2.624s2.763,1.576,4.604,2.625    
+                  c0.168,0.092,0.378,0.09,0.541-0.029c0.164-0.119,0.232-0.318,0.195-0.505c-0.428-2.078-1.071-5.191-1.071-5.191    
+                  s2.353-2.14,3.919-3.566c0.14-0.131,0.202-0.332,0.14-0.524s-0.23-0.319-0.42-0.341c-2.108-0.236-5.269-0.586-5.269-0.586    
+                  s-1.31-2.898-2.183-4.83c-0.082-0.173-0.254-0.294-0.456-0.294s-0.375,0.122-0.453,0.294C10.671,6.26,9.362,9.158,9.362,9.158z">
+              </path>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </label>
+  
+    <!-- 하트 모양 (좋아요 기능) -->
+    <label class="like-container">
+      <input type="checkbox" @click="likeMovie" v-model="isLiked">
+      <div class="like-checkmark">
+        <svg viewBox="0 0 256 256">
+          <rect fill="none" height="256" width="256"></rect>
+          <path
+            d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z"
+            stroke-width="20px" stroke="#FFF" fill="none"></path>
+        </svg>
+      </div>
+    </label>
+
+  </div>
+
+  <img class="show-img" :class="{ 'display-show': isImgVisible }" :src="backgroundImageSrc" alt="snapshot"
+    ref="showImg" />
 
   <div>
     <h5 class="select-end-btn" @click="goToHome">Home</h5>
@@ -48,19 +66,6 @@
           <p>개봉 상태 : {{ status }}</p>
           <p v-if="runningTime">러닝타임 : {{ runningTime }}분</p>
           <p v-if="openingDate">개봉 일자 : {{ openingDate }}</p>
-
-          <!-- 하트 모양 (좋아요 기능) -->
-          <label class="like-container">
-            <input type="checkbox" @click="likeMovie" v-model="isLiked">
-            <div class="like-checkmark">
-              <svg viewBox="0 0 256 256">
-                <rect fill="none" height="256" width="256"></rect>
-                <path
-                  d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z"
-                  stroke-width="20px" stroke="#FFF" fill="none"></path>
-              </svg>
-            </div>
-          </label>
 
         </article>
         <!-- 유튜브 플레이어 -->
@@ -219,16 +224,23 @@ const hideImgOutsideClick = function (event) {
 </script>
 
 <style scoped>
+.Figure {
+  position: relative;
+  top: 5vh;
+  left: 9.1vh;
+}
+
 .explan {
   display: flex;
   position: absolute;
-  top: 15%;
-  left: 4.9%;
+  top: 4.5vh;
+  left: 1vh;
   color: white;
   z-index: 1;
   gap: 22px;
   font-size: 75%
 }
+
 .show-img {
   position: absolute;
   top: 50%;
@@ -254,12 +266,9 @@ const hideImgOutsideClick = function (event) {
 
 .container {
   display: block;
-  position: relative;
   cursor: pointer;
   user-select: none;
   position: absolute;
-  top: 10.6%;
-  left: 4.5%;
   color: white;
   z-index: 1;
   cursor: pointer;
@@ -307,11 +316,13 @@ const hideImgOutsideClick = function (event) {
 
 .like-container {
   position: absolute;
-  top: 3.5vh;
-  left: 15.5vh;
+  top: 0.7vh;
+  left: 3%;
   font-size: 20px;
   user-select: none;
   transition: 100ms;
+  z-index: 1;
+  cursor: pointer;
 }
 
 .like-checkmark {
@@ -388,7 +399,8 @@ const hideImgOutsideClick = function (event) {
 /* 내용 컨테이너 스타일 */
 .content-container {
   position: relative;
-  top: 2.5vh;
+  top: 2vh;
+  left: 1vh;
   display: flex;
   align-items: center;
 }

@@ -227,7 +227,7 @@ const changeChatFont = () => {
 .chat-txt {
   background-color: white;
   padding: 0.5%;
-  width: 75.4%;
+  width: 76.2%;
 }
 
 .chat-btn {

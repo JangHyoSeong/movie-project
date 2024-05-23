@@ -127,7 +127,9 @@ const signUpOntoOff = function () {
 
 .profile-nav {
   position: absolute;
+  top: 1.65vh;
   right: 10%;
+  font-size: 104%;
   color: white;
   text-decoration: none;
 }
