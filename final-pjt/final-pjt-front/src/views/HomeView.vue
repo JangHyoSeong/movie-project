@@ -89,27 +89,40 @@
 
       <!-- 영화 엔딩 크레딧 효과 -->
       <div class="credits" :class="ending_credit">
-        <h1>Movie Title</h1>
-        <p>Directed by Someone</p>
-        <p>Produced by Someone Else</p>
-        <p>Starring:</p>
-        <p>Actor One</p>
-        <p>Actor Two</p>
-        <p>Actor Three</p>
-        <h1>Movie Title</h1>
-        <p>Directed by Someone</p>
-        <p>Produced by Someone Else</p>
-        <p>Starring:</p>
-        <p>Actor One</p>
-        <p>Actor Two</p>
-        <p>Actor Three</p>
-        <h1>Movie Title</h1>
-        <p>Directed by Someone</p>
-        <p>Produced by Someone Else</p>
-        <p>Starring:</p>
-        <p>Actor One</p>
-        <p>Actor Two</p>
-        <p>Actor Three</p>
+        <div class="left">
+          <h2>팀장</h2>
+          <h2>팀원</h2>
+          <h2>기획</h2>
+          <h2>알고리즘</h2>
+          <h2>프론트엔드</h2>
+          <h2>백엔드</h2>
+          <h2>디자인</h2>
+          <h2>ERD</h2>
+          <h2>목업</h2>
+          <h2>데이터</h2>
+          <h2>컴포넌트</h2>
+          <h2>API</h2>
+          <h2>제작 지원</h2>
+          <h2>장소 제공</h2>
+          <h2>수고 많았습니다</h2>
+        </div>
+        <div class="right">
+          <h2>김동현</h2>
+          <h2>장효승</h2>
+          <h2>김동현</h2>
+          <h2>장효승</h2>
+          <h2>김동현</h2>
+          <h2>장효승</h2>
+          <h2>김동현</h2>
+          <h2>장효승</h2>
+          <h2>김동현</h2>
+          <h2>장효승</h2>
+          <h2>김동현</h2>
+          <h2>장효승</h2>
+          <h2>SSAFY</h2>
+          <h2>SSAFY</h2>
+          <h2>부울경 1반♡</h2>
+        </div>
       </div>
 
       <!-- 최상단으로 올라가는 버튼 -->
@@ -282,25 +295,41 @@ const openSignup = function () {
 .credits-on {
   display: block;
   position: absolute;
-  bottom: -100%;
+  left: 42%;
   width: 100%;
   text-align: center;
-  animation: scrollUp 15s linear infinite;
+  animation: scrollUp 17s linear infinite;
   color: white;
 }
 
 @keyframes scrollUp {
   from {
-    bottom: -100%;
+    bottom: 0%;
   }
 
   to {
     bottom: 100%;
   }
 }
-
 .credits-off {
   display: none;
+}
+
+.left,
+.right {
+  position: absolute;
+  flex: 1;
+  text-align: center;
+}
+
+.left {
+  text-align: right;
+  padding-right: 10%;
+}
+
+.right {
+  text-align: left;
+  padding-left: 10%;
 }
 
 /* 모드 전환 버튼 */
