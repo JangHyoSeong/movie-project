@@ -10,6 +10,7 @@ import ChatView from '@/views/MovieDetail/ChatView.vue'
 import ProfileDetailView from '@/views/ProfileDetailView.vue'
 import LikeView from '@/views/ProfileDetail/LikeView.vue'
 import UpdateView from '@/views/ProfileDetail/UpdateView.vue'
+import SearchResultView from '@/views/SearchResultView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,7 +51,13 @@ const router = createRouter({
         { path: '', name: 'profile-like', component: LikeView, props: true },
         { path: 'update', name: 'profile-update', component: UpdateView, props: true }
       ]
-    }
+    },
+    {
+      path: '/search_result',
+      name: 'searchResult',
+      component: SearchResultView,
+      props: true,
+    },
   ]
 })
 

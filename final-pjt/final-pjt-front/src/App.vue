@@ -10,7 +10,13 @@
       <!-- 홈 링크 -->
       <RouterLink :to="{ name: 'home' }" class="nav">다각화</RouterLink>
       <!-- 검색 창 -->
-      <input type="text" name="search" class="search-nav" placeholder=" ▷ 영화, 배우, 감독을 검색해보세요">
+      <input 
+        @keyup.enter="searchRequest" 
+        type="text" name="search" 
+        class="search-nav" 
+        placeholder=" ▷ 영화, 배우, 감독을 검색해보세요"
+        v-model="searchData"
+      >
       <!-- 프로필 링크 -->
       <RouterLink :to="{ name: 'profile' }" class="profile-nav" v-show="store.isLogin">프로필</RouterLink>
     </nav>
@@ -22,24 +28,52 @@
   <RouterView 
     @select-event="selectDataPass"
     :selectData="selectData"
+    :searchResult="searchResult"
   />
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { useLoginStore } from './stores/login'
+import axios from 'axios'
 import Login from './components/Login.vue'
 import Signup from './components/Signup.vue'
+import { setQuarter } from 'date-fns'
+import router from './router'
 
 const store = useLoginStore()
 
 const selectData = ref({})
 
 // choice를 한 정보를 choicedetail로 넘겨줌
-  const selectDataPass = function (data) {
-    console.log(data.value)
-    selectData.value = data.value
-  }
+const selectDataPass = function (data) {
+  console.log(data.value)
+  selectData.value = data.value
+}
+
+const searchData = ref('')
+const searchResult = ref([])
+const searchRequest = function (query_data) {
+  axios({
+    method: 'get',
+    url: 'http://127.0.0.1:8000/api/v1/search/',
+    params: {
+      query_params: searchData.value
+    },
+    headers: {
+      Authorization: `Token ${store.token}`
+    }
+  })
+    .then((res) => {
+      searchData.value = ''
+      searchResult.value = res.data
+      router.push({name: 'searchResult', props: { searchResult: searchResult.value }})
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
 </script>
 
 <style>
