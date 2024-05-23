@@ -145,7 +145,7 @@ onMounted(() => {
     .catch(err => console.log(err))
     .then((res) => {
       // 유튜브 트레일러 로드
-      // const API_KEY = import.meta.env.VITE_YT_API_KEY
+      const API_KEY = import.meta.env.VITE_YT_API_KEY
 
       axios({
         method: 'get',

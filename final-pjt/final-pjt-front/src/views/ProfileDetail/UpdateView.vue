@@ -75,9 +75,10 @@ const store = useLoginStore()
 const router = useRouter()
 
 const userDelete = function () {
-  confirm('회원탈퇴를 하시겠습니까?')
+  const flag = confirm('회원탈퇴를 하시겠습니까?')
 
-  axios({
+  if (flag) {
+    axios({
     method: 'delete',
     url: 'http://127.0.0.1:8000/api/v1/profile/member_leave/',
     headers: {
@@ -90,6 +91,10 @@ const userDelete = function () {
       router.push({ name: 'home' })
     })
     .catch(err => console.log(err))
+  } else {
+    alert('회원 가입이 취소되었습니다.')
+  }
+
 }
 
 
