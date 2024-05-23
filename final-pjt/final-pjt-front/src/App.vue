@@ -21,9 +21,23 @@
       <RouterLink :to="{ name: 'profile' }" class="profile-nav" v-show="store.isLogin">프로필</RouterLink>
     </nav>
   </div>
+<<<<<<< HEAD
   <!-- 로그인 및 회원가입 컴포넌트 -->
   <Login />
   <Signup />
+=======
+    <!-- 로그인 및 회원가입 컴포넌트 -->
+  <Login 
+    @login-convert-signup="LoginConvertSignup"
+    @sign-up-onto-off="signUpOntoOff"
+    :signUpOn="signUpOn"
+  />
+  <Signup 
+    @signup-convert-login="SignupConvertLogin" 
+    @login-onto-off="loginOntoOff"
+    :loginOn="loginOn"
+    />
+>>>>>>> authentication
   <!-- 라우터 뷰 -->
   <RouterView 
     @select-event="selectDataPass"
@@ -72,6 +86,27 @@ const searchRequest = function (query_data) {
     .catch((err) => {
       console.log(err)
     })
+}
+
+const loginOn = ref(false)
+const signUpOn = ref(false)
+
+// 로그인을 회원가입 창으로 바꾸기
+const LoginConvertSignup = function () {
+  loginOn.value = true
+}
+
+// 회원가입을 로그인으로 바꾸기
+const SignupConvertLogin = function () {
+  signUpOn.value = true
+}
+
+const loginOntoOff = function() {
+  loginOn.value = false
+}
+
+const signUpOntoOff = function () {
+  signUpOn.value = false
 }
 
 </script>

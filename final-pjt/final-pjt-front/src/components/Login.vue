@@ -25,7 +25,7 @@
           <!-- 회원가입 링크 -->
           <div class="sign-login">
             <p>계정이 없으신가요?</p>
-            <p style="color: #166AE8; text-decoration:underline;">회원가입</p>
+            <p @click="LoginConvertSignup" style="color: #166AE8; text-decoration:underline; cursor: pointer;">회원가입</p>
           </div>
         </div>
         <!-- 팝업 닫기 버튼 -->
@@ -36,9 +36,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useLoginStore } from '@/stores/login'
 import { useRouter } from 'vue-router'
+
+const props = defineProps({
+  signUpOn: Boolean
+})
+
 
 const store = useLoginStore()
 const router = useRouter()
@@ -70,13 +75,36 @@ const isLogin = ref(null)
 // 로그인 팝업 활성화 함수
 const LoginVueOn = function () {
   isLogin.value = 'display-show'
+  signUpOntoOff()
 }
 
 // 로그인 팝업 비활성화 함수
 const LoginVueOff = function () {
   isLogin.value = ''
-  router.push({name: 'home'})
 }
+
+// 로그인 끄고 회원가입 켜기
+
+const emit = defineEmits(['LoginConvertSignup', 'signUpOntoOff'])
+
+const LoginConvertSignup = function () {
+  emit('LoginConvertSignup')
+  LoginVueOff()
+}
+
+const signUpOntoOff = function () {
+  emit('signUpOntoOff')
+}
+
+// 회원가입이 켜진다면 로그인 끄기
+watch(
+  () => props.signUpOn,
+  (flag) => {
+    if (flag) {
+      LoginVueOn()
+    }
+  }
+)
 </script>
 
 <style scoped>
@@ -170,6 +198,7 @@ const LoginVueOff = function () {
   border-style: none;
   border-radius: 10px;
   background-color: #166AE8;
+  cursor: pointer;
 }
 
 /* 팝업 닫기 버튼 스타일 */

@@ -11,6 +11,7 @@ import ProfileDetailView from '@/views/ProfileDetailView.vue'
 import LikeView from '@/views/ProfileDetail/LikeView.vue'
 import UpdateView from '@/views/ProfileDetail/UpdateView.vue'
 import SearchResultView from '@/views/SearchResultView.vue'
+import { useLoginStore } from '@/stores/login'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

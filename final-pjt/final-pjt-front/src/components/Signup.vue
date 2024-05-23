@@ -29,7 +29,7 @@
         <!-- 로그인 링크 -->
         <div class="sign-txt">
           <p>이미 가입하셨나요?</p>
-          <p style="color: #166AE8; text-decoration:underline;">로그인</p>
+          <p @click="SignupConvertLogin" style="color: #166AE8; text-decoration:underline; cursor: pointer;">로그인</p>
         </div>
       </div>
       <!-- 팝업 닫기 버튼 -->
@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useLoginStore } from '@/stores/login'
 import axios from 'axios'
 
@@ -56,6 +56,7 @@ const isSign = ref(null)
 // 회원가입 팝업 활성화 함수
 const SignVueOn = function () {
   isSign.value = 'display-show'
+  loginOntoOff()
 }
 
 // 회원가입 팝업 비활성화 함수
@@ -95,6 +96,32 @@ const signUpRequest = function () {
       console.log(err);
     })
 }
+
+const props = defineProps({
+  loginOn: Boolean
+})
+
+const emit = defineEmits(['SignupConvertLogin', 'loginOntoOff'])
+
+const SignupConvertLogin = function () {
+  emit('SignupConvertLogin')
+  SignVueOff()
+}
+
+const loginOntoOff = function () {
+  emit('loginOntoOff')
+}
+
+watch(
+  () => props.loginOn,
+  (flag) => {
+    if(flag) {
+      SignVueOn()
+      props.loginOn = false
+    }
+  }
+)
+
 </script>
 
 <style scoped>
