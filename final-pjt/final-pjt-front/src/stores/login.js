@@ -26,6 +26,7 @@ export const useLoginStore = defineStore('login', () => {
         console.log(token.value)
         alert('로그인에 성공했습니다')
         loginResult.value = true
+        setInterval(function () { location.reload() }, 100)
       })
       .catch(err => {
         console.log(err)
