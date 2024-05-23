@@ -232,7 +232,7 @@ def search(request):
     except:
         pass
 
-    movies = Movie.objects.filter(query).distinct()[:10] 
+    movies = Movie.objects.filter(query).distinct().order_by('-opening_date')[:10] 
 
     serializer = MovieListSerializer(movies, many=True)
 
