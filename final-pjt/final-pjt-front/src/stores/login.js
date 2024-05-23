@@ -22,10 +22,10 @@ export const useLoginStore = defineStore('login', () => {
     })
       .then((res) => {
         token.value = res.data.key
+        loginResult.value = true
         router.push({ name: 'home' })
         console.log(token.value)
         alert('로그인에 성공했습니다')
-        loginResult.value = true
         setInterval(function () { location.reload() }, 100)
       })
       .catch(err => {
@@ -38,6 +38,7 @@ export const useLoginStore = defineStore('login', () => {
   const logout = function () {
     token.value = null
     alert('로그아웃 되었습니다.')
+    router.push({name: 'home'})
   }
 
   const isLogin = computed(() => {

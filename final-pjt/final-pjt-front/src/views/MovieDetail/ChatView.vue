@@ -23,7 +23,7 @@
     <!-- 채팅 입력구간 -->
     <div class="chat-position">
       <form @submit.prevent="chatSubmit" class="chat-input">
-        <input class="chat-txt" type="text" placeholder="20 Max Chat" v-model="chatMessage">
+        <input class="chat-txt" type="text" placeholder="20 Max Chat" v-model="chatMessage" maxlength="20">
         <input type="submit" class="chat-btn" value="전송하기">
       </form>
     </div>
